@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Player
+namespace TextRPG_TeamSix.Game
 {
-    internal class Equipment
+    //Save, Load 기능을 담당.
+    internal class SaveManager
     {
-        //장비 장착 관리
     }
 }

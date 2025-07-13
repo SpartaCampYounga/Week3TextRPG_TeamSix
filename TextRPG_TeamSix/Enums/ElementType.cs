@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Items
+namespace TextRPG_TeamSix.Enums
 {
-    internal class Consumable : Item
+    //속성 타입
+    internal enum ElementType
     {
-        //소비템
+        None
     }
 }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Player
+namespace TextRPG_TeamSix.Interfaces
 {
-    internal class Player
+    //소비템 인터페이스
+    internal interface IConsumable
     {
-        //기본 정보 Status 클래스를 필드로 가질것
+        void Consume();
     }
 }

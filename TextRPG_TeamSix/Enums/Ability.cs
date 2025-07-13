@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Game
+namespace TextRPG_TeamSix.Enums
 {
-    internal class GameManager
+    internal enum Ability
     {
-        //게임 전체 흐름 및 상태 관리
     }
 }
