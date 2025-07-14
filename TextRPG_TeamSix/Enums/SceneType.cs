@@ -11,6 +11,8 @@ namespace TextRPG_TeamSix.Enums
     internal enum SceneType
     {
         Skill,
-        Main
+        Main,
+        PlayerSetup,
+        Title
     }
 }
