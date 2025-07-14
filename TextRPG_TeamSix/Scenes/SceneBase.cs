@@ -15,7 +15,7 @@ namespace TextRPG_TeamSix.Scenes
         {
         }
 
-        public SceneType SceneType { get; internal set; }
+        public abstract SceneType SceneType { get; }
 
         public abstract void DisplayScene();    //출력 하는 시스템
 

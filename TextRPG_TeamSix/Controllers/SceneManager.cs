@@ -15,13 +15,11 @@ namespace TextRPG_TeamSix.Game
     internal class SceneManager
     {
         // 캐시
-        public List<Store> Stores { get; private set; }
-        public Dictionary<SceneType, SceneBase> Scenes { get; private set; };
+        public Dictionary<SceneType, SceneBase> Scenes { get; private set; }
 
         //싱글톤
         private SceneManager()
         {
-            Stores = new List<Store>();
             Scenes = new Dictionary<SceneType, SceneBase>();
         }
         private static SceneManager instance;
