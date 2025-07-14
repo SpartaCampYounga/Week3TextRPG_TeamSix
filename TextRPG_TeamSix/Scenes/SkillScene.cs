@@ -11,7 +11,8 @@ namespace TextRPG_TeamSix.Scenes
 {
     internal class SkillScene : SceneBase
     {
-        public override SceneType SceneType => SceneType.Skill;
+        //Controllers - GameInitializer에 _scenes 배열에 추가하면 됨.
+        public override SceneType SceneType => SceneType.Skill; //Enum-SceneType에 원하는 enum값 생성.
         private int input;
 
         public override void DisplayScene()
