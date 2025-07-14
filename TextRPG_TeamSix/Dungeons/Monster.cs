@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Dungeon
+namespace TextRPG_TeamSix.Dungeons
 {
     //몬스터 관리        
     //몬스터 종류가 많으면 Interface 혹은 추상클래스 상속하여 확장할 것

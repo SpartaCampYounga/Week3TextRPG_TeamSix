@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Character;
 using TextRPG_TeamSix.Enums;
 
 namespace TextRPG_TeamSix.Scenes
@@ -12,7 +13,6 @@ namespace TextRPG_TeamSix.Scenes
     {
         public SceneBase()
         {
-
         }
 
         public abstract void DisplayScene();    //출력 하는 시스템
