@@ -10,6 +10,9 @@ namespace TextRPG_TeamSix.Enums
     //씬 종류 추가될때마다 추가하기.
     internal enum SceneType
     {
-        Skill
+        Skill,
+        Main,
+        PlayerSetup,
+        Title
     }
 }
