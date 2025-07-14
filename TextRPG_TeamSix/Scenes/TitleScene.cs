@@ -17,8 +17,8 @@ namespace TextRPG_TeamSix.Scenes
         {
             Console.WriteLine("MainScene");
             Console.Write(
-                "당신의 이름은?" +
-                "당신의 직업은?"
+                "1. 시작" +
+                "2. 종료"
                 );
         }
 
