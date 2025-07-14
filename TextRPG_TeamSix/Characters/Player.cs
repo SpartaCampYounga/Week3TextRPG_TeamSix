@@ -15,7 +15,11 @@ namespace TextRPG_TeamSix.Characters
         public JobType JobType { get; private set; }
         public Inventory Inventory { get; private set; }
         public uint NumOfStones { get; private set; }
-        public Player(string name) : base (name)
+
+        public uint Gold { get; private set; } // 플레이어의 금액
+
+        public uint Exp { get; private set; } // 플레이어의 경험치
+        public Player(string name) : base(name)
         {
             switch (JobType)
             {
@@ -24,12 +28,18 @@ namespace TextRPG_TeamSix.Characters
                     MP = 300;
                     Attack = 10;
                     Defense = 10;
+                    NumOfStones = 0; // 초기 돌의 개수 설정
+                    Gold = 1000; // 초기 금액 설정
+                    Exp = 0; // 초기 경험치 설정
                     break;
                 case JobType.Warrior:
                     HP = 300;
                     MP = 100;
                     Attack = 10;
                     Defense = 10;
+                    NumOfStones = 0; // 초기 돌의 개수 설정
+                    Gold = 1000; // 초기 금액 설정
+                    Exp = 0; // 초기 경험치 설정
                     break;
             }
         }
@@ -39,3 +49,4 @@ namespace TextRPG_TeamSix.Characters
         }
     }
 }
+
