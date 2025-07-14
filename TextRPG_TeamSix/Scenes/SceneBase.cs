@@ -38,8 +38,8 @@ namespace TextRPG_TeamSix.Scenes
         }
         protected void WaitResponse()
         {
-            Console.WriteLine("계속 진행하려면 아무키나 입력하세요...");
-            Console.ReadKey();
+            Console.WriteLine("0. 다음");
+            int input = GetIntegerRange(0, 1);
         }
     }
 }
