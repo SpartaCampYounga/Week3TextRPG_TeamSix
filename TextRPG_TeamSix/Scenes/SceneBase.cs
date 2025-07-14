@@ -15,6 +15,8 @@ namespace TextRPG_TeamSix.Scenes
         {
         }
 
+        public SceneType SceneType { get; internal set; }
+
         public abstract void DisplayScene();    //출력 하는 시스템
 
         public abstract void HandleInput(); //입력 받고 실행하는 시스템
