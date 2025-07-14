@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_TeamSix.Character;
 using TextRPG_TeamSix.Enums;
 
 namespace TextRPG_TeamSix.Scenes

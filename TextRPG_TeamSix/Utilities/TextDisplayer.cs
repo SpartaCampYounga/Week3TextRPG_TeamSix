@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TextRPG_TeamSix.Utilities
 {
-    internal class TextDisplayer
+    internal static class TextDisplayer
     {
-        //출력 관리 //필요할까..?
+        //아이템 리스트 출력 및 화살표 입력 받아 변동시키기
     }
 }

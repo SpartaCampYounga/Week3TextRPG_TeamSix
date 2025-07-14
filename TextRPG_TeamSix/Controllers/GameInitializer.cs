@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_TeamSix.Character;
+using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Scenes;
 
@@ -13,7 +13,7 @@ namespace TextRPG_TeamSix.Controllers
     internal static class GameInitializer
     {
         private static SceneBase[] _scenes = {
-            new SkillScene() 
+            new SkillScene()
         };
         public static void InitializeAll() 
         {
