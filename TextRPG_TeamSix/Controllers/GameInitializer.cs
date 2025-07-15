@@ -21,7 +21,9 @@ namespace TextRPG_TeamSix.Controllers
             new TitleScene(),
             new PlayerSetupScene(),
             new SkillLearnScene(),
-            new BattleScene()
+            new MainScene(),
+            new BattleScene(),
+            new QuestScene(),
         };
 
         private static Skill[] _skills =
