@@ -95,10 +95,14 @@ namespace TextRPG_TeamSix.Characters
             MP = player.MP;
             Attack = player.Attack;
             Defense = player.Defense;
-            //SkillList.Clone(player.SkillList)
+            SkillList = new List<Skill>();
+            foreach (Skill skill in player.SkillList)
+            {
+                SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
+            }
             IsAlive = player.IsAlive;
             JobType = player.JobType;
-            //Inventory.Clone(player.Inventory);
+            Inventory.Clone(player.Inventory);
             NumOfStones = player.NumOfStones;
         }
     }
