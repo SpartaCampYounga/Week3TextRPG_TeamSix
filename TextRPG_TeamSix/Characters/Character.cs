@@ -1,4 +1,5 @@
-﻿using TextRPG_TeamSix.Skills;
+﻿using TextRPG_TeamSix.Controllers;
+using TextRPG_TeamSix.Skills;
 
 namespace TextRPG_TeamSix.Characters
 {
@@ -12,7 +13,7 @@ namespace TextRPG_TeamSix.Characters
         public uint MP { get; protected set; }
         public uint Attack { get; protected set; }
         public uint Defense { get; protected set; }
-        public List<Skill> SkillList { get; protected set; }
+        public List<Skill> SkillList { get; protected set; } = new List<Skill>(); 
         public bool IsAlive { get; protected set; }
 
         public Character(string name)

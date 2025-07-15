@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Skills;
 
 namespace TextRPG_TeamSix.Characters
 {
@@ -31,6 +33,7 @@ namespace TextRPG_TeamSix.Characters
                     NumOfStones = 0; // 초기 돌의 개수 설정
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
+                    SkillList.Add(GameDataManager.Instance.AllSkills[0]);
                     break;
                 case JobType.Warrior:
                     HP = 300;
@@ -40,6 +43,7 @@ namespace TextRPG_TeamSix.Characters
                     NumOfStones = 0; // 초기 돌의 개수 설정
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
+                    SkillList.Add(GameDataManager.Instance.AllSkills[2]);
                     break;
             }
         }
