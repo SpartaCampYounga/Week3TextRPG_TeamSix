@@ -11,8 +11,10 @@ namespace TextRPG_TeamSix.Skills
 {
     internal class AttackSkill : Skill
     {
-        public AttackSkill(uint id, string name, string description, uint consumeMP, uint requiredStones, SkillType skillType, uint amount) : base(id, name, description, consumeMP, requiredStones, skillType, amount)
+        public AttackSkill(uint id, string name, string description, uint consumeMP, uint requiredStones, SkillType skillType, uint amount) : 
+            base(id, name, description, consumeMP, requiredStones, skillType, amount)
         {
+
         }
 
         public override void Cast(Character opponent)

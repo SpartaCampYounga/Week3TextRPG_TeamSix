@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Battle
+namespace TextRPG_TeamSix.Battle.UI
 {
-    internal class StopBattle
+    internal class EnemyBox
     {
 
     }
