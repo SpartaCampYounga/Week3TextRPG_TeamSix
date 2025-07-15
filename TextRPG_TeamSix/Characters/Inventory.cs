@@ -9,12 +9,14 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace TextRPG_TeamSix.Characters
 {
+   
 
     //인벤토리 관리
     internal class Inventory //: IContainableItems
     {
         public Player Owner { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
+
 
         public void DisplayItems()
         {
@@ -28,20 +30,41 @@ namespace TextRPG_TeamSix.Characters
             Console.WriteLine("인벤토리");
             Console.WriteLine("-------------------------------------");
             Console.WriteLine(" ID | 이름 | 능력 | 설명 |");
+            Console.WriteLine("-------------------------------------");
 
             for (int i = 0; i < ItemList.Count; i++)
             {
                 var item = ItemList[i];
-                if (item.IsEquipped)
+                if (Item.IsEquipped)
                 {
-                    Console.WriteLine($"[E] ({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
+                    Console.WriteLine($"[E] ({Item.Id}) 번 | {Item.Name} | {Item.Description} | {Item.Price}");
                 }
                 else if
                 {
-                    Console.WriteLine($"({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
+                    Console.WriteLine($"({Item.Id}) 번 | {Item.Name} | {Item.Description} | {Item.Price}");
                 }
                 
             }
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("아이템 장착.(숫자로 입력해 주세요)");
+
+            int userInput;
+            bool userChoice = int.TryParse(Console.ReadLine(), out userInput);
+
+            if(userChoice && userInput >= 1 && userInput <= ItemList.Count)
+            {
+                var itemToEquip = ItemList[userInput - 1]
+                if(!Item.IsEquipped)
+                {
+                    Item.IsEquipped = true;
+                    Console.WriteLine($"{itemToEquip.Name}을(를) 장착했습니다.");
+                }
+                else
+                {
+                    Item.IsEquipped = false;
+                }
+            }
+            
         }
         public Item? GetItem(uint id)
         {
@@ -49,6 +72,7 @@ namespace TextRPG_TeamSix.Characters
             return item;
 
         }
+
         public void PurchaseItem(uint itemId)
         {
             Item? item = GetItem(itemId);
