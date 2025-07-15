@@ -8,7 +8,8 @@ namespace TextRPG_TeamSix.Enums
 {
     internal enum QuestType
     {
-        // 퀘스트 타입을 정의. (몬스터, 던전)
+        Dungeon,
+        Enemy,
     }
     
 }
