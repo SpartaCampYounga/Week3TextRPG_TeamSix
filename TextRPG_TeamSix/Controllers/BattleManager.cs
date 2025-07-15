@@ -1,43 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TextRPG_TeamSix.Characters;
 
-namespace TextRPG_TeamSix.Game
+namespace TextRPG_TeamSix.Battle
 {
     internal class BattleManager
     {
-        private static BattleManager instance;
-
-        private BattleManager() { }
-
-        public List<Enemy> Enemys { get; private set; }
-
+        public List<Enemy> Enemies { get; private set; }
         public bool IsBattleActive { get; private set; }
 
-        public int StartBattle(List<Enemy> enemyList)
+        public void InitializeBattle(List<Enemy> enemyList)
         {
-
-            return Enemys.Count;
+            Enemies = enemyList;
+            IsBattleActive = true;
         }
 
-        public void ExecuteTurn(Player player)
+        public void EndCurrentBattle()
         {
-            
-        }
-
-        public bool BattleOver()
-        {
-            return true;
-        }
-
-        public int EndBattle()
-        {
-            Console.WriteLine("전투 종료!");
             IsBattleActive = false;
-
-            int rewardGold = 1;
-
-            return rewardGold;
         }
     }
 }
