@@ -9,23 +9,12 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace TextRPG_TeamSix.Characters
 {
+
     //인벤토리 관리
     internal class Inventory //: IContainableItems
     {
         public Player Owner { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
-
-        public Item(uint id, string name, string description, uint price)
-        {
-            Id = id;
-            Name = name;
-            Description = description;
-            Price = price;
-        }
-        public Inventory(Player owner)
-        {
-            Owner = owner;
-        }
 
         public void DisplayItems()
         {
@@ -35,6 +24,7 @@ namespace TextRPG_TeamSix.Characters
             Console.WriteLine("인벤토리가 비어 있습니다.");
                 return;
             }
+
             Console.WriteLine("인벤토리");
             Console.WriteLine("-------------------------------------");
             Console.WriteLine(" ID | 이름 | 능력 | 설명 |");
@@ -42,7 +32,7 @@ namespace TextRPG_TeamSix.Characters
             for(int i = 0; i <ItemList.Count; i++)
             {
                 var item = ItemList[i];
-                Console.WriteLine($"{item.Id} | {item.Name} | {item.Description} | {item.Price}");
+                Console.WriteLine($"({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
             } 
         }
         public Item? GetItem(uint id)
