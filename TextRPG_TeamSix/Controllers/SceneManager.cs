@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Stores;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Game;   //controller 폴더명 변경하면서 네임스페이스 통일 안한듯; 리팩토링 필요.
 
@@ -54,7 +57,7 @@ internal class SceneManager
             CurrentScene.DisplayScene();
         }
     }
-
+     
     //SaveManger에서 JSON 파일을 로드하여 로드된 데이터로 Scenes 초기화
     //SaveManager에서 구현해야할지도..?
     public void InitializeScenes(SceneBase[] scenes)

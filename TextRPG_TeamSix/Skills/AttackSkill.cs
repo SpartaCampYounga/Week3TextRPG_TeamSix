@@ -29,5 +29,6 @@ namespace TextRPG_TeamSix.Skills
                 //스킬 구현 불가능.
                 Console.WriteLine("MP가 부족하여 스킬이 취소됩니다.");
             }
+        }
     }
 }
