@@ -65,4 +65,4 @@ using System.Threading.Tasks;
     ////player.Gold 확인 필요
     ////player.Inventory.AddItem(item) 확인 필요
     ////제대로 된 변수가 맞는지 확인 필요
-}
+

@@ -45,7 +45,7 @@ namespace TextRPG_TeamSix.Characters
         }
         public void DisplayPlayerStatus()
         {
-
+            Console.WriteLine("DisplayPlayerStatus");
         }
     }
 }
