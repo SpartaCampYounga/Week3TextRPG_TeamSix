@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Stores;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Game
 {
@@ -70,5 +73,39 @@ namespace TextRPG_TeamSix.Game
             Scenes.Add(scene.SceneType, scene);
         }
 
+
+
+
+
+
+        //아래 세이브&로드는 임시로 가져온것
+        public void SavePlayer(Player player)
+        {
+            JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
+            // 파일 생성 후 쓰기
+            File.WriteAllText(JsonHelper.path + $@"\\player_{player.Name}.json", JsonConvert.SerializeObject(player, setting));
+            Console.WriteLine($"{player.Name}(이)가 저장되었습니다.");
+        }
+        public Player LoadPlayer(string playerName)
+        {
+            JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
+
+            Player player = null;
+            try
+            {
+                //JsonConvert.PopulateObject(File.ReadAllText(path + $@"\\player_{playerName}.json"), player);
+                player = JsonConvert.DeserializeObject<Player>(File.ReadAllText(JsonHelper.path + $@"\\player_{playerName}.json"), setting);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"{playerName}(은)는 존재하지 않습니다.");
+                player = new Player(playerName);
+
+            }
+            return player;
+        }
+        // 여기까지 임시로 가져온것
     }
 }

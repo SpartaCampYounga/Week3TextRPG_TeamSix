@@ -14,7 +14,8 @@ namespace TextRPG_TeamSix.Controllers
     {
         private static SceneBase[] _scenes = {
             new SkillScene(),
-            new TitleScene()
+            new TitleScene(),
+            new PlayerSetupScene()
         };
         public static void InitializeAll() 
         {
