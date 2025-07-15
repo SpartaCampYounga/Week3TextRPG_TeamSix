@@ -52,8 +52,6 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('-', Console.WindowWidth));
 
             //플레이어가 보유중인 스킬만 띄우기
-
-
             if (player.SkillList != null && player.SkillList.Count != 0)
             {
                 for (int i = 0; i < player.SkillList.Count(); i++)
@@ -72,7 +70,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("1. 스킬 배우기");
             Console.WriteLine("0. 나가기");
             Console.Write(">>");
-            input = InputHelper.GetIntegerRange(0, 2);
+            input = InputHelper.GetIntegerRange(0, 3);
             HandleInput();
         }
 

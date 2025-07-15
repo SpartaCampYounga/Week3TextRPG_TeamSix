@@ -65,6 +65,10 @@ namespace TextRPG_TeamSix.Characters
         {
             this.Gold += gold; 
         }
+        public void AcquireSkillStone(uint numOfStones)
+        {
+            NumOfStones += numOfStones;
+        }
 
         //스킬 습득 //가능한지는 Skill에서 체크
         public void LearnSkill(Skill skillToLearn)

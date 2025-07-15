@@ -49,6 +49,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(header);
             Console.WriteLine(new string('-', Console.WindowWidth));
 
+
             player = PlayerManager.Instance.CurrentPlayer;
             availableToLearn = GameDataManager.Instance.AllSkills.Where(x => !player.SkillList.Contains(x)).ToList();
 
@@ -69,6 +70,9 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('-', Console.WindowWidth));
             Console.WriteLine();
             Console.WriteLine();
+
+            player.AcquireSkillStone(100);
+            Console.WriteLine("스킬석 100개 깜짝 선물을 받았다!");
 
             Console.WriteLine("배우고 싶은 스킬의 숫자를 입력하세요.");
             Console.WriteLine("0. 나가기");
@@ -95,6 +99,7 @@ namespace TextRPG_TeamSix.Scenes
                     {
                         Console.WriteLine("보유한 스킬석이 부족해서 배우지 못했다...");
                     }
+                    SceneManager.Instance.SetScene(SceneType.SkillLearn);
                     break;
             }
         }
