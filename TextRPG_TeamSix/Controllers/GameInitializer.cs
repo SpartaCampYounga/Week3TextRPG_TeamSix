@@ -13,7 +13,9 @@ namespace TextRPG_TeamSix.Controllers
     internal static class GameInitializer
     {
         private static SceneBase[] _scenes = {
-            new SkillScene()
+            new SkillScene(),
+            new TitleScene(),
+            new PlayerSetupScene()
         };
         public static void InitializeAll() 
         {
