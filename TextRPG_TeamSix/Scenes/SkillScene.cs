@@ -21,6 +21,10 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene()
         {
+            //콘솔창 셋업
+            //Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            //Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+
             Player player = PlayerManager.Instance.CurrentPlayer;
 
             Console.OutputEncoding = Encoding.UTF8; //Younga TIL
@@ -28,10 +32,12 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', Console.WindowWidth)); //Younga TIL
-            Console.WriteLine("스킬 - 스킬을 배울 수 있습니다.");
+            Console.WriteLine("스킬 - 번호를 선택하여 스킬을 배울 수 있습니다.");
             Console.WriteLine(new string('=', Console.WindowWidth));
 
+            //테이블 헤더
             string header = "";
+            header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
             header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
             header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
             header += FormatUtility.AlignWithPadding("설명", 30) + " | ";
@@ -43,34 +49,31 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(header);
             Console.WriteLine(new string('-', Console.WindowWidth));
 
-            //전체 스킬을 보여주지만, 보유 중인 스킬만 [보유중] 띄우기
-            if(GameDataManager.Instance.AllSkills.Count() != 0)
+            //게임 내 존재하는 모든 스킬을 보여주지만, 보유 중인 스킬만 [보유중] 띄우기
+            List<Skill> allSkills = GameDataManager.Instance.AllSkills;
+
+
+            for ( int i = 0; i < allSkills.Count(); i++)
             {
-                foreach (Skill skill in GameDataManager.Instance.AllSkills)
+                string display = "";
+
+                if (player.SkillList.FirstOrDefault(x => x.Id == allSkills[i].Id) == null)
                 {
-                    string display = "";
-
-                    if (player.SkillList.FirstOrDefault(x => x.Id == skill.Id) == null)
-                    {
-                        //갖고 있지 않으면
-                        display += FormatUtility.AlignWithPadding("보유중", 8) + " | ";
-                    }
-                    else
-                    {
-
-                        display += FormatUtility.AlignWithPadding("미보유", 8) + " | ";
-                    }
-                    display += skill;
-                    Console.WriteLine(display);
+                    //갖고 있지 않으면
+                    display += FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
+                    display += FormatUtility.AlignWithPadding("미보유", 8) + " | ";
                 }
-            }
-            else
-            {
-                Console.WriteLine("보유중인 스킬이 없습니다.");
+                else
+                {
+                    display += FormatUtility.AlignWithPadding("", 3) + " | ";
+                    display += FormatUtility.AlignWithPadding("보유중", 8) + " | ";
+                }
+                display += allSkills[i];
+                Console.WriteLine(display);
             }
             Console.WriteLine();
 
-            Console.WriteLine("출력~!~!");
+            Console.WriteLine("배우고 싶은 스킬의 번호를 클릭하세요.");
             Console.Write(">>");
             input = InputHelper.GetIntegerRange(0, 1);
             HandleInput();
