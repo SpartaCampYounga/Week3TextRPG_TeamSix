@@ -1,31 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TextRPG_TeamSix.Characters;
 
 namespace TextRPG_TeamSix.Game
 {
     internal class BattleManager
     {
+        private static BattleManager instance;
 
-        public void StartBattle()
+        private BattleManager() { }
+
+        public List<Enemy> Enemys { get; private set; }
+
+        public bool IsBattleActive { get; private set; }
+
+        public int StartBattle(List<Enemy> enemyList)
         {
-           
+
+            return Enemys.Count;
         }
 
-        public void ExecuteTurn()
+        public void ExecuteTurn(Player player)
         {
             
         }
-        public void BattleOver()
-        {
 
+        public bool BattleOver()
+        {
+            return true;
         }
 
-        public void EndBattle()
+        public int EndBattle()
         {
+            Console.WriteLine("전투 종료!");
+            IsBattleActive = false;
 
+            int rewardGold = 1;
+
+            return rewardGold;
         }
     }
 }
