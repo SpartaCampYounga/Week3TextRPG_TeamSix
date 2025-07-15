@@ -63,6 +63,15 @@ namespace TextRPG_TeamSix.Characters
         {
             this.HP += HP;
         }
+
+
+        // 사용자 이름
+        // 이 부분 변수명을 어디를 사용자Name으로 할지 캐릭터Name으로 할지 의논필요.
+        public void Rename(string newName)
+        {
+            Name = newName;
+        }
+
     }
 }
 

@@ -14,16 +14,30 @@ namespace TextRPG_TeamSix.Scenes
     {
         public override SceneType SceneType => SceneType.PlayerSetup;
 
-
         public override void DisplayScene() //출력 하는 시스템
         {
             Console.Clear();
             Console.WriteLine("PlayerSetupScene");
-            string input;
 
-            Console.WriteLine("사용자를 생성합니다. (동일한 사용자명은 불러오기)");
             Console.Write("사용자 명을 입력해주세요: ");
-            input = Console.ReadLine();
+            string userName = Console.ReadLine();
+
+
+            Console.WriteLine("사용자 직업을 선택해주세요:");
+            Console.WriteLine("1. 전사(Warrior)");
+            Console.WriteLine("2. 마법사(Magician)");
+            Console.WriteLine("3. 도적(Assassin) (jobtype 미구현)");
+            Console.WriteLine("4. 궁수(Archer) (jobtype 미구현)");
+            Console.Write("번호를 입력하세요: ");
+            string jobInput = Console.ReadLine();
+
+            JobType selectedJob = jobInput switch
+            {
+                "1" => JobType.Warrior,
+                "2" => JobType.Magician,
+                _ => JobType.Warrior // 기본값
+            };
+
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
