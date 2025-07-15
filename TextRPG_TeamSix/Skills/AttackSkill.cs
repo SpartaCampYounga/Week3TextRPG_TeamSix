@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
+using TextRPG_TeamSix.Enums;
 
 namespace TextRPG_TeamSix.Skills
 {
@@ -16,7 +17,17 @@ namespace TextRPG_TeamSix.Skills
 
         public override void Cast(Character opponent)
         {
-            //스킬 로직 구현
-        }
+            Player player = PlayerManager.Instance.CurrentPlayer;
+            if (player.MP >= ConsumeMP)
+            {
+                //스킬 구현
+                player.ConsumeMP(ConsumeMP);
+                opponent.Damaged(Amount);
+            }
+            else
+            {
+                //스킬 구현 불가능.
+                Console.WriteLine("MP가 부족하여 스킬이 취소됩니다.");
+            }
     }
 }

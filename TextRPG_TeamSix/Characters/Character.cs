@@ -20,5 +20,20 @@ namespace TextRPG_TeamSix.Characters
             Id = nextId++;
             Name = name;
         }
+
+
+        //스킬 구현 
+        public void ConsumeMP(uint MP)
+        {
+            this.MP -= MP;
+        }
+        public void Healed(uint HP)
+        {
+            this.HP += HP;
+        }
+        public void Damaged(uint damage)
+        {
+            this.HP -= damage;
+        }
     }
 }

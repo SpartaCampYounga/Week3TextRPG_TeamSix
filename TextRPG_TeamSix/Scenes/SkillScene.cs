@@ -18,7 +18,18 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene()
         {
-            PlayerManager.Instance.CurrentPlayer.DisplayPlayerStatus();
+            Console.OutputEncoding = Encoding.UTF8; //Younga TIL
+            Console.WriteLine("SkillScene Loaded");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(new string('=', Console.WindowWidth)); //Younga TIL
+            Console.WriteLine("스킬 - 스킬을 배울 수 있습니다.");
+            Console.WriteLine(new string('=', Console.WindowWidth));
+            Console.WriteLine("");
+            Console.WriteLine("");
+
+
+
             Console.WriteLine("출력~!~!");
             Console.Write(">>");
             input = InputHelper.GetIntegerRange(0, 1);

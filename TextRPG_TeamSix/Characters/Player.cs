@@ -47,6 +47,18 @@ namespace TextRPG_TeamSix.Characters
         {
             Console.WriteLine("DisplayPlayerStatus");
         }
+
+
+
+        //스킬 구현 
+        public void ConsumeMP(uint MP)
+        {
+            this.MP -= MP;
+        }
+        public void Healed(uint HP)
+        {
+            this.HP += HP;
+        }
     }
 }
 
