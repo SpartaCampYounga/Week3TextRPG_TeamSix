@@ -85,6 +85,22 @@ namespace TextRPG_TeamSix.Characters
             Name = newName;
         }
 
+
+        //SaveData Load시 Deep Copy 위함
+        public void Clone(Player player)
+        {
+            Id = player.Id;
+            Name = player.Name;
+            HP = player.HP;
+            MP = player.MP;
+            Attack = player.Attack;
+            Defense = player.Defense;
+            //SkillList.Clone(player.SkillList)
+            IsAlive = player.IsAlive;
+            JobType = player.JobType;
+            //Inventory.Clone(player.Inventory);
+            NumOfStones = player.NumOfStones;
+        }
     }
 }
 

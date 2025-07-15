@@ -21,7 +21,6 @@ namespace TextRPG_TeamSix.Items
             Name = name; // 아이템의 이름
             Description = description; // 아이템의 설명
             Price = price; // 아이템의 가격
-
         }
     }
 }

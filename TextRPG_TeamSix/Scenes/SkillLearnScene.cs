@@ -75,7 +75,8 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("스킬석 100개 깜짝 선물을 받았다!");
 
             Console.WriteLine("배우고 싶은 스킬의 숫자를 입력하세요.");
-            Console.WriteLine("0. 나가기");
+            //Console.WriteLine("0. 나가기");
+            Console.WriteLine("0. 저장하고 나가기"); //Debug
             Console.Write(">>");
             input = InputHelper.GetIntegerRange(0, availableToLearn.Count()+1);
             HandleInput();
@@ -87,6 +88,7 @@ namespace TextRPG_TeamSix.Scenes
             {
                 case 0:
                     Console.WriteLine("0선택함"); //debug용
+                    SaveManager.Instance.SaveGame();
                     SceneManager.Instance.SetScene(SceneType.Skill);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 default:

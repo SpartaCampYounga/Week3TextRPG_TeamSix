@@ -31,5 +31,19 @@ namespace TextRPG_TeamSix.Controllers
                 return instance;
             }
         }
+
+        public void InitializePlayer(string playerName)
+        {
+            if(SaveManager.Instance.LoadGame(playerName))
+            {
+                //로드 성공!
+                CurrentPlayer.Clone(SaveManager.Instance.SaveData.PlayerToSave);
+                Console.WriteLine("플레이어 데이터를 불러왔습니다.");
+            }
+            else
+            {
+                //로드 실패!
+            }
+        }
     }
 }
