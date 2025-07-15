@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace TextRPG_TeamSix.Enums
 {
-    //각 씬 타입 Enum
-    //씬 종류 추가될때마다 추가하기.
-    internal enum SceneType
+    internal enum EnemyType
     {
-        Skill,
-        Main,
-        PlayerSetup,
-        Title
+        Type1,
+        Type2
     }
 }

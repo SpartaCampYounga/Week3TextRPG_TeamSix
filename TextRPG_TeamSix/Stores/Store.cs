@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Store
+namespace TextRPG_TeamSix.Stores
 {
     internal class Store
     {

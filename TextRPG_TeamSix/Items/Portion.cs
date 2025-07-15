@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_TeamSix.Interfaces;
+using TextRPG_TeamSix.Characters;
 
 namespace TextRPG_TeamSix.Items
 {
@@ -13,10 +13,12 @@ namespace TextRPG_TeamSix.Items
         public int RestoreAmount {  get; private set; } //체력회복량 
         public Portion(uint id, string name, string description, uint price, int restoreAmount) : base(id, name, description, price)
         {
+            RestoreAmount = restoreAmount;
         }
 
-        public void Consume()
+        public void Consume(Character character)
         {
+            //아이템 사용 구현
         }
     }
 }
