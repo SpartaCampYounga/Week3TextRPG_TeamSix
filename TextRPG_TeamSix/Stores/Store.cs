@@ -29,10 +29,11 @@ namespace TextRPG_TeamSix.Stores
             }
         }
 
-        //public bool SellToPlayer(Player player, Item item)
+        //public bool SellToPlayer(Item item)
         //{
+        //    Player player = PlayerManager.Instance.CurrentPlayer;
         //    if (player.Gold >= item.Price)
-        //   {
+        //    {
         //        player.Gold -= item.Price;
         //        player.Inventory.AddItem(item);
         //        Console.WriteLine($"{player.Name}이(가) {item.Name}을(를) {item.Price}G에 구매했습니다.");
@@ -51,4 +52,5 @@ namespace TextRPG_TeamSix.Stores
     //player.Gold 확인 필요
     //player.Inventory.AddItem(item) 확인 필요
     //제대로 된 변수가 맞는지 확인 필요
+    //플레이어 플레이어(매개변수) 커런트 플레이어로 변경
 
