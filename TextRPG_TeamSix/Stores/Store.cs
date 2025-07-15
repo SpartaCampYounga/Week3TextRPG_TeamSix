@@ -3,31 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-    using global::TextRPG_TeamSix.Items;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using TextRPG_TeamSix.Items;
+using global::TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Enums;
 
-    namespace TextRPG_TeamSix.Stores
+namespace TextRPG_TeamSix.Stores
     {
-        internal enum Storetype // 상점의 종류를 나타내는 열거형
-        {
-            WeaponStore, // 무기 상점
-            ArmorStore, // 방어구 상점
-            PotionStore, // 물약 상점
-            GeneralStore, // 일반 상점
-            SpecialStore // 특별 상점
-        }
-
         //    // 상점 종류 바꿀께 있는지 확인 필요
         internal class Store // 상점 클래스
         {
-            public Storetype Type { get; private set; } // 상점의 종류
+            public StoreType Type { get; private set; } // 상점의 종류
             public List<Item> ItemList { get; private set; } // 상점에서 판매하는 아이템 리스트
-            public Store(Storetype type) // 생성자: 상점의 종류를 초기화하고 아이템 리스트를 생성합니다.
+            public Store(StoreType type) // 생성자: 상점의 종류를 초기화하고 아이템 리스트를 생성합니다.
             {
                 Type = type;
                 ItemList = new List<Item>();
@@ -43,11 +29,12 @@ using System.Threading.Tasks;
             }
         }
 
-        //public bool SellToPlayer(Player player, Item item)
+        //public bool SellToPlayer(Item item)
         //{
+        //    Player player = PlayerManager.Instance.CurrentPlayer;
         //    if (player.Gold >= item.Price)
-        //   {
-        //        player.Gold -= Item.Price;
+        //    {
+        //        player.Gold -= item.Price;
         //        player.Inventory.AddItem(item);
         //        Console.WriteLine($"{player.Name}이(가) {item.Name}을(를) {item.Price}G에 구매했습니다.");
         //        return true; // 판매 성공
@@ -62,7 +49,8 @@ using System.Threading.Tasks;
 
     }
 
-    ////player.Gold 확인 필요
-    ////player.Inventory.AddItem(item) 확인 필요
-    ////제대로 된 변수가 맞는지 확인 필요
+    //player.Gold 확인 필요
+    //player.Inventory.AddItem(item) 확인 필요
+    //제대로 된 변수가 맞는지 확인 필요
+    //플레이어 플레이어(매개변수) 커런트 플레이어로 변경
 
