@@ -38,7 +38,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('=', Console.WindowWidth));
 
             //테이블 헤더
-            string header = "| ";
+            string header = "";
             //header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
             //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
             header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
@@ -56,7 +56,7 @@ namespace TextRPG_TeamSix.Scenes
             {
                 for (int i = 0; i < player.SkillList.Count(); i++)
                 {
-                    Console.WriteLine("| " + player.SkillList[i]);
+                    Console.WriteLine(player.SkillList[i]);
                 }
             }
             else
