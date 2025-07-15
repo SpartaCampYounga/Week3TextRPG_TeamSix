@@ -16,7 +16,7 @@ namespace TextRPG_TeamSix.Skills
 
         public override void Cast(Character opponent)
         {
-            //스킬 로직 구현
+            //스킬 로직 구현 //Defense Skill 어떻게 구현할 지 정해질때까지 보류... 없으면 삭제.
         }
     }
 }

@@ -14,7 +14,7 @@ namespace TextRPG_TeamSix.Controllers
     //플레이어 싱글톤화하여 단순 저장하는 저장소 개념.   //전역에서 접근 가능함. //GameDataManager와 합칠지 고민
     internal class PlayerManager
     {
-        public Player CurrentPlayer { get; set; }
+        public Player CurrentPlayer { get; private set; }
         private PlayerManager()
         {
             CurrentPlayer = new Player("");

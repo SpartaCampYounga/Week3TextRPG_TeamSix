@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Game;
 
 namespace TextRPG_TeamSix.Scenes
 {
@@ -16,39 +17,66 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene() //출력 하는 시스템
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.SetWindowSize(200, 50);
+            Console.OutputEncoding = System.Text.Encoding.UTF8; // 아스키아트 한글 깨짐 방지
+            string stars = new string('*', 120);
+            string lineBar = new string('=', 120);
+
             Console.WriteLine("TitleScene");
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(new string('*', Console.WindowWidth));
-            Console.WriteLine(new string('=', Console.WindowWidth));
+
+
+            Console.WriteLine(stars);
+            Console.WriteLine(lineBar);
             Console.WriteLine("");
             Console.WriteLine(@"
-                            ████████╗███████╗██╗  ██╗████████╗    ██████╗ ██████╗  ██████╗ 
-                            ╚══██╔══╝██╔════╝██║  ██║╚══██╔══╝    ██╔══██╗██╔══██╗██╔════╝
-                               ██║   █████╗    ███╔═╝   ██║       ██████╔╝██████╔╝██║ ███║
-                               ██║   ██╔══╝  ██╔══██║   ██║       ██╔═██║ ██╔═══╝ ██║   ██║
-                               ██║   ███████╗██║  ██║   ██║       ██║ ██║ ██║     ╚██████╔╝
-                               ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝       ╚═╝ ╚═╝ ╚═╝      ╚═════╝ 
+
+                                  ███╗   ██╗ ██████╗     ███████╗██╗  ██╗████╗████████╗
+                                  ████╗  ██║██╔═══██╗    ██╔════╝██║  ██║ ██╔╝╚══██╔══╝
+                                  ██╔██╗ ██║██║   ██║    █████╗    ███╔═╝ ██║    ██║   
+                                  ██║╚██╗██║██║   ██║    ██╔══╝  ██╔══██║ ██║    ██║   
+                                  ██║ ╚████║╚██████╔╝    ███████║██║  ██║████║   ██║   
+                                  ╚═╝  ╚═══╝ ╚═════╝     ╚══════╝╚═╝  ╚═╝╚═══╝   ╚═╝   
+            
             ");
             Console.WriteLine("");
-            Console.WriteLine(new string('=', Console.WindowWidth));
-            Console.WriteLine(new string('*', Console.WindowWidth));
+            Console.WriteLine(lineBar);
+            Console.WriteLine(stars);
             Console.WriteLine("");
             Console.WriteLine("");
-
 
             Console.Write(
                 "1. 시작\n" +
-                "2. 종료"
+                "0. 종료"
                 );
 
-            Console.ResetColor();
+            Console.ResetColor();// 그린컬러 초기화
+
+
+            Console.Write("\n번호를 입력하세요: ");
+            string? input = Console.ReadLine();
+
+            if (input == "1")
+            {
+                SceneManager.Instance.SetScene(SceneType.PlayerSetup); // Controllers 네임스페이스에서 바로 사용
+            }
+            else if (input == "0")
+            {
+                Console.WriteLine("게임을 종료합니다.");
+                Environment.Exit(0);
+            }
+            else
+            {
+                Console.WriteLine("잘못된 입력 입니다.");
+            }
+
 
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
         {
+            
         }
     }
 }
