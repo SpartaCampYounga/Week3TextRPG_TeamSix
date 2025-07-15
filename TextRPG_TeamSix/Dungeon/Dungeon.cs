@@ -1,15 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Dungeons
+class Program
 {
-    //던전 관리             
-    //던전 종류가 많으면 Interface 혹은 추상클래스 상속하여 확장할 것
-    internal class Dungeon
+    static void Main()
     {
-       
+        string text = "  Hello World!  ";
+        string result;
+
+        // ToUpper()
+        result = text.ToUpper();
+        Console.WriteLine("ToUpper: " + result); // "  HELLO WORLD!  "
+
+        // ToLower()
+        result = text.ToLower();
+        Console.WriteLine("ToLower: " + result); // "  hello world!  "
+
+        // Trim()
+        result = text.Trim();
+        Console.WriteLine("Trim: [" + result + "]"); // "[Hello World!]"
+
+        // Replace()
+        result = text.Replace("World", "C#");
+        Console.WriteLine("Replace: " + result); // "  Hello C#!  "
+
+        // Substring()
+        result = text.Substring(2, 5); // 시작 인덱스 2부터 5글자
+        Console.WriteLine("Substring: " + result); // "Hello"
+
+        // Insert()
+        result = text.Insert(6, "C# ");
+        Console.WriteLine("Insert: " + result); // "  HellC# o World!  "
+
+        // Remove()
+        result = text.Remove(2, 5); // 인덱스 2부터 5글자 삭제
+        Console.WriteLine("Remove: " + result); // "  World!  "
     }
 }
