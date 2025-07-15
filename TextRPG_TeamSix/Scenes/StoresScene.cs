@@ -52,86 +52,39 @@ namespace TextRPG_TeamSix.Scenes
             var input = Console.ReadLine()?.Trim();
             if (input == null) return;
 
-            switch (input.ToUpper())
+            if (int.TryParse(input, out int selectedNumber))
             {
-                case "0":
-                    Console.WriteLine("상점을 나갑니다.");
-                    break;
+                // 입력 번호를 통해 아이템 선택
+                int itemIndex = currentPage * ItemsPerPage + (selectedNumber - 1);
+                if (itemIndex >= 0 && itemIndex < currentStore.ItemList.Count)
+                {
+                    var selectedItem = currentStore.ItemList[itemIndex];
 
-                case "(화살표 >)":
-                    if ((currentPage + 1) * ItemsPerPage < currentStore.ItemList.Count)
-                    {
-                        currentPage++;
-                        DisplayScene();
-                    }
-                    else
-                    {
-                        Console.WriteLine("마지막 페이지입니다..");
-                    }
-                    break;
-
-                case "(화살표 <)":
-                    if (currentPage > 0)
-                    {
-                        currentPage--;
-                        DisplayScene();
-                    }
-                    else
-                    {
-                        Console.WriteLine("첫 페이지입니다.");
-                    }
-                    break;
-
-                //default:
-                //    // 숫자 입력인 경우 아이템 구매 시도
-                //    if (int.TryParse(input, out int selectedNumber))
-                //    {
-                //        if (selectedNumber >= 1 && selectedNumber <= ItemsPerPage)
-                //        {
-                //            // 현재 페이지의 아이템 중 선택된 번호에 해당하는 아이템 가져오기
-                //            int itemIndex = currentPage * ItemsPerPage + (selectedNumber - 1);
-
-                //            if (itemIndex < currentStore.ItemList.Count)
-                //            {
-                //                var selectedItem = currentStore.ItemList[itemIndex];
-
-                //                // 구매 시도, 성공 여부 반환
-                //                bool success = currentStore.SellToPlayer(selectedItem);
-                //                if (success)
-                //                {
-                //                    Console.WriteLine("구매가 완료되었습니다.");
-                //                }
-                //                else
-                //                {
-                //                    Console.WriteLine("구매에 실패했습니다.");
-                //                }
-                //            }
-                //            else
-                //            {
-                //                Console.WriteLine("잘못된 아이템 번호입니다.");
-                //            }
-                //        }
-                //        else
-                //        {
-                //            Console.WriteLine("입력한 번호가 범위를 벗어났습니다.");
-                //        }
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("잘못된 입력입니다.");
-                //    }
-                //    break;
+                    // 구매 시도 (플레이어 인벤토리에 요청)
+                    Player player = PlayerManager.Instance.CurrentPlayer;
+                    player.Inventory.PurchaseItem(selectedItem.Id);
+                }
             }
         }
     }
 }
 
-
-//1.Store 클래스(상점 로직 담당)
-//아이템 목록 관리
-//구매, 판매 기능 처리 (예: SellToPlayer 메서드)
-//실제 데이터와 계산 담당
-//2. StoresScene 클래스 (UI 및 사용자 입력 담당)
-//화면에 아이템 리스트를 출력(페이지네이션 포함 가능)
-//사용자의 입력을 받아 구매, 판매, 나가기 등의 명령 처리 요청
-//단, 실제 구매/판매 로직은 Store 클래스에 위임
+//프로그램 시작
+//    ↓
+//SceneManager.SetScene(SceneType.Store)
+//    ↓
+//StoresScene.DisplayScene()  → 아이템 목록 출력
+//    ↓
+//유저 입력 (ex: 1번)
+//    ↓
+//StoresScene.HandleInput()
+//    ↓
+//Player.Inventory.PurchaseItem(itemId)
+//    ↓
+//Inventory.PurchaseItem() 내부
+//    ↓
+//아이템 존재 확인 → 골드 충분 확인
+//    ↓
+//골드 차감 & 인벤토리에 아이템 추가
+//    ↓
+//구매 성공/실패 메시지 출력
