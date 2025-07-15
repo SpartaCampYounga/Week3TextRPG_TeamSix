@@ -69,7 +69,12 @@ namespace TextRPG_TeamSix.Characters
             // 아이템이 인벤토리에 있는지 확인
             // 아이템이 존재하지 않으면 메시지 출력
             // 아이템이 존재하면 플레이어의 골드를 증가시키고 인벤토리에서 제거
-                       Item? item = GetItem(itemId);
+            Item? item = GetItem(itemId);
+            if (item == null)
+            {
+                Console.WriteLine("해당 아이템이 인벤토리에 없습니다.");
+                return;
+            }   
         }
     }
 }
