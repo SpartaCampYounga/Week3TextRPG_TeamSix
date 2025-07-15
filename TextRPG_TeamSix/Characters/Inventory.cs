@@ -32,7 +32,15 @@ namespace TextRPG_TeamSix.Characters
             for (int i = 0; i < ItemList.Count; i++)
             {
                 var item = ItemList[i];
-                Console.WriteLine($"({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
+                if (item.IsEquipped)
+                {
+                    Console.WriteLine($"[E] ({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
+                }
+                else if
+                {
+                    Console.WriteLine($"({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
+                }
+                
             }
         }
         public Item? GetItem(uint id)
@@ -75,6 +83,8 @@ namespace TextRPG_TeamSix.Characters
                 Console.WriteLine("해당 아이템이 인벤토리에 없습니다.");
                 return;
             }
+            // 만약 아이템을 장착 하고 있다면 판매 불가
+           
             // 판매 로직 추가
             Owner.Gold += item.Price;
             ItemList.Remove(item);

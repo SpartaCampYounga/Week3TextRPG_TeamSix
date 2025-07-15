@@ -14,6 +14,7 @@ namespace TextRPG_TeamSix.Items
         public string Name { get; private set; } // 아이템의 이름
         public string Description { get; private set; } // 아이템의 설명
         public uint Price { get; private set; } // 아이템의 가격
+        public bool IsEquipped { get; set; } // 아이템이 장착되었는지 여부
 
         public Item(uint id, string name, string description, uint price) // 생성자(이 클래스(자식 클래스)가 생성될때 마다 필요한 값들)
         {
