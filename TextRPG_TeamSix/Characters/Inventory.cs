@@ -34,6 +34,7 @@ namespace TextRPG_TeamSix.Characters
                 Console.WriteLine("-------------------------------------");
                 Console.WriteLine(" ID | 이름 | 능력 | 설명 |");
                 Console.WriteLine("-------------------------------------");
+
                 if (ItemList.Count == 0)
                 {
                     Console.WriteLine("인벤토리가 비어 있습니다.");
@@ -55,10 +56,35 @@ namespace TextRPG_TeamSix.Characters
 
                 }
                 Console.WriteLine("");
+                Console.WriteLine("-------------------------------------");
+                Console.WriteLine("페이지 네비게이션: [N] 다음 페이지, [P] 이전 페이지, [Q] 종료");
+                Console.Write("명령어 입력: ");
+                string command = Console.ReadLine()?.Trim().ToUpper();
+                if (command == "N")
+                {
+                    indexPage++;
+                    if (indexPage * itemsPerPage >= ItemList.Count)
+                    {
+                        indexPage = 0; // 마지막 페이지에서 다음 페이지로 넘어가면 첫 페이지로 돌아가게
+                    }
+                }
+                else if (command == "P")
+                {
+                    indexPage--;
+                    if (indexPage < 0)
+                    {
+                        indexPage = (ItemList.Count - 1) / itemsPerPage; // 첫 페이지에서 이전 페이지로 넘어가면 마지막 페이지로 이동
+                    }
+                }
+                else if (command == "Q")
+                {
+                    break; // 종료
+                }
+
 
             }
 
-            
+
         }
 
         public Item? GetItem(uint id)
