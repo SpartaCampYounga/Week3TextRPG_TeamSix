@@ -15,6 +15,7 @@ namespace TextRPG_TeamSix.Enums
         PlayerSetup,
         Title,
         SkillLearn,
-        Battle
+        Battle,
+        Quest,
     }
 }
