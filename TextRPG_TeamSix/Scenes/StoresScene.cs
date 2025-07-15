@@ -19,9 +19,9 @@ namespace TextRPG_TeamSix.Scenes
         private int currentPage = 0; // 현재 페이지 (페이지네이션을 위한 변수)
         private const int ItemsPerPage = 5; // 한 페이지에 표시할 아이템 수
 
-        public StoresScene()
+        public StoresScene(StoreType type) // 생성자: 상점의 종류를 받아 해당 상점을 초기화합니다.
         {
-            currentStore = new Store(StoreType.GeneralStore); // 일반 상점 생성
+            currentStore = new Store(type); // 상점 타입에 따라 상점 생성
         }
         private void PrintPageItems() // 현재 페이지의 아이템을 출력
         {
