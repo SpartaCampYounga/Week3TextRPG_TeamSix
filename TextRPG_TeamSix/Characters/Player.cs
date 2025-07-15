@@ -15,7 +15,7 @@ namespace TextRPG_TeamSix.Characters
     internal class Player : Character
     {
         public JobType JobType { get; private set; }
-        public Inventory Inventory { get; private set; } = new Inventory();
+        public Inventory Inventory { get; private set; }
         public uint NumOfStones { get; private set; }
 
         public uint Gold { get; private set; } // 플레이어의 금액
@@ -34,6 +34,7 @@ namespace TextRPG_TeamSix.Characters
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
                     SkillList.Add(GameDataManager.Instance.AllSkills[0]);
+                    Inventory = new Inventory(this);
                     break;
                 case JobType.Warrior:
                     HP = 300;
@@ -44,6 +45,7 @@ namespace TextRPG_TeamSix.Characters
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
                     SkillList.Add(GameDataManager.Instance.AllSkills[2]);
+                    Inventory = new Inventory(this);
                     break;
             }
         }
