@@ -11,5 +11,6 @@ namespace TextRPG_TeamSix.Game
     //레벨 디자인된 JSON 파일을 로드한 뒤 게임 내에서 제공.
     internal class GameDataManager
     {
+
     }
 }
