@@ -16,6 +16,15 @@ namespace TextRPG_TeamSix.Characters
         public void DisplayItems()
         {
             //리스트 내부 아이템 전부 출력
+            if(ItemList.Count == 0)
+            {
+                Console.WritelIne("인벤토리가 비어 있습니다.");
+                return;
+            }
+            Console.WritelIne("인벤토리");
+            Console.WritelIne("-------------------------------------");
+            Cosnole.Wrtieline(" ID | 이름 | 능력 | 설명 |");
+
         }
         public Item? GetItem(uint id)
         {
