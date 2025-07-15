@@ -15,7 +15,7 @@ namespace TextRPG_TeamSix.Characters
     internal class Player : Character
     {
         public JobType JobType { get; private set; }
-        public Inventory Inventory { get; private set; }
+        public Inventory Inventory { get; private set; } = new Inventory();
         public uint NumOfStones { get; private set; }
 
         public uint Gold { get; private set; } // 플레이어의 금액
@@ -50,11 +50,7 @@ namespace TextRPG_TeamSix.Characters
         public void DisplayPlayerStatus()
         {
             Console.WriteLine("DisplayPlayerStatus");
-        }
-
-
-
-        //스킬 구현 
+        } 
         public void ConsumeMP(uint MP)
         {
             this.MP -= MP;
@@ -64,6 +60,13 @@ namespace TextRPG_TeamSix.Characters
             this.HP += HP;
         }
 
+        //스킬 습득 //가능한지는 Skill에서 체크
+        public void LearnSkill(Skill skillToLearn)
+        {
+            NumOfStones -= skillToLearn.RequiredStones;
+            SkillList.Add(skillToLearn);
+            Console.WriteLine($"{skillToLearn.Name}을 배웠다!");
+        }
 
         // 사용자 이름
         // 이 부분 변수명을 어디를 사용자Name으로 할지 캐릭터Name으로 할지 의논필요.
@@ -71,7 +74,6 @@ namespace TextRPG_TeamSix.Characters
         {
             Name = newName;
         }
-
     }
 }
 
