@@ -12,13 +12,12 @@ namespace TextRPG_TeamSix.Scenes
     internal class TitleScene : SceneBase
     {
         public override SceneType SceneType => SceneType.Title;
-        private int input;
 
 
         public override void DisplayScene() //출력 하는 시스템
         {
             Console.SetWindowSize(200, 50);
-            Console.OutputEncoding = System.Text.Encoding.UTF8; // 아스키아트 한글 깨짐 방지
+            Console.OutputEncoding = Encoding.UTF8; // 아스키아트 한글 깨짐 방지
             string stars = new string('*', 120);
             string lineBar = new string('=', 120);
 

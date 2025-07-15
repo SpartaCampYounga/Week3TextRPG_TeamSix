@@ -82,13 +82,13 @@ namespace TextRPG_TeamSix.Scenes
             }
 
             // 생성이 완료되면 MainScene으로 이동
-            // 타이머 기능으로 · · · · 3초 후 메인씬으로
+            // 타이머 기능으로 · · · · 1.5초 후 메인씬으로
             Console.WriteLine("");
             Console.WriteLine("사용자를 생성중 입니다");
             Console.Write("        ");
             for (int i = 0; i < 3; i++)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 Console.Write(" ·");
             }
             Console.WriteLine();

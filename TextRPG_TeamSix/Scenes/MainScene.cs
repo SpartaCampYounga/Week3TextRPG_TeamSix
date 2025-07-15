@@ -26,27 +26,26 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("4. 퀘스트");
             Console.WriteLine("");
             Console.Write("번호를 입력하세요 : ");
-            Console.ReadLine();
 
             int input = int.Parse(Console.ReadLine());
 
             // 팀 원들의 진행에 따라 반영처리
 
-            //switch (input)
-            //{
-            //    case 1:
-            //        SceneManager.Instance.SetScene(SceneType.);
-            //        break;
-            //    case 2:
-            //        SceneManager.Instance.SetScene(SceneType.);
-            //        break;
-            //    case 3:
-            //        SceneManager.Instance.SetScene(SceneType.);
-            //        break;
-            //    case 4:
-            //        SceneManager.Instance.SetScene(SceneType.);
-            //        break;
-            //}
+            switch (input)
+            {
+                //case 1:
+                //    SceneManager.Instance.SetScene(SceneType.);
+                //    break;
+                //case 2:
+                //    SceneManager.Instance.SetScene(SceneType.);
+                //    break;
+                //case 3:
+                //    SceneManager.Instance.SetScene(SceneType.);
+                //    break;
+                case 4:
+                    SceneManager.Instance.SetScene(SceneType.Quest);
+                    break;
+            }
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
