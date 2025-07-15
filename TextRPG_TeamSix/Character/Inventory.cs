@@ -65,7 +65,11 @@ namespace TextRPG_TeamSix.Characters
         }
         public void SellItem(uint itemId)
         {
-
+            // 아이템 판매 로직
+            // 아이템이 인벤토리에 있는지 확인
+            // 아이템이 존재하지 않으면 메시지 출력
+            // 아이템이 존재하면 플레이어의 골드를 증가시키고 인벤토리에서 제거
+                       Item? item = GetItem(itemId);
         }
     }
 }
