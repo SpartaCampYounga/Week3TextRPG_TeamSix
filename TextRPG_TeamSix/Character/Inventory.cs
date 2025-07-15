@@ -74,7 +74,11 @@ namespace TextRPG_TeamSix.Characters
             {
                 Console.WriteLine("해당 아이템이 인벤토리에 없습니다.");
                 return;
-            }   
+            }
+            // 판매 로직 추가
+            Owner.Gold += item.Price;
+            ItemList.Remove(item);
+            Console.WriteLine($"{item.Name}을(를) 판매했습니다. 현재 골드: {Owner.Gold}");
         }
     }
 }
