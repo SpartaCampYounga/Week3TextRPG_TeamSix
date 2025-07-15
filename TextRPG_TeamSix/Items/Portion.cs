@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Enums;
 
 namespace TextRPG_TeamSix.Items
 {
-    internal enum RestoreType // 마나나 스테미나 포션 종류 추가할때. RestoreType Enum 추가하여 관리
-    {
-        Health, // 체력 회복
-        Mana,   // 마나 회복
-    }
     //포션 클래스는 구체 아이템을 나타내며, Item 클래스를 상속받고 IConsumable 인터페이스를 구현합니다.
     internal class Portion : Item, IConsumable
     {
