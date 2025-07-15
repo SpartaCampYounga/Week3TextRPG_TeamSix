@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Utilities;
@@ -17,6 +18,7 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene()
         {
+            PlayerManager.Instance.CurrentPlayer.DisplayPlayerStatus();
             Console.WriteLine("출력~!~!");
             Console.Write(">>");
             input = InputHelper.GetIntegerRange(0, 1);
