@@ -29,6 +29,7 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void HandleInput() //입력 받고 실행하는 시스템
         {
+
         }
     }
 }

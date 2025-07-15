@@ -1,6 +1,7 @@
 ﻿using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
+using TextRPG_TeamSix.Scenes;
 
 namespace TextRPG_TeamSix
 {
@@ -9,7 +10,9 @@ namespace TextRPG_TeamSix
         static void Main(string[] args)
         {
             GameInitializer.InitializeAll();
-            SceneManager.Instance.SetScene(SceneType.Skill);
+            //SceneManager.Instance.SetScene(SceneType.Skill);
+
+            SceneManager.Instance.SetScene(SceneType.Battle);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace TextRPG_TeamSix.Characters
         public uint Gold { get; private set; } // 플레이어의 금액
 
         public uint Exp { get; private set; } // 플레이어의 경험치
-        public Player(string name) : base(name)
+        public Player(string name, JobType jobType) : base(name)
         {
             switch (JobType)
             {

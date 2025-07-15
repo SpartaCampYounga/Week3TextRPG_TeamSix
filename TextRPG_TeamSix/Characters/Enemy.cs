@@ -10,8 +10,10 @@ namespace TextRPG_TeamSix.Characters
     internal class Enemy : Character
     {
         public EnemyType EnemyType { get; set; }
-        public Enemy(string name) : base(name)
+        public Enemy(string name, EnemyType enemyType) : base(name)
         {
+            EnemyType = enemyType;
+
             switch (EnemyType)
             {
                 case EnemyType.Type1:
