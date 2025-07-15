@@ -36,7 +36,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('=', Console.WindowWidth));
 
             //테이블 헤더
-            string header = "";
+            string header = "| ";
             header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
             //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
             header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
@@ -61,7 +61,7 @@ namespace TextRPG_TeamSix.Scenes
             {
                 for (int i = 0; i < availableToLearn.Count(); i++)
                 {
-                    string display = FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
+                    string display = "| " + FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
                     display += availableToLearn[i];
                     Console.WriteLine(display);
                 }
@@ -95,7 +95,7 @@ namespace TextRPG_TeamSix.Scenes
                     {
                         Console.WriteLine("보유한 스킬석이 부족해서 배우지 못했다...");
                     }
-                        break;
+                    break;
             }
         }
     }
