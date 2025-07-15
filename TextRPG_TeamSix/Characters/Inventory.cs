@@ -16,6 +16,11 @@ namespace TextRPG_TeamSix.Characters
     {
         public Player Owner { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
+        // 생성자
+        public Inventory(Player owner)
+        {
+            Owner = owner;
+        }
 
 
         public void DisplayItems()
@@ -35,13 +40,13 @@ namespace TextRPG_TeamSix.Characters
             for (int i = 0; i < ItemList.Count; i++)
             {
                 var item = ItemList[i];
-                if (Item.IsEquipped)
+                if (item.IsEquipped)
                 {
-                    Console.WriteLine($"[E] ({Item.Id}) 번 | {Item.Name} | {Item.Description} | {Item.Price}");
+                    Console.WriteLine($"[E] ({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
                 }
-                else if
+                else
                 {
-                    Console.WriteLine($"({Item.Id}) 번 | {Item.Name} | {Item.Description} | {Item.Price}");
+                    Console.WriteLine($"({item.Id}) 번 | {item.Name} | {item.Description} | {item.Price}");
                 }
                 
             }
@@ -53,15 +58,16 @@ namespace TextRPG_TeamSix.Characters
 
             if(userChoice && userInput >= 1 && userInput <= ItemList.Count)
             {
-                var itemToEquip = ItemList[userInput - 1]
-                if(!Item.IsEquipped)
+                var itemToEquip = ItemList[userInput - 1];
+                if(!itemToEquip.IsEquipped)
                 {
-                    Item.IsEquipped = true;
+                    itemToEquip.IsEquipped = true;
                     Console.WriteLine($"{itemToEquip.Name}을(를) 장착했습니다.");
                 }
                 else
                 {
-                    Item.IsEquipped = false;
+                    itemToEquip.IsEquipped = false;
+                    Console.WriteLine($"{itemToEquip.Name}을(를) 장착 해제했습니다.");
                 }
             }
             
