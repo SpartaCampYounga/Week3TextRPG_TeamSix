@@ -17,7 +17,7 @@ namespace TextRPG_TeamSix.Controllers
         public Player CurrentPlayer { get; private set; }
         private PlayerManager()
         {
-            CurrentPlayer = new Player("");
+            CurrentPlayer = new Player("SCV", JobType.Warrior);
         }
         private static PlayerManager instance;
         public static PlayerManager Instance

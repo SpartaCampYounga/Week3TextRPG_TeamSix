@@ -21,7 +21,7 @@ namespace TextRPG_TeamSix.Characters
         public uint Gold { get; private set; } // 플레이어의 금액
 
         public uint Exp { get; private set; } // 플레이어의 경험치
-        public Player(string name) : base(name)
+        public Player(string name, JobType jobType) : base(name)
         {
             switch (JobType)
             {
@@ -64,6 +64,10 @@ namespace TextRPG_TeamSix.Characters
         public void EarnGold(uint gold)
         {
             this.Gold += gold; 
+        }
+        public void AcquireSkillStone(uint numOfStones)
+        {
+            NumOfStones += numOfStones;
         }
 
         //스킬 습득 //가능한지는 Skill에서 체크

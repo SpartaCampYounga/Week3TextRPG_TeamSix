@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG_TeamSix.Game
+namespace TextRPG_TeamSix.Battle
 {
-    //Save, Load 기능을 담당.
-    internal class SaveManager
+    internal class StopBattle
     {
 
     }
