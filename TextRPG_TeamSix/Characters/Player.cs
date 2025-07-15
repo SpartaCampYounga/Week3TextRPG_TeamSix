@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace TextRPG_TeamSix.Characters
     internal class Player : Character
     {
         public JobType JobType { get; private set; }
-        public Inventory Inventory { get; private set; }
+        public Inventory Inventory { get; private set; } = new Inventory();
         public uint NumOfStones { get; private set; }
 
         public uint Gold { get; private set; } // 플레이어의 금액
@@ -34,7 +34,6 @@ namespace TextRPG_TeamSix.Characters
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
                     SkillList.Add(GameDataManager.Instance.AllSkills[0]);
-                    Inventory = new Inventory(this);
                     break;
                 case JobType.Warrior:
                     HP = 300;
@@ -45,7 +44,6 @@ namespace TextRPG_TeamSix.Characters
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
                     SkillList.Add(GameDataManager.Instance.AllSkills[2]);
-                    Inventory = new Inventory(this);
                     break;
             }
         }
@@ -61,6 +59,7 @@ namespace TextRPG_TeamSix.Characters
         {
             this.HP += HP;
         }
+
         public void EarnGold(uint gold)
         {
             this.Gold += gold; 
@@ -69,6 +68,7 @@ namespace TextRPG_TeamSix.Characters
         {
             NumOfStones += numOfStones;
         }
+
 
         //스킬 습득 //가능한지는 Skill에서 체크
         public void LearnSkill(Skill skillToLearn)
@@ -84,6 +84,7 @@ namespace TextRPG_TeamSix.Characters
         {
             Name = newName;
         }
+
 
 
         //SaveData Load시 Deep Copy 위함
@@ -105,6 +106,7 @@ namespace TextRPG_TeamSix.Characters
             Inventory.Clone(player.Inventory);
             NumOfStones = player.NumOfStones;
         }
+
     }
 }
 
