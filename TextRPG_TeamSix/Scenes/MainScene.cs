@@ -33,9 +33,9 @@ namespace TextRPG_TeamSix.Scenes
 
             switch (input)
             {
-                //case 1:
-                //    SceneManager.Instance.SetScene(SceneType.);
-                //    break;
+                case 1: //Younga: 스킬 화면 전환 - 로드까지 테스트 해보려고... 맘대로 변경하세요.
+                    SceneManager.Instance.SetScene(SceneType.SkillLearn);
+                    break;
                 //case 2:
                 //    SceneManager.Instance.SetScene(SceneType.);
                 //    break;

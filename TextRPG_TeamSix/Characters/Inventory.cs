@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Controllers;
 
 namespace TextRPG_TeamSix.Characters
 {
     //인벤토리 관리
     internal class Inventory //: IContainableItems
     {
+        [JsonIgnore]
         public Player Owner { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
@@ -79,6 +82,19 @@ namespace TextRPG_TeamSix.Characters
             ItemList.Remove(item);
             Console.WriteLine($"{item.Name}을 판매 했습니다.");
 
+        }
+        public void SetOwnerAgain(Player player)    //SaveManager에서만 호출될것!
+        {
+            Owner = player;
+        }
+
+        public void Clone(Inventory inventory)
+        {
+            Owner = inventory.Owner;
+            foreach(Item item in inventory.ItemList)
+            {
+                ItemList.Add(GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == item.Id));
+            }
         }
     }
 }

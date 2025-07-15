@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
+using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 
@@ -31,6 +32,11 @@ namespace TextRPG_TeamSix.Controllers
             new AttackSkill(2, "후려치기", "강하게 후려칩니다.", 5, 1, SkillType.Attack, 10),
             new AttackSkill(3, "파이어볼", "불을 소환합니다.", 20, 3, SkillType.Attack, 30),
             new HealSkill(4, "치료하기", "HP를 회복합니다.", 30, 5, SkillType.Heal, 30)
+        };
+
+        private static Item[] items =
+        {
+            new Portion(1, "회복물약", "회복합니다", 100, 100, RestoreType.Health)
         };
 
         public static void InitializeAll() 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 
@@ -15,9 +16,11 @@ namespace TextRPG_TeamSix.Controllers
     internal class GameDataManager
     {
         public List<Skill> AllSkills { get; private set; }
+        public List<Item> AllItems { get; private set; }
         private GameDataManager()
         {
             AllSkills = new List<Skill>();
+            AllItems = new List<Item>();
         }
         private static GameDataManager instance;
         public static GameDataManager Instance

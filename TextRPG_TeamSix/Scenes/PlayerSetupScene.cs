@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
 {
@@ -26,11 +28,21 @@ namespace TextRPG_TeamSix.Scenes
             if (userName == "1")
             {
                 Console.Clear();
-                Console.WriteLine("사용자를 불러옵니다.");
-                // 불러오기 로직 후 바로 MainScene으로 이동
-                Console.ReadKey(true);
-                SceneManager.Instance.SetScene(SceneType.Main);
-                return;
+                Console.Write("이름을 입력하세요: ");
+                string input = Console.ReadLine();
+                if(PlayerManager.Instance.InitializePlayerFromSaveData(input))  //데이터에서 못 불러옴
+                {
+                    Console.WriteLine("사용자를 불러옵니다.");
+                    // 불러오기 로직 후 바로 MainScene으로 이동
+                    Console.ReadKey(true);
+                    SceneManager.Instance.SetScene(SceneType.Main);
+                }
+                else
+                {
+                    Console.WriteLine("사용자를 불러오지 못했습니다.");
+                    InputHelper.WaitResponse();
+                    SceneManager.Instance.SetScene(SceneType.PlayerSetup);
+                }
             }
             // 사용자를 새로 선택함에 따라 직업을 선택하는 로직
             else if (userName == "2")
@@ -92,6 +104,7 @@ namespace TextRPG_TeamSix.Scenes
                 Console.Write(" ·");
             }
             Console.WriteLine();
+            SaveManager.Instance.SaveGame();    //저장
             SceneManager.Instance.SetScene(SceneType.Main);
             return;
         }

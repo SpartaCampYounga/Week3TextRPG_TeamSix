@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Utilities;
+using TextRPG_TeamSix.Controllers;
 
 namespace TextRPG_TeamSix.Skills
 {
@@ -29,7 +30,7 @@ namespace TextRPG_TeamSix.Skills
             SkillType = skillType;
             Amount = amount;            
         }
-
+        public abstract void Clone(uint skillId);
         public override string ToString()
         {
             string display = "";

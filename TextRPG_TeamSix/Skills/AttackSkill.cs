@@ -30,5 +30,25 @@ namespace TextRPG_TeamSix.Skills
                 Console.WriteLine("MP가 부족하여 스킬이 취소됩니다.");
             }
         }
+        public override void Clone(uint skillId)
+        {
+            //복사할 스킬
+            Skill skill = GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skillId);
+
+            if (skill == null)
+            {
+                // 없을때.
+            }
+            else
+            {
+                Id = skill.Id;
+                Name = skill.Name;
+                Description = skill.Description;
+                ConsumeMP = skill.ConsumeMP;
+                RequiredStones = skill.RequiredStones;
+                SkillType = skill.SkillType;
+                Amount = skill.Amount;
+            }
+        }
     }
 }

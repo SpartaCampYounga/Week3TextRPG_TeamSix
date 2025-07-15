@@ -17,6 +17,7 @@ namespace TextRPG_TeamSix.Utilities
         {
             JsonSerializerSettings setting = new JsonSerializerSettings()
             {
+                TypeNameHandling = TypeNameHandling.All,
                 Formatting = Formatting.Indented
             };
             setting.Converters.Add(new StringEnumConverter());
