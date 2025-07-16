@@ -55,6 +55,7 @@ namespace TextRPG_TeamSix.Characters
                         Console.ReadKey();
                     }
                 }
+                // 페이지에 맞게 아이템 출력
 
                 int startIndex = indexPage * itemsPerPage;
                 int endIndex = startIndex + itemsPerPage;
