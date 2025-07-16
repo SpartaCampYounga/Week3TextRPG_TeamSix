@@ -35,15 +35,17 @@ namespace TextRPG_TeamSix.Controllers
             new HealSkill(4, "치료하기", "HP를 회복합니다.", 30, 5, SkillType.Heal, 30)
         };
 
-        private static Item[] items =
+        private static Item[] _items =
         {
-            new Portion(1, "회복물약", "회복합니다", 100, 100, RestoreType.Health)
+            new Portion(1, "회복물약", "회복합니다", 100, 100, RestoreType.Health),
+            new Weapon(2, "녹슨검", "낡았습니다", 100, Ability.Attack, 10, EquipSlot.Weapon)
         };
 
         public static void InitializeAll() 
         {
             SceneManager.Instance.InitializeScenes(_scenes);
-            GameDataManager.Instance.InitializeSills(_skills);
+            GameDataManager.Instance.InitializeSkills(_skills);
+            GameDataManager.Instance.InitializeItems(_items);
         }
     }
 }

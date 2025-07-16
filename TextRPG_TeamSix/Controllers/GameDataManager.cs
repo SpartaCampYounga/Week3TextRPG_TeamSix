@@ -36,7 +36,8 @@ namespace TextRPG_TeamSix.Controllers
         }
         //SaveManger에서 JSON 파일을 로드하여 로드된 데이터로 Scenes 초기화
         //SaveManager에서 구현해야할지도..?
-        public void InitializeSills(Skill[] skills)
+        //스킬 초기화
+        public void InitializeSkills(Skill[] skills)
         {
             foreach (Skill skill in skills)
             {
@@ -46,6 +47,18 @@ namespace TextRPG_TeamSix.Controllers
         public void InitializeSkill(Skill skill)
         {
             AllSkills.Add(skill);
+        }
+        //아이템 초기화
+        public void InitializeItems(Item[] items)
+        {
+            foreach (Item item in items)
+            {
+                InitializeItem(item);
+            }
+        }
+        public void InitializeItem(Item item)
+        {
+            AllItems.Add(item);
         }
     }
 }
