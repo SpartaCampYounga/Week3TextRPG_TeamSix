@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
+using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Items;
 
 namespace TextRPG_TeamSix.Scenes
 {
@@ -12,21 +14,25 @@ namespace TextRPG_TeamSix.Scenes
     internal abstract class InventoryScene : SceneBase
     {
 
+        Player player = PlayerManager.Instance.CurrentPlayer;
+
+
         public override SceneType SceneType => SceneType.Inventory;
         public InventoryScene()
         {
-
+            DisplayScene();
         }
 
 
         public override void DisplayScene() 
         {
-           
+            player.Inventory.DisplayItems();
         }    //출력 하는 시스템
 
         public override void HandleInput() 
         {
-
+            player.Inventory.SellItem(0);       
+            player.Inventory.PurchaseItem(0);
         } //입력 받고 실행하는 시스템
 
     }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Scenes;
 namespace TextRPG_TeamSix.Characters
 {
     //인벤토리 관리
