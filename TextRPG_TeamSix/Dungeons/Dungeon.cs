@@ -1,4 +1,5 @@
 ﻿using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Utilities;
@@ -39,10 +40,25 @@ namespace TextRPG_TeamSix.Dungeons
             return display;
         }
 
-        public void EnterDungeon(Player player)
+        public bool TryEnterDungeon(Player player)
         {
             //진입 로직 //배틀매니저 로드 등
             //권장 방어력 미만시 막는거 없으면 구현부 없을수도 있음.
+            if(this.RequiredDefense > player.Defense)
+            {
+                Console.WriteLine("방어력이 부족하여 입장할 수 없습니다.");
+                return false;
+            }
+            else if(PlayerManager.Instance.AvailableDungeonList.Contains(this.Id) || this.Id == 1)
+            {
+                Console.WriteLine($"{this.Name}던전에 입장합니다.");
+                return true;
+            }
+            else //AvailableDungeonList에 없을 경우
+            {
+                Console.WriteLine("이전 난이도의 레벨을 먼저 도전해주세요.");
+                return false;
+            }
         }
     }
 }

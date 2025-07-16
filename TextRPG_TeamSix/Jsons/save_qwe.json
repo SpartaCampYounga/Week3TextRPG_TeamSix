@@ -10,11 +10,11 @@
         "$values": []
       }
     },
-    "NumOfStones": 297,
+    "NumOfStones": 488,
     "Gold": 1000,
     "Exp": 0,
-    "Id": 1,
-    "Name": "poi",
+    "Id": 2,
+    "Name": "qwe",
     "HP": 300,
     "MP": 100,
     "Attack": 10,
@@ -22,6 +22,26 @@
     "SkillList": {
       "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
       "$values": [
+        {
+          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+          "Id": 1,
+          "Name": "스매시",
+          "Description": "강하게 내려칩니다.",
+          "ConsumeMP": 10,
+          "RequiredStones": 3,
+          "SkillType": "Attack",
+          "Amount": 20
+        },
+        {
+          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+          "Id": 2,
+          "Name": "후려치기",
+          "Description": "강하게 후려칩니다.",
+          "ConsumeMP": 5,
+          "RequiredStones": 1,
+          "SkillType": "Attack",
+          "Amount": 10
+        },
         {
           "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
           "Id": 3,
@@ -33,14 +53,14 @@
           "Amount": 30
         },
         {
-          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
-          "Id": 1,
-          "Name": "스매시",
-          "Description": "강하게 내려칩니다.",
-          "ConsumeMP": 10,
-          "RequiredStones": 3,
-          "SkillType": "Attack",
-          "Amount": 20
+          "$type": "TextRPG_TeamSix.Skills.HealSkill, TextRPG_TeamSix",
+          "Id": 4,
+          "Name": "치료하기",
+          "Description": "HP를 회복합니다.",
+          "ConsumeMP": 30,
+          "RequiredStones": 5,
+          "SkillType": "Heal",
+          "Amount": 30
         }
       ]
     },
