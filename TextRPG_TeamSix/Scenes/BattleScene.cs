@@ -1,4 +1,5 @@
-﻿using TextRPG_TeamSix.Battle.Actions;
+﻿using System.Text;
+using TextRPG_TeamSix.Battle.Actions;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Scenes;
@@ -64,6 +65,8 @@ internal class BattleScene : SceneBase
                 }
 
             case "2":
+                IntroScene intro = new IntroScene();
+                intro.DisplayScene();
                 StartBattleLoop();
                 break;
             default:
@@ -80,9 +83,9 @@ internal class BattleScene : SceneBase
         while (true)
         {
             DisplayStatus();
-
             string input = GetPlayerInput();
-            PlayerTurn(input);
+
+            bool playerActed = PlayerTurn(input); // ← 성공한 경우에만
 
             if (!player.IsAlive)
             {
@@ -96,7 +99,10 @@ internal class BattleScene : SceneBase
                 break;
             }
 
-            EnemyTurn();
+            if (playerActed)
+            {
+                EnemyTurn();
+            }
 
             if (!player.IsAlive)
             {
@@ -108,50 +114,47 @@ internal class BattleScene : SceneBase
 
     private void DisplayStatus()
     {
-        BattleLog.Log("");
-        foreach (var e in enemies)
-        {
-            string status = e.IsAlive ? $"(HP: {e.HP})" : "(죽음)";
-            BattleLog.Log($"{e.Name} {status}");
-        }
+        Console.Clear(); // 매 턴마다 깔끔하게 새로 출력
 
-        BattleLog.Log("");
-        BattleLog.Log($"{player.Name} (HP: {player.HP}/{player.HP})");
-        BattleLog.Log("");
-        BattleLog.Log("1. 공격 | 2. 스킬 공격 | 3. 아이템 사용 | 4. 도망");
+        // 왼쪽 정보 UI
+        BattleUI.BattleStartInfo();
+        BattleUI.DrawPlayerInfo(player);
+        BattleUI.DrawEnemyList(enemies);
+        BattleUI.DrawActionMenu();
+
     }
+
 
     private string GetPlayerInput()
     {
-        Console.Write(">> ");
         return Console.ReadLine();
     }
 
-    private void PlayerTurn(string input)
+    private bool PlayerTurn(string input)
     {
         switch (input)
         {
             case "1":
                 IPlayerAction attackAction = new NormalAttack();
                 attackAction.Execute(player, enemies);
-                break;
+                return true;
 
             case "2":
-                BattleLog.Log("스킬 공격은 아직 구현되지 않았습니다!");
-                break;
+                BattleLog.NoSkill();
+                return false;
 
             case "3":
                 BattleLog.Log("아이템 사용은 아직 구현되지 않았습니다!");
-                break;
+                return false;
 
             case "4":
                 BattleLog.RunAway();
                 Environment.Exit(0);
-                break;
+                return false;
 
             default:
                 BattleLog.Log("잘못된 입력입니다.");
-                break;
+                return false;
         }
     }
 
