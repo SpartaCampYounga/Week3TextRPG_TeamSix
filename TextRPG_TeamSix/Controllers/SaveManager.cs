@@ -38,7 +38,7 @@ namespace TextRPG_TeamSix.Game
         public void SaveGame()
         {
             //저장해야하는 데이터 리스트가 담김 (생성자에서)
-            SaveData = new SaveData();
+            SaveData = new SaveData(PlayerManager.Instance.CurrentPlayer, PlayerManager.Instance.ClearedDungeonList);
 
             JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
             // 파일 생성 후 쓰기
@@ -57,7 +57,7 @@ namespace TextRPG_TeamSix.Game
                 //JsonConvert.PopulateObject(File.ReadAllText(path + $@"\\player_{playerName}.json"), player);
                 SaveData = JsonConvert.DeserializeObject<SaveData>(File.ReadAllText(JsonHelper.path + $@"\\save_{playerName}.json"), setting);
                 SaveData.PlayerSave.Inventory.SetOwnerAgain(SaveData.PlayerSave);   //직렬화시 순환 끊었던 것 다시 설정.
-
+                Console.WriteLine("역직렬화된 Player 이름: " + SaveData.PlayerSave.Name);
                 Console.WriteLine("2매개변수: " + playerName);
                 Console.WriteLine("2CurrentPlayer: " + PlayerManager.Instance.CurrentPlayer.Name);
 

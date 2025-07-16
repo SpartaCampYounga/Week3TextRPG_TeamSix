@@ -70,6 +70,7 @@ namespace TextRPG_TeamSix.Characters
             uint exp
         ) : base(name)
         {
+            Console.WriteLine("Player 역직렬화 생성자");
             this.Id = id;
             this.Name = name;
             this.HP = hp;
@@ -84,6 +85,7 @@ namespace TextRPG_TeamSix.Characters
             this.IsAlive = isAlive;
             this.JobType = jobType;
             this.NumOfStones = numOfStones;
+            this.Inventory = new Inventory(this);
             this.Inventory.Clone(inventory);
             this.Gold = gold;
             this.Exp = exp;
@@ -133,11 +135,11 @@ namespace TextRPG_TeamSix.Characters
         public void Clone(Player player)
         {
             this.Id = player.Id;
-            //Console.WriteLine(Name);
-            //Console.WriteLine(player.Name);
+            Console.WriteLine(Name);
+            Console.WriteLine(player.Name);
             this.Name = player.Name;
-            //Console.WriteLine(Name);
-            //Console.WriteLine(player.Name);
+            Console.WriteLine(Name);
+            Console.WriteLine(player.Name);
             Console.Read();
             this.HP = player.HP;
             this.MP = player.MP;

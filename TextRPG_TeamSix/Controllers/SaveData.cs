@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,12 @@ namespace TextRPG_TeamSix.Controllers
 
         public Player PlayerSave { get; set; }
         public List<uint> ClearedDungeonList { get; set; }   //클리어된 던전 아이디만 저장
-        //그 외에 도감, 던전 진행도 등 저장할 것들 필드로 삼고, 생성자에 입력. 
-        public SaveData()
+                                                             //그 외에 도감, 던전 진행도 등 저장할 것들 필드로 삼고, 생성자에 입력. 
+        [JsonConstructor]
+        public SaveData(Player playerSave, List<uint> clearedDungeonList)
         {
-            PlayerSave = new Player("SavaData", Enums.JobType.Warrior);
-            PlayerSave.Clone(PlayerManager.Instance.CurrentPlayer);
-            ClearedDungeonList = new List<uint>();
-            foreach (uint i in PlayerManager.Instance.ClearedDungeonList)
-            {
-                this.ClearedDungeonList.Add(i);
-            }
+            this.PlayerSave = playerSave;
+            this.ClearedDungeonList = clearedDungeonList;
         }
     }
 }
