@@ -15,11 +15,11 @@ namespace TextRPG_TeamSix.Controllers
     internal class PlayerManager
     {
         public Player CurrentPlayer { get; private set; }
-        public List<uint> ClearedDungeonList { get; private set;}
+        public List<uint> AvailableDungeonList { get; private set;}
         private PlayerManager()
         {
             CurrentPlayer = new Player("PlayerManager", JobType.Warrior);
-            ClearedDungeonList = new List<uint>();
+            AvailableDungeonList = new List<uint>();
         }
         private static PlayerManager instance;
         public static PlayerManager Instance
@@ -40,9 +40,9 @@ namespace TextRPG_TeamSix.Controllers
             {
                 //로드 성공!
                 CurrentPlayer.Clone(SaveManager.Instance.SaveData.PlayerSave);
-                foreach(uint id in SaveManager.Instance.SaveData.ClearedDungeonList)
+                foreach(uint id in SaveManager.Instance.SaveData.AvailableDungeonList)
                 {
-                    this.ClearedDungeonList.Add(id);
+                    this.AvailableDungeonList.Add(id);
                 }
                 Console.WriteLine("플레이어 데이터를 불러왔습니다.");
                 Console.WriteLine($"불러온 플레이어 이름: {SaveManager.Instance.SaveData.PlayerSave.Name}");

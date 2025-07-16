@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Dungeons;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Game;
+using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
@@ -15,6 +18,10 @@ namespace TextRPG_TeamSix.Scenes
     {
         public override SceneType SceneType => SceneType.Dungeon;
 
+        private int input;
+        Player player = PlayerManager.Instance.CurrentPlayer;
+        List<Dungeon> dungeons = GameDataManager.Instance.AllDungeons;
+        List<uint> availableDugeonIds = PlayerManager.Instance.AvailableDungeonList;
         public override void DisplayScene()
         {
             Console.Clear();
@@ -22,12 +29,10 @@ namespace TextRPG_TeamSix.Scenes
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("DungeonScene Loaded");
 
-            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', Console.WindowWidth));
             Console.WriteLine("던전 - 원하는 던전에 진입할 수 있습니다.");
             Console.WriteLine(new string('=', Console.WindowWidth));
 
-            List<Dungeon> dungeons = GameDataManager.Instance.AllDungeons;
 
             //테이블 헤더
             string header = "";
@@ -46,14 +51,38 @@ namespace TextRPG_TeamSix.Scenes
                 display += dungeons[i];
                 Console.WriteLine(display);
             }
+            Console.WriteLine(new string('-', Console.WindowWidth));
+            Console.WriteLine();
+            Console.WriteLine();
 
 
-
-
+            Console.WriteLine("입장하고 싶은 스킬의 숫자를 입력하세요.");
+            Console.WriteLine("0. 나가기");
+            Console.Write(">>");
+            input = InputHelper.GetIntegerRange(0, dungeons.Count() + 1);
+            HandleInput();
         }
 
         public override void HandleInput()
         {
+            switch (input)
+            {
+                case 0:
+                    SceneManager.Instance.SetScene(SceneType.Main);
+                    break;
+                default:
+                    Dungeon selectedDungeon = dungeons[input - 1];
+                    if (selectedDungeon.TryEnterDungeon(player))
+                    {
+                        SceneManager.Instance.SetScene(SceneType.Battle);
+                    }
+                    else
+                    {
+                        InputHelper.WaitResponse();
+                        SceneManager.Instance.SetScene(SceneType.Dungeon);
+                    }
+                    break;
+            }
         }
     }
 }
