@@ -66,6 +66,7 @@ namespace TextRPG_TeamSix.Controllers
             GameDataManager.Instance.InitializeSkills(_skills);
             GameDataManager.Instance.InitializeItems(_items);
             GameDataManager.Instance.InitializeDungeons(_dungeons);
+            GameDataManager.Instance.InitializeTestItems();
         }
     }
 }
