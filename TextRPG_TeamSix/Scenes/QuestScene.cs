@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
-using TextRPG_TeamSix.Quest;
+using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
@@ -15,6 +17,7 @@ namespace TextRPG_TeamSix.Scenes
     {
         public override SceneType SceneType => SceneType.Quest;
         private int input;
+        List<Quest> QuestTest; // 퀘스트 리스트를 저장할 변수
 
 
         public override void DisplayScene() //출력 하는 시스템
@@ -39,10 +42,21 @@ namespace TextRPG_TeamSix.Scenes
             Console.ResetColor();
 
             // 퀘스트 수락시 퀘스트 리스트를 번호로 선택가능하게 해야함
-            // 선택한 퀘스트는 진행중으로 표기, 완료시 다시 선택가능하게 해야함
+            // 선택한 퀘스트는 진행중(1/30)으로 표기, 완료시 다시 선택가능하게 해야함
+            // 카운트 형식으로 진행사항을 표시해야함
+            // 에너미이름"토벌", 에너미이름"이(가) 던전을 점령했습니다. 숫자를 줄여주세요", "보상: "골드, 경험치
+
+            QuestTest = GameDataManager.Instance.AllQuests;
+
 
             Console.WriteLine("퀘스트 배치구역");
 
+            for (int i = 0; i < QuestTest.Count(); i++)
+            {
+                string display = FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
+                display += QuestTest[i];
+                Console.WriteLine(display);
+            }
 
             // 퀘스트 끝나는 부분
             Console.ForegroundColor = ConsoleColor.Green;
@@ -53,7 +67,7 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.WriteLine("1. 퀘스트 수락(미구현)");
             Console.WriteLine("0. 나가기");
-            Console.WriteLine("번호를 입력해 주세요 : ");
+            Console.Write("번호를 입력해 주세요 : ");
             input = InputHelper.GetIntegerRange(0, 1);
             HandleInput();
         }

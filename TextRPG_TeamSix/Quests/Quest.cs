@@ -8,7 +8,7 @@ using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Utilities;
 
-namespace TextRPG_TeamSix.Quest
+namespace TextRPG_TeamSix.Quests
 {
     internal abstract class Quest
     {

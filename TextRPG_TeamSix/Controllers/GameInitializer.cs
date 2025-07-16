@@ -10,6 +10,7 @@ using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Dungeons;
+using TextRPG_TeamSix.Quests;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -59,6 +60,11 @@ namespace TextRPG_TeamSix.Controllers
             new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
         };
 
+        //private static Quest[] _quests =
+        //{
+        //   new EnemyQuest(1, "토벌 퀘스트", "고블린을 처치하세요.", 1000, 100, _emenies[0], 10, QuestType.Enemy),
+        //   new DungeonQuest(2, "던전 클리어 퀘스트", "Easy 던전을 클리어하세요.", 2000, 200, _dungeons[0], 1, QuestType.Dungeon)
+        //};
 
         public static void InitializeAll() 
         {

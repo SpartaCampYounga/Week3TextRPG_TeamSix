@@ -8,6 +8,7 @@ using TextRPG_TeamSix.Dungeons;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Quests;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -21,6 +22,7 @@ namespace TextRPG_TeamSix.Controllers
         public List<Gatcha> AllGatchas { get; private set; }
         public List<Enemy> AllEnemies { get; private set; }
         public List<Dungeon> AllDungeons { get; private set; }
+        public List<Quest> AllQuests { get; private set; } // 퀘스트 추가
         private GameDataManager()
         {
             AllSkills = new List<Skill>();
@@ -28,6 +30,7 @@ namespace TextRPG_TeamSix.Controllers
             AllGatchas = new List<Gatcha>();
             AllEnemies = new List<Enemy>();
             AllDungeons = new List<Dungeon>();
+            AllQuests = new List<Quest>(); // 퀘스트 추가
         }
         private static GameDataManager instance;
         public static GameDataManager Instance
