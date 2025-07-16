@@ -21,6 +21,8 @@
 
         public static void Death(string name) => Log($"{name}이(가) 쓰러졌습니다... 게임 오버!");
         public static void Victory() => Log("모든 적을 처치했습니다! 🎉");
+
+        public static void NoSkill() => Log("스킬은 아직 구현이...");
         public static void RunAway() => Log("도망쳤습니다!");
         public static void BattleStart() => Log("Battle!!");
     }
