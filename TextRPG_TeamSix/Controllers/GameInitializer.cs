@@ -60,11 +60,11 @@ namespace TextRPG_TeamSix.Controllers
             new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
         };
 
-        //private static Quest[] _quests =
-        //{
-        //   new EnemyQuest(1, "토벌 퀘스트", "고블린을 처치하세요.", 1000, 100, _emenies[0], 10, QuestType.Enemy),
-        //   new DungeonQuest(2, "던전 클리어 퀘스트", "Easy 던전을 클리어하세요.", 2000, 200, _dungeons[0], 1, QuestType.Dungeon)
-        //};
+        private static Quest[] _quests =
+        {
+            new EnemyQuest(1, QuestType.Enemy, "고블린 2마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
+            new DungeonQuest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
+        };
 
         public static void InitializeAll() 
         {
@@ -72,6 +72,8 @@ namespace TextRPG_TeamSix.Controllers
             GameDataManager.Instance.InitializeSkills(_skills);
             GameDataManager.Instance.InitializeItems(_items);
             GameDataManager.Instance.InitializeDungeons(_dungeons);
+            GameDataManager.Instance.InitializeQuests(_quests);
+
         }
     }
 }

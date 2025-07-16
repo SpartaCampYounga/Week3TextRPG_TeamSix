@@ -11,17 +11,22 @@ using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Quests
 {
-    internal abstract class EnemyQuest : Quest
+    internal class EnemyQuest : Quest
     {
         public Enemy Enemy { get; private set; } // 퀘스트에 필요한 적 캐릭터
         public uint Count { get; } // 퀘스트 완료를 위한 적 처치 수
 
-        public EnemyQuest(QuestType questType, string description, uint rewardGold, uint rewardExp, Enemy enemy, uint count)
-            : base(questType, description, rewardGold, rewardExp)
+        public EnemyQuest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp, Enemy enemy, uint count)
+            : base(id, questType, description, rewardGold, rewardExp)
         {
-            Enemy = enemy;
-            Count = count;
         }
 
+        public override string ToString()
+        {
+            string display = base.ToString(); // 부모의 ToString() 결과 포함
+            display += FormatUtility.AlignWithPadding(Enemy.Name, 5) + " | ";
+            display += FormatUtility.AlignWithPadding(Count.ToString(), 5) + " | ";
+            return display;
+        }
     }
 }

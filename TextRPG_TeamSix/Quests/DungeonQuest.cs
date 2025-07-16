@@ -12,17 +12,21 @@ using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Quests
 {
-    internal abstract class DungeonQuest: Quest
+    internal class DungeonQuest: Quest
     {
         public Dungeon Dungeon { get; protected set; } // 퀘스트에 해당하는 던전
         public uint Count { get; } // 퀘스트 완료 횟수
 
-        public DungeonQuest(QuestType questType, string description, uint rewardGold, uint rewardExp, Dungeon dungeon, uint count)
-            : base(questType, description, rewardGold, rewardExp)
+        public DungeonQuest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp, Dungeon dungeon, uint count)
+            : base(id, questType, description, rewardGold, rewardExp)
         {
-            Dungeon = dungeon;
-            Count = count;
         }
-
+        public override string ToString()
+        {
+            string display = base.ToString(); // 부모의 ToString() 결과 포함
+            display += FormatUtility.AlignWithPadding(Dungeon.Name, 5) + " | ";
+            display += FormatUtility.AlignWithPadding(Count.ToString(), 5) + " | ";
+            return display;
+        }
     }
 }
