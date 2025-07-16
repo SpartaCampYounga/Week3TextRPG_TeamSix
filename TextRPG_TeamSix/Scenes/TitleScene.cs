@@ -37,7 +37,6 @@ namespace TextRPG_TeamSix.Scenes
                                   ██║╚██╗██║██║   ██║    ██╔══╝  ██╔══██║ ██║    ██║   
                                   ██║ ╚████║╚██████╔╝    ███████║██║  ██║████║   ██║   
                                   ╚═╝  ╚═══╝ ╚═════╝     ╚══════╝╚═╝  ╚═╝╚═══╝   ╚═╝   
-            
             ");
             Console.WriteLine("");
             Console.WriteLine(lineBar);

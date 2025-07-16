@@ -20,8 +20,21 @@ namespace TextRPG_TeamSix.Characters
         {
             Id = nextId++;
             Name = name;
+            IsAlive = true;
         }
-
+        public void TakeDamage(uint damage)
+        {
+            if (HP > damage)
+            {
+                IsAlive = true;
+                HP -= damage;
+            }
+            else
+            {
+                HP = 0;
+                IsAlive = false;
+            }
+        }
 
         //스킬 구현 
         public void ConsumeMP(uint MP)
