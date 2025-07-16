@@ -14,11 +14,9 @@ namespace TextRPG_TeamSix.Stores
     //    // 상점 종류 바꿀께 있는지 확인 필요
     internal class Store // 상점 클래스
     {
-        public StoreType Type { get; private set; } // 상점의 종류
         public List<Item> ItemList { get; private set; } // 상점에서 판매하는 아이템 리스트
-        public Store(StoreType type) // 생성자: 상점의 종류를 초기화하고 아이템 리스트를 생성합니다.
+        public Store() // 
         {
-            Type = type;
             ItemList = new List<Item>();
             //TestItems(); // 테스트용 아이템 추가
         }

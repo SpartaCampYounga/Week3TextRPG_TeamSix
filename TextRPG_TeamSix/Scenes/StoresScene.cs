@@ -20,47 +20,15 @@ namespace TextRPG_TeamSix.Scenes
         private Store currentStore; // 현재 상점
         private int currentPage = 0; // 현재 페이지 (페이지네이션을 위한 변수)
         private const int ItemsPerPage = 5; // 한 페이지에 표시할 아이템 수
-        public StoresScene(StoreType type) // 생성자: 상점의 종류를 받아 해당 상점을 초기화합니다.
+        public StoresScene() 
         {
-            currentStore = new Store(type); // 상점 타입에 따라 상점 생성
+            currentStore = new Store(); 
         }
-        private void ShowStoreSelectMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("===== 마을 상점 =====");
-            Console.WriteLine("어떤 상점에 가시겠습니까?");
-            Console.WriteLine("1. 무기 상점");
-            Console.WriteLine("2. 방어구 상점");
-            Console.WriteLine("3. 물약 상점");
-            Console.WriteLine("4. 일반 상점");
-            Console.WriteLine("0. 마을로 돌아가기");
-            Console.Write("> ");
 
-            var input = Console.ReadLine();
-
-            switch (input)
-            {
-                case "1":
-                    currentStore = new Store(StoreType.WeaponStore);
-                    break;
-                case "2":
-                    currentStore = new Store(StoreType.ArmorStore);
-                    break;
-                case "3":
-                    currentStore = new Store(StoreType.PotionStore);
-                    break;
-                case "4":
-                    currentStore = new Store(StoreType.GeneralStore);
-                    break;
-                case "0":
-                    SceneManager.Instance.SetScene(SceneType.Main);
-                    break;
-            }
-        }
         private void PrintPageItems() // 현재 페이지의 아이템을 출력
         {
             Console.Clear();
-            Console.WriteLine($"{currentStore.Type} 상점에 오신 것을 환영합니다.!");
+            Console.WriteLine($"상점에 오신 것을 환영합니다.!");
             Console.WriteLine($"페이지 {currentPage + 1} --\n");
 
             var itemsToDisplay = currentStore.ItemList // 현재 페이지에 해당하는 아이템을 가져옴
@@ -78,27 +46,28 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene() //출력 하는 시스템
         {
-            if (currentStore == null)
-            {
-                ShowStoreSelectMenu();
-            }
-            else
                 PrintPageItems();
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
         {
-            var input = Console.ReadLine();
+            var input = Console.ReadKey(true);
 
-            if (currentStore == null)
+            if (input.Key == ConsoleKey.RightArrow)
             {
-                ShowStoreSelectMenu();
-                return;
+                if ((currentPage + 1) * ItemsPerPage < currentStore.ItemList.Count)
+                    currentPage++;
+                else
+                    currentPage = 0;
             }
-
-            if (input == "0")
+            else if (input.Key == ConsoleKey.LeftArrow)
             {
-                currentStore = null;
+                currentPage--;
+                if (currentPage < 0)
+                    currentPage = (currentStore.ItemList.Count - 1) / ItemsPerPage;
+            }
+            else if (input.Key == ConsoleKey.D0 || input.Key == ConsoleKey.NumPad0)
+            {
                 SceneManager.Instance.SetScene(SceneType.Main);
             }
             //var input = Console.ReadLine()?.Trim();
