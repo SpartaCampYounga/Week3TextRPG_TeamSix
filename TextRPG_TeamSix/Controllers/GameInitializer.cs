@@ -20,14 +20,15 @@ namespace TextRPG_TeamSix.Controllers
         //일단 하드코딩. 추후 Json 으로 담당할 것.  (Json 생성용)
         private static SceneBase[] _scenes = {
             new SkillScene(),
+            new InventoryScene(),
             new TitleScene(),
             new PlayerSetupScene(),
             new SkillLearnScene(),
             new MainScene(),
             new BattleScene(),
             new QuestScene(),
+            new StoresScene(),
             new DungeonScene(),
-            new StoresScene()
         };
 
         private static Skill[] _skills =

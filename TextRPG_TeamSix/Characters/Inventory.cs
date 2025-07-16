@@ -6,13 +6,17 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Controllers;
-
+using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Scenes;
+using System.Formats.Asn1;
 namespace TextRPG_TeamSix.Characters
 {
     //인벤토리 관리
     internal class Inventory //: IContainableItems
     {
         [JsonIgnore]
+        
         public Player Owner { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
@@ -86,7 +90,44 @@ namespace TextRPG_TeamSix.Characters
 
 
         }
+        public void EquipItem()
+        {
+            Console.WriteLine("장착할 아이템의 ID를 입력하세요 :");
 
+            int itemId;
+            bool isValid = int.TryParse(Console.ReadLine(), out itemId);
+
+            if (!isValid)
+            {
+                Console.WriteLine("숫자를 올바르게 입력해주세요.");
+                return;
+            }
+
+            Item? item = GetItem((uint)itemId);
+            if (item == null)
+            {
+                Console.WriteLine("해당 아이템이 존재하지 않습니다.");
+                return;
+            }
+            if (item.IsEquipped)
+            {
+                item.IsEquipped = false; // 아이템이 장착되어 있으면 장착 해제
+                Console.WriteLine($"{item.Name}은(는) 이미 장착되어 있습니다.");
+                return;
+            }
+
+            foreach (var otherItem in ItemList)
+            {
+                if(otherItem.IsEquipped && otherItem.GetType == item.Type)
+                {
+                    otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
+                    Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
+                }
+            }
+            item.IsEquipped = true; // 아이템 장착
+            Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
+
+        }
         public Item? GetItem(uint id)
         {
             Item? item = ItemList.FirstOrDefault(x => x.Id == id);

@@ -17,6 +17,7 @@ namespace TextRPG_TeamSix.Enums
         SkillLearn,
         Battle,
         Quest,
+        Inventory,
         Store,
         Dungeon
     }
