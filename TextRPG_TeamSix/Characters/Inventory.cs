@@ -85,7 +85,6 @@ namespace TextRPG_TeamSix.Characters
                     }
                 }
                 for (int i = startIndex; i < endIndex; i++)
-                    for (int i = startIndex; i < endIndex; i++)
                 {
                     Item item = ItemList[i];
                     string equippedStatus = item.IsEquipped? "[E]" : "[ ]"; // 아이템이 장착되었는지 여부 표시
