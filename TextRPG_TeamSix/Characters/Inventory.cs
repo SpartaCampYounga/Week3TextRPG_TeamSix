@@ -116,14 +116,14 @@ namespace TextRPG_TeamSix.Characters
                 return;
             }
 
-            foreach (var otherItem in ItemList)
-            {
-                if(otherItem.IsEquipped && otherItem.GetType == item.Type)
-                {
-                    otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
-                    Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
-                }
-            }
+            //foreach (var otherItem in ItemList)
+            //{
+            //    if(otherItem.IsEquipped && otherItem.GetType == item.Type)
+            //    {
+            //        otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
+            //        Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
+            //    }
+            //}
             item.IsEquipped = true; // 아이템 장착
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
