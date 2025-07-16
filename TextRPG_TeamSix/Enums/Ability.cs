@@ -8,5 +8,7 @@ namespace TextRPG_TeamSix.Enums
 {
     internal enum Ability
     {
+        Attack,
+        Defense
     }
 }
