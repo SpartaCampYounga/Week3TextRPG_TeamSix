@@ -126,11 +126,11 @@ namespace TextRPG_TeamSix.Characters
                 {
                     if(item is Weapon weapon)
                     {
-                        bonusAttack += this.Attack; // 무기의 능력치 보너스
+                        bonusAttack += this.Attack; // 무기의 능력치 보너스 나중에 웨폰에 비례 추가
                     }
                     else if (item is Armor armor)
                     {
-                        bonusDefense += this.Defense; // 방어구의 능력치 보너스
+                        bonusDefense += this.Defense; // 방어구의 능력치 보너스 나중ㅇ에 아머에 비례 추가
                     }
                 }
             }
