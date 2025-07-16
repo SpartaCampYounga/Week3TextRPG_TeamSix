@@ -71,8 +71,25 @@ namespace TextRPG_TeamSix.Characters
                     Console.WriteLine($"{item.Id}. {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
 
                 }
+                else
+                {
+                    Console.WriteLine("아이템 ID 입력 :");
+                    string input = Console.ReadLine();
+                    if (uint.TryParse(input, out uint itemId))
+                    {
+                        EquipItem(itemId);
+                        Console.WriteLine("아이템 장착 완료");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.WriteLine("잘못된 입력입니다. 숫자를 입력해주세요.");
+                        Console.ReadKey();
+                        continue; // 잘못된 입력 시 다시 아이템 목록 출력
+                    }
+                }
 
-                Console.WriteLine("");
+                    Console.WriteLine("");
                 Console.WriteLine("-------------------------------------");
                 Console.WriteLine("페이지 네비게이션: <= 이전 페이지 || 다음 페이지 => , [Enter] 종료");
                 Console.Write("명령어 입력: ");
