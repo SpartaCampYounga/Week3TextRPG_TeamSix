@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,66 +17,82 @@ namespace TextRPG_TeamSix.Characters
     //
     internal class Player : Character
     {
-        public JobType JobType { get; private set; }
-        public Inventory Inventory { get; private set; }
-        public uint NumOfStones { get; private set; }
+        [JsonProperty]
+        protected JobType jobType;
+        [JsonProperty]
+        protected Inventory inventory;
+        [JsonProperty]
+        protected uint numOfStones;
+        [JsonProperty]
+        protected uint gold; // 플레이어의 금액
+        [JsonProperty]
+        protected uint exp; // 플레이어의 경험치
 
-        public uint Gold { get; private set; } // 플레이어의 금액
-
-        public uint Exp { get; private set; } // 플레이어의 경험치
+        [JsonIgnore]
+        public JobType JobType => jobType;
+        [JsonIgnore]
+        public Inventory Inventory => inventory;
+        [JsonIgnore]
+        public uint NumOfStones => numOfStones;
+        [JsonIgnore]
+        public uint Gold => gold; // 플레이어의 금액
+        [JsonIgnore]
+        public uint Exp => exp; // 플레이어의 경험치
         public Player(string name, JobType jobType) : base(name)
         {
-            switch (JobType)
+            switch (this.jobType)
             {
                 case JobType.Magician:
-                    HP = 100;
-                    MP = 300;
-                    Attack = 10;
-                    Defense = 10;
-                    NumOfStones = 0; // 초기 돌의 개수 설정
-                    Gold = 1000; // 초기 금액 설정
-                    Exp = 0; // 초기 경험치 설정
-                    SkillList.Add(GameDataManager.Instance.AllSkills[0]);
-                    Inventory = new Inventory(this);
+                    hP = 100;
+                    mP = 300;
+                    attack = 10;
+                    defense = 10;
+                    numOfStones = 0; // 초기 돌의 개수 설정
+                    gold = 1000; // 초기 금액 설정
+                    exp = 0; // 초기 경험치 설정
+                    skillList.Add(GameDataManager.Instance.AllSkills[0]);
+                    inventory = new Inventory(this);
                     break;
                 case JobType.Warrior:
-                    HP = 300;
-                    MP = 100;
-                    Attack = 10;
-                    Defense = 10;
-                    NumOfStones = 0; // 초기 돌의 개수 설정
-                    Gold = 1000; // 초기 금액 설정
-                    Exp = 0; // 초기 경험치 설정
-                    SkillList.Add(GameDataManager.Instance.AllSkills[2]);
-                    Inventory = new Inventory(this);
+                    hP = 300;
+                    mP = 100;
+                    attack = 10;
+                    defense = 10;
+                    numOfStones = 0; // 초기 돌의 개수 설정
+                    gold = 1000; // 초기 금액 설정
+                    exp = 0; // 초기 경험치 설정
+                    skillList.Add(GameDataManager.Instance.AllSkills[2]);
+                    inventory = new Inventory(this);
                     break;
             }
         }
-
-        public Player(Player player) : base(player.Name)
+        //[JsonConstructor]
+        public Player(uint id, string name, uint hp, uint mp, uint attack, uint defense, 
+            List<Skill> skillList, bool isAlive, JobType jobType, uint numOfStones, Inventory inventory) 
+            : base(name)
         {
-            this.Id = player.Id;
+            this.id = id;
             //Console.WriteLine(Name);
             //Console.WriteLine(player.Name);
-            this.Name = player.Name;
+            this.name = name;
             //Console.WriteLine(Name);
             //Console.WriteLine(player.Name);
-            Console.Read();
-            this.HP = player.HP;
-            this.MP = player.MP;
-            this.Attack = player.Attack;
-            this.Defense = player.Defense;
+            //Console.Read();
+            this.hP = hp;
+            this.mP = mp;
+            this.attack = attack;
+            this.defense = defense;
 
-            this.SkillList = new List<Skill>();
-            foreach (Skill skill in player.SkillList)
+            foreach (Skill skill in skillList)
             {
                 this.SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
             }
 
-            this.IsAlive = player.IsAlive;
-            this.JobType = player.JobType;
-            this.NumOfStones = player.NumOfStones;
-            this.Inventory.Clone(player.Inventory);
+            this.isAlive = isAlive;
+            this.jobType = jobType;
+            this.numOfStones = numOfStones;
+            this.inventory = new Inventory(this);
+            this.inventory.Clone(inventory);
         }
 
         public void DisplayPlayerStatus()
@@ -84,28 +101,28 @@ namespace TextRPG_TeamSix.Characters
         } 
         public void ConsumeMP(uint MP)
         {
-            this.MP -= MP;
+            this.mP -= MP;
         }
         public void Healed(uint HP)
         {
-            this.HP += HP;
+            this.hP += HP;
         }
 
         public void EarnGold(uint gold)
         {
-            this.Gold += gold; 
+            this.gold += gold; 
         }
         public void AcquireSkillStone(uint numOfStones)
         {
-            NumOfStones += numOfStones;
+            this.numOfStones += numOfStones;
         }
 
 
         //스킬 습득 //가능한지는 Skill에서 체크
         public void LearnSkill(Skill skillToLearn)
         {
-            NumOfStones -= skillToLearn.RequiredStones;
-            SkillList.Add(skillToLearn);
+            this.numOfStones -= skillToLearn.RequiredStones;
+            this.skillList.Add(skillToLearn);
             Console.WriteLine($"{skillToLearn.Name}을 배웠다!");
         }
 
@@ -113,7 +130,7 @@ namespace TextRPG_TeamSix.Characters
         // 이 부분 변수명을 어디를 사용자Name으로 할지 캐릭터Name으로 할지 의논필요.
         public void Rename(string newName)
         {
-            Name = newName;
+            this.name = newName;
         }
 
 
@@ -121,28 +138,28 @@ namespace TextRPG_TeamSix.Characters
         //SaveData Load시 Deep Copy 위함
         public void Clone(Player player)
         {
-            this.Id = player.Id;
-            //Console.WriteLine(Name);
-            //Console.WriteLine(player.Name);
-            this.Name = player.Name;
-            //Console.WriteLine(Name);
-            //Console.WriteLine(player.Name);
+            this.id = player.Id;
+            Console.WriteLine(name);
+            Console.WriteLine(player.Name);
+            this.name = player.Name;
+            Console.WriteLine(name);
+            Console.WriteLine(player.Name);
             Console.Read();
-            this.HP = player.HP;
-            this.MP = player.MP;
-            this.Attack = player.Attack;
-            this.Defense = player.Defense;
+            this.hP = player.HP;
+            this.mP = player.MP;
+            this.attack = player.Attack;
+            this.defense = player.Defense;
 
-            this.SkillList = new List<Skill>();
+            this.skillList = new List<Skill>();
             foreach (Skill skill in player.SkillList)
             {
                 this.SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
             }
 
-            this.IsAlive = player.IsAlive;
-            this.JobType = player.JobType;
-            this.NumOfStones = player.NumOfStones;
-            this.Inventory.Clone(player.Inventory);
+            this.isAlive = player.IsAlive;
+            this.jobType = player.JobType;
+            this.numOfStones = player.NumOfStones;
+            this.inventory.Clone(player.Inventory);
         }
 
     }

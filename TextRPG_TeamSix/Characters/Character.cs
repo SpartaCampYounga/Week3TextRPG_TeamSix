@@ -1,4 +1,5 @@
-﻿using TextRPG_TeamSix.Controllers;
+﻿using Newtonsoft.Json;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Skills;
 
 namespace TextRPG_TeamSix.Characters
@@ -7,47 +8,72 @@ namespace TextRPG_TeamSix.Characters
     internal abstract class Character
     {
         private static uint nextId = 0;
-        public uint Id { get; protected set; }
-        public string Name { get; protected set; }
-        public uint HP { get; protected set; }
-        public uint MP { get; protected set; }
-        public uint Attack { get; protected set; }
-        public uint Defense { get; protected set; }
-        public List<Skill> SkillList { get; protected set; } = new List<Skill>(); 
-        public bool IsAlive { get; protected set; }
 
+        [JsonProperty]
+        protected uint id;
+        [JsonProperty]
+        protected string name;
+        [JsonProperty]
+        protected uint hP;
+        [JsonProperty]
+        protected uint mP;
+        [JsonProperty]
+        protected uint attack;
+        [JsonProperty]
+        protected uint defense;
+        [JsonProperty]
+        protected List<Skill> skillList = new List<Skill>();
+        [JsonProperty]
+        protected bool isAlive;
+
+        [JsonIgnore]
+        public uint Id => id;
+        [JsonIgnore]
+        public string Name => name;
+        [JsonIgnore]
+        public uint HP => hP;
+        [JsonIgnore]
+        public uint MP => mP;
+        [JsonIgnore]
+        public uint Attack => attack;
+        [JsonIgnore]
+        public uint Defense => defense;
+        [JsonIgnore]
+        public List<Skill> SkillList => skillList;
+        [JsonIgnore]
+        public bool IsAlive => isAlive;
         public Character(string name)
         {
-            Id = nextId++;
-            Name = name;
-            IsAlive = true;
+            id = nextId++;
+            this.name = name;
+            isAlive = true;
         }
         public void TakeDamage(uint damage)
         {
             if (HP > damage)
             {
-                IsAlive = true;
-                HP -= damage;
+                isAlive = true;
+                hP -= damage;
             }
             else
             {
-                HP = 0;
-                IsAlive = false;
+                hP = 0;
+                isAlive = false;
             }
         }
 
         //스킬 구현 
         public void ConsumeMP(uint MP)
         {
-            this.MP -= MP;
+            mP -= MP;
         }
         public void Healed(uint HP)
         {
-            this.HP += HP;
+            hP += HP;
         }
         public void Damaged(uint damage)
         {
-            this.HP -= damage;
+            hP -= damage;
         }
     }
 }

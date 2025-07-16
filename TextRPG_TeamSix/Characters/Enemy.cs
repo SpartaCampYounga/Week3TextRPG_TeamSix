@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,24 +10,27 @@ namespace TextRPG_TeamSix.Characters
 {
     internal class Enemy : Character
     {
-        public EnemyType EnemyType { get; set; }
+        [JsonProperty]
+        protected EnemyType enemyType;
+        [JsonIgnore]
+        public EnemyType EnemyType => enemyType;
         public Enemy(string name, EnemyType enemyType) : base(name)
         {
-            EnemyType = enemyType;
+            this.enemyType = enemyType;
 
             switch (EnemyType)
             {
                 case EnemyType.Type1:
-                    HP = 100;
-                    MP = 300;
-                    Attack = 10;
-                    Defense = 10;
+                    hP = 100;
+                    mP = 300;
+                    attack = 10;
+                    defense = 10;
                     break;
                 case EnemyType.Type2:
-                    HP = 300;
-                    MP = 100;
-                    Attack = 10;
-                    Defense = 10;
+                    hP = 300;
+                    mP = 100;
+                    attack = 10;
+                    defense = 10;
                     break;
             }
         }

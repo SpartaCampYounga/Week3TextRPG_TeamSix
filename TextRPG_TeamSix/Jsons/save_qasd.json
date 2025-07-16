@@ -1,6 +1,6 @@
 {
   "$type": "TextRPG_TeamSix.Controllers.SaveData, TextRPG_TeamSix",
-  "PlayerToSave": {
+  "PlayerSave": {
     "$type": "TextRPG_TeamSix.Characters.Player, TextRPG_TeamSix",
     "JobType": "Warrior",
     "Inventory": {
@@ -10,19 +10,34 @@
         "$values": []
       }
     },
-    "NumOfStones": 100,
-    "Gold": 1000,
+    "NumOfStones": 0,
+    "Gold": 0,
     "Exp": 0,
-    "Id": 0,
-    "Name": "Test",
+    "Id": 1,
+    "Name": "qasd",
     "HP": 300,
     "MP": 100,
     "Attack": 10,
     "Defense": 10,
     "SkillList": {
       "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
-      "$values": []
+      "$values": [
+        {
+          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+          "Id": 3,
+          "Name": "파이어볼",
+          "Description": "불을 소환합니다.",
+          "ConsumeMP": 20,
+          "RequiredStones": 3,
+          "SkillType": "Attack",
+          "Amount": 30
+        }
+      ]
     },
     "IsAlive": true
+  },
+  "ClearedDungeonList": {
+    "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": []
   }
 }
