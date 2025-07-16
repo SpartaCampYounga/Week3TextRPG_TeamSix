@@ -24,16 +24,8 @@ namespace TextRPG_TeamSix.Characters
         }
         public void TakeDamage(uint damage)
         {
-            if (HP > damage)
-            {
-                IsAlive = true;
-                HP -= damage;
-            }
-            else
-            {
-                HP = 0;
-                IsAlive = false;
-            }
+            HP = Math.Max(0, HP > damage ? HP - damage : 0);
+            IsAlive = HP > 0;
         }
 
         //스킬 구현 
@@ -47,7 +39,15 @@ namespace TextRPG_TeamSix.Characters
         }
         public void Damaged(uint damage)
         {
-            this.HP -= damage;
+            if (HP <= damage)
+            {
+                HP = 0;
+                IsAlive = false;
+            }
+            else
+            {
+                HP -= damage;
+            }
         }
     }
 }

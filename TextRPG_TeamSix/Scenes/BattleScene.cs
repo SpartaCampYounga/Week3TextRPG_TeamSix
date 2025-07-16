@@ -1,9 +1,12 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using TextRPG_TeamSix.Battle.Actions;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Scenes;
-using TextRPG_TeamSix.Utils; // BattleLog 사용
+using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Utils;
 
 internal class BattleScene : SceneBase
 {
@@ -69,6 +72,7 @@ internal class BattleScene : SceneBase
                 intro.DisplayScene();
                 StartBattleLoop();
                 break;
+
             default:
                 BattleLog.Log("잘못된 입력입니다.");
                 break;
@@ -116,14 +120,11 @@ internal class BattleScene : SceneBase
     {
         Console.Clear(); // 매 턴마다 깔끔하게 새로 출력
 
-        // 왼쪽 정보 UI
         BattleUI.BattleStartInfo();
         BattleUI.DrawPlayerInfo(player);
         BattleUI.DrawEnemyList(enemies);
         BattleUI.DrawActionMenu();
-
     }
-
 
     private string GetPlayerInput()
     {
@@ -140,8 +141,68 @@ internal class BattleScene : SceneBase
                 return true;
 
             case "2":
-                BattleLog.NoSkill();
-                return false;
+                if (player.SkillList.Count == 0)
+                {
+                    BattleLog.Log("사용할 수 있는 스킬이 없습니다.");
+                    return false;
+                }
+
+                BattleLog.Log("사용할 스킬을 선택하세요:");
+                for (int i = 0; i < player.SkillList.Count; i++)
+                {
+                    var skill = player.SkillList[i];
+                    BattleLog.Log($"{i + 1}. {skill.Name} (MP: {skill.ConsumeMP}) - {skill.Description}");
+                }
+
+                Console.Write(">> ");
+                string skillInput = Console.ReadLine();
+                if (!int.TryParse(skillInput, out int skillIndex) || skillIndex < 1 || skillIndex > player.SkillList.Count)
+                {
+                    BattleLog.Log("잘못된 입력입니다.");
+                    return false;
+                }
+
+                Skill selectedSkill = player.SkillList[skillIndex - 1];
+
+                if (player.MP < selectedSkill.ConsumeMP)
+                {
+                    BattleLog.Log("MP가 부족합니다!");
+                    return false;
+                }
+
+                // 적 선택 (살아있는 적만 보여줌)
+                BattleLog.Log("대상을 선택하세요:");
+                List<Enemy> aliveEnemies = new List<Enemy>();
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    if (enemies[i].IsAlive)
+                    {
+                        aliveEnemies.Add(enemies[i]);
+                        BattleLog.Log($"{aliveEnemies.Count}. {enemies[i].Name} (HP: {enemies[i].HP})");
+                    }
+                }
+
+                if (aliveEnemies.Count == 0)
+                {
+                    BattleLog.Log("공격할 수 있는 대상이 없습니다.");
+                    return false;
+                }
+
+                Console.Write(">> ");
+                string targetInput = Console.ReadLine();
+                if (!int.TryParse(targetInput, out int targetIndex) || targetIndex < 1 || targetIndex > aliveEnemies.Count)
+                {
+                    BattleLog.Log("잘못된 입력입니다.");
+                    return false;
+                }
+
+                var target = aliveEnemies[targetIndex - 1];
+
+                // 스킬 사용
+                selectedSkill.Cast(target);
+                player.ConsumeMP(selectedSkill.ConsumeMP);
+                BattleLog.SkillUse(player.Name, selectedSkill.Name, target.Name);
+                return true;
 
             case "3":
                 BattleLog.Log("아이템 사용은 아직 구현되지 않았습니다!");
