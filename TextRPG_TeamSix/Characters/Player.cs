@@ -26,7 +26,7 @@ namespace TextRPG_TeamSix.Characters
         public uint Exp { get; private set; } // 플레이어의 경험치
         public Player(string name, JobType jobType) : base(name)
         {
-            switch (JobType)
+            switch (jobType)
             {
                 case JobType.Magician:
                     HP = 100;
@@ -36,7 +36,7 @@ namespace TextRPG_TeamSix.Characters
                     NumOfStones = 0; // 초기 돌의 개수 설정
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
-                    SkillList.Add(GameDataManager.Instance.AllSkills[0]);
+                    //SkillList.Add(GameDataManager.Instance.AllSkills[0]);
                     Inventory = new Inventory(this);
                     break;
                 case JobType.Warrior:
@@ -47,7 +47,7 @@ namespace TextRPG_TeamSix.Characters
                     NumOfStones = 0; // 초기 돌의 개수 설정
                     Gold = 1000; // 초기 금액 설정
                     Exp = 0; // 초기 경험치 설정
-                    SkillList.Add(GameDataManager.Instance.AllSkills[2]);
+                    //SkillList.Add(GameDataManager.Instance.AllSkills[0]);
                     Inventory = new Inventory(this);
                     break;
             }
