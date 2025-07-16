@@ -16,6 +16,7 @@ namespace TextRPG_TeamSix.Items
         public uint Price { get; private set; } // 아이템의 가격
         public bool IsEquipped { get; set; } // 아이템이 장착되었는지 여부
 
+        public ItemType Type { get; protected set; }  // 아이템 종류 구분
         public enum ItemType 
         {
             Weapon, 

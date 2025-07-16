@@ -44,6 +44,17 @@ namespace TextRPG_TeamSix.Characters
                     Console.WriteLine("인벤토리가 비어 있습니다.");
                     return;
                 }
+                else
+                {
+                    Console.WriteLine("아이템 ID 입력 : ");
+                    string input = Console.ReadLine();
+                    if(uint.TryParse(input, out uint itemId))
+                    {
+                        EquipItem(itemId);
+                        Console.WriteLine("아이템 장착 완료");
+                        Console.ReadKey();
+                    }
+                }
 
                 int startIndex = indexPage * itemsPerPage;
                 int endIndex = startIndex + itemsPerPage;
@@ -59,6 +70,7 @@ namespace TextRPG_TeamSix.Characters
                     Console.WriteLine($"{item.Id}. {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
 
                 }
+
                 Console.WriteLine("");
                 Console.WriteLine("-------------------------------------");
                 Console.WriteLine("페이지 네비게이션: <= 이전 페이지 || 다음 페이지 => , [Enter] 종료");
@@ -90,7 +102,7 @@ namespace TextRPG_TeamSix.Characters
 
 
         }
-        public void EquipItem()
+        public void EquipItem(uint itemID)
         {
             Console.WriteLine("장착할 아이템의 ID를 입력하세요 :");
 
@@ -118,7 +130,7 @@ namespace TextRPG_TeamSix.Characters
 
             foreach (var otherItem in ItemList)
             {
-                if(otherItem.IsEquipped && otherItem.GetType == item.Type)
+                if(otherItem.IsEquipped && otherItem.Type == item.Type)
                 {
                     otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
                     Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
@@ -128,11 +140,11 @@ namespace TextRPG_TeamSix.Characters
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
         }
+  
         public Item? GetItem(uint id)
         {
             Item? item = ItemList.FirstOrDefault(x => x.Id == id);
             return item;
-
         }
         public void PurchaseItem(uint itemId)
         {
