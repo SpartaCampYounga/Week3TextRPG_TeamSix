@@ -18,6 +18,10 @@
             Log($"{player}에게 {damage}의 피해를 입혔습니다!");
             LogLine();
         }
+        public static void SkillUse(string user, string skill, string target)
+        {
+            Log($"🌀 {user}이(가) {target}에게 {skill} 스킬을 사용했다!");
+        }
 
         public static void Death(string name) => Log($"{name}이(가) 쓰러졌습니다... 게임 오버!");
         public static void Victory() => Log("모든 적을 처치했습니다! 🎉");

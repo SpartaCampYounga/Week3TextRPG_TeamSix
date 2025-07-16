@@ -21,13 +21,23 @@ namespace TextRPG_TeamSix.Scenes
 
         private void TypeEffect(string text, int delay = 50)
         {
-            foreach (char c in text)
+            for (int i = 0; i < text.Length; i++)
             {
-                Console.Write(c);
+                if (Console.KeyAvailable)
+                {
+                    Console.ReadKey(true);
+                    Console.Write(text.Substring(i)); 
+                    break;
+                }
+
+                Console.Write(text[i]);
                 Thread.Sleep(delay);
             }
+
             Console.WriteLine();
         }
+
+
 
         private void FlashEffect(int times = 2, int delay = 150)
         {
@@ -61,9 +71,9 @@ namespace TextRPG_TeamSix.Scenes
 ";
 
             string desc1 = "…여긴 대체 뭐지?\n바람 한 점 없고, 앞에는 이상하게 생긴 문밖에 없네…";
-            string desc2 = "잠깐… 바닥에 무언가 새겨져 있어. 어디보자..     ";
-            string redPard1 = "^$#^%@#$!$%...          버리지마... 가...지...마!";
-            string proceed = "Press enter key to continue..";
+            string desc2 = "잠깐… 바닥에 이 빛나는 돌은 뭐지? 어디보자.. ";
+            string redPard1 = "^$#^%@#$!$%... 우와아아아아악 이게뭐야아아아아!!!!";
+            string proceed = "Press enter key to Continue..";
 
             Console.ForegroundColor = ConsoleColor.Green;
             TypeEffect(desc1, 70);

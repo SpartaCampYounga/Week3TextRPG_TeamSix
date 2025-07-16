@@ -18,6 +18,7 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene() //출력 하는 시스템
         {
+            // 상태보기,상점,던전,퀘스트 순으로 정렬(추후)
             Console.Clear();
             Console.WriteLine("MainScene");
             Console.WriteLine("마을에 오신 것을 환영합니다.");

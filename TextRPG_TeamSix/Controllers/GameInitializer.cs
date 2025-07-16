@@ -10,6 +10,7 @@ using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Dungeons;
+using TextRPG_TeamSix.Quests;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -41,7 +42,10 @@ namespace TextRPG_TeamSix.Controllers
         private static Item[] _items =
         {
             new Portion(1, "회복물약", "회복합니다", 100, 100, RestoreType.Health),
-            new Weapon(2, "녹슨검", "낡았습니다", 100, Ability.Attack, 10, EquipSlot.Weapon)
+            new Weapon(2, "녹슨검", "낡았습니다", 100, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(3, "TestItemWeapon", "테스트용 무기입니다.", 500, Ability.Attack, 1, EquipSlot.Weapon),
+            new Armor(4, "TestItemArmor", "테스트용 갑옷입니다.", 500, Ability.Defense, 1, EquipSlot.Armor),
+            new Portion(5, "TestItemHealthPortion", "테스트용 물약입니다.", 300, 30, RestoreType.Health)
         };
 
         private static Gatcha[] _gatchas =
@@ -59,6 +63,11 @@ namespace TextRPG_TeamSix.Controllers
             new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
         };
 
+        private static Quest[] _quests =
+        {
+            new EnemyQuest(1, QuestType.Enemy, "고블린 2마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
+            new DungeonQuest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
+        };
 
         public static void InitializeAll() 
         {
@@ -66,7 +75,7 @@ namespace TextRPG_TeamSix.Controllers
             GameDataManager.Instance.InitializeSkills(_skills);
             GameDataManager.Instance.InitializeItems(_items);
             GameDataManager.Instance.InitializeDungeons(_dungeons);
-            GameDataManager.Instance.InitializeTestItems();
+            GameDataManager.Instance.InitializeQuests(_quests);
         }
     }
 }

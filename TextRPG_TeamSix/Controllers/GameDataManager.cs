@@ -9,6 +9,7 @@ using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Quests;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -22,6 +23,7 @@ namespace TextRPG_TeamSix.Controllers
         public List<Gatcha> AllGatchas { get; private set; }
         public List<Enemy> AllEnemies { get; private set; }
         public List<Dungeon> AllDungeons { get; private set; }
+        public List<Quest> AllQuests { get; private set; } // 퀘스트 추가
         private GameDataManager()
         {
             AllSkills = new List<Skill>();
@@ -29,6 +31,7 @@ namespace TextRPG_TeamSix.Controllers
             AllGatchas = new List<Gatcha>();
             AllEnemies = new List<Enemy>();
             AllDungeons = new List<Dungeon>();
+            AllQuests = new List<Quest>(); // 퀘스트 추가
         }
         private static GameDataManager instance;
         public static GameDataManager Instance
@@ -62,21 +65,6 @@ namespace TextRPG_TeamSix.Controllers
                 AllItems.Add(item);
             }
         }
-        public void InitializeTestItems()
-        {
-            // 테스트용 아이템 3개 생성
-            Item[] testItems = new Item[]
-            {
-                 new Weapon(1, "TestItemWeapon", "테스트용 무기입니다.", 500, Ability.Attack, 1, EquipSlot.Weapon),
-                 new Armor(2, "TestItemArmor", "테스트용 갑옷입니다.", 500, Ability.Defense, 1, EquipSlot.Armor),
-                 new Portion(3, "TestItemHealthPortion", "테스트용 물약입니다.", 300, 30, RestoreType.Health)
-            };
-
-            // 기존 InitializeItems 메서드 호출하여 AllItems에 추가
-            InitializeItems(testItems);
-        }
-
-
         //가챠 초기화
         public void InitializeGatchas(Gatcha[] gatchas)
         {
@@ -102,6 +90,15 @@ namespace TextRPG_TeamSix.Controllers
             foreach (Dungeon dungeon in dungeons)
             {
                 AllDungeons.Add(dungeon);
+            }
+        }
+
+        //퀘스트 초기화
+        public void InitializeQuests(Quest[] quests)
+        {
+            foreach (Quest quest in quests)
+            {
+                AllQuests.Add(quest);
             }
         }
     }
