@@ -51,7 +51,6 @@ namespace TextRPG_TeamSix.Scenes
                 if (!InputChoice)
                 {
                     Console.WriteLine("잘못된 입력입니다. 다시 시도해주세요.");
-                    return;
                 }
                 switch (userInpt)
                 {
@@ -73,6 +72,11 @@ namespace TextRPG_TeamSix.Scenes
             }
 
         }    //출력 하는 시스템
+
+        public void QuestShowin()
+        {
+
+        }
 
         public override void HandleInput()
         {
