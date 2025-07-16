@@ -23,9 +23,17 @@ namespace TextRPG_TeamSix.Stores
         {
             Player player = PlayerManager.Instance.CurrentPlayer;
 
+            if (player.Gold >= item.Price) //플레이어가 아이템을 구매할 충분한 골드가 있는지 판단
+            {
+                if(item is IConsumable) // 아이템이 소비성 아이템인지 확인
+                {
+                    return true; // 소비성 아이템은 구매 가능
+                }
+            }
+
             // 플레이어가 아이템을 구매할 충분한 골드가 있는지 판단
             // 이미 보유한 아이템 체크 =>IConsumable 어케함...?
-            if (player.Gold >= item.Price && player.Inventory.ItemList.FirstOrDefault(x => x.Id == item.Id) != null)
+            if (player.Gold >= item.Price && player.Inventory.ItemList.FirstOrDefault(x => x.Id == item.Id) != null) 
             {
                 // 구매 가능
                 return true;
