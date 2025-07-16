@@ -88,7 +88,7 @@ namespace TextRPG_TeamSix.Scenes
             }
             else
             {
-                Console.WriteLine("잘못된 입력입니다.");
+                Console.WriteLine("잘못된 입력입니다.1~2번 중에서 선택해주세요.");
                 Console.ReadKey(true);
                 return;
             }

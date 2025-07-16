@@ -29,6 +29,10 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("");
             Console.Write("번호를 입력하세요 : ");
 
+            // 현재 스킬보기와 퀘스트만 구현되어 있습니다. 혹시라도 연결이 필요하시면Handleinput에 추가해주세요.
+            // 1. GetintegerRange의 Max 값 변경
+            // 2. HandleInput에 case 추가  
+            // 애매하면 그냥 채팅에 무슨씬 연결요청해주세요. 남겨주시면 반영할게용
             input = InputHelper.GetIntegerRange(1, 3);
             HandleInput();
         }
