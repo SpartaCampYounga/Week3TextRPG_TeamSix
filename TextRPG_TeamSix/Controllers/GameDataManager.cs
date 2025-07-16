@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Dungeons;
+using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Quests;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -21,6 +23,7 @@ namespace TextRPG_TeamSix.Controllers
         public List<Gatcha> AllGatchas { get; private set; }
         public List<Enemy> AllEnemies { get; private set; }
         public List<Dungeon> AllDungeons { get; private set; }
+        public List<Quest> AllQuests { get; private set; } // 퀘스트 추가
         private GameDataManager()
         {
             AllSkills = new List<Skill>();
@@ -28,6 +31,7 @@ namespace TextRPG_TeamSix.Controllers
             AllGatchas = new List<Gatcha>();
             AllEnemies = new List<Enemy>();
             AllDungeons = new List<Dungeon>();
+            AllQuests = new List<Quest>(); // 퀘스트 추가
         }
         private static GameDataManager instance;
         public static GameDataManager Instance
@@ -62,7 +66,6 @@ namespace TextRPG_TeamSix.Controllers
                 AllItems.Add(item);
             }
         }
-
         //가챠 초기화
         public void InitializeGatchas(Gatcha[] gatchas)
         {
@@ -88,6 +91,15 @@ namespace TextRPG_TeamSix.Controllers
             foreach (Dungeon dungeon in dungeons)
             {
                 AllDungeons.Add(dungeon);
+            }
+        }
+
+        //퀘스트 초기화
+        public void InitializeQuests(Quest[] quests)
+        {
+            foreach (Quest quest in quests)
+            {
+                AllQuests.Add(quest);
             }
         }
     }

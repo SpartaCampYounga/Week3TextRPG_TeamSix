@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
-using TextRPG_TeamSix.Quest;
+using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
@@ -15,6 +17,7 @@ namespace TextRPG_TeamSix.Scenes
     {
         public override SceneType SceneType => SceneType.Quest;
         private int input;
+        List<Quest> QuestTest; // 퀘스트 리스트를 저장할 변수
 
 
         public override void DisplayScene() //출력 하는 시스템
@@ -25,23 +28,57 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('=',120));
             Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
             Console.WriteLine(new string('=', 120));
+
+
+            // 들어갈 내용 예시) Hard던전 클리어  | Hard던전에 모든 적들을 소탕해주세요! | 보상: 1000골드, 100경험치
+            string header = "";
+            header += FormatUtility.AlignWithPadding("NO", 5) + " | ";
+            header += FormatUtility.AlignWithPadding("유형", 15) + " | ";
+            header += FormatUtility.AlignWithPadding("내용", 30) + " | ";
+            header += FormatUtility.AlignWithPadding("보상", 30) + " | ";
+            header += FormatUtility.AlignWithPadding("진행사항", 0);
+            Console.WriteLine(header);
+            Console.WriteLine(new string('-', 120));
             Console.ResetColor();
 
 
-            Console.WriteLine("퀘스트 배치구역");
 
 
+
+           
+            QuestTest = GameDataManager.Instance.AllQuests; // QuestManager에서 모든 퀘스트 리스트를 가져옴
+
+            int idx = 1;
+            foreach (var quest in QuestTest)
+            {
+                string reward = $"{quest.RewardGold}골드, {quest.RewardExp}경험치";
+                string progress = "미완료"; // 진행사항은 추후 구현
+                string row = "";
+                row += FormatUtility.AlignWithPadding(idx.ToString(), 5) + " | ";
+                row += FormatUtility.AlignWithPadding(quest.QuestType.ToString(), 15) + " | ";
+                row += FormatUtility.AlignWithPadding(quest.Description, 30) + " | ";
+                row += FormatUtility.AlignWithPadding(reward, 30) + " | ";
+                row += FormatUtility.AlignWithPadding(progress, 0);
+                Console.WriteLine(row);
+                idx++;
+            }
+
+
+
+
+
+
+
+            // 퀘스트 끝나는 부분
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', 120));
             Console.ResetColor();
 
 
 
-
+            Console.WriteLine("1. 퀘스트 수락(미구현)");
             Console.WriteLine("0. 나가기");
-
-
-            Console.WriteLine("번호를 입력해 주세요 : ");
+            Console.Write("번호를 입력해 주세요 : ");
             input = InputHelper.GetIntegerRange(0, 1);
             HandleInput();
         }
@@ -57,3 +94,4 @@ namespace TextRPG_TeamSix.Scenes
         }
     }
 }
+
