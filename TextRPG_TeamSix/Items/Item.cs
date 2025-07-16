@@ -16,6 +16,14 @@ namespace TextRPG_TeamSix.Items
         public uint Price { get; private set; } // 아이템의 가격
         public bool IsEquipped { get; set; } // 아이템이 장착되었는지 여부
 
+        public enum ItemType 
+        {
+            Weapon, 
+            Armor, 
+            Accessory, 
+            Consumable 
+        } // 아이템의 종류 (ex : 무기, 방어구 등)
+
         public Item(uint id, string name, string description, uint price) // 생성자(이 클래스(자식 클래스)가 생성될때 마다 필요한 값들)
         {
             Id = id; // 아이템의 고유 ID
