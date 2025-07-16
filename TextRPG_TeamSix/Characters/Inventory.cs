@@ -85,6 +85,7 @@ namespace TextRPG_TeamSix.Characters
                     }
                 }
                 for (int i = startIndex; i < endIndex; i++)
+                    for (int i = startIndex; i < endIndex; i++)
                 {
                     Item item = ItemList[i];
                     string equippedStatus = item.IsEquipped? "[E]" : "[ ]"; // 아이템이 장착되었는지 여부 표시
@@ -92,11 +93,8 @@ namespace TextRPG_TeamSix.Characters
 
                 }
 
-
-                    Console.WriteLine("");
                 Console.WriteLine("-------------------------------------");
-                Console.WriteLine("페이지 네비게이션: <= 이전 페이지 || 다음 페이지 => , [Enter] 종료");
-                Console.Write("명령어 입력: ");
+                Console.WriteLine("페이지 네비게이션: <= 이전 페이지 || 다음 페이지 => , [Enter] 나가기");
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
                 if (keyInfo.Key == ConsoleKey.RightArrow)
                 {
