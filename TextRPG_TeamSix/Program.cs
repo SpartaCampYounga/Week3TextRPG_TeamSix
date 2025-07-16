@@ -14,7 +14,7 @@ namespace TextRPG_TeamSix
 
             SceneManager.Instance.SetScene(SceneType.Title);
 
-            //SceneManager.Instance.SetScene(SceneType.Battle);
+            SceneManager.Instance.SetScene(SceneType.Battle);
         }
     }
 }
