@@ -132,13 +132,19 @@ namespace TextRPG_TeamSix.Characters
         //SaveData Load시 Deep Copy 위함
         public void Clone(Player player)
         {
-            Id = player.Id;
-            Name = player.Name;
-            HP = player.HP;
-            MP = player.MP;
-            Attack = player.Attack;
-            Defense = player.Defense;
-            SkillList = new List<Skill>();
+            this.Id = player.Id;
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
+            this.Name = player.Name;
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
+            Console.Read();
+            this.HP = player.HP;
+            this.MP = player.MP;
+            this.Attack = player.Attack;
+            this.Defense = player.Defense;
+
+            this.SkillList = new List<Skill>();
             foreach (Skill skill in player.SkillList)
             {
                 SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));

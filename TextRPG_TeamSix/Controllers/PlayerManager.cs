@@ -18,8 +18,6 @@ namespace TextRPG_TeamSix.Controllers
         public List<uint> ClearedDungeonList { get; private set;}
         private PlayerManager()
         {
-            CurrentPlayer = new Player("PlayerManager", JobType.Warrior);
-            ClearedDungeonList = new List<uint>();
         }
         private static PlayerManager instance;
         public static PlayerManager Instance
