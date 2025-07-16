@@ -42,12 +42,30 @@ namespace TextRPG_TeamSix.Characters
         public List<Skill> SkillList => skillList;
         [JsonIgnore]
         public bool IsAlive => isAlive;
+
         public Character(string name)
         {
             id = nextId++;
             this.name = name;
             isAlive = true;
         }
+        [JsonConstructor]
+        public Character(
+            uint id,
+            string name,
+            uint hP,
+            uint mP,
+            uint attack,
+            uint defense)
+        {
+            this.id = id;
+            this.name = name;
+            this.hP = hP;
+            this.mP = mP;
+            this.attack = attack;
+            this.defense = defense;
+        }
+
         public void TakeDamage(uint damage)
         {
             if (HP > damage)

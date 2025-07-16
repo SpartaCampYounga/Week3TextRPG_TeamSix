@@ -66,33 +66,40 @@ namespace TextRPG_TeamSix.Characters
                     break;
             }
         }
-        //[JsonConstructor]
-        public Player(uint id, string name, uint hp, uint mp, uint attack, uint defense, 
-            List<Skill> skillList, bool isAlive, JobType jobType, uint numOfStones, Inventory inventory) 
-            : base(name)
+        [JsonConstructor]
+        public Player(
+            uint id,
+            string name,
+            uint hp,
+            uint mp,
+            uint attack,
+            uint defense,
+            List<Skill> skillList,
+            bool isAlive,
+            JobType jobType,
+            uint numOfStones,
+            Inventory inventory,
+            uint gold,
+            uint exp
+        ) : base(name)
         {
             this.id = id;
-            //Console.WriteLine(Name);
-            //Console.WriteLine(player.Name);
             this.name = name;
-            //Console.WriteLine(Name);
-            //Console.WriteLine(player.Name);
-            //Console.Read();
             this.hP = hp;
             this.mP = mp;
             this.attack = attack;
             this.defense = defense;
-
+            this.skillList = new List<Skill>();
             foreach (Skill skill in skillList)
             {
-                this.SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
+                this.skillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
             }
-
             this.isAlive = isAlive;
             this.jobType = jobType;
             this.numOfStones = numOfStones;
-            this.inventory = new Inventory(this);
-            this.inventory.Clone(inventory);
+            this.inventory = inventory;
+            this.gold = gold;
+            this.exp = exp;
         }
 
         public void DisplayPlayerStatus()
@@ -138,6 +145,7 @@ namespace TextRPG_TeamSix.Characters
         //SaveData Load시 Deep Copy 위함
         public void Clone(Player player)
         {
+            Console.WriteLine("Clone 시작전:" + name);
             this.id = player.Id;
             Console.WriteLine(name);
             Console.WriteLine(player.Name);
@@ -160,6 +168,7 @@ namespace TextRPG_TeamSix.Characters
             this.jobType = player.JobType;
             this.numOfStones = player.NumOfStones;
             this.inventory.Clone(player.Inventory);
+            Console.WriteLine("Clone 완료후:" + name);
         }
 
     }
