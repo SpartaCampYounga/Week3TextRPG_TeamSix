@@ -24,6 +24,12 @@ namespace TextRPG_TeamSix.Scenes
         }
         private void PrintItems()
         {
+            currentStore.ItemList.Clear();
+            foreach (var item in GameDataManager.Instance.AllItems)
+            {
+                currentStore.ItemList.Add(item);
+            }
+
             Console.Clear();
             Console.WriteLine("===== 상점 =====");
             Console.WriteLine("");

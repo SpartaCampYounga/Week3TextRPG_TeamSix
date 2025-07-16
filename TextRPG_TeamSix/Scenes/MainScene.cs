@@ -25,7 +25,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("");
             Console.WriteLine("1. 스킬보기");
             Console.WriteLine("2. 퀘스트");
-            Console.WriteLine("3. [미구현]");
+            Console.WriteLine("3. 상점");
             Console.WriteLine("4. 던전");
             Console.WriteLine("");
             Console.Write("번호를 입력하세요 : ");
@@ -50,6 +50,9 @@ namespace TextRPG_TeamSix.Scenes
                     break;
                 case 2:
                     SceneManager.Instance.SetScene(SceneType.Quest);
+                    break;
+                case 3:
+                    SceneManager.Instance.SetScene(SceneType.Store);
                     break;
                 case 4:
                     SceneManager.Instance.SetScene(SceneType.Dungeon);
