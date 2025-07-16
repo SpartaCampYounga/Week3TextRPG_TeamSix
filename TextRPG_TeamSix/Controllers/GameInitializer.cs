@@ -42,7 +42,10 @@ namespace TextRPG_TeamSix.Controllers
         private static Item[] _items =
         {
             new Portion(1, "회복물약", "회복합니다", 100, 100, RestoreType.Health),
-            new Weapon(2, "녹슨검", "낡았습니다", 100, Ability.Attack, 10, EquipSlot.Weapon)
+            new Weapon(2, "녹슨검", "낡았습니다", 100, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(3, "TestItemWeapon", "테스트용 무기입니다.", 500, Ability.Attack, 1, EquipSlot.Weapon),
+            new Armor(4, "TestItemArmor", "테스트용 갑옷입니다.", 500, Ability.Defense, 1, EquipSlot.Armor),
+            new Portion(5, "TestItemHealthPortion", "테스트용 물약입니다.", 300, 30, RestoreType.Health)
         };
 
         private static Gatcha[] _gatchas =
@@ -73,7 +76,6 @@ namespace TextRPG_TeamSix.Controllers
             GameDataManager.Instance.InitializeItems(_items);
             GameDataManager.Instance.InitializeDungeons(_dungeons);
             GameDataManager.Instance.InitializeQuests(_quests);
-
         }
     }
 }

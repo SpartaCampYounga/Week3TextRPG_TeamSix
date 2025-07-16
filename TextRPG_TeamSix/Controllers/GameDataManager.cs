@@ -66,21 +66,6 @@ namespace TextRPG_TeamSix.Controllers
                 AllItems.Add(item);
             }
         }
-        public void InitializeTestItems()
-        {
-            // 테스트용 아이템 3개 생성
-            Item[] testItems = new Item[]
-            {
-                 new Weapon(1, "TestItemWeapon", "테스트용 무기입니다.", 500, Ability.Attack, 1, EquipSlot.Weapon),
-                 new Armor(2, "TestItemArmor", "테스트용 갑옷입니다.", 500, Ability.Defense, 1, EquipSlot.Armor),
-                 new Portion(3, "TestItemHealthPortion", "테스트용 물약입니다.", 300, 30, RestoreType.Health)
-            };
-
-            // 기존 InitializeItems 메서드 호출하여 AllItems에 추가
-            InitializeItems(testItems);
-        }
-
-
         //가챠 초기화
         public void InitializeGatchas(Gatcha[] gatchas)
         {
