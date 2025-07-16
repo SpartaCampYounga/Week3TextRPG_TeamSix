@@ -146,6 +146,10 @@ namespace TextRPG_TeamSix.Characters
             }
 
             item.IsEquipped = true; // 아이템 장착
+            if(item.Type == Item.ItemType.Weapon)
+            {
+                
+            }
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
         }

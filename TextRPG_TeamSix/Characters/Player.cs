@@ -126,7 +126,7 @@ namespace TextRPG_TeamSix.Characters
                 {
                     if(item is Weapon weapon)
                     {
-                        bonusAttack += weapon.Ability; // 무기의 능력치 보너스
+                        bonusAttack += this.Attack; // 무기의 능력치 보너스
                     }
                 }
             }
