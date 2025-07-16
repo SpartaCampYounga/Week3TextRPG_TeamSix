@@ -19,9 +19,15 @@ namespace TextRPG_TeamSix.Scenes
         }
 
 
-        public abstract void DisplaySceneMain();    //출력 하는 시스템
+        public override void DisplayScene() 
+        {
+           
+        }    //출력 하는 시스템
 
-        public abstract void HandleInputMain(); //입력 받고 실행하는 시스템
+        public override void HandleInput() 
+        {
+
+        } //입력 받고 실행하는 시스템
 
     }
 }
