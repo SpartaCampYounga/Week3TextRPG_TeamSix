@@ -9,6 +9,7 @@ using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Dungeons;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -23,7 +24,8 @@ namespace TextRPG_TeamSix.Controllers
             new SkillLearnScene(),
             new MainScene(),
             new BattleScene(),
-            new QuestScene()
+            new QuestScene(),
+            new DungeonScene()
            //new StoresScene()
         };
 
@@ -42,11 +44,28 @@ namespace TextRPG_TeamSix.Controllers
             new Weapon(2, "녹슨검", "낡았습니다", 100, Ability.Attack, 10, EquipSlot.Weapon)
         };
 
+        private static Gatcha[] _gatchas =
+        {
+            new Gatcha("일반", new List<Item>{_items[0], _items[1] })
+        };
+
+        private static Enemy[] _emenies =
+        {
+            new Enemy("고블린", EnemyType.Type1)
+        };
+
+        private static Dungeon[] _dungeons =
+        {
+            new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
+        };
+
+
         public static void InitializeAll() 
         {
             SceneManager.Instance.InitializeScenes(_scenes);
             GameDataManager.Instance.InitializeSkills(_skills);
             GameDataManager.Instance.InitializeItems(_items);
+            GameDataManager.Instance.InitializeDungeons(_dungeons);
         }
     }
 }
