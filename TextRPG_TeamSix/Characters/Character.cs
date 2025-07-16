@@ -1,4 +1,5 @@
-﻿using TextRPG_TeamSix.Controllers;
+﻿using Newtonsoft.Json;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Skills;
 
 namespace TextRPG_TeamSix.Characters
@@ -21,6 +22,22 @@ namespace TextRPG_TeamSix.Characters
             Id = nextId++;
             Name = name;
             IsAlive = true;
+        }
+        [JsonConstructor]
+        public Character(
+            uint id,
+            string name,
+            uint hP,
+            uint mP,
+            uint attack,
+            uint defense)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.HP = hP;
+            this.MP = mP;
+            this.Attack = attack;
+            this.Defense = defense;
         }
         public void TakeDamage(uint damage)
         {

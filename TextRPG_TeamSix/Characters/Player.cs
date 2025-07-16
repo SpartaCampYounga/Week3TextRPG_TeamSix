@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,6 +50,43 @@ namespace TextRPG_TeamSix.Characters
                     break;
             }
         }
+
+        [JsonConstructor]
+        public Player(
+            uint id,
+            string name,
+            uint hp,
+            uint mp,
+            uint attack,
+            uint defense,
+            List<Skill> skillList,
+            bool isAlive,
+            JobType jobType,
+            uint numOfStones,
+            Inventory inventory,
+            uint gold,
+            uint exp
+        ) : base(name)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.HP = hp;
+            this.MP = mp;
+            this.Attack = attack;
+            this.Defense = defense;
+            this.SkillList = new List<Skill>();
+            foreach (Skill skill in skillList)
+            {
+                this.SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
+            }
+            this.IsAlive = isAlive;
+            this.JobType = jobType;
+            this.NumOfStones = numOfStones;
+            this.Inventory.Clone(inventory);
+            this.Gold = gold;
+            this.Exp = exp;
+        }
+
         public void DisplayPlayerStatus()
         {
             Console.WriteLine("DisplayPlayerStatus");
