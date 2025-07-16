@@ -3,12 +3,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Characters
 {

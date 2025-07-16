@@ -1,5 +1,7 @@
 ﻿using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Dungeons
 {
@@ -25,6 +27,16 @@ namespace TextRPG_TeamSix.Dungeons
             RewardExp = rewardExp;
             RewardGatcha = rewardGatcha;
             Enemies = enemies;
+        }
+
+        public override string ToString()
+        {
+            string display = "";
+
+            display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
+            display += FormatUtility.AlignWithPadding(RequiredDefense.ToString(), 11) + " | ";
+
+            return display;
         }
 
         public void EnterDungeon(Player player)

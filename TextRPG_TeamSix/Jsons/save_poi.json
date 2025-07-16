@@ -31,6 +31,16 @@
           "RequiredStones": 3,
           "SkillType": "Attack",
           "Amount": 30
+        },
+        {
+          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+          "Id": 1,
+          "Name": "스매시",
+          "Description": "강하게 내려칩니다.",
+          "ConsumeMP": 10,
+          "RequiredStones": 3,
+          "SkillType": "Attack",
+          "Amount": 20
         }
       ]
     },

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,9 @@ namespace TextRPG_TeamSix.Scenes
     //모든 씬이 상속 받는 추상 클래스
     internal class PlayerSetupScene : SceneBase
     {
-        public override SceneType SceneType => SceneType.PlayerSetup;
+        public override SceneType SceneType => SceneType.PlayerSetup; 
+        private int input;
+        Player player;
 
         public override void DisplayScene() //출력 하는 시스템
         {
@@ -24,73 +27,16 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("[1] 불러오기     [2] 새로만들기");
             Console.Write("번호를 입력하세요 :");
 
-            string userName = Console.ReadLine();
-            if (userName == "1")
+            input = InputHelper.GetIntegerRange(1, 3);
+
+            switch (input)
             {
-                Console.Clear();
-                Console.Write("이름을 입력하세요: ");
-                string input = Console.ReadLine();
-                if(PlayerManager.Instance.InitializePlayerFromSaveData(input))  //데이터에서 못 불러옴
-                {
-                    Console.WriteLine("사용자를 불러옵니다.");
-                    // 불러오기 로직 후 바로 MainScene으로 이동
-                    Console.ReadKey(true);
-                    SceneManager.Instance.SetScene(SceneType.Main);
-                }
-                else
-                {
-                    Console.WriteLine("사용자를 불러오지 못했습니다.");
-                    InputHelper.WaitResponse();
-                    SceneManager.Instance.SetScene(SceneType.PlayerSetup);
-                }
-            }
-            // 사용자를 새로 선택함에 따라 직업을 선택하는 로직
-            else if (userName == "2")
-            {
-                Console.Clear();
-                Console.WriteLine("사용자를 새로 만듭니다.");
-                Console.WriteLine("");
-
-
-                string jobInput;
-                while (true)
-                {
-                    Console.WriteLine("사용자 직업을 선택해주세요:");
-                    Console.WriteLine("1. 전사(Warrior)");
-                    Console.WriteLine("2. 마법사(Magician)");
-                    Console.WriteLine("3. 도적(Assassin) (jobtype 미구현)");
-                    Console.WriteLine("4. 궁수(Archer) (jobtype 미구현)");
-
-                    Console.WriteLine("");
-                    Console.Write("번호를 입력하세요: ");
-                    jobInput = Console.ReadLine();
-
-                    if (jobInput == "1" || jobInput == "2") // || jobInput == "3" || jobInput == "4"
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("");
-                        Console.WriteLine("잘못된 입력 입니다. 1~2번 중에서 선택해주세요.");
-                    }
-                }
-
-                JobType selectedJob = jobInput switch
-                {
-                    "1" => JobType.Warrior,
-                    "2" => JobType.Magician,
-                    //_ => throw new NotImplementedException(), // 미구현 직업 예외처리
-                };
-
-                Console.WriteLine("");
-                Console.WriteLine($"선택한 직업: {selectedJob}\n");
-            }
-            else
-            {
-                Console.WriteLine("잘못된 입력입니다.1~2번 중에서 선택해주세요.");
-                Console.ReadKey(true);
-                return;
+                case 1:
+                    LoadPlayer();
+                    break;
+                case 2:
+                    CreateNewPlayer();
+                    break;
             }
 
             // 생성이 완료되면 MainScene으로 이동
@@ -111,6 +57,68 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void HandleInput() //입력 받고 실행하는 시스템
         {
+        }
+
+        public void LoadPlayer()
+        {
+            //이름을 입력 받아 일치하는 플레이어를 불러오는 로직
+            Console.Write("이름을 입력하세요: ");
+            string nameInput = Console.ReadLine();
+
+            if (PlayerManager.Instance.InitializePlayerFromSaveData(nameInput))  //데이터에서 불러옴
+            {
+                Console.Write(PlayerManager.Instance.CurrentPlayer.Name);
+                Console.WriteLine("사용자를 불러옵니다.");
+                // 불러오기 로직 후 바로 MainScene으로 이동
+                Console.ReadKey(true);
+                SceneManager.Instance.SetScene(SceneType.Main);
+            }
+            else
+            {
+                Console.WriteLine("사용자를 불러오지 못했습니다.");
+                InputHelper.WaitResponse();
+                SceneManager.Instance.SetScene(SceneType.PlayerSetup);
+            }
+        }
+        public void CreateNewPlayer()
+        {
+            // 사용자를 새로 선택함에 따라 직업을 선택하는 로직
+            Console.WriteLine("사용자를 새로 만듭니다.");
+            Console.WriteLine("");
+
+
+            //이름 입력받아 신규 생성
+            Console.Write("이름을 입력하세요: ");
+            string nameInput = Console.ReadLine();
+
+            int jobInput;
+
+            Console.WriteLine("사용자 직업을 선택해주세요:");
+            Console.WriteLine("1. 전사(Warrior)");
+            Console.WriteLine("2. 마법사(Magician)");
+            Console.WriteLine("현재 불가. 도적(Assassin) (jobtype 미구현)");
+            Console.WriteLine("현재 불가. 궁수(Archer) (jobtype 미구현)");
+
+            Console.WriteLine("");
+            Console.Write("번호를 입력하세요: ");
+            jobInput = InputHelper.GetIntegerRange(1,3);
+
+            switch (jobInput)
+            {
+                case 1:
+                    player = new Player(nameInput, JobType.Warrior);
+                    break;
+                case 2:
+                    player = new Player(nameInput, JobType.Magician);
+                    break;
+            }
+
+            PlayerManager.Instance.CurrentPlayer.Clone(player);
+            Console.WriteLine(PlayerManager.Instance.CurrentPlayer.Name);
+            SaveManager.Instance.SaveGame();
+
+            Console.WriteLine("");
+            Console.WriteLine($"선택한 직업: {player.JobType}\n");
         }
     }
 }

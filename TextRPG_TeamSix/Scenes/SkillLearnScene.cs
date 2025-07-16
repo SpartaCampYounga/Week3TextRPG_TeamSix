@@ -30,7 +30,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.OutputEncoding = Encoding.UTF8; //Younga TIL
             Console.WriteLine("SkillLearnScene Loaded");
 
-            Console.ForegroundColor = ConsoleColor.Green;
+            //Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', Console.WindowWidth)); //Younga TIL
             Console.WriteLine("스킬 - 번호를 선택하여 스킬을 배울 수 있습니다.");
             Console.WriteLine(new string('=', Console.WindowWidth));
@@ -88,7 +88,10 @@ namespace TextRPG_TeamSix.Scenes
             {
                 case 0:
                     Console.WriteLine("0선택함"); //debug용
+                    Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
                     SaveManager.Instance.SaveGame();
+                    Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
+                    InputHelper.WaitResponse();
                     SceneManager.Instance.SetScene(SceneType.Skill);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 default:
