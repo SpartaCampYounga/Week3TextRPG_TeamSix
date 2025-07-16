@@ -128,6 +128,10 @@ namespace TextRPG_TeamSix.Characters
                     {
                         bonusAttack += this.Attack; // 무기의 능력치 보너스
                     }
+                    else if (item is Armor armor)
+                    {
+                        bonusDefense += this.Defense; // 방어구의 능력치 보너스
+                    }
                 }
             }
         }
