@@ -10,5 +10,6 @@ namespace TextRPG_TeamSix.Enums
     //굳이 유지할 필요가 있는지 고민 해봐야할 것. typeof로 파악하면 되지 않나..?
     internal enum EquipSlot
     {
+        Weapon
     }
 }
