@@ -16,7 +16,7 @@ namespace TextRPG_TeamSix.Controllers
         //그 외에 도감, 던전 진행도 등 저장할 것들 필드로 삼고, 생성자에 입력. 
         public SaveData() 
         {
-            PlayerSave = new Player(PlayerManager.Instance.CurrentPlayer);
+            PlayerSave.Clone(PlayerManager.Instance.CurrentPlayer);
             foreach(uint i in PlayerManager.Instance.ClearedDungeonList)
             {
                 this.ClearedDungeonList.Add(i);

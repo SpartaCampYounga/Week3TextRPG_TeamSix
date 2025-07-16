@@ -1,4 +1,5 @@
-﻿using TextRPG_TeamSix.Controllers;
+﻿using Newtonsoft.Json;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Skills;
 
 namespace TextRPG_TeamSix.Characters
