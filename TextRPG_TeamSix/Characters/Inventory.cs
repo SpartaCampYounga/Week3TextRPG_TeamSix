@@ -18,6 +18,9 @@ namespace TextRPG_TeamSix.Characters
         [JsonIgnore]
         
         public Player Owner { get; private set; }
+
+        public Character Character { get; private set; } 
+        public Weapon InvenWeapon { get; private set; } 
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
         public Inventory(Player owner) 
@@ -42,7 +45,6 @@ namespace TextRPG_TeamSix.Characters
                 if (ItemList.Count == 0)
                 {
                     Console.WriteLine("인벤토리가 비어 있습니다.");
-                    return;
                 }
                 else
                 {
@@ -55,6 +57,7 @@ namespace TextRPG_TeamSix.Characters
                         Console.ReadKey();
                     }
                 }
+                Console.WriteLine("-------------------------------------");
                 // 페이지에 맞게 아이템 출력
 
                 int startIndex = indexPage * itemsPerPage;
@@ -64,7 +67,24 @@ namespace TextRPG_TeamSix.Characters
                 {
                     endIndex = ItemList.Count;
                 }
-                for(int i = startIndex; i < endIndex; i++)
+                else
+                {
+                    Console.WriteLine("아이템 ID 입력 :");
+                    string input = Console.ReadLine();
+                    if (uint.TryParse(input, out uint itemId))
+                    {
+                        EquipItem(itemId);
+                        Console.WriteLine("아이템 장착 완료");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.WriteLine("잘못된 입력입니다. 숫자를 입력해주세요.");
+                        Console.ReadKey();
+                        continue; // 잘못된 입력 시 다시 아이템 목록 출력
+                    }
+                }
+                for (int i = startIndex; i < endIndex; i++)
                 {
                     Item item = ItemList[i];
                     string equippedStatus = item.IsEquipped? "[E]" : "[ ]"; // 아이템이 장착되었는지 여부 표시
@@ -72,10 +92,8 @@ namespace TextRPG_TeamSix.Characters
 
                 }
 
-                Console.WriteLine("");
                 Console.WriteLine("-------------------------------------");
-                Console.WriteLine("페이지 네비게이션: <= 이전 페이지 || 다음 페이지 => , [Enter] 종료");
-                Console.Write("명령어 입력: ");
+                Console.WriteLine("페이지 네비게이션: <= 이전 페이지 || 다음 페이지 => , [Enter] 나가기");
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
                 if (keyInfo.Key == ConsoleKey.RightArrow)
                 {
@@ -105,8 +123,6 @@ namespace TextRPG_TeamSix.Characters
         }
         public void EquipItem(uint itemId)
         {
-
-
             Item? item = GetItem((uint)itemId);
             if (item == null)
             {
@@ -117,18 +133,17 @@ namespace TextRPG_TeamSix.Characters
             {
                 item.IsEquipped = false; // 아이템이 장착되어 있으면 장착 해제
                 Console.WriteLine($"{item.Name}은(는) 이미 장착되어 있습니다.");
+               
                 return;
             }
-
-
-            //foreach (var otherItem in ItemList)
-            //{
-            //    if(otherItem.IsEquipped && otherItem.GetType == item.Type)
-            //    {
-            //        otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
-            //        Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
-            //    }
-            //}
+            foreach (var otherItem in ItemList)
+            {
+                if (otherItem.IsEquipped && otherItem.Type == item.Type)
+                {
+                    otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
+                    Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
+                }
+            }
 
             item.IsEquipped = true; // 아이템 장착
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");

@@ -19,6 +19,9 @@ namespace TextRPG_TeamSix.Characters
     {
         public JobType JobType { get; private set; }
         public Inventory Inventory { get; private set; }
+
+        public Weapon Weapon { get; private set; }
+        public Armor Armor { get; private set; }
         public uint NumOfStones { get; private set; }
 
         public uint Gold { get; private set; } // 플레이어의 금액
@@ -111,6 +114,22 @@ namespace TextRPG_TeamSix.Characters
         public void AcquireSkillStone(uint numOfStones)
         {
             NumOfStones += numOfStones;
+        }
+        public void RecalculateStats()
+        {
+            uint bonusAttack = 0;   
+            uint bonusDefense = 0;
+            // 인벤토리에서 장착된 아이템의 능력치 보너스를 계산
+            foreach(var item in Inventory.ItemList)
+            {
+                if (item.IsEquipped)
+                {
+                    if(item is Weapon weapon)
+                    {
+                        bonusAttack += weapon.Ability; // 무기의 능력치 보너스
+                    }
+                }
+            }
         }
 
 
