@@ -30,18 +30,18 @@ namespace TextRPG_TeamSix.Stores
         //    }
         //}
 
-        public List<Item> GetPageItems(int currentPage, int itemsPerPage)
+        public List<Item> GetPageItems(int currentPage, int itemsPerPage) // 현재 페이지와 아이템 당 페이지 수를 받아 해당 페이지의 아이템 리스트를 반환
         {
-            return ItemList
-                .Skip(currentPage * itemsPerPage)
-                .Take(itemsPerPage)
+            return ItemList // 아이템 리스트를 페이지 단위로 나누어 반환
+                .Skip(currentPage * itemsPerPage) // 현재 페이지에 해당하는 아이템을 건너뜀
+                .Take(itemsPerPage) // 아이템 당 페이지 수만큼 아이템을 가져옴
                 .ToList();
         }
-        public bool HasNextPage(int currentPage, int itemsPerPage)
+        public bool HasNextPage(int currentPage, int itemsPerPage) // 현재 페이지와 아이템 당 페이지 수를 받아 다음 페이지가 있는지 확인
         {
             return (currentPage + 1) * itemsPerPage < ItemList.Count;
         }
-        public bool TryGetItemAtPageIndex(int currentPage, int itemsPerPage, int indexInPage, out Item item)
+        public bool TryGetItemAtPageIndex(int currentPage, int itemsPerPage, int indexInPage, out Item item) // 현재 페이지, 아이템 당 페이지 수, 페이지 내 인덱스를 받아 해당 인덱스의 아이템을 반환
         {
             item = null!;
             var items = GetPageItems(currentPage, itemsPerPage);
@@ -53,22 +53,26 @@ namespace TextRPG_TeamSix.Stores
             }
             return false;
         }
+        public bool SellToPlayer(Item item) // 플레이어에게 아이템을 판매하는 메서드
+        {
+            Player player = PlayerManager.Instance.CurrentPlayer;
 
-        //public bool SellToPlayer(Item item)
-        //{
-        //    Player player = PlayerManager.Instance.CurrentPlayer;
-        //    if (player.Gold >= item.Price)
-        //    {
-        //        player.EarnGold(- (int)item.Price);
-        //        player.Inventory.AddItem(item);
-        //        Console.WriteLine($"{player.Name}이(가) {item.Name}을(를) {item.Price}G에 구매했습니다.");
-        //        return true; // 구매 성공
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"{player.Name}의 금액이 부족하여 {item.Name}을(를) 구매할 수 없습니다.");
-        //        return false; // 구매 실패
-        //    }
-        //}
+            // 플레이어가 아이템을 구매할 충분한 골드가 있는지 판단
+            if (player.Gold >= item.Price)
+            {
+                // 구매 가능
+                return true;
+            }
+            else
+            {
+                // 구매 불가능
+                return false;
+            }
+        }
     }
 }
+
+
+
+
+
