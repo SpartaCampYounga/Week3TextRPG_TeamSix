@@ -11,7 +11,7 @@ using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
 {
-    //모든 씬이 상속 받는 추상 클래스
+    //모든 씬이 상속 받는 추상 클래스   //
     internal class PlayerSetupScene : SceneBase
     {
         public override SceneType SceneType => SceneType.PlayerSetup;
