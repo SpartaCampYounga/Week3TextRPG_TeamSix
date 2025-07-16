@@ -79,8 +79,8 @@ namespace TextRPG_TeamSix.Scenes
             switch (input)
             {
                 case 0:
-                    Console.WriteLine("0선택함"); //debug용
-                    SceneManager.Instance.SetScene(SceneType.Skill);    //0번 누르면 해당 타입의 씬 출력
+                    Console.WriteLine("0선택함"); //debug용 //현재는 Main으로... 추후 캐릭터창 생기면 하는 걸로
+                    SceneManager.Instance.SetScene(SceneType.Main);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 case 1:
                     SceneManager.Instance.SetScene(SceneType.SkillLearn);

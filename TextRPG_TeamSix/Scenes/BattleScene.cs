@@ -1,120 +1,178 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Numerics;
-using System.Security.Cryptography.X509Certificates;
-using TextRPG_TeamSix.Battle;
-using TextRPG_TeamSix.Battle.Actions;
+﻿using TextRPG_TeamSix.Battle.Actions;
 using TextRPG_TeamSix.Characters;
-using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
-using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Scenes;
+using TextRPG_TeamSix.Utils; // BattleLog 사용
 
-namespace TextRPG_TeamSix.Scenes
+internal class BattleScene : SceneBase
 {
-    internal class BattleScene : SceneBase
+    public override SceneType SceneType => SceneType.Battle;
+
+    private Player player;
+    private List<Enemy> enemies;
+
+    public void Character_Status(Player A)
     {
-        public override SceneType SceneType => SceneType.Battle;
+        Console.Clear();
+        BattleLog.Log($"이름: {A.Name}");
+        BattleLog.Log($"직업: {A.JobType}");
+        BattleLog.Log($"HP: {A.HP}");
+        BattleLog.Log($"MP: {A.MP}");
+        BattleLog.Log($"공격력: {A.Attack}");
+        BattleLog.Log($"방어력: {A.Defense}");
+    }
 
-        public void Character_Status(Player A)
+    public override void DisplayScene()
+    {
+        player = new Player("SCV", JobType.Warrior);
+        enemies = new List<Enemy>
         {
-            Console.Clear();
-            Console.WriteLine($"이름: {A.Name}");
-            Console.WriteLine($"직업: {A.JobType}");
-            Console.WriteLine($"HP: {A.HP}");
-            Console.WriteLine($"MP: {A.MP}");
-            Console.WriteLine($"공격력: {A.Attack}");
-            Console.WriteLine($"방어력: {A.Defense}");
-        }
+            new Enemy("미니언", EnemyType.Type1),
+            new Enemy("대포미니언", EnemyType.Type1)
+        };
 
-        public override void DisplayScene()
+        BattleLog.Log("스파르타 던전에 오신 여러분 환영합니다.");
+        BattleLog.Log("이제 전투를 시작할 수 있습니다.");
+        BattleLog.Log("");
+        BattleLog.Log("1. 상태 보기\n2. 전투 시작");
+        Console.WriteLine();
+        Console.WriteLine("원하시는 행동을 입력해주세요.");
+        Console.Write(">> ");
+        string input = Console.ReadLine();
+
+        switch (input)
         {
-            Enemy enemy = new Enemy("미니언", EnemyType.Type1);
-            Enemy enemy2 = new Enemy("대포미니언", EnemyType.Type1);
-            List<Enemy> enemies = new List<Enemy> { enemy, enemy2 };
-
-            Player player = new Player("SCV", JobType.Warrior);
-
-            Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n이제 전투를 시작할 수 있습니다.");
-            Console.WriteLine();
-            Console.WriteLine("1. 상태 보기\n2. 전투 시작");
-            Console.WriteLine();
-            Console.WriteLine("원하시는 행동을 입력해주세요.");
-            Console.Write(">> ");
-
-
-
-            string input = Console.ReadLine();
-            switch (input)
-            {
-                case "1":
-                    Character_Status(player);
-                    break;
-
-                case "2":
-                    Console.Clear();
-                    Console.WriteLine("Battle!!");
-
-                    while (true)
+            case "1":
+                Character_Status(player);
+                while (true)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("0. 나가기");
+                    Console.WriteLine("원하시는 행동을 입력해주세요.");
+                    Console.Write(">> ");
+                    string output = Console.ReadLine();
+                    if (output == "0")
                     {
-                        Console.WriteLine();
-                        foreach (var e in enemies)
-                        {
-                            string status = e.IsAlive ? $"(HP: {e.HP})" : "(죽음)";
-                            Console.WriteLine($"{e.Name} {status}");
-                        }
-
-                        Console.WriteLine();
-                        Console.WriteLine($"{player.Name} (HP: {player.HP}/{player.HP})");
-                        Console.WriteLine();
-                        Console.WriteLine("1. 공격 | 2. 스킬 공격 | 3. 아이템 사용 | 4. 도망");
-                        Console.Write(">> ");
-
-                        string battleInput = Console.ReadLine();
-
-                        switch (battleInput)
-                        {
-                            case "1":
-                                IPlayerAction attackAction = new NormalAttack();
-                                attackAction.Execute(player, enemies);
-                                break;
-
-                            case "2":
-                                Console.WriteLine("스킬 공격은 아직 구현되지 않았습니다!");
-                                break;
-
-                            case "3":
-                                Console.WriteLine("아이템 사용은 아직 구현되지 않았습니다!");
-                                break;
-
-                            case "4":
-                                Console.WriteLine("도망쳤습니다!");
-                                return; // 전투 탈출
-
-                            default:
-                                Console.WriteLine("잘못된 입력입니다.");
-                                break;
-                        }
-
-                        // 모든 적이 죽었는지 확인
-                        if (enemies.TrueForAll(e => !e.IsAlive))
-                        {
-                            Console.WriteLine("모든 적을 처치했습니다! 🎉");
-                            break;
-                        }
-
-                        Console.WriteLine();
+                        Console.Clear();
+                        DisplayScene();
+                        return;
                     }
-                    break;
+                    else
+                    {
+                        Console.WriteLine("잘못된 입력입니다.");
+                    }
+                }
 
-                default:
-                    Console.WriteLine("잘못된 입력입니다.");
-                    break;
+            case "2":
+                StartBattleLoop();
+                break;
+            default:
+                BattleLog.Log("잘못된 입력입니다.");
+                break;
+        }
+    }
+
+    private void StartBattleLoop()
+    {
+        Console.Clear();
+        BattleLog.BattleStart();
+
+        while (true)
+        {
+            DisplayStatus();
+
+            string input = GetPlayerInput();
+            PlayerTurn(input);
+
+            if (!player.IsAlive)
+            {
+                BattleLog.Death(player.Name);
+                return;
+            }
+
+            if (enemies.TrueForAll(e => !e.IsAlive))
+            {
+                BattleLog.Victory();
+                break;
+            }
+
+            EnemyTurn();
+
+            if (!player.IsAlive)
+            {
+                BattleLog.Death(player.Name);
+                return;
             }
         }
+    }
 
-        public override void HandleInput()
+    private void DisplayStatus()
+    {
+        BattleLog.Log("");
+        foreach (var e in enemies)
         {
-            // 나중에 확장용
+            string status = e.IsAlive ? $"(HP: {e.HP})" : "(죽음)";
+            BattleLog.Log($"{e.Name} {status}");
         }
+
+        BattleLog.Log("");
+        BattleLog.Log($"{player.Name} (HP: {player.HP}/{player.HP})");
+        BattleLog.Log("");
+        BattleLog.Log("1. 공격 | 2. 스킬 공격 | 3. 아이템 사용 | 4. 도망");
+    }
+
+    private string GetPlayerInput()
+    {
+        Console.Write(">> ");
+        return Console.ReadLine();
+    }
+
+    private void PlayerTurn(string input)
+    {
+        switch (input)
+        {
+            case "1":
+                IPlayerAction attackAction = new NormalAttack();
+                attackAction.Execute(player, enemies);
+                break;
+
+            case "2":
+                BattleLog.Log("스킬 공격은 아직 구현되지 않았습니다!");
+                break;
+
+            case "3":
+                BattleLog.Log("아이템 사용은 아직 구현되지 않았습니다!");
+                break;
+
+            case "4":
+                BattleLog.RunAway();
+                Environment.Exit(0);
+                break;
+
+            default:
+                BattleLog.Log("잘못된 입력입니다.");
+                break;
+        }
+    }
+
+    private void EnemyTurn()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Enemy enemyUnit = enemies[i];
+            if (!enemyUnit.IsAlive)
+                continue;
+
+            int rawDamage = (int)enemyUnit.Attack - (int)player.Defense;
+            int damage = Math.Max(rawDamage, 1);
+            player.TakeDamage((uint)damage);
+
+            BattleLog.EnemyAttack(enemyUnit.Name, player.Name, damage);
+        }
+    }
+
+    public override void HandleInput()
+    {
+        // 추후 확장
     }
 }
