@@ -6,13 +6,14 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Controllers;
-
+using TextRPG_TeamSix.Skills;
 namespace TextRPG_TeamSix.Characters
 {
     //인벤토리 관리
     internal class Inventory //: IContainableItems
     {
         [JsonIgnore]
+        
         public Player Owner { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
