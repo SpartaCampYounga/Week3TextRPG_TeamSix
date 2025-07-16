@@ -27,8 +27,10 @@ namespace TextRPG_TeamSix.Scenes
             Console.Clear();
             Console.WriteLine("===== 상점 =====");
             Console.WriteLine("");
+            Console.WriteLine($"상점 아이템 수: {currentStore.ItemList.Count}");
 
-                foreach (var item in currentStore.ItemList)
+
+            foreach (var item in currentStore.ItemList)
                 {
                     Console.WriteLine($"{item.Name} : {item.Description} (가격: {item.Price}G)");
                 }
