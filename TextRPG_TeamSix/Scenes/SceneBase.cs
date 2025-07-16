@@ -12,6 +12,7 @@ namespace TextRPG_TeamSix.Scenes
     {
         public SceneBase()
         {
+
         }
 
         public abstract SceneType SceneType { get; }
