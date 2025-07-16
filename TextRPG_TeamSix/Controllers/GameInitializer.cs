@@ -9,7 +9,6 @@ using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
-
 namespace TextRPG_TeamSix.Controllers
 {
     //게임 시작 시 싱글톤 처리된 매니저(Controller)들 초기화/로드 작업
@@ -18,13 +17,14 @@ namespace TextRPG_TeamSix.Controllers
         //일단 하드코딩. 추후 Json 으로 담당할 것.  (Json 생성용)
         private static SceneBase[] _scenes = {
             new SkillScene(),
+            new InventoryScene(),
             new TitleScene(),
             new PlayerSetupScene(),
             new SkillLearnScene(),
             new MainScene(),
             new BattleScene(),
             new QuestScene(),
-            new StoresScene()
+            new StoresScene(),
         };
 
         private static Skill[] _skills =
