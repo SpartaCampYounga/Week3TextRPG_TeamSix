@@ -132,10 +132,10 @@ namespace TextRPG_TeamSix.Characters
 
         public void Clone(Inventory inventory)
         {
-            Owner = inventory.Owner;
-            foreach(Item item in inventory.ItemList)
+            inventory.Owner = Owner;
+            foreach(Item item in ItemList)
             {
-                ItemList.Add(GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == item.Id));
+                inventory.ItemList.Add(GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == item.Id));
             }
         }
     }

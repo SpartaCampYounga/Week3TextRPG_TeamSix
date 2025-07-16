@@ -30,8 +30,10 @@ namespace TextRPG_TeamSix.Scenes
                 Console.Clear();
                 Console.Write("이름을 입력하세요: ");
                 string input = Console.ReadLine();
-                if(PlayerManager.Instance.InitializePlayerFromSaveData(input))  //데이터에서 못 불러옴
+                
+                if (PlayerManager.Instance.InitializePlayerFromSaveData(input))  //데이터에서 못 불러옴
                 {
+                    Console.Write(PlayerManager.Instance.CurrentPlayer.Name);
                     Console.WriteLine("사용자를 불러옵니다.");
                     // 불러오기 로직 후 바로 MainScene으로 이동
                     Console.ReadKey(true);
@@ -50,6 +52,11 @@ namespace TextRPG_TeamSix.Scenes
                 Console.Clear();
                 Console.WriteLine("사용자를 새로 만듭니다.");
                 Console.WriteLine("");
+
+
+                //이름 입력받아 신규 생성
+                Console.Write("이름을 입력하세요: ");
+                Console.ReadLine();
 
 
                 string jobInput;

@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Characters
 {
@@ -49,6 +51,33 @@ namespace TextRPG_TeamSix.Characters
                     break;
             }
         }
+
+        public Player(Player player) : base(player.Name)
+        {
+            this.Id = player.Id;
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
+            this.Name = player.Name;
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
+            Console.Read();
+            this.HP = player.HP;
+            this.MP = player.MP;
+            this.Attack = player.Attack;
+            this.Defense = player.Defense;
+
+            this.SkillList = new List<Skill>();
+            foreach (Skill skill in player.SkillList)
+            {
+                this.SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
+            }
+
+            this.IsAlive = player.IsAlive;
+            this.JobType = player.JobType;
+            this.NumOfStones = player.NumOfStones;
+            this.Inventory.Clone(player.Inventory);
+        }
+
         public void DisplayPlayerStatus()
         {
             Console.WriteLine("DisplayPlayerStatus");
@@ -92,21 +121,28 @@ namespace TextRPG_TeamSix.Characters
         //SaveData Load시 Deep Copy 위함
         public void Clone(Player player)
         {
-            Id = player.Id;
-            Name = player.Name;
-            HP = player.HP;
-            MP = player.MP;
-            Attack = player.Attack;
-            Defense = player.Defense;
-            SkillList = new List<Skill>();
+            this.Id = player.Id;
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
+            this.Name = player.Name;
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
+            Console.Read();
+            this.HP = player.HP;
+            this.MP = player.MP;
+            this.Attack = player.Attack;
+            this.Defense = player.Defense;
+
+            this.SkillList = new List<Skill>();
             foreach (Skill skill in player.SkillList)
             {
-                SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
+                this.SkillList.Add(GameDataManager.Instance.AllSkills.FirstOrDefault(x => x.Id == skill.Id));
             }
-            IsAlive = player.IsAlive;
-            JobType = player.JobType;
-            Inventory.Clone(player.Inventory);
-            NumOfStones = player.NumOfStones;
+
+            this.IsAlive = player.IsAlive;
+            this.JobType = player.JobType;
+            this.NumOfStones = player.NumOfStones;
+            this.Inventory.Clone(player.Inventory);
         }
 
     }

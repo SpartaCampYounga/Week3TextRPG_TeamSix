@@ -10,11 +10,11 @@
         "$values": []
       }
     },
-    "NumOfStones": 100,
+    "NumOfStones": 197,
     "Gold": 1000,
     "Exp": 0,
     "Id": 1,
-    "Name": "SCV",
+    "Name": "Empty",
     "HP": 300,
     "MP": 100,
     "Attack": 10,

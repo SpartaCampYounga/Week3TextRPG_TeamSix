@@ -13,8 +13,8 @@
     "NumOfStones": 100,
     "Gold": 1000,
     "Exp": 0,
-    "Id": 1,
-    "Name": "SCV",
+    "Id": 0,
+    "Name": "Test",
     "HP": 300,
     "MP": 100,
     "Attack": 10,
@@ -24,9 +24,5 @@
       "$values": []
     },
     "IsAlive": true
-  },
-  "ClearedDungeonList": {
-    "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
-    "$values": []
   }
 }

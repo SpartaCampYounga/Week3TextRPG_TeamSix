@@ -43,8 +43,8 @@ namespace TextRPG_TeamSix.Game
             JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
             // 파일 생성 후 쓰기
             
-            File.WriteAllText(JsonHelper.path + $@"\\save_{SaveData.PlayerToSave.Name}.json", JsonConvert.SerializeObject(SaveData, setting));
-            Console.WriteLine($"{SaveData.PlayerToSave.Name}(이)가 저장되었습니다.");
+            File.WriteAllText(JsonHelper.path + $@"\\save_{SaveData.PlayerSave.Name}.json", JsonConvert.SerializeObject(SaveData, setting));
+            Console.WriteLine($"{SaveData.PlayerSave.Name}(이)가 저장되었습니다.");
         }
         public bool LoadGame(string playerName)
         {
@@ -54,10 +54,12 @@ namespace TextRPG_TeamSix.Game
             {
                 //JsonConvert.PopulateObject(File.ReadAllText(path + $@"\\player_{playerName}.json"), player);
                 SaveData = JsonConvert.DeserializeObject<SaveData>(File.ReadAllText(JsonHelper.path + $@"\\save_{playerName}.json"), setting);
-                SaveData.PlayerToSave.Inventory.SetOwnerAgain(SaveData.PlayerToSave);   //직렬화시 순환 끊었던 것 다시 설정.
+                SaveData.PlayerSave.Inventory.SetOwnerAgain(SaveData.PlayerSave);   //직렬화시 순환 끊었던 것 다시 설정.
 
 
                 Console.WriteLine($"SaveData를 불러왔습니다.");
+
+                PlayerManager.Instance.InitializePlayerFromSaveData(SaveData.PlayerSave.Name);
 
                 return true;
             }
