@@ -1,4 +1,5 @@
-﻿using TextRPG_TeamSix.Battle.Actions;
+﻿using System.Text;
+using TextRPG_TeamSix.Battle.Actions;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Scenes;
@@ -105,25 +106,21 @@ internal class BattleScene : SceneBase
             }
         }
     }
-
     private void DisplayStatus()
     {
-        BattleLog.Log("");
-        foreach (var e in enemies)
-        {
-            string status = e.IsAlive ? $"(HP: {e.HP})" : "(죽음)";
-            BattleLog.Log($"{e.Name} {status}");
-        }
+        Console.Clear(); // 매 턴마다 깔끔하게 새로 출력
 
-        BattleLog.Log("");
-        BattleLog.Log($"{player.Name} (HP: {player.HP}/{player.HP})");
-        BattleLog.Log("");
-        BattleLog.Log("1. 공격 | 2. 스킬 공격 | 3. 아이템 사용 | 4. 도망");
+        // 왼쪽 정보 UI
+        BattleUI.BattleStartInfo();
+        BattleUI.DrawPlayerInfo(player);
+        BattleUI.DrawEnemyList(enemies);
+        BattleUI.DrawActionMenu();
+
     }
+
 
     private string GetPlayerInput()
     {
-        Console.Write(">> ");
         return Console.ReadLine();
     }
 
