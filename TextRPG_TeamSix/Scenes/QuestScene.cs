@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Quest;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
 {
@@ -13,30 +14,30 @@ namespace TextRPG_TeamSix.Scenes
     internal class QuestScene : SceneBase
     {
         public override SceneType SceneType => SceneType.Quest;
+        private int input;
 
 
         public override void DisplayScene() //출력 하는 시스템
         {
             Console.Clear();
             Console.WriteLine("QuestScene");
+            Console.WriteLine("0. 나가기");
 
 
-            int input = Console.Read();
+            Console.WriteLine("번호를 입력해 주세요 : ");
 
+            input = InputHelper.GetIntegerRange(0, 2);
+            HandleInput();
+        }
+
+        public override void HandleInput()
+        {
             switch (input)
             {
                 case 0:
                     SceneManager.Instance.SetScene(SceneType.Main);
                     break;
-                    //case 1:
-                    //    SceneManager.Instance.SetScene(SceneType.퀘스트 수락);
-                    //    break;
             }
-        }
-
-        public override void HandleInput() //입력 받고 실행하는 시스템
-        {
-
         }
     }
 }
