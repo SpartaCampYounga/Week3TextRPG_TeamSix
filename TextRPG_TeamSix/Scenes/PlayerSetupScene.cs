@@ -65,14 +65,14 @@ namespace TextRPG_TeamSix.Scenes
                     Console.Write("번호를 입력하세요: ");
                     jobInput = Console.ReadLine();
 
-                    if (jobInput == "1" || jobInput == "2" || jobInput == "3" || jobInput == "4")
+                    if (jobInput == "1" || jobInput == "2") // || jobInput == "3" || jobInput == "4"
                     {
                         break;
                     }
                     else
                     {
                         Console.WriteLine("");
-                        Console.WriteLine("잘못된 입력 입니다. 1~4번 중에서 선택해주세요.");
+                        Console.WriteLine("잘못된 입력 입니다. 1~2번 중에서 선택해주세요.");
                     }
                 }
 

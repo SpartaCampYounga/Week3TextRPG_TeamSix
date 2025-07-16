@@ -24,8 +24,8 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("");
             Console.WriteLine("1. 스킬보기");
             Console.WriteLine("2. 퀘스트");
-            Console.WriteLine("3. 던전");
-            Console.WriteLine("4. 퀘스트");
+            Console.WriteLine("3. [미구현]");
+            Console.WriteLine("4. [미구현]");
             Console.WriteLine("");
             Console.Write("번호를 입력하세요 : ");
 

@@ -52,9 +52,9 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.ResetColor();// 그린컬러 초기화
 
-            Console.WriteLine("번호를 입력해 주세요 : ");
+            Console.Write("번호를 입력해 주세요 : ");
 
-            input = InputHelper.GetIntegerRange(0, 2);
+            input = InputHelper.GetIntegerRange(1, 3);
             HandleInput();
         }
 
