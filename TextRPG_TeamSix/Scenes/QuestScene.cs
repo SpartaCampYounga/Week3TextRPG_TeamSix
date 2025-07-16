@@ -21,12 +21,28 @@ namespace TextRPG_TeamSix.Scenes
         {
             Console.Clear();
             Console.WriteLine("QuestScene");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(new string('=',120));
+            Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
+            Console.WriteLine(new string('=', 120));
+            Console.ResetColor();
+
+
+            Console.WriteLine("퀘스트 배치구역");
+
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(new string('=', 120));
+            Console.ResetColor();
+
+
+
+
             Console.WriteLine("0. 나가기");
 
 
             Console.WriteLine("번호를 입력해 주세요 : ");
-
-            input = InputHelper.GetIntegerRange(0, 2);
+            input = InputHelper.GetIntegerRange(0, 1);
             HandleInput();
         }
 
