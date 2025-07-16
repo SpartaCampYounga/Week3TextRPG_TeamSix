@@ -64,13 +64,6 @@ namespace TextRPG_TeamSix.Characters
                 {
                     endIndex = ItemList.Count;
                 }
-                for(int i = startIndex; i < endIndex; i++)
-                {
-                    Item item = ItemList[i];
-                    string equippedStatus = item.IsEquipped? "[E]" : "[ ]"; // 아이템이 장착되었는지 여부 표시
-                    Console.WriteLine($"{item.Id}. {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
-
-                }
                 else
                 {
                     Console.WriteLine("아이템 ID 입력 :");
@@ -88,6 +81,14 @@ namespace TextRPG_TeamSix.Characters
                         continue; // 잘못된 입력 시 다시 아이템 목록 출력
                     }
                 }
+                for (int i = startIndex; i < endIndex; i++)
+                {
+                    Item item = ItemList[i];
+                    string equippedStatus = item.IsEquipped? "[E]" : "[ ]"; // 아이템이 장착되었는지 여부 표시
+                    Console.WriteLine($"{item.Id}. {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
+
+                }
+
 
                     Console.WriteLine("");
                 Console.WriteLine("-------------------------------------");
