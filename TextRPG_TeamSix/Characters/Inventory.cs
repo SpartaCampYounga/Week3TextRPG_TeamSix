@@ -102,18 +102,9 @@ namespace TextRPG_TeamSix.Characters
 
 
         }
-        public void EquipItem(uint itemID)
+        public void EquipItem(uint itemId)
         {
-            Console.WriteLine("장착할 아이템의 ID를 입력하세요 :");
 
-            int itemId;
-            bool isValid = int.TryParse(Console.ReadLine(), out itemId);
-
-            if (!isValid)
-            {
-                Console.WriteLine("숫자를 올바르게 입력해주세요.");
-                return;
-            }
 
             Item? item = GetItem((uint)itemId);
             if (item == null)
