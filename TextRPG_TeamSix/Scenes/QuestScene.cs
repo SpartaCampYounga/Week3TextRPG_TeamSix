@@ -45,14 +45,23 @@ namespace TextRPG_TeamSix.Scenes
 
 
 
+           
+            QuestTest = GameDataManager.Instance.AllQuests; // QuestManager에서 모든 퀘스트 리스트를 가져옴
 
- 
-
-
-
-
-
-
+            int idx = 1;
+            foreach (var quest in QuestTest)
+            {
+                string reward = $"{quest.RewardGold}골드, {quest.RewardExp}경험치";
+                string progress = "미완료"; // 진행사항은 추후 구현
+                string row = "";
+                row += FormatUtility.AlignWithPadding(idx.ToString(), 5) + " | ";
+                row += FormatUtility.AlignWithPadding(quest.QuestType.ToString(), 15) + " | ";
+                row += FormatUtility.AlignWithPadding(quest.Description, 30) + " | ";
+                row += FormatUtility.AlignWithPadding(reward, 30) + " | ";
+                row += FormatUtility.AlignWithPadding(progress, 0);
+                Console.WriteLine(row);
+                idx++;
+            }
 
 
 

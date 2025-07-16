@@ -93,5 +93,14 @@ namespace TextRPG_TeamSix.Controllers
                 AllDungeons.Add(dungeon);
             }
         }
+
+        //퀘스트 초기화
+        public void InitializeQuests(Quest[] quests)
+        {
+            foreach (Quest quest in quests)
+            {
+                AllQuests.Add(quest);
+            }
+        }
     }
 }
