@@ -18,6 +18,9 @@ namespace TextRPG_TeamSix.Characters
         [JsonIgnore]
         
         public Player Owner { get; private set; }
+
+        public Character Character { get; private set; } 
+        public Weapon InvenWeapon { get; private set; } 
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
         public Inventory(Player owner) 
@@ -42,7 +45,6 @@ namespace TextRPG_TeamSix.Characters
                 if (ItemList.Count == 0)
                 {
                     Console.WriteLine("인벤토리가 비어 있습니다.");
-                    return;
                 }
                 else
                 {
@@ -55,6 +57,7 @@ namespace TextRPG_TeamSix.Characters
                         Console.ReadKey();
                     }
                 }
+                Console.WriteLine("-------------------------------------");
                 // 페이지에 맞게 아이템 출력
 
                 int startIndex = indexPage * itemsPerPage;
@@ -123,8 +126,6 @@ namespace TextRPG_TeamSix.Characters
         }
         public void EquipItem(uint itemId)
         {
-
-
             Item? item = GetItem((uint)itemId);
             if (item == null)
             {
@@ -135,18 +136,17 @@ namespace TextRPG_TeamSix.Characters
             {
                 item.IsEquipped = false; // 아이템이 장착되어 있으면 장착 해제
                 Console.WriteLine($"{item.Name}은(는) 이미 장착되어 있습니다.");
+               
                 return;
             }
-
-
-            //foreach (var otherItem in ItemList)
-            //{
-            //    if(otherItem.IsEquipped && otherItem.GetType == item.Type)
-            //    {
-            //        otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
-            //        Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
-            //    }
-            //}
+            foreach (var otherItem in ItemList)
+            {
+                if (otherItem.IsEquipped && otherItem.Type == item.Type)
+                {
+                    otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
+                    Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
+                }
+            }
 
             item.IsEquipped = true; // 아이템 장착
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
