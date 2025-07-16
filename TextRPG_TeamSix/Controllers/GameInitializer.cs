@@ -29,6 +29,7 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Skill[] _skills =
         {
+            //이름: 15자, 설명 30자 (한글은 2자, 영문은 1자, 특문 포함)
             new AttackSkill(1, "스매시", "강하게 내려칩니다.", 10, 3, SkillType.Attack, 20),
             new AttackSkill(2, "후려치기", "강하게 후려칩니다.", 5, 1, SkillType.Attack, 10),
             new AttackSkill(3, "파이어볼", "불을 소환합니다.", 20, 3, SkillType.Attack, 30),
