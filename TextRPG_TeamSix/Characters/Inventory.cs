@@ -136,25 +136,18 @@ namespace TextRPG_TeamSix.Characters
         }
         public void PurchaseItem(uint itemId)
         {
+            // 구매 bool 체크는 상점 SellToPlayer로 이동
+            // 예: 플레이어의 골드가 충분한지 확인하고, 아이템을 인벤토리에 추가
             Item? item = GetItem(itemId);
             if (item == null)
             {
-               
                 Console.WriteLine("해당 아이템이 존재하지 않습니다.");
                 return;
             }
-            // 구매 로직 추가
-            // 예: 플레이어의 골드가 충분한지 확인하고, 아이템을 인벤토리에 추가
-            if (Owner.Gold >= item.Price)
-            {
-                Owner.EarnGold(0 - item.Price);
-                ItemList.Add(item);
-                Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
-            }
-            else
-            {
-                Console.WriteLine("골드가 부족합니다.");
-            }
+            
+            Owner.EarnGold(0 - item.Price);
+            ItemList.Add(item);
+            Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
         }
         public void SellItem(uint itemId)
         {
@@ -172,7 +165,6 @@ namespace TextRPG_TeamSix.Characters
             Owner.EarnGold(0 + item.Price);
             ItemList.Remove(item);
             Console.WriteLine($"{item.Name}을 판매 했습니다.");
-
         }
         public void SetOwnerAgain(Player player)    //SaveManager에서만 호출될것!
         {

@@ -19,5 +19,6 @@ namespace TextRPG_TeamSix.Enums
         Quest,
         Inventory,
         Store,
+        Dungeon
     }
 }

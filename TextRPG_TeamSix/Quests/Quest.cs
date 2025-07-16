@@ -8,18 +8,20 @@ using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Utilities;
 
-namespace TextRPG_TeamSix.Quest
+namespace TextRPG_TeamSix.Quests
 {
     internal abstract class Quest
     {
+        public uint Id { get; protected set; }
         public QuestType QuestType { get; }
         public string Description { get; protected set; }
         public uint RewardGold { get; private set; }
         public uint RewardExp { get; private set; }
         //public void Reward(Player player);
 
-        public Quest(QuestType questType, string description, uint rewardGold, uint rewardExp)
+        public Quest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp)
         {
+            Id = id;
             QuestType = questType;
             Description = description;
             RewardGold = rewardGold;
@@ -33,6 +35,7 @@ namespace TextRPG_TeamSix.Quest
         public override string ToString()
         {
             string display = "";
+            display += FormatUtility.AlignWithPadding(Id.ToString(), 3) + " | ";
             display += FormatUtility.AlignWithPadding(QuestType.ToString(), 5) + " | ";
             display += FormatUtility.AlignWithPadding(Description, 5) + " | ";
             display += FormatUtility.AlignWithPadding(RewardGold.ToString(), 5) + " | ";

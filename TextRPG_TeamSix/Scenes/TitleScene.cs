@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
 {
@@ -12,6 +13,7 @@ namespace TextRPG_TeamSix.Scenes
     internal class TitleScene : SceneBase
     {
         public override SceneType SceneType => SceneType.Title;
+        private int input;
 
 
         public override void DisplayScene() //출력 하는 시스템
@@ -37,7 +39,6 @@ namespace TextRPG_TeamSix.Scenes
                                   ██║╚██╗██║██║   ██║    ██╔══╝  ██╔══██║ ██║    ██║   
                                   ██║ ╚████║╚██████╔╝    ███████║██║  ██║████║   ██║   
                                   ╚═╝  ╚═══╝ ╚═════╝     ╚══════╝╚═╝  ╚═╝╚═══╝   ╚═╝   
-            
             ");
             Console.WriteLine("");
             Console.WriteLine(lineBar);
@@ -45,37 +46,29 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("");
             Console.WriteLine("");
 
-            Console.Write(
-                "1. 시작\n" +
-                "0. 종료"
-                );
+            Console.WriteLine("1. 시작");
+            Console.WriteLine("2. 종료");
+
 
             Console.ResetColor();// 그린컬러 초기화
 
+            Console.Write("번호를 입력해 주세요 : ");
 
-            Console.Write("\n번호를 입력하세요: ");
-            string? input = Console.ReadLine();
-
-            if (input == "1")
-            {
-                SceneManager.Instance.SetScene(SceneType.PlayerSetup); // Controllers 네임스페이스에서 바로 사용
-            }
-            else if (input == "0")
-            {
-                Console.WriteLine("게임을 종료합니다.");
-                Environment.Exit(0);
-            }
-            else
-            {
-                Console.WriteLine("잘못된 입력 입니다.");
-            }
-
-
+            input = InputHelper.GetIntegerRange(1, 3);
+            HandleInput();
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
         {
-            
+            switch (input)
+            {
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                case 1:
+                    SceneManager.Instance.SetScene(SceneType.PlayerSetup);
+                    break;
+            }
         }
     }
 }

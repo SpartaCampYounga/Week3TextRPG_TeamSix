@@ -10,9 +10,9 @@ namespace TextRPG_TeamSix
         static void Main(string[] args)
         {
             GameInitializer.InitializeAll();
-            SceneManager.Instance.SetScene(SceneType.Inventory);
+            //SceneManager.Instance.SetScene(SceneType.Title);
 
-            //SceneManager.Instance.SetScene(SceneType.Battle);
+            SceneManager.Instance.SetScene(SceneType.Battle);
         }
     }
 }
