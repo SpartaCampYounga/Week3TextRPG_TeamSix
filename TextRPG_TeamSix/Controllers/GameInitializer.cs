@@ -23,8 +23,8 @@ namespace TextRPG_TeamSix.Controllers
             new SkillLearnScene(),
             new MainScene(),
             new BattleScene(),
-            new QuestScene(),
-            new StoresScene(StoreType.ArmorStore)
+            new QuestScene()
+           //new StoresScene()
         };
 
         private static Skill[] _skills =
