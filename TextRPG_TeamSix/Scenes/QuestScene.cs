@@ -25,6 +25,18 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('=',120));
             Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
             Console.WriteLine(new string('=', 120));
+
+
+            // Hard던전 클리어  | Hard던전을 소탕하세요. | 보상: 1000골드, 100경험치
+            string header = "";
+            header += FormatUtility.AlignWithPadding("퀘스트 목표", 15) + " | ";
+            header += FormatUtility.AlignWithPadding("내용", 30) + " | ";
+            header += FormatUtility.AlignWithPadding("보상", 30) + " | ";
+
+            Console.WriteLine(header);
+            Console.WriteLine(new string('-', 120));
+
+
             Console.ResetColor();
 
 
