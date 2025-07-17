@@ -15,7 +15,6 @@ namespace TextRPG_TeamSix
         {
             GameInitializer.InitializeAll();
 
-
             //SceneManager.Instance.SetScene(SceneType.Title);
            SceneManager.Instance.SetScene(SceneType.Title);
             //SceneManager.Instance.SetScene(SceneType.Battle);
@@ -33,10 +32,12 @@ namespace TextRPG_TeamSix
             //}else
             //{
             //    Console.WriteLine(id);
-            //}
-            //InputHelper.WaitResponse();
 
             SceneManager.Instance.SetScene(SceneType.Title);
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
         }
     }
