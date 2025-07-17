@@ -1,4 +1,5 @@
-﻿using TextRPG_TeamSix.Characters;
+﻿using Newtonsoft.Json;
+using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
@@ -19,6 +20,7 @@ namespace TextRPG_TeamSix.Dungeons
         public List<Enemy> Enemies { get; private set; }
         //public DungeonType DungeonType { get; private set; } //던전 타입 별로 구현하실거면...
 
+        [JsonConstructor]
         public Dungeon (uint id,string name, uint requiredDefense, uint rewardGold, uint rewardExp, Gatcha rewardGatcha, List<Enemy> enemies)
         {
             Id = id;

@@ -10,16 +10,18 @@ namespace TextRPG_TeamSix.Characters
     {
         [JsonIgnore]
         public Player Owner { get; private set; }
-
-        public Character Character { get; private set; }
-        public Weapon InvenWeapon { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
         public Inventory(Player owner)
         {
             Owner = owner;
         }
-       public void DisplayItems()
+        [JsonConstructor]
+        public Inventory(List<Item> itemList)
+        {
+            ItemList = itemList ?? new List<Item>();
+        }
+        public void DisplayItems()
 {
          int indexPage = 0;
         int itemsPerPage = 5;
@@ -114,7 +116,7 @@ namespace TextRPG_TeamSix.Characters
                     Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
                     if (otherItem.Type == Item.ItemType.Weapon)
                     {
-                        InvenWeapon = null; // 무기 장착 해제
+                        //InvenWeapon = null; // 무기 장착 해제
                     }
                 }
             }

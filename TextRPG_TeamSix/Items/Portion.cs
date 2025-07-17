@@ -45,7 +45,7 @@ namespace TextRPG_TeamSix.Items
         public override void Clone<T>(T item)
         {
             base.Clone(item);
-            if (item is Portion portion)    //패턴매칭 Younga TIL
+            if (item is Portion portion)
             {
                 this.RestoreType = portion.RestoreType;
                 this.RestoreAmount = portion.RestoreAmount;
