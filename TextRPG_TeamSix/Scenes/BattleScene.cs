@@ -24,6 +24,7 @@ internal class BattleScene : SceneBase
         BattleLog.Log($"MP: {A.MP}");
         BattleLog.Log($"공격력: {A.Attack}");
         BattleLog.Log($"방어력: {A.Defense}");
+        BattleLog.Log($"행운: {A.Luck}");
     }
 
     public override void DisplayScene()
@@ -82,14 +83,16 @@ internal class BattleScene : SceneBase
     private void StartBattleLoop()
     {
         Console.Clear();
-        BattleLog.BattleStart();
+        BattleLog.DrawLogBox();     // 박스 먼저 그림
+        BattleLog.ClearLogs();      // 로그 내부 클리어
+        BattleLog.BattleStart();    // 로그 시작 메세지 출력
 
         while (true)
         {
-            DisplayStatus();
+            DisplayStatus();        // UI 그리기
             string input = GetPlayerInput();
 
-            bool playerActed = PlayerTurn(input); // ← 성공한 경우에만
+            bool playerActed = PlayerTurn(input);
 
             if (!player.IsAlive)
             {
@@ -116,9 +119,10 @@ internal class BattleScene : SceneBase
         }
     }
 
+
     private void DisplayStatus()
     {
-        Console.Clear(); // 매 턴마다 깔끔하게 새로 출력
+        // 매 턴마다 깔끔하게 새로 출력
 
         BattleUI.BattleStartInfo();
         BattleUI.DrawPlayerInfo(player);
