@@ -30,7 +30,7 @@ namespace TextRPG_TeamSix.Utilities
                 {
                     if(selectedIndex == i)  //현재 항목이 선택된 경우
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine($"‣ {list[i]}");
                         Console.ResetColor();
                     }

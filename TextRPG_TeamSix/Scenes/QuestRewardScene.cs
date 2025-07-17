@@ -13,9 +13,9 @@ using TextRPG_TeamSix.Utilities;
 namespace TextRPG_TeamSix.Scenes
 {
     //모든 씬이 상속 받는 추상 클래스
-    internal class QuestScene : SceneBase
+    internal class QuestRewardScene : SceneBase
     {
-        public override SceneType SceneType => SceneType.Quest;
+        public override SceneType SceneType => SceneType.QuestReward;
 
         // 필드로 선언
         private List<Quest> acceptedQuests = new List<Quest>();
@@ -28,7 +28,7 @@ namespace TextRPG_TeamSix.Scenes
             new Quest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, 1, 3, 0, false)
                 );
             acceptedQuests.Add(
-            new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, 1, 3, 0, false)
+            new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, 1, 3, 0, true)
                 );
 
 
@@ -36,7 +36,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("QuestScene");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', 120));
-            Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
+            Console.WriteLine("완료한 퀘스트 보상을 받을 수 있습니다.");
             Console.WriteLine(new string('=', 120));
             // 헤더
             string header = "";
@@ -51,18 +51,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.ResetColor();
 
 
-            foreach (Quest quest in acceptedQuests)
-            {
-                Console.WriteLine(quest);
-            }
-            Console.WriteLine();
-            List<string> selections = new List<string>()
-            { 
-                "새 퀘스트 받기",
-                "퀘스트 완료 보상 확인"
-            };
-
-            input = TextDisplayer.PageNavigation(selections);
+            input = TextDisplayer.PageNavigation(acceptedQuests);
             HandleInput();
 
             //while (true)
@@ -172,15 +161,20 @@ namespace TextRPG_TeamSix.Scenes
             switch (input)
             {
                 case -1:
-                    SceneManager.Instance.SetScene(SceneType.Main);
-                    break;
-                case 0:
-                    SceneManager.Instance.SetScene(SceneType.QuestAccept);
-                    break;
-                case 1:
-                    SceneManager.Instance.SetScene(SceneType.QuestReward);
+                    SceneManager.Instance.SetScene(SceneType.Quest);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 default:
+                    if (acceptedQuests[input].IsRewarded())
+                    {
+                        acceptedQuests.Remove(acceptedQuests[input]);   //GamaManager데이터 생기면 거기서 지우는 로직
+                        Console.WriteLine("퀘스트를 완료하였습니다.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("퀘스트를 완료할 수 없습니다.");
+                    }
+                    InputHelper.WaitResponse();
+                    SceneManager.Instance.SetScene(SceneType.QuestReward);
                     break;
             }
         }

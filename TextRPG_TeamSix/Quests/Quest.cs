@@ -21,17 +21,22 @@ namespace TextRPG_TeamSix.Quests
         public uint RewardGold { get; protected set; }
         public uint RewardExp { get; protected set; }
         public uint GoalId { get; protected set; } // 퀘스트에 해당하는 던전
+        public uint GoalCount { get; protected set; }
         public uint Count { get; protected set; }
+        public bool IsFinished { get; protected set; }  //끝냇냐?
 
-        public Quest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp, uint goalId, uint count)
+        [JsonConstructor]
+        public Quest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp, uint goalId, uint goalCount, uint count, bool isFinished)
         {
             Id = id;
             QuestType = questType;
             Description = description;
             RewardGold = rewardGold;
             RewardExp = rewardExp;
+            GoalCount = goalCount;
             GoalId = goalId;
             Count = count;
+            IsFinished = isFinished;
         }
 
 
@@ -41,8 +46,8 @@ namespace TextRPG_TeamSix.Quests
         public override string ToString()
         {
             string goalName = "";
-            
-            switch (QuestType)  
+
+            switch (QuestType)
             {
                 case QuestType.Enemy:
                     Enemy enemy = GameDataManager.Instance.AllEnemies.FirstOrDefault(x => x.Id == GoalId);
@@ -55,14 +60,36 @@ namespace TextRPG_TeamSix.Quests
             }
 
             string display = "";
-            display += FormatUtility.AlignWithPadding(Id.ToString(), 3) + " | ";
             display += FormatUtility.AlignWithPadding(QuestType.ToString(), 10) + " | ";
             display += FormatUtility.AlignWithPadding(Description, 30) + " | ";
             display += FormatUtility.AlignWithPadding(RewardGold.ToString(), 10) + " | ";
             display += FormatUtility.AlignWithPadding(RewardExp.ToString(), 10) + " | ";
             display += FormatUtility.AlignWithPadding(goalName, 10) + " | ";
-            display += FormatUtility.AlignWithPadding(Count.ToString(), 5) + " | ";
+            display += FormatUtility.AlignWithPadding(Count.ToString() + "/" + GoalCount.ToString(), 10);
             return display;
+        }
+        public void CountGoal()     //호출될때 GoalId체크하고 호출할것. //아직은.. 
+        {
+            Count--;
+
+            if (Count == 0)
+            {
+                IsFinished = true;
+            }
+        }
+        public bool IsRewarded()
+        {
+            Player player = PlayerManager.Instance.CurrentPlayer;
+            if (IsFinished)
+            { 
+                player.EarnGold(RewardGold);
+                player.EarnExp(RewardExp);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
