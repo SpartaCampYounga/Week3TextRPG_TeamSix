@@ -36,11 +36,12 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine($"상점 아이템 수: {currentStore.ItemList.Count}");
 
 
-            foreach (var item in currentStore.ItemList)
-                {
-                    Console.WriteLine($"{item.Name} : {item.Description} (가격: {item.Price}G)");
-                }
-            
+            for (int i = 0; i < currentStore.ItemList.Count; i++)
+            {
+                Item item = currentStore.ItemList[i];
+                Console.WriteLine($"{i + 1}. {item.Name} : {item.Description} (가격: {item.Price}G)");
+            }
+
 
             Console.WriteLine("\n원하는 아이템의 번호를 입력하세요 (0: 나가기, 방향키로 페이지 이동):");
         }
