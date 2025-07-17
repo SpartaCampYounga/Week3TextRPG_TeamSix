@@ -8,6 +8,7 @@ using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Utils;
 using System.Media;
+using TextRPG_TeamSix.Controllers;
 
 internal class BattleScene : SceneBase
 {
@@ -69,6 +70,7 @@ internal class BattleScene : SceneBase
             switch (input)
             {
                 case "1":
+                    SoundManager.Stop();
                     Console.Clear();
                     IntroScene intro = new IntroScene();
                     intro.DisplayScene();
@@ -146,6 +148,7 @@ internal class BattleScene : SceneBase
         BattleUI.DrawPlayerInfo(player);
         BattleUI.DrawEnemyList(enemies);
         BattleUI.DrawActionMenu();
+        SoundManager.Play("E:\\7.Data\\1.bgm\\출정(mix).wav");
     }
 
     private string GetPlayerInput()
