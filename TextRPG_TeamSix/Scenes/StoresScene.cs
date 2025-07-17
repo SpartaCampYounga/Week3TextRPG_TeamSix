@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
@@ -15,12 +16,12 @@ namespace TextRPG_TeamSix.Scenes
 {
     internal class StoresScene : SceneBase
     {
-        public override SceneType SceneType => SceneType.Store; // Enum-SceneType에 원하는 enum값 생성.
+        public override SceneType SceneType => SceneType.Store;
 
         private Store currentStore; // 현재 상점
-        public StoresScene() 
+        public StoresScene()
         {
-            currentStore = new Store(); 
+            currentStore = new Store();
         }
         private void PrintItems()
         {
@@ -33,30 +34,72 @@ namespace TextRPG_TeamSix.Scenes
             Console.Clear();
             Console.WriteLine("===== 상점 =====");
             Console.WriteLine("");
-            Console.WriteLine($"상점 아이템 수: {currentStore.ItemList.Count}");
+            Player player = PlayerManager.Instance.CurrentPlayer;
+            Console.WriteLine($"상점 아이템 수: {currentStore.ItemList.Count}"); //테스트로 아이템 갯수 출력넣음
 
 
             for (int i = 0; i < currentStore.ItemList.Count; i++)
             {
                 Item item = currentStore.ItemList[i];
-                Console.WriteLine($"{i + 1}. {item.Name} : {item.Description} (가격: {item.Price}G)");
+                bool alreadyOwned = player.Inventory.ItemList.Any(x => x.Id == item.Id); // 구매 여부 체크
+                Console.WriteLine($"{i + 1}. {item.Name} : {item.Description} (가격: {item.Price}G) {(alreadyOwned ? "(구매완료)" : "")}");
             }
 
 
-            Console.WriteLine("\n원하는 아이템의 번호를 입력하세요 (0: 나가기, 방향키로 페이지 이동):");
+            Console.WriteLine("\n원하는 아이템의 번호를 입력하세요 (0: 나가기, 방향키로 페이지 이동):"); //페이지네비게이션은 나중에 추가예정   
         }
         public override void DisplayScene() //출력 하는 시스템
         {
-                PrintItems();
+            PrintItems();
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
         {
-            var input = Console.ReadKey(true);
-
-            if (input.Key == ConsoleKey.D0 || input.Key == ConsoleKey.NumPad0)
+            Player player = PlayerManager.Instance.CurrentPlayer;
+            while (true)
             {
-                SceneManager.Instance.SetScene(SceneType.Main);
+                string input = Console.ReadLine(); // 사용자 입력 받기
+
+                if (uint.TryParse(input, out uint itemId)) // 입력이 숫자인지 확인
+                {
+                    if (itemId == 0)
+                    {
+                        SceneManager.Instance.SetScene(SceneType.Main); // 0 입력 시 마을로 이동
+                        return;
+                    }
+                    if (itemId > currentStore.ItemList.Count) // 입력된 아이템 ID가 상점 아이템 목록의 범위를 벗어나는지 확인
+                    {
+                        Console.WriteLine("잘못된 입력입니다. 목록에 있는 아이템 번호를 입력해주세요.");
+                        continue;
+                    }
+
+                    itemId--; // 아이템 ID는 0부터 시작하므로 입력값에서 1을 빼줌
+                    Item selectedItem = currentStore.ItemList[(int)itemId]; // 선택된 아이템 가져오기
+
+                    if (player.Inventory.ItemList.Any(x => x.Id == selectedItem.Id)) // 아이템이 이미 인벤로이에 있는지 확인
+                    {
+                        Console.WriteLine("이미 해당 아이템을 보유 중입니다. 구매할 수 없습니다.");
+                        continue;
+                    }
+                    bool result = currentStore.SellToPlayer(selectedItem);
+
+                    if (result)
+                    {
+                        // 플레이어 인벤토리에 아이템 추가
+                        player.Inventory.PurchaseItem(selectedItem.Id);
+                    }
+                    else
+                    {
+                        Console.WriteLine("구매에 실패했습니다. (골드 부족 또는 기타 사유)");
+                    }
+
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("잘못된 입력입니다. 숫자를 입력해주세요.");
+
+                }
             }
         }
     }
