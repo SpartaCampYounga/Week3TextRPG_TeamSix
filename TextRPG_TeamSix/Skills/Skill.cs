@@ -7,6 +7,7 @@ using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Utilities;
 using TextRPG_TeamSix.Controllers;
+using Newtonsoft.Json;
 
 namespace TextRPG_TeamSix.Skills
 {
@@ -20,6 +21,7 @@ namespace TextRPG_TeamSix.Skills
         public SkillType SkillType { get; protected set; }
         public uint Amount { get; protected set; }
 
+        [JsonConstructor]
         public Skill(uint id, string name, string description, uint consumeMP, uint requiredStones, SkillType skillType, uint amount) 
         { 
             Id = id;
