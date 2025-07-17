@@ -19,77 +19,78 @@ namespace TextRPG_TeamSix.Characters
         {
             Owner = owner;
         }
-        public void DisplayItems()
+       public void DisplayItems()
+{
+         int indexPage = 0;
+        int itemsPerPage = 5;
+
+        while (true)
         {
-            int indexPage = 0;
-            int itemsPerPage = 5;
+            Console.Clear();
+            Console.WriteLine("==== 인벤토리 ====");
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine(" ID | [E] | 이름 | 설명 | 가격 ");
+            Console.WriteLine("-------------------------------------");
 
-            while (true)
+            if (ItemList.Count == 0)
             {
-                Console.Clear();
-                Console.WriteLine("==== 인벤토리 ====");
-                Console.WriteLine(" ID | [E] | 이름 | 설명 | 가격 ");
+                Console.WriteLine("인벤토리가 비어 있습니다.");
+            }
+            else
+            {
+                // 페이지별 출력
+                int startIndex = indexPage * itemsPerPage;
+                int endIndex = Math.Min(startIndex + itemsPerPage, ItemList.Count);
+    
+                for (int i = startIndex; i < endIndex; i++)
+                {
+                    Item item = ItemList[i];
+                    string equippedStatus = item.IsEquipped ? "[E]" : " ";
+                    Console.WriteLine($"{item.Id} | {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
+                }
+
                 Console.WriteLine("-------------------------------------");
-
-                if (ItemList.Count == 0)
+                Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] | [숫자 입력]  장착 | [Enter]  나가기");
+            }
+    
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+    
+            if (keyInfo.Key == ConsoleKey.RightArrow)
+            {
+                indexPage = (indexPage + 1) % ((ItemList.Count + itemsPerPage - 1) / itemsPerPage);
+            }
+            else if (keyInfo.Key == ConsoleKey.LeftArrow)
+            {
+                indexPage--;
+                if (indexPage < 0)
                 {
-                    Console.WriteLine("인벤토리가 비어 있습니다.");
-                }
-                else
-                {
-                    // 페이지별 출력
-                    int startIndex = indexPage * itemsPerPage;
-                    int endIndex = Math.Min(startIndex + itemsPerPage, ItemList.Count);
-
-                    for (int i = startIndex; i < endIndex; i++)
-                    {
-                        Item item = ItemList[i];
-                        string equippedStatus = item.IsEquipped ? "[E]" : " ";
-                        Console.WriteLine($"{item.Id} | {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
-                    }
-
-                    Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("← 이전 페이지 | → 다음 페이지 | 숫자 입력 → 장착 | Enter → 나가기");
-                }
-
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-
-                if (keyInfo.Key == ConsoleKey.RightArrow)
-                {
-                    indexPage = (indexPage + 1) % ((ItemList.Count + itemsPerPage - 1) / itemsPerPage);
-                }
-                else if (keyInfo.Key == ConsoleKey.LeftArrow)
-                {
-                    indexPage--;
-                    if (indexPage < 0)
-                    {
-                        indexPage = (ItemList.Count - 1) / itemsPerPage;
-                    }
-                }
-                else if (keyInfo.Key == ConsoleKey.Enter)
-                {
-                    SceneManager.Instance.SetScene(SceneType.Main);
-                    return;
-                }
-                else
-                {
-                    // 숫자 키 입력 처리
-                    Console.Write("장착할 아이템 ID 입력: ");
-                    string input = Console.ReadLine();
-                    if (uint.TryParse(input, out uint itemId))
-                    {
-                        EquipItem(itemId);
-                        Console.WriteLine("아무 키나 누르면 계속...");
-                        Console.ReadKey(true);
-                    }
-                    else
-                    {
-                        Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
-                        Console.ReadKey(true);
-                    }
+                    indexPage = (ItemList.Count - 1) / itemsPerPage;
                 }
             }
+            else if (keyInfo.Key == ConsoleKey.Enter)
+            {
+                SceneManager.Instance.SetScene(SceneType.Main);
+                return;
+            }
+            else
+            {
+                // 숫자 키 입력 처리
+                Console.Write("장착할 아이템 ID 입력: ");
+                string input = Console.ReadLine();
+            if (uint.TryParse(input, out uint itemId))
+            {
+                EquipItem(itemId);
+                Console.WriteLine("아무 키나 누르면 계속...");
+                Console.ReadKey(true);
+            }
+            else
+            {
+                Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
+                Console.ReadKey(true);
+            }
         }
+    }
+}
 
         public void EquipItem(uint itemId)
         {
