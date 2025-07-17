@@ -3,11 +3,88 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Controllers;
+using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Utilities
 {
     internal static class TextDisplayer
     {
-        //아이템 리스트 출력 및 화살표 입력 받아 변동시키기
+        public static int PageNavigation<T>(List<T> list) //호출되고 나서 콘솔 클리어됨. //-1 : 아이템 선택 안하고 탈출함
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+            //header는 밖에서 출력하고 들어올 것
+
+            //현재 위치 저장
+            int currentLeft = Console.CursorLeft;
+            int currentTop = Console.CursorTop;
+
+            int selectedIndex = 0;
+            ConsoleKey key;
+
+            do
+            {
+                for(int i = 0; i < list.Count(); i++)
+                {
+                    if(selectedIndex == i)  //현재 항목이 선택된 경우
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"‣ {list[i]}");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.WriteLine(list[i]);
+                    }
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("원하는 항목을 선택한 후 Enter를 누르거나 Esc를 눌러 이전 화면으로 이동합니다.");
+
+                key = Console.ReadKey(true).Key;
+
+                if (key == ConsoleKey.UpArrow) 
+                {
+                    //selectedIndex = (selectedIndex - 1) % list.Count();   //음수 나와버림...
+                    selectedIndex = (list.Count() + selectedIndex - 1) % list.Count(); //+ - 방향 TIL 
+                }
+                else if (key == ConsoleKey.DownArrow)
+                {
+                    selectedIndex = (selectedIndex + 1) % list.Count();
+                }
+
+                Console.SetCursorPosition(0, currentTop);   //커서 옮기기
+
+            } while (key != ConsoleKey.Enter && key != ConsoleKey.Escape);
+            Console.SetCursorPosition(0, 0);   //커서 옮기기
+            Console.Clear();
+            if (key == ConsoleKey.Enter)
+            {
+                return selectedIndex;
+            }
+            else
+            {
+                return -1;
+            }
+
+            ////사용예제
+            //{
+            //    int id = TextDisplayer.PageNavigation(GameDataManager.Instance.AllSkills);
+            //    if (id >= 0)
+            //    {
+            //        Console.WriteLine(id);
+            //        Skill selectedSkill = new AttackSkill(100, "", "", 0, 0, SkillType.Attack, 0);
+            //        selectedSkill.Clone(GameDataManager.Instance.AllSkills[id].Id);
+            //        Console.WriteLine(selectedSkill);
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine(id);
+            //    }
+            //    InputHelper.WaitResponse();
+            //}
+        }
     }
 }
