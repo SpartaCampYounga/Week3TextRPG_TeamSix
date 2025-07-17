@@ -171,6 +171,7 @@ namespace TextRPG_TeamSix.Characters
                 return;
             }
             // 판매 로직 추가
+            int sellPrice = (int)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
             Owner.EarnGold(0 + item.Price);
             ItemList.Remove(item);
             Console.WriteLine($"{item.Name}을 판매 했습니다.");

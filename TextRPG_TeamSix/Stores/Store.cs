@@ -89,8 +89,6 @@ namespace TextRPG_TeamSix.Stores
 //}
 
 
-//인벤토리에 판매로직
-//int sellPrice = (int)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
 //public void SpendGold(uint amount)
 //{
 //    if (Gold >= amount)
