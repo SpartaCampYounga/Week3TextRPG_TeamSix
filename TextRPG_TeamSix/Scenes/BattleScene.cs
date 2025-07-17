@@ -36,48 +36,62 @@ internal class BattleScene : SceneBase
             new Enemy(3, "대포미니언", EnemyType.Type1)
         };
 
-        BattleLog.Log("스파르타 던전에 오신 여러분 환영합니다.");
-        BattleLog.Log("이제 전투를 시작할 수 있습니다.");
-        BattleLog.Log("");
-        BattleLog.Log("1. 상태 보기\n2. 전투 시작");
+        string desc1 = "...여긴 어디지?\n공기마저 숨을 죽인 듯, 적막만이 감도는 이곳. 앞엔 낯선 문 하나가 서 있을 뿐.";
+        string desc2 = "문에서 희미하게 빛이 새어 나온다… 누군가, 혹은 무언가 날 기다리고 있는 걸까?";
+        string desc3 = "...좋아, 무섭긴 하지만... 이런 순간을 위해 스파르타의 수강생이 된 거잖아. 가보자.";
+        string choice1 = "1. 가까이 다가간다.";
+        string choice2 = "2. 버즈 - 겁쟁이 처럼 물러난다.";
+        string choice2_1 = "겁쟁이 녀석...썩 물러가라";
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        TextEffect.TypeEffect(desc1,70);
+        Thread.Sleep(1000);
+
+        TextEffect.TypeEffect(desc2, 70);
+        Thread.Sleep(1000);
+
+        TextEffect.TypeEffect(desc3, 70);
+        Thread.Sleep(1000);
+
         Console.WriteLine();
-        Console.WriteLine("원하시는 행동을 입력해주세요.");
-        Console.Write(">> ");
-        string input = Console.ReadLine();
+        Console.Write($"{choice1}   {choice2}");
 
-        switch (input)
+        Console.WriteLine();
+        while (true)
         {
-            case "1":
-                Character_Status(player);
-                while (true)
-                {
+            Console.WriteLine();
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "1":
+                    Console.Clear();
+                    IntroScene intro = new IntroScene();
+                    intro.DisplayScene();
+                    StartBattleLoop();
+                    return; // 또는 break; 이후 루프 바깥에서 이어지게 할 수도 있어
+
+                case "2":
+                    Console.Clear();
+                    Console.ResetColor();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"{choice2_1}");
+                    Console.ReadKey();
+                    MainScene main = new MainScene();
+                    TextFlash.TextFlasht();
+                    main.DisplayScene();
+                    Console.ResetColor();
+                    return;
+
+                default:
+                    Console.Clear();
+                    Console.WriteLine("섣부른 행동은 금물이다 애송이...");
                     Console.WriteLine();
-                    Console.WriteLine("0. 나가기");
-                    Console.WriteLine("원하시는 행동을 입력해주세요.");
-                    Console.Write(">> ");
-                    string output = Console.ReadLine();
-                    if (output == "0")
-                    {
-                        Console.Clear();
-                        DisplayScene();
-                        return;
-                    }
-                    else
-                    {
-                        Console.WriteLine("잘못된 입력입니다.");
-                    }
-                }
-
-            case "2":
-                IntroScene intro = new IntroScene();
-                intro.DisplayScene();
-                StartBattleLoop();
-                break;
-
-            default:
-                BattleLog.Log("잘못된 입력입니다.");
-                break;
+                    Console.Write($"{choice1}   {choice2}");
+                    break;
+            }
         }
+
     }
 
     private void StartBattleLoop()
