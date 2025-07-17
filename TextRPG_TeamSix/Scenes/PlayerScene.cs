@@ -48,6 +48,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("0. 나가기");
 
 
+
             Console.Write("번호를 입력하세요 :");
 
             input = InputHelper.GetIntegerRange(0, 3);
@@ -84,6 +85,11 @@ namespace TextRPG_TeamSix.Scenes
             //}
 
         }    //출력 하는 시스템
+
+        public void QuestShowin()
+        {
+
+        }
 
         public override void HandleInput()
         {
