@@ -51,6 +51,9 @@ namespace TextRPG_TeamSix.Scenes
         public override void DisplayScene() //출력 하는 시스템
         {
             PrintItems();
+
+            HandleInput();
+
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템

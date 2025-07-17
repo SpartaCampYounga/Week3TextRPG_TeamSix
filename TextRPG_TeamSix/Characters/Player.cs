@@ -151,7 +151,7 @@ namespace TextRPG_TeamSix.Characters
         {
             NumOfStones -= skillToLearn.RequiredStones;
             SkillList.Add(skillToLearn);
-            Console.WriteLine($"{skillToLearn.Name}을 배웠다!");
+            //Console.WriteLine($"{skillToLearn.Name}을 배웠다!");
         }
 
         public void Rename(string newName)
