@@ -10,8 +10,11 @@ namespace TextRPG_TeamSix.Characters
     {
         [JsonIgnore]
         public Player Owner { get; private set; }
+
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
+
+        
         public Inventory(Player owner)
         {
             Owner = owner;
@@ -29,7 +32,10 @@ namespace TextRPG_TeamSix.Characters
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("==== 인벤토리 ====");
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine("║               인벤토리               ║");
+            Console.WriteLine("╚══════════════════════════════════════╝");
+            Console.WriteLine();
             Console.WriteLine("-------------------------------------");
             Console.WriteLine(" ID | [E] | 이름 | 설명 | 가격 ");
             Console.WriteLine("-------------------------------------");
@@ -97,9 +103,9 @@ namespace TextRPG_TeamSix.Characters
         public void EquipItem(uint itemId)
         {
             Item? item = GetItem((uint)itemId);
-            if (item == null)
+            if (item == null && item.Type == Item.ItemType.Accessory)
             {
-                Console.WriteLine("해당 아이템이 존재하지 않습니다.");
+                Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
                 return;
             }
             if (item.IsEquipped)
@@ -120,12 +126,8 @@ namespace TextRPG_TeamSix.Characters
                     }
                 }
             }
-
             item.IsEquipped = true; // 아이템 장착
-            if (item.Type == Item.ItemType.Weapon)
-            {
-
-            }
+          
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
         }
