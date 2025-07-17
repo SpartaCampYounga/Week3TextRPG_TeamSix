@@ -179,9 +179,12 @@ namespace TextRPG_TeamSix.Characters
         public void Clone(Inventory inventory)
         {
             Owner = inventory.Owner;
+            this.ItemList = new List<Item>();
             foreach (Item item in inventory.ItemList)
             {
-                ItemList.Add(GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == item.Id));
+                Item clonedItem = item.CreateInstance();    //빈 객체 생성
+                clonedItem.Clone(item);                     //깊은 복사
+                ItemList.Add(clonedItem);
             }
         }
     }

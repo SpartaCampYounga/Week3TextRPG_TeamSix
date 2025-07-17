@@ -15,31 +15,13 @@ namespace TextRPG_TeamSix
         {
             GameInitializer.InitializeAll();
 
-
-            //SceneManager.Instance.SetScene(SceneType.Title);
-           //SceneManager.Instance.SetScene(SceneType.SkillLearn);
+            SceneManager.Instance.SetScene(SceneType.Title);
+           //SceneManager.Instance.SetScene(SceneType.Title);
             //SceneManager.Instance.SetScene(SceneType.Battle);
 
-            //Console.WriteLine("헤더");
-            //Console.WriteLine("헤더");
-            //Console.WriteLine("헤더");
-
-            //int id = TextDisplayer.PageNavigation(GameDataManager.Instance.AllSkills);
-            //if (id >= 0)
-            //{
-            //    Console.WriteLine(id);
-            //    Skill selectedSkill = new AttackSkill(100, "", "", 0, 0, SkillType.Attack, 0);
-            //    selectedSkill.Clone(GameDataManager.Instance.AllSkills[id].Id);
-            //    Console.WriteLine(selectedSkill);
-            //}else
-            //{
-            //    Console.WriteLine(id);
-            //}
-            //InputHelper.WaitResponse();
-
-            SceneManager.Instance.SetScene(SceneType.Title);
 
 
+            SceneManager.Instance.SetScene(SceneType.Main);
         }
     }
 }

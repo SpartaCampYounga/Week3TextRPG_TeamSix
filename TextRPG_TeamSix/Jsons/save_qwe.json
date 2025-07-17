@@ -9,15 +9,42 @@
       "InvenWeapon": null,
       "ItemList": {
         "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
-        "$values": []
+        "$values": [
+          {
+            "$type": "TextRPG_TeamSix.Items.Armor, TextRPG_TeamSix",
+            "Ability": "Defense",
+            "Enhancement": 10,
+            "EquipSlot": "Armor",
+            "Id": 7,
+            "Name": "천옷",
+            "Description": "기본 복장입니다.",
+            "Price": 50,
+            "IsEquipped": false,
+            "Type": "Armor"
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.Weapon, TextRPG_TeamSix",
+            "Ability": "Attack",
+            "Enhancement": 10,
+            "EquipSlot": "Weapon",
+            "Id": 4,
+            "Name": "녹슨검",
+            "Description": "낡았습니다",
+            "Price": 80,
+            "IsEquipped": false,
+            "Type": "Weapon"
+          }
+        ]
       }
     },
     "Weapon": null,
     "Armor": null,
-    "NumOfStones": 488,
+    "NumOfStones": 0,
     "Gold": 1000,
     "Exp": 0,
-    "Id": 2,
+    "MaxHP": 300,
+    "MaxMP": 100,
+    "Id": 3,
     "Name": "qwe",
     "HP": 300,
     "MP": 100,
@@ -26,48 +53,7 @@
     "Luck": 0,
     "SkillList": {
       "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
-      "$values": [
-        {
-          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
-          "Id": 1,
-          "Name": "스매시",
-          "Description": "강하게 내려칩니다.",
-          "ConsumeMP": 10,
-          "RequiredStones": 3,
-          "SkillType": "Attack",
-          "Amount": 20
-        },
-        {
-          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
-          "Id": 2,
-          "Name": "후려치기",
-          "Description": "강하게 후려칩니다.",
-          "ConsumeMP": 5,
-          "RequiredStones": 1,
-          "SkillType": "Attack",
-          "Amount": 10
-        },
-        {
-          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
-          "Id": 3,
-          "Name": "파이어볼",
-          "Description": "불을 소환합니다.",
-          "ConsumeMP": 20,
-          "RequiredStones": 3,
-          "SkillType": "Attack",
-          "Amount": 30
-        },
-        {
-          "$type": "TextRPG_TeamSix.Skills.HealSkill, TextRPG_TeamSix",
-          "Id": 4,
-          "Name": "치료하기",
-          "Description": "HP를 회복합니다.",
-          "ConsumeMP": 30,
-          "RequiredStones": 5,
-          "SkillType": "Heal",
-          "Amount": 30
-        }
-      ]
+      "$values": []
     },
     "IsAlive": true
   },

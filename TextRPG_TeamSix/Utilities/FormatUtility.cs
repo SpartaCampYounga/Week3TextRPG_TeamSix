@@ -1,6 +1,4 @@
-﻿
-
-namespace TextRPG_TeamSix.Utilities
+﻿namespace TextRPG_TeamSix.Utilities
 {
     public static class FormatUtility
     {
@@ -22,5 +20,4 @@ namespace TextRPG_TeamSix.Utilities
             return str + new string(' ', padding);
         }
     }
-
 }

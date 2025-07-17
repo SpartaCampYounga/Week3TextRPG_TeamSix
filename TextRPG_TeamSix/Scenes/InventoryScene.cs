@@ -23,8 +23,8 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.WriteLine("인벤토리");
 
-            player.Inventory.PurchaseItem(1);   //Debug용
-            Console.WriteLine($"인벤토리 방문 서비스로 {player.Name}이 아이템을 획득했다!");    //Debug용
+            //player.Inventory.PurchaseItem(1);   //Debug용
+            //Console.WriteLine($"인벤토리 방문 서비스로 {player.Name}이 아이템을 획득했다!");    //Debug용
 
             foreach (Item item in player.Inventory.ItemList) //Debug용
             {

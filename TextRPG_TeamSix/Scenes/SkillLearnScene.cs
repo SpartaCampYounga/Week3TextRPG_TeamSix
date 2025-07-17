@@ -34,52 +34,45 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('=', Console.WindowWidth)); //Younga TIL
             Console.WriteLine("스킬 - 번호를 선택하여 스킬을 배울 수 있습니다.");
             Console.WriteLine(new string('=', Console.WindowWidth));
-
-            //테이블 헤더
-            string header = "";
-            header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
-            //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
-            header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
-            header += FormatUtility.AlignWithPadding("설명", 30) + " | ";
-            header += FormatUtility.AlignWithPadding("소모MP", 7) + " | ";
-            header += FormatUtility.AlignWithPadding("스킬석", 7) + " | ";
-            header += FormatUtility.AlignWithPadding("스킬타입", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("효과량", 7) + " | ";
-
-            Console.WriteLine(header);
-            Console.WriteLine(new string('-', Console.WindowWidth));
-
-
             player = PlayerManager.Instance.CurrentPlayer;
             availableToLearn = GameDataManager.Instance.AllSkills.Where(x => !player.SkillList.Contains(x)).ToList();
 
-            input = TextDisplayer.PageNavigation(availableToLearn);
+
             ////플레이어가 미보유중인 스킬만 띄우기
-            //if (availableToLearn.Count == 0)
-            //{
-            //    Console.WriteLine("하산해라.. 더 이상 배울 수 있는 게 없다.");
-            //}
-            //else
-            //{
-            //    for (int i = 0; i < availableToLearn.Count(); i++)
-            //    {
-            //        string display = FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
-            //        display += availableToLearn[i];
-            //        Console.WriteLine(display);
-            //    }
-            //}
-            Console.WriteLine(new string('-', Console.WindowWidth));
+            if (availableToLearn.Count == 0)
+            {
+                Console.WriteLine("하산해라.. 더는 배울게 없다..");
+                Console.WriteLine();
+                input = -2;
+                InputHelper.WaitResponse();
+            }
+            else
+            {   //테이블 헤더
+                string header = "";
+                header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
+                //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
+                header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
+                header += FormatUtility.AlignWithPadding("설명", 30) + " | ";
+                header += FormatUtility.AlignWithPadding("소모MP", 7) + " | ";
+                header += FormatUtility.AlignWithPadding("스킬석", 7) + " | ";
+                header += FormatUtility.AlignWithPadding("스킬타입", 10) + " | ";
+                header += FormatUtility.AlignWithPadding("효과량", 7) + " | ";
+
+                Console.WriteLine(header);
+                Console.WriteLine(new string('-', Console.WindowWidth));
+
+
+                input = TextDisplayer.PageNavigation(availableToLearn);
+
+                Console.WriteLine(new string('-', Console.WindowWidth));
+
+                player.AcquireSkillStone(100);
+                Console.WriteLine("스킬석 100개 깜짝 선물을 받았다!");
+            }
+
             Console.WriteLine();
             Console.WriteLine();
 
-            player.AcquireSkillStone(100);
-            Console.WriteLine("스킬석 100개 깜짝 선물을 받았다!");
-
-            //Console.WriteLine("배우고 싶은 스킬의 숫자를 입력하세요.");
-            //Console.WriteLine("0. 나가기");
-            //Console.WriteLine("0. 저장하고 나가기"); //Debug
-            //Console.Write(">>");
-            //input = InputHelper.GetIntegerRange(0, availableToLearn.Count()+1);
             HandleInput();
         }
 
@@ -87,6 +80,9 @@ namespace TextRPG_TeamSix.Scenes
         {
             switch (input)
             {
+                case -2:
+                    SceneManager.Instance.SetScene(SceneType.Skill);
+                    break;
                 case -1:
                     SceneManager.Instance.SetScene(SceneType.Skill);    //0번 누르면 해당 타입의 씬 출력
                     break;

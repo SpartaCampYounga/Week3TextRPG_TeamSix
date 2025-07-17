@@ -2,6 +2,7 @@
 using System.Text;
 using System.Threading;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Utils;
 
 namespace TextRPG_TeamSix.Scenes
 {
@@ -19,27 +20,9 @@ namespace TextRPG_TeamSix.Scenes
            
         }
 
-        private void TypeEffect(string text, int delay = 50)
-        {
-            for (int i = 0; i < text.Length; i++)
-            {
-                if (Console.KeyAvailable)
-                {
-                    Console.ReadKey(true);
-                    Console.Write(text.Substring(i)); 
-                    break;
-                }
-
-                Console.Write(text[i]);
-                Thread.Sleep(delay);
-            }
-
-            Console.WriteLine();
-        }
 
 
-
-        private void FlashEffect(int times = 2, int delay = 150)
+        public void FlashEffect(int times = 2, int delay = 150)
         {
             for (int i = 0; i < times; i++)
             {
@@ -184,21 +167,9 @@ namespace TextRPG_TeamSix.Scenes
                                   ╚═╝  ╚═══╝ ╚═════╝     ╚══════╝╚═╝  ╚═╝╚═══╝   ╚═╝   
 ";
 
-            string desc1 = "…여긴 대체 어디지?\n바람 한 점 없고, 앞에는 이상하게 생긴 문밖에 없네…";
-            string desc2 = "…잠깐, 문이 빛나고있네… 흠 디아블로에 나오는 포탈같이 생겼는걸.";
-            string desc3 = " 가까이 다가가ㅁ";
-            string redPard1 = "^$#^%@#$!$%... 우와아아아아악 이게뭐야아아아아!!!!";
-            string proceed = "Press enter key to Continue..";
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            TypeEffect(desc1, 70);
-            Thread.Sleep(1000);
-
-            TypeEffect(desc2, 70);
-            Thread.Sleep(1000);
-
-            TypeEffect(desc3, 70);
-            Thread.Sleep(1000);
+            string redPard1 = "^$#^%@#$!$%... 우와아아아아악 살려주세요 튜텨님!!!!!!";
+            string proceed = "Press enter key to Continue...";
 
             PullInEffect();               // 졸라맨 들어감
             PortalShakeEffect();          // 포탈 흔들림
@@ -208,7 +179,7 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.WriteLine("");
             Console.ForegroundColor = ConsoleColor.Red;
-            TypeEffect(redPard1, 100);
+            TextEffect.TypeEffect(redPard1);
             Console.ResetColor();
 
             Console.WriteLine();
@@ -222,7 +193,7 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Green;
-            TypeEffect(proceed, 40);
+            TextEffect.TypeEffect(proceed,40);
             Thread.Sleep(500);
             Console.ReadKey();
         }

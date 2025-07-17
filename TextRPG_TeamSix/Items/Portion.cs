@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
@@ -13,9 +14,11 @@ namespace TextRPG_TeamSix.Items
     {
         public RestoreType RestoreType { get; private set; } // 마나나 스테미나 포션 종류 추가할때. RestoreType Enum 추가하여 관리
         public int RestoreAmount { get; private set; } //회복량 
+        protected Portion() { }
 
         // 생성자: 포션의 ID, 이름, 설명, 가격, 회복량, 회복 타입을 초기화합니다.
-        public Portion(uint id, string name, string description, uint price, int restoreAmount, RestoreType restoreType) : base(id, name, description, price) // Item(부모) 클래스의 생성자를 호출합니다.
+        [JsonConstructor]
+        public Portion(uint id, string name, string description, uint price, ItemType type, int restoreAmount, RestoreType restoreType) : base(id, name, description, price, type) // Item(부모) 클래스의 생성자를 호출합니다.
         {
             RestoreAmount = restoreAmount;
             RestoreType = restoreType;
@@ -37,6 +40,20 @@ namespace TextRPG_TeamSix.Items
                 //character.MP += (uint)RestoreAmount;
                 Console.WriteLine($"{character.Name}의 마나가 {RestoreAmount}만큼 회복되었습니다."); //현재 마나: {character.MP}
             }
+        }
+
+        public override void Clone<T>(T item)
+        {
+            base.Clone(item);
+            if (item is Portion portion)    //패턴매칭 Younga TIL
+            {
+                this.RestoreType = portion.RestoreType;
+                this.RestoreAmount = portion.RestoreAmount;
+            }
+        }
+        public override Item CreateInstance()
+        {
+            return new Portion();
         }
     }
 }

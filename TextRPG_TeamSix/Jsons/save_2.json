@@ -9,18 +9,42 @@
       "InvenWeapon": null,
       "ItemList": {
         "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
-        "$values": []
+        "$values": [
+          {
+            "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+            "RestoreType": "Health",
+            "RestoreAmount": 30,
+            "Id": 1,
+            "Name": "소형 회복물약",
+            "Description": "작은 체력을 회복합니다",
+            "Price": 50,
+            "IsEquipped": false,
+            "ItemType": "Weapon"
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.Weapon, TextRPG_TeamSix",
+            "Ability": "Attack",
+            "Enhancement": 10,
+            "EquipSlot": "Weapon",
+            "Id": 6,
+            "Name": "포레스트검f",
+            "Description": "Just Do it의 정수 우리도 노력하면 됩니다.",
+            "Price": 300,
+            "IsEquipped": false,
+            "ItemType": "Weapon"
+          }
+        ]
       }
     },
     "Weapon": null,
     "Armor": null,
-    "NumOfStones": 199,
+    "NumOfStones": 0,
     "Gold": 1000,
     "Exp": 0,
     "MaxHP": 300,
     "MaxMP": 100,
-    "Id": 0,
-    "Name": "PlayerManager",
+    "Id": 3,
+    "Name": "2",
     "HP": 300,
     "MP": 100,
     "Attack": 10,
@@ -28,18 +52,7 @@
     "Luck": 0,
     "SkillList": {
       "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
-      "$values": [
-        {
-          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
-          "Id": 2,
-          "Name": "후려치기",
-          "Description": "강하게 후려칩니다.",
-          "ConsumeMP": 5,
-          "RequiredStones": 1,
-          "SkillType": "Attack",
-          "Amount": 10
-        }
-      ]
+      "$values": []
     },
     "IsAlive": true
   },

@@ -20,6 +20,9 @@ namespace TextRPG_TeamSix.Enums
         Inventory,
         Store,
         Dungeon,
-        Player
+        Player,
+        QuestAccept,
+        QuestReward,
+        SpecialStore
     }
 }

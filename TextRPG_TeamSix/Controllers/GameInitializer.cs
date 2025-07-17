@@ -11,6 +11,7 @@ using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Dungeons;
 using TextRPG_TeamSix.Quests;
+using static TextRPG_TeamSix.Items.Item;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -29,7 +30,10 @@ namespace TextRPG_TeamSix.Controllers
             new QuestScene(),
             new StoresScene(),
             new DungeonScene(),
-            new PlayerScene()
+            new PlayerScene(),
+            new QuestAcceptScene(),
+            new QuestRewardScene(),
+            new SpecialStoreScene()
         };
 
         private static Skill[] _skills =
@@ -43,20 +47,20 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Item[] _items =
         {
-            new Portion(1, "소형 회복물약", "작은 체력을 회복합니다", 50, 30, RestoreType.Health),
-            new Portion(2, "중형 회복물약", "중간 정도의 체력을 회복합니다", 100, 100, RestoreType.Health),
-            new Portion(3, "대형 회복물약", "많은 체력을 회복합니다", 300, 450, RestoreType.Health),
+            new Portion(1, "소형 회복물약", "작은 체력을 회복합니다", 50, ItemType.Consumable, 30, RestoreType.Health),
+            new Portion(2, "중형 회복물약", "중간 정도의 체력을 회복합니다", 100, ItemType.Consumable, 100, RestoreType.Health),
+            new Portion(3, "대형 회복물약", "많은 체력을 회복합니다", 300, ItemType.Consumable, 450, RestoreType.Health),
 
 
-            new Weapon(4, "녹슨검", "낡았습니다", 80, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(5, "나무검", "가볍고 약한 검입니다.", 120, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(4, "녹슨검", "낡았습니다", 80, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(5, "나무검", "가볍고 약한 검입니다.", 120, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
 
 
 
-            new Armor(7, "천옷", "기본 복장입니다.", 50, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(7, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
 
         };
 
@@ -67,7 +71,8 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Enemy[] _emenies =
         {
-            new Enemy("고블린", EnemyType.Type1)
+            new Enemy(1, "고블린", EnemyType.Type1),
+            new Enemy(2, "슬라임", EnemyType.Type1)
         };
 
         private static Dungeon[] _dungeons =
@@ -78,8 +83,10 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Quest[] _quests =
         {
-            new EnemyQuest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
-            new DungeonQuest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
+            new Quest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, _emenies[0].Id,3, 0, false),
+            new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, _dungeons[0].Id,3, 0, false)
+            //new Quest(1, QuestType.Enemy, "고블린 2마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
+            //new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
         };
 
         public static void InitializeAll() 
@@ -87,6 +94,7 @@ namespace TextRPG_TeamSix.Controllers
             SceneManager.Instance.InitializeScenes(_scenes);
             GameDataManager.Instance.InitializeSkills(_skills);
             GameDataManager.Instance.InitializeItems(_items);
+            GameDataManager.Instance.InitializeEnemies(_emenies);
             GameDataManager.Instance.InitializeDungeons(_dungeons);
             GameDataManager.Instance.InitializeQuests(_quests);
         }
