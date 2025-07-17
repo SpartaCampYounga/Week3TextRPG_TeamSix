@@ -45,7 +45,7 @@ internal class BattleScene : SceneBase
         string choice2_1 = "겁쟁이 녀석...썩 물러가라";
 
         SoundManager.Play("E:\\7.Data\\1.bgm\\착신아리-오르골.wav");
-
+        Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
         TextEffect.TypeEffect(desc1,70);
         Thread.Sleep(1000);
