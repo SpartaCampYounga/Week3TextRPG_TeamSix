@@ -18,7 +18,10 @@ namespace TextRPG_TeamSix.Stores
         {
             ItemList = new List<Item>();
             // GameDataManager에 있는 모든 아이템을 상점에서 판매
-            ItemList.AddRange(GameDataManager.Instance.AllItems);
+            foreach (var item in GameDataManager.Instance.AllItems) // GameDataManager에서 모든 아이템을 가져와 상점의 아이템 리스트에 추가
+            {
+                ItemList.Add(item);
+            }
 
         }
         public bool SellToPlayer(Item item) // 플레이어에게 아이템을 판매하는 메서드

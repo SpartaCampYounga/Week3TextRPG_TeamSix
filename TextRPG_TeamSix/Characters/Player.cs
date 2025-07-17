@@ -19,6 +19,9 @@ namespace TextRPG_TeamSix.Characters
     {
         public JobType JobType { get; private set; }
         public Inventory Inventory { get; private set; }
+
+        public Weapon Weapon { get; private set; }
+        public Armor Armor { get; private set; }
         public uint NumOfStones { get; private set; }
 
         public uint Gold { get; private set; } // 플레이어의 금액
@@ -61,6 +64,7 @@ namespace TextRPG_TeamSix.Characters
             uint mp,
             uint attack,
             uint defense,
+            uint luck,
             List<Skill> skillList,
             bool isAlive,
             JobType jobType,
@@ -77,6 +81,7 @@ namespace TextRPG_TeamSix.Characters
             this.MP = mp;
             this.Attack = attack;
             this.Defense = defense;
+            this.Luck = luck;
             this.SkillList = new List<Skill>();
             foreach (Skill skill in skillList)
             {
@@ -112,6 +117,26 @@ namespace TextRPG_TeamSix.Characters
         {
             NumOfStones += numOfStones;
         }
+        public void RecalculateStats()
+        {
+            uint bonusAttack = 0;   
+            uint bonusDefense = 0;
+            // 인벤토리에서 장착된 아이템의 능력치 보너스를 계산
+            foreach(var item in Inventory.ItemList)
+            {
+                if (item.IsEquipped)
+                {
+                    if(item is Weapon weapon)
+                    {
+                        bonusAttack += this.Attack; // 무기의 능력치 보너스 나중에 웨폰에 비례 추가
+                    }
+                    else if (item is Armor armor)
+                    {
+                        bonusDefense += this.Defense; // 방어구의 능력치 보너스 나중ㅇ에 아머에 비례 추가
+                    }
+                }
+            }
+        }
 
 
         //스킬 습득 //가능한지는 Skill에서 체크
@@ -140,7 +165,6 @@ namespace TextRPG_TeamSix.Characters
             this.Name = player.Name;
             Console.WriteLine(Name);
             Console.WriteLine(player.Name);
-            Console.Read();
             this.HP = player.HP;
             this.MP = player.MP;
             this.Attack = player.Attack;

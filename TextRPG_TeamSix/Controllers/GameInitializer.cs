@@ -28,7 +28,8 @@ namespace TextRPG_TeamSix.Controllers
             new BattleScene(),
             new QuestScene(),
             new StoresScene(),
-            new DungeonScene()
+            new DungeonScene(),
+            new PlayerScene()
         };
 
         private static Skill[] _skills =
@@ -61,7 +62,8 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Dungeon[] _dungeons =
         {
-            new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
+            new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(2, "Normal", 20, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
         };
 
         private static Quest[] _quests =

@@ -32,7 +32,6 @@ namespace TextRPG_TeamSix.Scenes
             Console.OutputEncoding = Encoding.UTF8; //Younga TIL
             Console.WriteLine("SkillScene Loaded");
 
-            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', Console.WindowWidth)); //Younga TIL
             Console.WriteLine("스킬 - 보유 중인 스킬을 볼 수 있습니다.");
             Console.WriteLine(new string('=', Console.WindowWidth));
