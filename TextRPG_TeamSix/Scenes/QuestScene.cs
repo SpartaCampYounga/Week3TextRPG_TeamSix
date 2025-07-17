@@ -16,81 +16,121 @@ namespace TextRPG_TeamSix.Scenes
     internal class QuestScene : SceneBase
     {
         public override SceneType SceneType => SceneType.Quest;
-        private int input;
-        List<Quest> QuestTest; // 퀘스트 리스트를 저장할 변수
 
+        // 필드로 선언
+        private List<Quest> acceptedQuests = new List<Quest>();
 
-        public override void DisplayScene() //출력 하는 시스템
+        public override void DisplayScene()
         {
-            Console.Clear();
-            Console.WriteLine("QuestScene");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(new string('=',120));
-            Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
-            Console.WriteLine(new string('=', 120));
+            // availableQuests는 acceptedQuests를 제외한 리스트로 만듦
+            List<Quest> availableQuests = GameDataManager.Instance.AllQuests
+                .Where(q => !acceptedQuests.Contains(q))
+                .ToList();
 
-
-            // 들어갈 내용 예시) Hard던전 클리어  | Hard던전에 모든 적들을 소탕해주세요! | 보상: 1000골드, 100경험치
-            string header = "";
-            header += FormatUtility.AlignWithPadding("NO", 5) + " | ";
-            header += FormatUtility.AlignWithPadding("유형", 15) + " | ";
-            header += FormatUtility.AlignWithPadding("내용", 30) + " | ";
-            header += FormatUtility.AlignWithPadding("보상", 30) + " | ";
-            header += FormatUtility.AlignWithPadding("진행사항", 0);
-            Console.WriteLine(header);
-            Console.WriteLine(new string('-', 120));
-            Console.ResetColor();
-
-
-
-
-
-           
-            QuestTest = GameDataManager.Instance.AllQuests; // QuestManager에서 모든 퀘스트 리스트를 가져옴
-
-            int idx = 1;
-            foreach (var quest in QuestTest)
+            while (true)
             {
-                string reward = $"{quest.RewardGold}골드, {quest.RewardExp}경험치";
-                string progress = "미완료"; // 진행사항은 추후 구현
-                string row = "";
-                row += FormatUtility.AlignWithPadding(idx.ToString(), 5) + " | ";
-                row += FormatUtility.AlignWithPadding(quest.QuestType.ToString(), 15) + " | ";
-                row += FormatUtility.AlignWithPadding(quest.Description, 30) + " | ";
-                row += FormatUtility.AlignWithPadding(reward, 30) + " | ";
-                row += FormatUtility.AlignWithPadding(progress, 0);
-                Console.WriteLine(row);
-                idx++;
+                Console.Clear();
+                Console.WriteLine("QuestScene");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(new string('=', 120));
+                Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
+                Console.WriteLine(new string('=', 120));
+
+                // 헤더
+                string header = "";
+                header += FormatUtility.AlignWithPadding("NO", 5) + " | ";
+                header += FormatUtility.AlignWithPadding("유형", 15) + " | ";
+                header += FormatUtility.AlignWithPadding("내용", 30) + " | ";
+                header += FormatUtility.AlignWithPadding("보상", 30) + " | ";
+                header += FormatUtility.AlignWithPadding("진행사항", 0);
+                Console.WriteLine(header);
+                Console.WriteLine(new string('-', 120));
+                Console.ResetColor();
+
+                // 퀘스트 리스트 출력
+                for (int i = 0; i < availableQuests.Count; i++)
+                {
+                    var quest = availableQuests[i];
+                    string reward = $"{quest.RewardGold}골드, {quest.RewardExp}경험치";
+                    string progress = "미완료";
+                    string row = "";
+                    row += FormatUtility.AlignWithPadding((i + 1).ToString(), 5) + " | ";
+                    row += FormatUtility.AlignWithPadding(quest.QuestType.ToString(), 15) + " | ";
+                    row += FormatUtility.AlignWithPadding(quest.Description, 30) + " | ";
+                    row += FormatUtility.AlignWithPadding(reward, 30) + " | ";
+                    row += FormatUtility.AlignWithPadding(progress, 0);
+                    Console.WriteLine(row);
+                }
+
+                // 헤더 닫기
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(new string('=', 120));
+                Console.ResetColor();
+
+                // 수락한 퀘스트 리스트 출력
+                // 애너미나 던전에 대한 요소가 추후 카운트를 반영할때 어떻게 넣어야할지 고민이 필요
+                // 퀘스트 완료에 따라 acceptedQuests에서 제거하는 로직도 필요
+                if (acceptedQuests.Count > 0)
+                {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine(new string('=', 120));
+                    Console.WriteLine("[수락한 퀘스트]");
+                    Console.WriteLine(new string('-', 120));
+                    for (int i = 0; i < acceptedQuests.Count; i++)
+                    {
+                        var quest = acceptedQuests[i];
+                        string reward = $"{quest.RewardGold}골드, {quest.RewardExp}경험치"; // 이 보상을 나중에 player에게 보내야함
+                        string progress = $"진행중(0/{quest.Count})"; // 에너미나 던전에 대한 카운트값 구해야함
+                        string row = "";
+                        row += FormatUtility.AlignWithPadding((i + 1).ToString(), 5) + " | ";
+                        row += FormatUtility.AlignWithPadding(quest.QuestType.ToString(), 15) + " | ";
+                        row += FormatUtility.AlignWithPadding(quest.Description, 30) + " | ";
+                        row += FormatUtility.AlignWithPadding(reward, 30) + " | ";
+                        row += FormatUtility.AlignWithPadding(progress, 0);
+                        Console.WriteLine(row);
+                    }
+                    Console.WriteLine(new string('=', 120));
+                    Console.ResetColor();
+                    Console.WriteLine();
+                }
+
+                // 마을로 나가기 & 퀘스트 수락 처리
+                if (availableQuests.Count == 0)
+                {
+                    Console.WriteLine("수락 가능한 퀘스트가 없습니다. 0을 입력해 나가세요.");
+                }
+                else
+                {
+                    Console.WriteLine("퀘스트 수락을 원하시면 번호를 입력해 주세요.");
+                }
+                Console.WriteLine("0. 나가기");
+                Console.Write("번호를 입력해 주세요 : ");
+                int input = InputHelper.GetIntegerRange(0, availableQuests.Count + 1); // +1은 0을 포함하기 위함
+
+                if (input == 0)
+                {
+                    SceneManager.Instance.SetScene(SceneType.Main);
+                    break;
+                }
+                else
+                {
+                    // 퀘스트 수락 처리
+                    var selectedQuest = availableQuests[input - 1];
+                    acceptedQuests.Add(selectedQuest);
+                    availableQuests.RemoveAt(input - 1);
+
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine($"'{selectedQuest.Description}' 퀘스트를 수락하였습니다!");
+                    Console.ResetColor();
+                    Console.WriteLine("계속하려면 아무 키나 누르세요...");
+                    Console.ReadKey();
+                }
             }
-
-
-
-
-
-
-
-            // 퀘스트 끝나는 부분
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(new string('=', 120));
-            Console.ResetColor();
-
-
-
-            Console.WriteLine("1. 퀘스트 수락(미구현)");
-            Console.WriteLine("0. 나가기");
-            Console.Write("번호를 입력해 주세요 : ");
-            input = InputHelper.GetIntegerRange(0, 1);
-            HandleInput();
         }
 
         public override void HandleInput()
         {
-            switch (input)
-            {
-                case 0:
-                    SceneManager.Instance.SetScene(SceneType.Main);
-                    break;
-            }
         }
     }
 }

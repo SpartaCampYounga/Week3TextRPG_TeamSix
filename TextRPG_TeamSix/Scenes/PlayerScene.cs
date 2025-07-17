@@ -30,25 +30,72 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene()
         {
-            Console.Clear();
-            Console.WriteLine("상태창 보기");
-            Console.WriteLine("캐릭터 정보가 표시됩니다.");
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine($"이름: {player.Name}({player.JobType})");
-            Console.WriteLine($"공격력 : {player.Attack}");
-            Console.WriteLine($"방어력 : {player.Defense}");
-            Console.WriteLine($"체력 : {player.HP}");
-            Console.WriteLine($"마나 : {player.MP}");
-            Console.WriteLine($"골드 : {player.Gold}");
-            Console.WriteLine($"Exp : {player.Exp} / 100");
-            Console.WriteLine($"돌의 개수 : {player.NumOfStones}");
-            Console.WriteLine("-------------------------------------");
-            Console.WriteLine("1. 인벤토리");
-            Console.WriteLine("2. 스킬");
-            Console.WriteLine("0. 나가기");
+            {
+                Console.Clear();
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("╔══════════════════════════════════════╗");
+                Console.WriteLine("║           🛡️  상태창 보기            ║");
+                Console.WriteLine("╚══════════════════════════════════════╝");
+
+                Thread.Sleep(200);
+
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine(" 캐릭터 정보");
+                Console.ResetColor();
+
+                Console.WriteLine("----------------------------------------");
 
 
-            Console.Write("번호를 입력하세요 :");
+                PrintStat(" 이름", $"{player.Name} ({player.JobType})", ConsoleColor.Green);
+                PrintStat(" 공격력", $"{player.Attack}", ConsoleColor.Red);
+                PrintStat(" 방어력", $"{player.Defense}", ConsoleColor.Blue);
+                PrintStat(" 체력", $"{player.HP}", ConsoleColor.DarkRed);
+                PrintStat(" 마나", $"{player.MP}", ConsoleColor.DarkCyan);
+
+                Console.WriteLine();
+
+                PrintStat(" 골드", $"{player.Gold}", ConsoleColor.Green);
+                PrintStat(" 경험치", $"{player.Exp} / 100", ConsoleColor.Green);
+                PrintStat(" 돌의 개수", $"{player.NumOfStones}", ConsoleColor.Green);
+
+                Console.WriteLine("----------------------------------------\n");
+
+                Thread.Sleep(200);
+
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("선택지를 고르세요:");
+                Console.WriteLine();
+                PrintMenuOption("1", " 인벤토리", ConsoleColor.Green);
+                PrintMenuOption("2", " 스킬", ConsoleColor.Green);
+                PrintMenuOption("0", "↩ 나가기", ConsoleColor.Green);
+
+                Console.WriteLine();
+                Console.Write("번호를 입력하세요 : ");
+            }
+
+            // 헬퍼: 스탯 출력
+            void PrintStat(string label, string value, ConsoleColor color)
+            {
+                Console.ForegroundColor = color;
+                Console.Write($"{label,-10} : ");
+                Console.ResetColor();
+                Console.WriteLine($"{value}");
+            }
+
+            // 헬퍼: 메뉴 옵션 출력
+            void PrintMenuOption(string key, string description, ConsoleColor color)
+            {
+                Console.ForegroundColor = color;
+                Console.Write($"[{key}] ");
+                Console.ResetColor();
+                Console.WriteLine(description);
+            }
+
+
+
+
+
 
             input = InputHelper.GetIntegerRange(0, 3);
             HandleInput();
@@ -84,6 +131,11 @@ namespace TextRPG_TeamSix.Scenes
             //}
 
         }    //출력 하는 시스템
+
+        public void QuestShowin()
+        {
+
+        }
 
         public override void HandleInput()
         {

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Dungeons;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Utilities;
 
@@ -13,12 +14,14 @@ namespace TextRPG_TeamSix.Quests
 {
     internal class EnemyQuest : Quest
     {
-        public Enemy Enemy { get; private set; } // 퀘스트에 필요한 적 캐릭터
-        public uint Count { get; } // 퀘스트 완료를 위한 적 처치 수
+        public Enemy Enemy { get; private set; } // 퀘스트에 필요한 적 캐릭터? 지금생각하니 굳이 넣어야하나?
+        public override uint Count { get; }
 
         public EnemyQuest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp, Enemy enemy, uint count)
-            : base(id, questType, description, rewardGold, rewardExp)
+            : base(id, questType, description, rewardGold, rewardExp, count)
         {
+            Enemy = enemy;
+            Count = count;
         }
 
         public override string ToString()

@@ -15,29 +15,26 @@ namespace TextRPG_TeamSix
         {
             GameInitializer.InitializeAll();
 
+            //SceneManager.Instance.SetScene(SceneType.Title);
+           SceneManager.Instance.SetScene(SceneType.Title);
+            //SceneManager.Instance.SetScene(SceneType.Battle);
             //Console.WriteLine("헤더");
             //Console.WriteLine("헤더");
             //Console.WriteLine("헤더");
-            //List<string> selection = new List<string>()
+
+            //int id = TextDisplayer.PageNavigation(GameDataManager.Instance.AllSkills);
+            //if (id >= 0)
             //{
-            //    "1. 던전",
-            //    "2. 마을",
-            //    "3. 상점",
-            //    "4. 상태창"
-            //};
-            //int index = TextDisplayer.PageNavigation(GameDataManager.Instance.AllSkills);
-            //if (index >= 0)
+            //    Console.WriteLine(id);
+            //    Skill selectedSkill = new AttackSkill(100, "", "", 0, 0, SkillType.Attack, 0);
+            //    selectedSkill.Clone(GameDataManager.Instance.AllSkills[id].Id);
+            //    Console.WriteLine(selectedSkill);
+            //}else
             //{
-            //    Console.WriteLine(index);
-            //    Console.WriteLine(GameDataManager.Instance.AllSkills[index]);
-            //}
-            //else
-            //{
-            //    Console.WriteLine(index);
-            //}
-            //InputHelper.WaitResponse();
+            //    Console.WriteLine(id);
 
             SceneManager.Instance.SetScene(SceneType.Title);
+
 
         }
     }
