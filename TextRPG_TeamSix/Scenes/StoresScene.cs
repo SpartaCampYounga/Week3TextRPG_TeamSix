@@ -20,12 +20,13 @@ namespace TextRPG_TeamSix.Scenes
         public override SceneType SceneType => SceneType.Store;
 
         Player player = PlayerManager.Instance.CurrentPlayer;
+        private Store currentStore = new Store(); // 상점 인스턴스
         int input;
-        private Store currentStore; // 현재 상점
-        public StoresScene()
-        {
-            currentStore = new Store();
-        }
+        private StoreMode currentMode = StoreMode.None; // 상점 모드 (구매, 판매 등)
+        //public StoresScene()
+        //{
+        //    currentStore = new Store();
+        //}
         private void PrintItems()
         {
             currentStore.ItemList.Clear();
@@ -53,21 +54,57 @@ namespace TextRPG_TeamSix.Scenes
         }
         public override void DisplayScene() //출력 하는 시스템
         {
-            currentStore.ItemList.Clear();  //나중에 GameDataManager에 추가되면 지우기.
-            foreach (var item in GameDataManager.Instance.AllItems)
-            {
-                currentStore.ItemList.Add(item);
-            }
-
             Console.Clear();
             Console.WriteLine("===== 상점 =====");
-            Console.WriteLine("");
-            Console.WriteLine($"상점 아이템 수: {currentStore.ItemList.Count}"); //테스트로 아이템 갯수 출력넣음
+            Console.WriteLine("1. 아이템 구매 ");
+            Console.WriteLine("2. 아이템 판매 ");
+            Console.WriteLine("0. 상점 나가기 ");
+            Console.WriteLine(">");
 
+            string menuInput = Console.ReadLine();
+
+            switch (menuInput)
+            {
+                case "1":
+                    currentMode = StoreMode.Buy;
+                    Console.WriteLine("아이템 구매 모드로 전환되었습니다.");//debug용
+                    LoadBuyItems();
+                    break;
+                case "2":
+                    currentMode = StoreMode.Sell;
+                    Console.WriteLine("아이템 판매 모드로 전환되었습니다."); //debug용
+                    LoadSellItems();
+                    break;
+                case "0":
+                    SceneManager.Instance.SetScene(SceneType.Main);
+                    return;
+                default:
+                    Console.WriteLine("잘못된 입력입니다. 다시 시도해주세요."); //debug용
+                    Console.ReadLine();
+                    SceneManager.Instance.SetScene(SceneType.Store); 
+                    return;
+            }
             input = TextDisplayer.PageNavigation(currentStore.ItemList);
 
             //PrintItems();
             HandleInput();
+        }
+        private void LoadBuyItems() // 상점에서 아이템 구매 모드로 전환
+        {
+            currentStore.ItemList.Clear();
+            foreach (var item in GameDataManager.Instance.AllItems)
+            {
+                currentStore.ItemList.Add(item);
+            }
+        }
+
+        private void LoadSellItems() // 상점에서 아이템 판매 모드로 전환
+        {
+            currentStore.ItemList.Clear();
+            foreach (var item in player.Inventory.ItemList)
+            {
+                currentStore.ItemList.Add(item);
+            }
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
@@ -78,11 +115,27 @@ namespace TextRPG_TeamSix.Scenes
                     SceneManager.Instance.SetScene(SceneType.Main);
                     break;
                 default:
-                    player.Inventory.PurchaseItem(currentStore.ItemList[input].Id);
-                    Console.WriteLine(currentStore.ItemList[input].Name + "을 구매했습니다.");
+                    Item selectedItem = currentStore.ItemList[input];
+
+                    if (currentMode == StoreMode.Buy)
+                    {
+                        player.Inventory.PurchaseItem(selectedItem.Id);
+                        Console.WriteLine($"{selectedItem.Name}을 구매했습니다.");
+                    }
+                    else if (currentMode == StoreMode.Sell)
+                    {
+                        player.Inventory.SellItem(selectedItem.Id);
+                        Console.WriteLine($"{selectedItem.Name}을 판매했습니다.");
+                    }
+
                     Console.ReadLine();
                     SceneManager.Instance.SetScene(SceneType.Store);
                     break;
+                    //player.Inventory.PurchaseItem(currentStore.ItemList[input].Id);
+                    //Console.WriteLine(currentStore.ItemList[input].Name + "을 구매했습니다.");
+                    //Console.ReadLine();
+                    //SceneManager.Instance.SetScene(SceneType.Store);
+                    //break;
             }
             //Player player = PlayerManager.Instance.CurrentPlayer;
             //while (true)
