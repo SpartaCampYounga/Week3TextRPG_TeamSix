@@ -54,9 +54,6 @@ namespace TextRPG_TeamSix.Scenes
         }
         public override void DisplayScene() //출력 하는 시스템
         {
-            //PrintItems();
-
-            HandleInput();
             Console.Clear();
             Console.WriteLine("===== 상점 =====");
             Console.WriteLine("1. 아이템 구매 ");
