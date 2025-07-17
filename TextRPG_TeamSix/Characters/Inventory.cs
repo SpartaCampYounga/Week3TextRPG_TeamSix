@@ -179,6 +179,7 @@ namespace TextRPG_TeamSix.Characters
         public void Clone(Inventory inventory)
         {
             Owner = inventory.Owner;
+            this.ItemList = new List<Item>();
             foreach (Item item in inventory.ItemList)
             {
                 Item clonedItem = item.CreateInstance();    //빈 객체 생성

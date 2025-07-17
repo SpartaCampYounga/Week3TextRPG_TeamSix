@@ -1,0 +1,52 @@
+{
+  "$type": "TextRPG_TeamSix.Controllers.SaveData, TextRPG_TeamSix",
+  "PlayerSave": {
+    "$type": "TextRPG_TeamSix.Characters.Player, TextRPG_TeamSix",
+    "JobType": "Warrior",
+    "Inventory": {
+      "$type": "TextRPG_TeamSix.Characters.Inventory, TextRPG_TeamSix",
+      "Character": null,
+      "InvenWeapon": null,
+      "ItemList": {
+        "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "TextRPG_TeamSix.Items.Armor, TextRPG_TeamSix",
+            "Ability": "Defense",
+            "Enhancement": 10,
+            "EquipSlot": "Armor",
+            "Id": 7,
+            "Name": "천옷",
+            "Description": "기본 복장입니다.",
+            "Price": 50,
+            "IsEquipped": false,
+            "Type": "Armor"
+          }
+        ]
+      }
+    },
+    "Weapon": null,
+    "Armor": null,
+    "NumOfStones": 0,
+    "Gold": 1000,
+    "Exp": 0,
+    "MaxHP": 300,
+    "MaxMP": 100,
+    "Id": 3,
+    "Name": "qwe",
+    "HP": 300,
+    "MP": 100,
+    "Attack": 10,
+    "Defense": 10,
+    "Luck": 0,
+    "SkillList": {
+      "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+      "$values": []
+    },
+    "IsAlive": true
+  },
+  "AvailableDungeonList": {
+    "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": []
+  }
+}
