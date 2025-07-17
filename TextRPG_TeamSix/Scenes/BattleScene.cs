@@ -7,6 +7,7 @@ using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Utils;
+using System.Media;
 
 internal class BattleScene : SceneBase
 {
@@ -16,7 +17,7 @@ internal class BattleScene : SceneBase
     private List<Enemy> enemies;
 
     public void Character_Status(Player A)
-    {
+    { 
         Console.Clear();
         BattleLog.Log($"이름: {A.Name}");
         BattleLog.Log($"직업: {A.JobType}");
@@ -36,12 +37,14 @@ internal class BattleScene : SceneBase
             new Enemy("대포미니언", EnemyType.Type1)
         };
 
-        string desc1 = "...여긴 어디지?\n공기마저 숨을 죽인 듯, 적막만이 감도는 이곳. 앞엔 낯선 문 하나가 서 있을 뿐.";
-        string desc2 = "문에서 희미하게 빛이 새어 나온다… 누군가, 혹은 무언가 날 기다리고 있는 걸까?";
-        string desc3 = "...좋아, 무섭긴 하지만... 이런 순간을 위해 스파르타의 수강생이 된 거잖아. 가보자.";
+        string desc1 = "...여긴 어디지?\n공기마저 숨을 죽인 듯, 적막만이 감도는 이곳. 앞에는 낯선 문 하나가 서 있을 뿐.";
+        string desc2 = "문에서 희미하게 빛이 새어 나온다… 누군가, 혹은 무언가 날 기다리고 있는 걸까?\n";
+        string desc3 = "오랜만에 두근두근하는군... 이런 순간을 위해 스파르타의 수강생이 된 거긴한데... 조금은... 무섭달까?";
         string choice1 = "1. 가까이 다가간다.";
         string choice2 = "2. 버즈 - 겁쟁이 처럼 물러난다.";
         string choice2_1 = "겁쟁이 녀석...썩 물러가라";
+
+        SoundManager.Play("E:\\7.Data\\1.bgm\\착신아리-오르골.wav");
 
         Console.ForegroundColor = ConsoleColor.Green;
         TextEffect.TypeEffect(desc1,70);
@@ -60,6 +63,7 @@ internal class BattleScene : SceneBase
         while (true)
         {
             Console.WriteLine();
+
             string input = Console.ReadLine();
 
             switch (input)
@@ -85,7 +89,7 @@ internal class BattleScene : SceneBase
 
                 default:
                     Console.Clear();
-                    Console.WriteLine("섣부른 행동은 금물이다 애송이...");
+                    Console.WriteLine("아니야, 지금은 눈앞에 있는것에 집중하자.");
                     Console.WriteLine();
                     Console.Write($"{choice1}   {choice2}");
                     break;
