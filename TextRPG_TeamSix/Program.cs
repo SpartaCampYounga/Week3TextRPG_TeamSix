@@ -17,7 +17,7 @@ namespace TextRPG_TeamSix
 
 
             //SceneManager.Instance.SetScene(SceneType.Title);
-           SceneManager.Instance.SetScene(SceneType.Title);
+           SceneManager.Instance.SetScene(SceneType.Store);
             //SceneManager.Instance.SetScene(SceneType.Battle);
             //Console.WriteLine("헤더");
             //Console.WriteLine("헤더");
@@ -36,7 +36,7 @@ namespace TextRPG_TeamSix
             //}
             //InputHelper.WaitResponse();
 
-            SceneManager.Instance.SetScene(SceneType.Title);
+            //SceneManager.Instance.SetScene(SceneType.Title);
 
         }
     }

@@ -31,7 +31,7 @@ namespace TextRPG_TeamSix.Stores
             if (player.Gold < item.Price)
                 return false;
             {
-                if(item is IConsumable) // 아이템이 소비성 아이템인지 확인
+                if(item.GetType().Name == "Portion") // 아이템이 소비성 아이템인지 확인
                 {
                     return true; // 소비성 아이템은 구매 가능
                 }
