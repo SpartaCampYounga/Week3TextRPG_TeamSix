@@ -70,6 +70,7 @@ namespace TextRPG_TeamSix.Scenes
                 // 수락한 퀘스트 리스트 출력
                 // 애너미나 던전에 대한 요소가 추후 카운트를 반영할때 어떻게 넣어야할지 고민이 필요
                 // 퀘스트 완료에 따라 acceptedQuests에서 제거하는 로직도 필요
+                // List<Quest> availableQuests = GameDataManager.Instance.AllQuests
                 if (acceptedQuests.Count > 0)
                 {
                     Console.WriteLine();

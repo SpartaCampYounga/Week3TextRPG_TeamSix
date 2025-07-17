@@ -68,7 +68,7 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Quest[] _quests =
         {
-            new EnemyQuest(1, QuestType.Enemy, "고블린 2마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
+            new EnemyQuest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
             new DungeonQuest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
         };
 
