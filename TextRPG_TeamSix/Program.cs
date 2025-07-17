@@ -15,6 +15,10 @@ namespace TextRPG_TeamSix
         {
             GameInitializer.InitializeAll();
 
+
+            //SceneManager.Instance.SetScene(SceneType.Title);
+           SceneManager.Instance.SetScene(SceneType.Title);
+            //SceneManager.Instance.SetScene(SceneType.Battle);
             //Console.WriteLine("헤더");
             //Console.WriteLine("헤더");
             //Console.WriteLine("헤더");

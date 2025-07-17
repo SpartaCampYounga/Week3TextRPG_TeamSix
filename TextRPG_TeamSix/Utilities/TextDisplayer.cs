@@ -12,7 +12,7 @@ namespace TextRPG_TeamSix.Utilities
 {
     internal static class TextDisplayer
     {
-        public static int PageNavigation<T>(List<T> list) //호출되고 나서 콘솔 클리어됨. //-1 : 아이템 선택 안하고 탈출함
+        public static int PageNavigation<T>(List<T> list) //호출되고 나서 콘솔 클리어됨. //아이템 선택 안하고 탈출할 경우 -1 반환
         {
             Console.OutputEncoding = Encoding.UTF8;
             //header는 밖에서 출력하고 들어올 것
@@ -36,7 +36,7 @@ namespace TextRPG_TeamSix.Utilities
                     }
                     else
                     {
-                        Console.WriteLine(list[i]);
+                        Console.WriteLine($"  {list[i]}");
                     }
                 }
 
