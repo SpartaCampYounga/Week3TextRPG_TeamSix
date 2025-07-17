@@ -1,0 +1,32 @@
+{
+  "$type": "TextRPG_TeamSix.Controllers.SaveData, TextRPG_TeamSix",
+  "PlayerSave": {
+    "$type": "TextRPG_TeamSix.Characters.Player, TextRPG_TeamSix",
+    "JobType": "Warrior",
+    "Inventory": {
+      "$type": "TextRPG_TeamSix.Characters.Inventory, TextRPG_TeamSix",
+      "ItemList": {
+        "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+        "$values": []
+      }
+    },
+    "NumOfStones": 0,
+    "Gold": 1000,
+    "Exp": 0,
+    "Id": 2,
+    "Name": "435345",
+    "HP": 300,
+    "MP": 100,
+    "Attack": 10,
+    "Defense": 10,
+    "SkillList": {
+      "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+      "$values": []
+    },
+    "IsAlive": true
+  },
+  "AvailableDungeonList": {
+    "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": []
+  }
+}

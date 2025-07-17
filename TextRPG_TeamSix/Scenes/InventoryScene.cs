@@ -24,9 +24,7 @@ namespace TextRPG_TeamSix.Scenes
         {
 
             player.Inventory.DisplayItems();
-            Console.WriteLine("1. 아이템 판매");
-            Console.WriteLine("2. 아이템 구매");
-            Console.WriteLine("3. 아이템 장착");
+
         }    //출력 하는 시스템
 
         public override void HandleInput() 

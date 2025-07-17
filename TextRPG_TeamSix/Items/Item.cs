@@ -4,6 +4,7 @@ using System.Formats.Asn1;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG_TeamSix.Enums;
 
 namespace TextRPG_TeamSix.Items
 {
@@ -32,5 +33,6 @@ namespace TextRPG_TeamSix.Items
             Description = description; // 아이템의 설명
             Price = price; // 아이템의 가격
         }
+
     }
 }
