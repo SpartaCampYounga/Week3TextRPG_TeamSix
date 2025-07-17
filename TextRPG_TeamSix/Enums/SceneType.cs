@@ -22,6 +22,7 @@ namespace TextRPG_TeamSix.Enums
         Dungeon,
         Player,
         QuestAccept,
-        QuestReward
+        QuestReward,
+        SpecialStore
     }
 }
