@@ -61,6 +61,7 @@ namespace TextRPG_TeamSix.Characters
             uint mp,
             uint attack,
             uint defense,
+            uint luck,
             List<Skill> skillList,
             bool isAlive,
             JobType jobType,
@@ -77,6 +78,7 @@ namespace TextRPG_TeamSix.Characters
             this.MP = mp;
             this.Attack = attack;
             this.Defense = defense;
+            this.Luck = luck;
             this.SkillList = new List<Skill>();
             foreach (Skill skill in skillList)
             {

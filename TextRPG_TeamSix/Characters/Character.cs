@@ -14,6 +14,7 @@ namespace TextRPG_TeamSix.Characters
         public uint MP { get; protected set; }
         public uint Attack { get; protected set; }
         public uint Defense { get; protected set; }
+        public uint Luck { get; protected set; }
         public List<Skill> SkillList { get; protected set; } = new List<Skill>();
         public bool IsAlive { get; protected set; }
 
@@ -30,7 +31,8 @@ namespace TextRPG_TeamSix.Characters
             uint hP,
             uint mP,
             uint attack,
-            uint defense)
+            uint defense,
+            uint luck)
         {
             this.Id = id;
             this.Name = name;
@@ -38,6 +40,7 @@ namespace TextRPG_TeamSix.Characters
             this.MP = mP;
             this.Attack = attack;
             this.Defense = defense;
+            this.Luck = luck;
         }
         public void TakeDamage(uint damage)
         {
