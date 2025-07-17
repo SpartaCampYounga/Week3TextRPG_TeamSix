@@ -58,7 +58,7 @@ namespace TextRPG_TeamSix.Characters
                 }
 
                 Console.WriteLine("-------------------------------------");
-                Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] | [숫자 입력]  장착 | [Enter]  나가기");
+                Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] | [ID 입력]  장착 | [Enter]  나가기");
             }
     
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
@@ -80,30 +80,30 @@ namespace TextRPG_TeamSix.Characters
                 SceneManager.Instance.SetScene(SceneType.Main);
                 return;
             }
-            else
+            if(true)
             {
                 // 숫자 키 입력 처리
                 Console.Write("장착할 아이템 ID 입력: ");
                 string input = Console.ReadLine();
-            if (uint.TryParse(input, out uint itemId))
-            {
-                EquipItem(itemId);
-                Console.WriteLine("아무 키나 누르면 계속...");
-                Console.ReadKey(true);
+                if (uint.TryParse(input, out uint itemId))
+                 {
+                    EquipItem(itemId);
+                    Console.WriteLine("아무 키나 누르면 계속...");
+                    Console.ReadKey(true);
+                 }
+                else
+                {   
+                    Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
+                    Console.ReadKey(true);
+                }
             }
-            else
-            {
-                Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
-                Console.ReadKey(true);
-            }
-        }
     }
 }
 
         public void EquipItem(uint itemId)
         {
             Item? item = GetItem((uint)itemId);
-            if (item == null && item.Type == Item.ItemType.Accessory)
+            if (item == null)
             {
                 Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
                 return;
