@@ -11,6 +11,7 @@ using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Dungeons;
 using TextRPG_TeamSix.Quests;
+using static TextRPG_TeamSix.Items.Item;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -46,20 +47,20 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Item[] _items =
         {
-            new Portion(1, "소형 회복물약", "작은 체력을 회복합니다", 50, 30, RestoreType.Health),
-            new Portion(2, "중형 회복물약", "중간 정도의 체력을 회복합니다", 100, 100, RestoreType.Health),
-            new Portion(3, "대형 회복물약", "많은 체력을 회복합니다", 300, 450, RestoreType.Health),
+            new Portion(1, "소형 회복물약", "작은 체력을 회복합니다", 50, ItemType.Consumable, 30, RestoreType.Health),
+            new Portion(2, "중형 회복물약", "중간 정도의 체력을 회복합니다", 100, ItemType.Consumable, 100, RestoreType.Health),
+            new Portion(3, "대형 회복물약", "많은 체력을 회복합니다", 300, ItemType.Consumable, 450, RestoreType.Health),
 
 
-            new Weapon(4, "녹슨검", "낡았습니다", 80, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(5, "나무검", "가볍고 약한 검입니다.", 120, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(4, "녹슨검", "낡았습니다", 80, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(5, "나무검", "가볍고 약한 검입니다.", 120, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
 
 
 
-            new Armor(7, "천옷", "기본 복장입니다.", 50, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(7, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
 
         };
 

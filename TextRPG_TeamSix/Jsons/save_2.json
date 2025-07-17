@@ -9,7 +9,31 @@
       "InvenWeapon": null,
       "ItemList": {
         "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
-        "$values": []
+        "$values": [
+          {
+            "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+            "RestoreType": "Health",
+            "RestoreAmount": 30,
+            "Id": 1,
+            "Name": "소형 회복물약",
+            "Description": "작은 체력을 회복합니다",
+            "Price": 50,
+            "IsEquipped": false,
+            "ItemType": "Weapon"
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.Weapon, TextRPG_TeamSix",
+            "Ability": "Attack",
+            "Enhancement": 10,
+            "EquipSlot": "Weapon",
+            "Id": 6,
+            "Name": "포레스트검f",
+            "Description": "Just Do it의 정수 우리도 노력하면 됩니다.",
+            "Price": 300,
+            "IsEquipped": false,
+            "ItemType": "Weapon"
+          }
+        ]
       }
     },
     "Weapon": null,
@@ -17,8 +41,10 @@
     "NumOfStones": 0,
     "Gold": 1000,
     "Exp": 0,
-    "Id": 2,
-    "Name": "asd",
+    "MaxHP": 300,
+    "MaxMP": 100,
+    "Id": 3,
+    "Name": "2",
     "HP": 300,
     "MP": 100,
     "Attack": 10,
