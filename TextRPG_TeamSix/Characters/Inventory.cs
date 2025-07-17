@@ -32,16 +32,20 @@ namespace TextRPG_TeamSix.Characters
         while (true)
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("╔══════════════════════════════════════╗");
             Console.WriteLine("║               인벤토리               ║");
             Console.WriteLine("╚══════════════════════════════════════╝");
             Console.WriteLine();
             Console.WriteLine("-------------------------------------");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" ID | [E] | 이름 | 설명 | 가격 ");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("-------------------------------------");
 
             if (ItemList.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("인벤토리가 비어 있습니다.");
             }
             else
@@ -57,10 +61,13 @@ namespace TextRPG_TeamSix.Characters
                     Console.WriteLine($"{item.Id} | {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
                 }
 
-                Console.WriteLine("-------------------------------------");
-                Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] ");
-                Console.WriteLine("[ID 입력] 아이템 장착/사용 | [Q] 나가기");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("-------------------------------------");
+                    Console.ResetColor();
+                    Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] ");
+                    Console.WriteLine("[ID 입력] 아이템 장착/사용 | [Q] 나가기");
                 }
+                
 
                 // 숫자 키 입력 처리
                 Console.Write("장착할 아이템 ID 입력: ");
