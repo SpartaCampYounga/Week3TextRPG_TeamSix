@@ -30,7 +30,7 @@ namespace TextRPG_TeamSix.Utilities
         public static void WaitResponse()
         {
             Console.WriteLine("다음으로 넘어가려면 아무거나 누르세요");
-            Console.ReadLine();
+            Console.Read();
             //Console.WriteLine("0. 다음");
             //int input = GetIntegerRange(0, 1);
         }
