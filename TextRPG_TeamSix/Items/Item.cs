@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Items
 {
@@ -32,6 +33,14 @@ namespace TextRPG_TeamSix.Items
             Name = name; // 아이템의 이름
             Description = description; // 아이템의 설명
             Price = price; // 아이템의 가격
+        }
+
+        public override string ToString()    //자식 클래스들도 override 메서드 생성해주기
+        {
+            string display = "";
+            display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
+            display += FormatUtility.AlignWithPadding(Description, 30) + " | ";
+            return display;
         }
 
     }
