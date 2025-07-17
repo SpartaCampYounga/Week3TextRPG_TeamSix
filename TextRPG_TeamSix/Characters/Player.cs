@@ -14,7 +14,6 @@ using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Characters
 {
-    //
     internal class Player : Character
     {
         public JobType JobType { get; private set; }
@@ -25,32 +24,37 @@ namespace TextRPG_TeamSix.Characters
         public uint NumOfStones { get; private set; }
 
         public uint Gold { get; private set; } // 플레이어의 금액
-
         public uint Exp { get; private set; } // 플레이어의 경험치
+
+        public uint MaxHP { get; private set; } // 최대 체력
+        public uint MaxMP { get; private set; } // 최대 마나
+
         public Player(string name, JobType jobType) : base(name)
         {
             switch (jobType)
             {
                 case JobType.Magician:
-                    HP = 100;
-                    MP = 300;
+                    MaxHP = 100;
+                    MaxMP = 300;
+                    HP = MaxHP;
+                    MP = MaxMP;
                     Attack = 10;
                     Defense = 10;
-                    NumOfStones = 0; // 초기 돌의 개수 설정
-                    Gold = 1000; // 초기 금액 설정
-                    Exp = 0; // 초기 경험치 설정
-                    //SkillList.Add(GameDataManager.Instance.AllSkills[0]);
+                    NumOfStones = 0;
+                    Gold = 1000;
+                    Exp = 0;
                     Inventory = new Inventory(this);
                     break;
                 case JobType.Warrior:
-                    HP = 300;
-                    MP = 100;
+                    MaxHP = 300;
+                    MaxMP = 100;
+                    HP = MaxHP;
+                    MP = MaxMP;
                     Attack = 10;
                     Defense = 10;
-                    NumOfStones = 0; // 초기 돌의 개수 설정
-                    Gold = 1000; // 초기 금액 설정
-                    Exp = 0; // 초기 경험치 설정
-                    //SkillList.Add(GameDataManager.Instance.AllSkills[0]);
+                    NumOfStones = 0;
+                    Gold = 1000;
+                    Exp = 0;
                     Inventory = new Inventory(this);
                     break;
             }
@@ -79,6 +83,8 @@ namespace TextRPG_TeamSix.Characters
             this.Name = name;
             this.HP = hp;
             this.MP = mp;
+            this.MaxHP = hp;
+            this.MaxMP = mp;
             this.Attack = attack;
             this.Defense = defense;
             this.Luck = luck;
@@ -99,11 +105,13 @@ namespace TextRPG_TeamSix.Characters
         public void DisplayPlayerStatus()
         {
             Console.WriteLine("DisplayPlayerStatus");
-        } 
+        }
+
         public void ConsumeMP(uint MP)
         {
             this.MP -= MP;
         }
+
         public void Healed(uint HP)
         {
             this.HP += HP;
@@ -111,35 +119,34 @@ namespace TextRPG_TeamSix.Characters
 
         public void EarnGold(uint gold)
         {
-            this.Gold += gold; 
+            this.Gold += gold;
         }
+
         public void AcquireSkillStone(uint numOfStones)
         {
             NumOfStones += numOfStones;
         }
+
         public void RecalculateStats()
         {
-            uint bonusAttack = 0;   
+            uint bonusAttack = 0;
             uint bonusDefense = 0;
-            // 인벤토리에서 장착된 아이템의 능력치 보너스를 계산
-            foreach(var item in Inventory.ItemList)
+            foreach (var item in Inventory.ItemList)
             {
                 if (item.IsEquipped)
                 {
-                    if(item is Weapon weapon)
+                    if (item is Weapon weapon)
                     {
-                        bonusAttack += this.Attack; // 무기의 능력치 보너스 나중에 웨폰에 비례 추가
+                        bonusAttack += this.Attack;
                     }
                     else if (item is Armor armor)
                     {
-                        bonusDefense += this.Defense; // 방어구의 능력치 보너스 나중ㅇ에 아머에 비례 추가
+                        bonusDefense += this.Defense;
                     }
                 }
             }
         }
 
-
-        //스킬 습득 //가능한지는 Skill에서 체크
         public void LearnSkill(Skill skillToLearn)
         {
             NumOfStones -= skillToLearn.RequiredStones;
@@ -147,16 +154,11 @@ namespace TextRPG_TeamSix.Characters
             Console.WriteLine($"{skillToLearn.Name}을 배웠다!");
         }
 
-        // 사용자 이름
-        // 이 부분 변수명을 어디를 사용자Name으로 할지 캐릭터Name으로 할지 의논필요.
         public void Rename(string newName)
         {
             Name = newName;
         }
 
-
-
-        //SaveData Load시 Deep Copy 위함
         public void Clone(Player player)
         {
             this.Id = player.Id;
@@ -167,9 +169,10 @@ namespace TextRPG_TeamSix.Characters
             Console.WriteLine(player.Name);
             this.HP = player.HP;
             this.MP = player.MP;
+            this.MaxHP = player.MaxHP;
+            this.MaxMP = player.MaxMP;
             this.Attack = player.Attack;
             this.Defense = player.Defense;
-
             this.SkillList = new List<Skill>();
             foreach (Skill skill in player.SkillList)
             {
@@ -180,7 +183,5 @@ namespace TextRPG_TeamSix.Characters
             Inventory.Clone(player.Inventory);
             NumOfStones = player.NumOfStones;
         }
-
     }
 }
-
