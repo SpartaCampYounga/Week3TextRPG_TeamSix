@@ -32,8 +32,8 @@ internal class BattleScene : SceneBase
         player = new Player("SCV", JobType.Warrior);
         enemies = new List<Enemy>
         {
-            new Enemy("미니언", EnemyType.Type1),
-            new Enemy("대포미니언", EnemyType.Type1)
+            new Enemy(2, "미니언", EnemyType.Type1),
+            new Enemy(3, "대포미니언", EnemyType.Type1)
         };
 
         BattleLog.Log("스파르타 던전에 오신 여러분 환영합니다.");

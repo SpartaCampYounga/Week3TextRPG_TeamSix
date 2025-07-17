@@ -36,7 +36,7 @@ namespace TextRPG_TeamSix
             //}
             //InputHelper.WaitResponse();
 
-            SceneManager.Instance.SetScene(SceneType.Title);
+            SceneManager.Instance.SetScene(SceneType.QuestAccept);
 
         }
     }

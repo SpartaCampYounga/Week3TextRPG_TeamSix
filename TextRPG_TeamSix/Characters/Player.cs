@@ -121,6 +121,10 @@ namespace TextRPG_TeamSix.Characters
         {
             this.Gold += gold;
         }
+        public void EarnExp(uint exp)
+        {
+            this.Exp += exp;
+        }
 
         public void AcquireSkillStone(uint numOfStones)
         {

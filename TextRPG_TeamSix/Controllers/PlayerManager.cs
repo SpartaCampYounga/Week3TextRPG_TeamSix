@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
+using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Scenes;
 
 namespace TextRPG_TeamSix.Controllers

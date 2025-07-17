@@ -29,7 +29,8 @@ namespace TextRPG_TeamSix.Controllers
             new QuestScene(),
             new StoresScene(),
             new DungeonScene(),
-            new PlayerScene()
+            new PlayerScene(),
+            new QuestAcceptScene()
         };
 
         private static Skill[] _skills =
@@ -67,7 +68,8 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Enemy[] _emenies =
         {
-            new Enemy("고블린", EnemyType.Type1)
+            new Enemy(1, "고블린", EnemyType.Type1),
+            new Enemy(2, "슬라임", EnemyType.Type1)
         };
 
         private static Dungeon[] _dungeons =
@@ -78,8 +80,10 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Quest[] _quests =
         {
-            new EnemyQuest(1, QuestType.Enemy, "고블린 2마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
-            new DungeonQuest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
+            new Quest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, _emenies[0].Id, 3),
+            new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, _dungeons[0].Id, 1)
+            //new Quest(1, QuestType.Enemy, "고블린 2마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
+            //new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
         };
 
         public static void InitializeAll() 
@@ -87,6 +91,7 @@ namespace TextRPG_TeamSix.Controllers
             SceneManager.Instance.InitializeScenes(_scenes);
             GameDataManager.Instance.InitializeSkills(_skills);
             GameDataManager.Instance.InitializeItems(_items);
+            GameDataManager.Instance.InitializeEnemies(_emenies);
             GameDataManager.Instance.InitializeDungeons(_dungeons);
             GameDataManager.Instance.InitializeQuests(_quests);
         }
