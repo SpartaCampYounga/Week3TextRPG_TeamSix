@@ -29,10 +29,10 @@ namespace TextRPG_TeamSix.Scenes
 
             Player player = PlayerManager.Instance.CurrentPlayer;
 
-            Console.OutputEncoding = Encoding.UTF8; //Younga TIL
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("SkillScene Loaded");
 
-            Console.WriteLine(new string('=', Console.WindowWidth)); //Younga TIL
+            Console.WriteLine(new string('=', Console.WindowWidth));
             Console.WriteLine("스킬 - 보유 중인 스킬을 볼 수 있습니다.");
             Console.WriteLine(new string('=', Console.WindowWidth));
 
@@ -42,8 +42,13 @@ namespace TextRPG_TeamSix.Scenes
             {
                 //테이블 헤더
                 string header = "";
-                //header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
-                //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
+                //header += FormatU
+                //
+                //ity.AlignWithPadding("No.", 3) + " | ";
+                //header += FormatU
+                //
+                //
+                //ity.AlignWithPadding("소지여부", 8) + " | ";
                 header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
                 header += FormatUtility.AlignWithPadding("설명", 30) + " | ";
                 header += FormatUtility.AlignWithPadding("소모MP", 7) + " | ";

@@ -18,14 +18,9 @@ namespace TextRPG_TeamSix.Characters
     {
         public JobType JobType { get; private set; }
         public Inventory Inventory { get; private set; }
-
-        public Weapon Weapon { get; private set; }
-        public Armor Armor { get; private set; }
         public uint NumOfStones { get; private set; }
-
         public uint Gold { get; private set; } // 플레이어의 금액
         public uint Exp { get; private set; } // 플레이어의 경험치
-
         public uint MaxHP { get; private set; } // 최대 체력
         public uint MaxMP { get; private set; } // 최대 마나
 
@@ -75,7 +70,9 @@ namespace TextRPG_TeamSix.Characters
             uint numOfStones,
             Inventory inventory,
             uint gold,
-            uint exp
+            uint exp,
+            uint maxHp,
+            uint maxMp
         ) : base(name)
         {
             Console.WriteLine("Player 역직렬화 생성자");
@@ -100,6 +97,8 @@ namespace TextRPG_TeamSix.Characters
             this.Inventory.Clone(inventory);
             this.Gold = gold;
             this.Exp = exp;
+            this.MaxHP = maxHp;
+            this.MaxMP = maxMp;
         }
 
         public void DisplayPlayerStatus()

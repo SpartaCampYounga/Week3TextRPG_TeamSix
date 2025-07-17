@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace TextRPG_TeamSix.Characters
     internal class Enemy : Character
     {
         public EnemyType EnemyType { get; set; }
+
         public Enemy(uint id, string name, EnemyType enemyType) : base(name)
         {
             EnemyType = enemyType;
@@ -30,5 +32,26 @@ namespace TextRPG_TeamSix.Characters
                     break;
             }
         }
+        [JsonConstructor]
+        public Enemy(
+            uint id,
+            string name,
+            uint hP,
+            uint mP,
+            uint attack,
+            uint defense,
+            uint luck, 
+            EnemyType enemyType) : base(id, name, hP,mP, attack,defense, luck) 
+        {
+            //this.Id = id;
+            //this.Name = name;
+            //this.HP = hP;
+            //this.MP = mP;
+            //this.Attack = attack;
+            //this.Defense = defense;
+            //this.Luck = luck;
+            this.EnemyType = enemyType;
+        }
+
     }
 }
