@@ -59,7 +59,6 @@ namespace TextRPG_TeamSix.Scenes
             }
             input = TextDisplayer.PageNavigation(currentStore.ItemList);
 
-            //PrintItems();
             HandleInput();
         }
         private void LoadBuyItems() // 상점에서 아이템 구매 모드로 전환

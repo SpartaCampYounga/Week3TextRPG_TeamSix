@@ -69,7 +69,7 @@ namespace TextRPG_TeamSix.Scenes
             // 2. HandleInput에 case 추가  
             // 4. 던전 추가함. (3번 상점이 나을 것 같아서)
             // 애매하면 그냥 채팅에 무슨씬 연결요청해주세요. 남겨주시면 반영할게용
-            input = InputHelper.GetIntegerRange(1, 8);
+            input = InputHelper.GetIntegerRange(1, 9);
             HandleInput();
         }
 
@@ -101,6 +101,9 @@ namespace TextRPG_TeamSix.Scenes
                     break;
                 case 7:
                     //Program.cs로 돌아가서 재실행
+                    break;
+                case 8:
+                    SceneManager.Instance.SetScene(SceneType.SpecialStore); //test용 스페셜 상점 진입씬
                     break;
             }
         }
