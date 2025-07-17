@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
+using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Scenes
@@ -21,6 +23,33 @@ namespace TextRPG_TeamSix.Scenes
             // 상태보기,상점,던전,퀘스트 순으로 정렬(추후)
             Console.Clear();
             Console.WriteLine("MainScene");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(new string('=', 120));
+
+            Console.WriteLine(@"
+
+
+                 ______   ______   ______
+                 |    |  |      |  |    |
+            _____| [] |__| ____ |__| [] |_____ 
+            |                                 |                                       🔥       🔥      
+            |                                 |                                        ▒▒▒▒▒▒▒▒▒▒
+            |        📜 QUEST BOARD           |                                     🔥▒▒▒ _____ ▒▒▒🔥
+            |                                 |                                     ▒▒▒  [  #  ]  ▒▒▒
+            |        🍞 Item Shop             |                                    ▒▒▒   [ ### ]   ▒▒▒
+            |                                 |                                     ▒▒▒  [ ### ]  ▒▒▒
+            |_________________________________|======================================▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+                           
+                            마을                                                           던전
+
+            ");
+
+
+            Console.WriteLine(new string('=', 120));
+
+            Console.ResetColor();// 그린컬러 초기화
+
+
             Console.WriteLine("마을에 오신 것을 환영합니다.");
             Console.WriteLine("");
             Console.WriteLine("1. 스킬보기");
