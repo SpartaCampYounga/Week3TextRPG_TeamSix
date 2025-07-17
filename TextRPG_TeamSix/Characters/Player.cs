@@ -64,6 +64,7 @@ namespace TextRPG_TeamSix.Characters
             uint mp,
             uint attack,
             uint defense,
+            uint luck,
             List<Skill> skillList,
             bool isAlive,
             JobType jobType,
@@ -80,6 +81,7 @@ namespace TextRPG_TeamSix.Characters
             this.MP = mp;
             this.Attack = attack;
             this.Defense = defense;
+            this.Luck = luck;
             this.SkillList = new List<Skill>();
             foreach (Skill skill in skillList)
             {
@@ -163,7 +165,6 @@ namespace TextRPG_TeamSix.Characters
             this.Name = player.Name;
             Console.WriteLine(Name);
             Console.WriteLine(player.Name);
-            Console.Read();
             this.HP = player.HP;
             this.MP = player.MP;
             this.Attack = player.Attack;

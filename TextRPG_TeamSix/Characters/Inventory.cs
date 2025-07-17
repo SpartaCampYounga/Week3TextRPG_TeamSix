@@ -1,30 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using TextRPG_TeamSix.Items;
+﻿using Newtonsoft.Json;
 using TextRPG_TeamSix.Controllers;
-using TextRPG_TeamSix.Skills;
-using TextRPG_TeamSix.Enums;
-using TextRPG_TeamSix.Scenes;
-using System.Formats.Asn1;
+using TextRPG_TeamSix.Items;
 namespace TextRPG_TeamSix.Characters
 {
     //인벤토리 관리
     internal class Inventory //: IContainableItems
     {
         [JsonIgnore]
-        
         public Player Owner { get; private set; }
 
-        public Character Character { get; private set; } 
-        public Weapon InvenWeapon { get; private set; } 
+        public Character Character { get; private set; }
+        public Weapon InvenWeapon { get; private set; }
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
-        public Inventory(Player owner) 
-        { 
+        public Inventory(Player owner)
+        {
             Owner = owner;
         }
         public void DisplayItems()
@@ -35,9 +25,9 @@ namespace TextRPG_TeamSix.Characters
 
             while (true)
             {
-                Console.Clear();
+                //Console.Clear();
 
-                Console.WriteLine("인벤토리");
+                //Console.WriteLine("인벤토리");
                 Console.WriteLine("-------------------------------------");
                 Console.WriteLine(" ID | 이름 | 능력 | 설명 |");
                 Console.WriteLine("-------------------------------------");
@@ -50,7 +40,7 @@ namespace TextRPG_TeamSix.Characters
                 {
                     Console.WriteLine("아이템 ID 입력 : ");
                     string input = Console.ReadLine();
-                    if(uint.TryParse(input, out uint itemId))
+                    if (uint.TryParse(input, out uint itemId))
                     {
                         EquipItem(itemId);
                         Console.WriteLine("아이템 장착 완료");
@@ -63,7 +53,7 @@ namespace TextRPG_TeamSix.Characters
                 int startIndex = indexPage * itemsPerPage;
                 int endIndex = startIndex + itemsPerPage;
 
-                if(endIndex > ItemList.Count)
+                if (endIndex > ItemList.Count)
                 {
                     endIndex = ItemList.Count;
                 }
@@ -71,7 +61,7 @@ namespace TextRPG_TeamSix.Characters
                 for (int i = startIndex; i < endIndex; i++)
                 {
                     Item item = ItemList[i];
-                    string equippedStatus = item.IsEquipped? "[E]" : "[ ]"; // 아이템이 장착되었는지 여부 표시
+                    string equippedStatus = item.IsEquipped ? "[E]" : "[ ]"; // 아이템이 장착되었는지 여부 표시
                     Console.WriteLine($"{item.Id}. {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
 
                 }
@@ -99,11 +89,7 @@ namespace TextRPG_TeamSix.Characters
                 {
                     break; // 종료
                 }
-
-
             }
-
-
         }
         public void EquipItem(uint itemId)
         {
@@ -117,7 +103,6 @@ namespace TextRPG_TeamSix.Characters
             {
                 item.IsEquipped = false; // 아이템이 장착되어 있으면 장착 해제
                 Console.WriteLine($"{item.Name}은(는) 이미 장착되어 있습니다.");
-               
             }
             foreach (var otherItem in ItemList)
             {
@@ -133,14 +118,14 @@ namespace TextRPG_TeamSix.Characters
             }
 
             item.IsEquipped = true; // 아이템 장착
-            if(item.Type == Item.ItemType.Weapon)
+            if (item.Type == Item.ItemType.Weapon)
             {
-                
+
             }
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
         }
-  
+
         public Item? GetItem(uint id)
         {
             Item? item = ItemList.FirstOrDefault(x => x.Id == id);
@@ -150,13 +135,13 @@ namespace TextRPG_TeamSix.Characters
         {
             // 구매 bool 체크는 상점 SellToPlayer로 이동
             // 예: 플레이어의 골드가 충분한지 확인하고, 아이템을 인벤토리에 추가
-            Item? item = GetItem(itemId);
+            Item? item = GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == itemId);
             if (item == null)
             {
                 Console.WriteLine("해당 아이템이 존재하지 않습니다.");
                 return;
             }
-            
+
             Owner.EarnGold(0 - item.Price);
             ItemList.Add(item);
             Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
@@ -186,7 +171,7 @@ namespace TextRPG_TeamSix.Characters
         public void Clone(Inventory inventory)
         {
             Owner = inventory.Owner;
-            foreach(Item item in inventory.ItemList)
+            foreach (Item item in inventory.ItemList)
             {
                 ItemList.Add(GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == item.Id));
             }
