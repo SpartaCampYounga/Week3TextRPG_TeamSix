@@ -11,8 +11,6 @@ namespace TextRPG_TeamSix.Characters
         [JsonIgnore]
         public Player Owner { get; private set; }
 
-        public Character Character { get; private set; }
-        public Weapon InvenWeapon { get; private set; }
         public List<Item> ItemList { get; set; } = new List<Item>();
 
         
