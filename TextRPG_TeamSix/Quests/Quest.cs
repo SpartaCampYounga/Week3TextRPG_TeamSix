@@ -17,9 +17,10 @@ namespace TextRPG_TeamSix.Quests
         public string Description { get; protected set; }
         public uint RewardGold { get; private set; }
         public uint RewardExp { get; private set; }
+        public abstract uint Count { get; }
         //public void Reward(Player player);
 
-        public Quest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp)
+        public Quest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp, uint count)
         {
             Id = id;
             QuestType = questType;
@@ -40,6 +41,7 @@ namespace TextRPG_TeamSix.Quests
             display += FormatUtility.AlignWithPadding(Description, 5) + " | ";
             display += FormatUtility.AlignWithPadding(RewardGold.ToString(), 5) + " | ";
             display += FormatUtility.AlignWithPadding(RewardExp.ToString(), 5) + " | ";
+            display += FormatUtility.AlignWithPadding(Count.ToString(), 5) + " | ";
             return display;
         }
     }

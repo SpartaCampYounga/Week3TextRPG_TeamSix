@@ -15,11 +15,13 @@ namespace TextRPG_TeamSix.Quests
     internal class DungeonQuest: Quest
     {
         public Dungeon Dungeon { get; protected set; } // 퀘스트에 해당하는 던전
-        public uint Count { get; } // 퀘스트 완료 횟수
+        public override uint Count { get; }
 
         public DungeonQuest(uint id, QuestType questType, string description, uint rewardGold, uint rewardExp, Dungeon dungeon, uint count)
-            : base(id, questType, description, rewardGold, rewardExp)
+            : base(id, questType, description, rewardGold, rewardExp, count)
         {
+            Dungeon = dungeon;
+            Count = count;
         }
         public override string ToString()
         {
