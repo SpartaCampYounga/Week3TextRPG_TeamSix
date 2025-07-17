@@ -36,23 +36,24 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("스킬 - 보유 중인 스킬을 볼 수 있습니다.");
             Console.WriteLine(new string('=', Console.WindowWidth));
 
-            //테이블 헤더
-            string header = "";
-            //header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
-            //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
-            header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
-            header += FormatUtility.AlignWithPadding("설명", 30) + " | ";
-            header += FormatUtility.AlignWithPadding("소모MP", 7) + " | ";
-            header += FormatUtility.AlignWithPadding("스킬석", 7) + " | ";
-            header += FormatUtility.AlignWithPadding("스킬타입", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("효과량", 7) + " | ";
-
-            Console.WriteLine(header);
-            Console.WriteLine(new string('-', Console.WindowWidth));
 
             //플레이어가 보유중인 스킬만 띄우기
             if (player.SkillList != null && player.SkillList.Count != 0)
             {
+                //테이블 헤더
+                string header = "";
+                //header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
+                //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
+                header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
+                header += FormatUtility.AlignWithPadding("설명", 30) + " | ";
+                header += FormatUtility.AlignWithPadding("소모MP", 7) + " | ";
+                header += FormatUtility.AlignWithPadding("스킬석", 7) + " | ";
+                header += FormatUtility.AlignWithPadding("스킬타입", 10) + " | ";
+                header += FormatUtility.AlignWithPadding("효과량", 7) + " | ";
+
+                Console.WriteLine(header);
+                Console.WriteLine(new string('-', Console.WindowWidth));
+
                 for (int i = 0; i < player.SkillList.Count(); i++)
                 {
                     Console.WriteLine(player.SkillList[i]);
@@ -65,11 +66,12 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('-', Console.WindowWidth));
             Console.WriteLine();
             Console.WriteLine();
+            List<string> selections = new List<string>()
+            {
+                "새 스킬 배우기"
+            };
 
-            Console.WriteLine("1. 스킬 배우기");
-            Console.WriteLine("0. 나가기");
-            Console.Write(">>");
-            input = InputHelper.GetIntegerRange(0, 3);
+            input = TextDisplayer.PageNavigation(selections);
             HandleInput();
         }
 
@@ -77,12 +79,13 @@ namespace TextRPG_TeamSix.Scenes
         {
             switch (input)
             {
-                case 0:
-                    Console.WriteLine("0선택함"); //debug용 //현재는 Main으로... 추후 캐릭터창 생기면 하는 걸로
-                    SceneManager.Instance.SetScene(SceneType.Main);    //0번 누르면 해당 타입의 씬 출력
+                case -1:
+                    SceneManager.Instance.SetScene(SceneType.Player);
                     break;
-                case 1:
+                case 0:
                     SceneManager.Instance.SetScene(SceneType.SkillLearn);
+                    break;
+                default:
                     break;
             }
         }
