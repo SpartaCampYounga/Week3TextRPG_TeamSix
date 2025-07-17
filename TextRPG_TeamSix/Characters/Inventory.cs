@@ -58,10 +58,33 @@ namespace TextRPG_TeamSix.Characters
                 }
 
                 Console.WriteLine("-------------------------------------");
-                Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] | [ID 입력]  장착 | [Enter]  나가기");
-            }
-    
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] ");
+                Console.WriteLine("[ID 입력] 아이템 장착/사용 | [Q] 나가기");
+                }
+
+                // 숫자 키 입력 처리
+                Console.Write("장착할 아이템 ID 입력: ");
+                string input = Console.ReadLine();
+
+                if (uint.TryParse(input, out uint itemId))
+                {
+                    Item? item = GetItem(itemId);
+                    if (item != null)
+                    {
+                        EquipItem(itemId);
+                    }
+                    else
+                    {
+                        Console.WriteLine("해당 ID의 아이템이 존재하지 않습니다.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("숫자를 입력해주세요.");
+                    
+                }
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
     
             if (keyInfo.Key == ConsoleKey.RightArrow)
             {
@@ -75,28 +98,12 @@ namespace TextRPG_TeamSix.Characters
                     indexPage = (ItemList.Count - 1) / itemsPerPage;
                 }
             }
-            else if (keyInfo.Key == ConsoleKey.Enter)
+            else if (keyInfo.Key == ConsoleKey.Q)
             {
-                SceneManager.Instance.SetScene(SceneType.Main);
+                SceneManager.Instance.SetScene(SceneType.Player);
                 return;
             }
-            if(true)
-            {
-                // 숫자 키 입력 처리
-                Console.Write("장착할 아이템 ID 입력: ");
-                string input = Console.ReadLine();
-                if (uint.TryParse(input, out uint itemId))
-                 {
-                    EquipItem(itemId);
-                    Console.WriteLine("아무 키나 누르면 계속...");
-                    Console.ReadKey(true);
-                 }
-                else
-                {   
-                    Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
-                    Console.ReadKey(true);
-                }
-            }
+
     }
 }
 
@@ -106,6 +113,11 @@ namespace TextRPG_TeamSix.Characters
             if (item == null)
             {
                 Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
+                return;
+            }
+            if (item.Type == Item.ItemType.Consumable)
+            {
+                Console.WriteLine("회복물약은 던전에서 사용해 주세요.");
                 return;
             }
             if (item.IsEquipped)
