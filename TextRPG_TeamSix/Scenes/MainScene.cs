@@ -61,7 +61,8 @@ namespace TextRPG_TeamSix.Scenes
                 "상점",   //2
                 "던전",   //3
                 "휴식",   //4
-                "저장하기"  //5
+                "저장하기",  //5
+                "디버그용 스페셜" //6
             };
 
             input = TextDisplayer.PageNavigation(selections);
@@ -97,7 +98,7 @@ namespace TextRPG_TeamSix.Scenes
                 case -1:
                     //Program.cs로 돌아가서 재실행
                     break;
-                case 8:
+                case 6:
                     SceneManager.Instance.SetScene(SceneType.SpecialStore); //test용 스페셜 상점 진입씬
                     break;
             }

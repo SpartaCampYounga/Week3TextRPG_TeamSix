@@ -62,16 +62,17 @@ namespace TextRPG_TeamSix.Scenes
                 Console.WriteLine("----------------------------------------\n");
 
                 Thread.Sleep(200);
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("선택지를 고르세요:");
                 Console.WriteLine();
-                PrintMenuOption("1", " 인벤토리", ConsoleColor.Green);
-                PrintMenuOption("2", " 스킬", ConsoleColor.Green);
-                PrintMenuOption("0", "↩ 나가기", ConsoleColor.Green);
+                List<string> selections = new List<string>()
+            {
+                "인벤토리",  //0
+                "스킬",  //1
+                "나가기",   //2
+            };
 
-                Console.WriteLine();
-                Console.Write("번호를 입력하세요 : ");
+                input = TextDisplayer.PageNavigation(selections);
+                HandleInput();
+
             }
 
             // 헬퍼: 스탯 출력
@@ -93,12 +94,7 @@ namespace TextRPG_TeamSix.Scenes
             }
 
 
-
-
-
-
-            input = InputHelper.GetIntegerRange(0, 3);
-            HandleInput();
+      
             //while (true)
             //{
             //    Console.Write("원하는 번호를 입력하세요: ");
@@ -141,19 +137,19 @@ namespace TextRPG_TeamSix.Scenes
         {
             switch (input)
             {
-                case 1:
-                    Console.WriteLine("1선택함");
-                    Console.Read();
+                case 0:
                     SceneManager.Instance.SetScene(SceneType.Inventory); //씬 호출하는 방식으로 변경
                     //player.Inventory.DisplayItems(); // 인벤토리 출력
                     break;
-                case 2:
+                case 1:
                     SceneManager.Instance.SetScene(SceneType.Skill);
                     break;
-                case 0:
+                case 2:
                     Console.WriteLine("상태창을 나갑니다.");
                     SceneManager.Instance.SetScene(SceneType.Main);
                     //mainScene.DisplayScene(); // MainScene 인스턴스를 사용하여 호출
+                    break;
+                case -1:
                     break;
             }
         } //입력 받고 실행하는 시스템

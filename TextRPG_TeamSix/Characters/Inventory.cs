@@ -10,8 +10,11 @@ namespace TextRPG_TeamSix.Characters
     {
         [JsonIgnore]
         public Player Owner { get; private set; }
+
         public List<Item> ItemList { get; private set; } = new List<Item>();
 
+
+        
         public Inventory(Player owner)
         {
             Owner = owner;
@@ -21,22 +24,30 @@ namespace TextRPG_TeamSix.Characters
         {
             ItemList = itemList ?? new List<Item>();
         }
-        public void DisplayItems()
-{
-         int indexPage = 0;
+    public void DisplayItems()
+    {
+        int indexPage = 0;
         int itemsPerPage = 5;
 
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("==== 인벤토리 ====");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine("║               인벤토리               ║");
+            Console.WriteLine("╚══════════════════════════════════════╝");
+            Console.WriteLine();
             Console.WriteLine("-------------------------------------");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" ID | [E] | 이름 | 설명 | 가격 ");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("-------------------------------------");
-
+            Console.ResetColor();
             if (ItemList.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("인벤토리가 비어 있습니다.");
+                Console.ResetColor();
             }
             else
             {
@@ -51,12 +62,20 @@ namespace TextRPG_TeamSix.Characters
                     Console.WriteLine($"{item.Id} | {equippedStatus} | {item.Name} | {item.Description} | {item.Price}");
                 }
 
-                Console.WriteLine("-------------------------------------");
-                Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] | [숫자 입력]  장착 | [Enter]  나가기");
-            }
-    
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("-------------------------------------");
+                    Console.ResetColor();
+                    Console.WriteLine();
+                    Console.WriteLine("[<=] 이전 페이지 |  다음 페이지 [=>] ");
+                    Console.WriteLine("[ID 입력] 아이템 장착/사용 | [0] 나가기");
+                    Console.WriteLine();
+                }
+
+
+            
+            Console.Write("장착할 아이템 ID 입력: ");
+
             ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-    
             if (keyInfo.Key == ConsoleKey.RightArrow)
             {
                 indexPage = (indexPage + 1) % ((ItemList.Count + itemsPerPage - 1) / itemsPerPage);
@@ -69,37 +88,55 @@ namespace TextRPG_TeamSix.Characters
                     indexPage = (ItemList.Count - 1) / itemsPerPage;
                 }
             }
-            else if (keyInfo.Key == ConsoleKey.Enter)
+            else if (keyInfo.Key == ConsoleKey.NumPad0)
             {
-                SceneManager.Instance.SetScene(SceneType.Main);
+                SceneManager.Instance.SetScene(SceneType.Player);
                 return;
             }
-            else
-            {
+
+                if ((keyInfo.Key >= ConsoleKey.D1 && keyInfo.Key <= ConsoleKey.D9) ||
+                    (keyInfo.Key >= ConsoleKey.NumPad1 && keyInfo.Key <= ConsoleKey.NumPad9))
+                {
+                    Console.Write(keyInfo.KeyChar);
+                    string input = keyInfo.KeyChar.ToString() + Console.ReadLine();
+                    if (uint.TryParse(input, out uint itemId))
+                    {
+                        Item? item = GetItem(itemId);
+                        if (item != null)
+                        {
+                            EquipItem(itemId);
+                        }
+                        else
+                        {
+                            Console.WriteLine("해당 ID의 아이템이 존재하지 않습니다.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("숫자를 입력해주세요.");
+
+                    }
+                    Console.WriteLine("아무 키나 누르면 계속...");
+                    Console.ReadKey(true); // 아무 키나 누를 때까지 대기
+                }
                 // 숫자 키 입력 처리
-                Console.Write("장착할 아이템 ID 입력: ");
-                string input = Console.ReadLine();
-            if (uint.TryParse(input, out uint itemId))
-            {
-                EquipItem(itemId);
-                Console.WriteLine("아무 키나 누르면 계속...");
-                Console.ReadKey(true);
+               
+
+
             }
-            else
-            {
-                Console.WriteLine("잘못된 입력입니다. 아무 키나 누르세요...");
-                Console.ReadKey(true);
-            }
-        }
     }
-}
 
         public void EquipItem(uint itemId)
         {
             Item? item = GetItem((uint)itemId);
             if (item == null)
             {
-                Console.WriteLine("해당 아이템이 존재하지 않습니다.");
+                Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
+                return;
+            }
+            if (item.Type == Item.ItemType.Consumable)
+            {
+                Console.WriteLine("회복물약은 던전에서 사용해 주세요.");
                 return;
             }
             if (item.IsEquipped)
@@ -120,12 +157,8 @@ namespace TextRPG_TeamSix.Characters
                     }
                 }
             }
-
             item.IsEquipped = true; // 아이템 장착
-            if (item.Type == Item.ItemType.Weapon)
-            {
-
-            }
+          
             Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
         }
@@ -169,6 +202,7 @@ namespace TextRPG_TeamSix.Characters
                 return;
             }
             // 판매 로직 추가
+            int sellPrice = (int)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
             Owner.EarnGold(0 + item.Price);
             ItemList.Remove(item);
             Console.WriteLine($"{item.Name}을 판매 했습니다.");
