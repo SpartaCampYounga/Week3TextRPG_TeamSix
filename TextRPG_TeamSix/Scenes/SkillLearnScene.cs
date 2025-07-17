@@ -53,20 +53,21 @@ namespace TextRPG_TeamSix.Scenes
             player = PlayerManager.Instance.CurrentPlayer;
             availableToLearn = GameDataManager.Instance.AllSkills.Where(x => !player.SkillList.Contains(x)).ToList();
 
-            //플레이어가 미보유중인 스킬만 띄우기
-            if (availableToLearn.Count == 0)
-            {
-                Console.WriteLine("하산해라.. 더 이상 배울 수 있는 게 없다.");
-            }
-            else
-            {
-                for (int i = 0; i < availableToLearn.Count(); i++)
-                {
-                    string display = FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
-                    display += availableToLearn[i];
-                    Console.WriteLine(display);
-                }
-            }
+            input = TextDisplayer.PageNavigation(availableToLearn);
+            ////플레이어가 미보유중인 스킬만 띄우기
+            //if (availableToLearn.Count == 0)
+            //{
+            //    Console.WriteLine("하산해라.. 더 이상 배울 수 있는 게 없다.");
+            //}
+            //else
+            //{
+            //    for (int i = 0; i < availableToLearn.Count(); i++)
+            //    {
+            //        string display = FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
+            //        display += availableToLearn[i];
+            //        Console.WriteLine(display);
+            //    }
+            //}
             Console.WriteLine(new string('-', Console.WindowWidth));
             Console.WriteLine();
             Console.WriteLine();
@@ -74,11 +75,11 @@ namespace TextRPG_TeamSix.Scenes
             player.AcquireSkillStone(100);
             Console.WriteLine("스킬석 100개 깜짝 선물을 받았다!");
 
-            Console.WriteLine("배우고 싶은 스킬의 숫자를 입력하세요.");
+            //Console.WriteLine("배우고 싶은 스킬의 숫자를 입력하세요.");
             //Console.WriteLine("0. 나가기");
-            Console.WriteLine("0. 저장하고 나가기"); //Debug
-            Console.Write(">>");
-            input = InputHelper.GetIntegerRange(0, availableToLearn.Count()+1);
+            //Console.WriteLine("0. 저장하고 나가기"); //Debug
+            //Console.Write(">>");
+            //input = InputHelper.GetIntegerRange(0, availableToLearn.Count()+1);
             HandleInput();
         }
 
@@ -86,28 +87,50 @@ namespace TextRPG_TeamSix.Scenes
         {
             switch (input)
             {
-                case 0:
-                    Console.WriteLine("0선택함"); //debug용
-                    Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
-                    SaveManager.Instance.SaveGame();
-                    Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
-                    InputHelper.WaitResponse();
+                case -1:
                     SceneManager.Instance.SetScene(SceneType.Skill);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 default:
-                    Skill selectedSkill = availableToLearn[input - 1];
+                    Skill selectedSkill = availableToLearn[input];
                     if (selectedSkill.IsAvailableToLearn(player))
                     {
                         player.LearnSkill(selectedSkill);
+                        Console.WriteLine($"{selectedSkill.Name}을 배웠다...");
+                        InputHelper.WaitResponse();
                     }
                     else
                     {
                         Console.WriteLine("보유한 스킬석이 부족해서 배우지 못했다...");
+                        InputHelper.WaitResponse();
                     }
 
                     SceneManager.Instance.SetScene(SceneType.SkillLearn);
                     break;
             }
+            //switch (input)
+            //{
+            //    case 0:
+            //        Console.WriteLine("0선택함"); //debug용
+            //        Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
+            //        SaveManager.Instance.SaveGame();
+            //        Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
+            //        InputHelper.WaitResponse();
+            //        SceneManager.Instance.SetScene(SceneType.Skill);    //0번 누르면 해당 타입의 씬 출력
+            //        break;
+            //    default:
+            //        Skill selectedSkill = availableToLearn[input - 1];
+            //        if (selectedSkill.IsAvailableToLearn(player))
+            //        {
+            //            player.LearnSkill(selectedSkill);
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("보유한 스킬석이 부족해서 배우지 못했다...");
+            //        }
+
+            //        SceneManager.Instance.SetScene(SceneType.SkillLearn);
+            //        break;
+            //}
         }
     }
 }
