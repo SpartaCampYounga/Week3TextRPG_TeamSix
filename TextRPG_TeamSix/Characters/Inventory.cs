@@ -144,6 +144,12 @@ namespace TextRPG_TeamSix.Characters
                 return;
             }
 
+            if (Owner.Gold < item.Price)
+            {
+                Console.WriteLine("골드가 부족합니다.");
+                return;
+            }
+
             Owner.EarnGold(0 - item.Price);
             ItemList.Add(item);
             Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
