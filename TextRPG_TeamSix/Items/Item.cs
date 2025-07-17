@@ -43,6 +43,7 @@ namespace TextRPG_TeamSix.Items
             string display = "";
             display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
             display += FormatUtility.AlignWithPadding(Description, 30) + " | ";
+            display += FormatUtility.AlignWithPadding(Price.ToString() + " G", 8);
             return display;
         }
 
