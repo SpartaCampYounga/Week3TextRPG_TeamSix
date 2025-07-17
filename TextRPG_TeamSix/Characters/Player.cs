@@ -165,7 +165,6 @@ namespace TextRPG_TeamSix.Characters
             this.Name = player.Name;
             Console.WriteLine(Name);
             Console.WriteLine(player.Name);
-            Console.Read();
             this.HP = player.HP;
             this.MP = player.MP;
             this.Attack = player.Attack;

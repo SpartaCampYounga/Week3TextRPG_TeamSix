@@ -18,6 +18,7 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene() //출력 하는 시스템
         {
+            Console.Clear();
             Console.SetWindowSize(200, 50);
             Console.OutputEncoding = Encoding.UTF8; // 아스키아트 한글 깨짐 방지
             string stars = new string('*', 120);

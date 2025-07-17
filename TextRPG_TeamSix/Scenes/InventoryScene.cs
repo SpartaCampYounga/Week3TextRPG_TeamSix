@@ -17,11 +17,19 @@ namespace TextRPG_TeamSix.Scenes
         Player player = PlayerManager.Instance.CurrentPlayer;
         public override SceneType SceneType => SceneType.Inventory;
 
-     
-
-
-        public override void DisplayScene() 
+        public override void DisplayScene()
         {
+            Console.Clear();
+
+            Console.WriteLine("인벤토리");
+
+            player.Inventory.PurchaseItem(1);   //Debug용
+            Console.WriteLine($"인벤토리 방문 서비스로 {player.Name}이 아이템을 획득했다!");    //Debug용
+
+            //foreach(Item item in player.Inventory.ItemList) //Debug용
+            //{
+            //    Console.WriteLine(item.Name);
+            //}
 
             player.Inventory.DisplayItems();
 
@@ -29,8 +37,8 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void HandleInput() 
         {
-            player.Inventory.SellItem(0);       
-            player.Inventory.PurchaseItem(0);
+            //player.Inventory.SellItem(0);         //??
+            //player.Inventory.PurchaseItem(0);     //??
         } //입력 받고 실행하는 시스템
 
     }

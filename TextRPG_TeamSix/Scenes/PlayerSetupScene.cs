@@ -42,7 +42,7 @@ namespace TextRPG_TeamSix.Scenes
             // 생성이 완료되면 MainScene으로 이동
             // 타이머 기능으로 · · · · 1.5초 후 메인씬으로
             Console.WriteLine("");
-            Console.WriteLine("사용자를 생성중 입니다");
+            Console.WriteLine("게임을 로드합니다");
             Console.Write("        ");
             for (int i = 0; i < 3; i++)
             {
@@ -50,9 +50,8 @@ namespace TextRPG_TeamSix.Scenes
                 Console.Write(" ·");
             }
             Console.WriteLine();
-            SaveManager.Instance.SaveGame();    //저장
+            //SaveManager.Instance.SaveGame();    //저장
             SceneManager.Instance.SetScene(SceneType.Main);
-            return;
         }
 
         public override void HandleInput() //입력 받고 실행하는 시스템
@@ -68,10 +67,9 @@ namespace TextRPG_TeamSix.Scenes
             if (PlayerManager.Instance.InitializePlayerFromSaveData(nameInput))  //데이터에서 불러옴
             {
                 Console.Write(PlayerManager.Instance.CurrentPlayer.Name);
-                Console.WriteLine("사용자를 불러옵니다.");
+                Console.WriteLine("사용자를 불러왔습니다.");
                 // 불러오기 로직 후 바로 MainScene으로 이동
-                Console.ReadKey(true);
-                SceneManager.Instance.SetScene(SceneType.Main);
+                //Console.ReadKey(true);
             }
             else
             {
