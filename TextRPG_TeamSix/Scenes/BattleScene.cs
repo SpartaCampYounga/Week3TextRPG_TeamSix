@@ -10,10 +10,14 @@ using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Utils;
+namespace TextRPG_TeamSix.Utilities;
 
 internal class BattleScene : SceneBase
 {
     public override SceneType SceneType => SceneType.Battle;
+
+    string bgmPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "BGM", "scared.wav");
+    string bgmPath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "BGM", "fight.wav");
 
     private Player player;
     private List<Enemy> enemies;
@@ -35,7 +39,7 @@ internal class BattleScene : SceneBase
         string choice2 = "2. 겁쟁이 처럼 물러난다.";
         string choice2_1 = "겁쟁이 녀석...썩 물러가라";
 
-        SoundManager.Play("E:\\7.Data\\1.bgm\\착신아리-오르골.wav");
+        SoundManager.Play(bgmPath);
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
         TextEffect.TypeEffect(desc1, 70);
@@ -97,13 +101,14 @@ internal class BattleScene : SceneBase
         BattleLog.DrawLogBox();     // 박스 먼저 그림
         BattleLog.ClearLogs();      // 로그 내부 클리어
         BattleLog.BattleStart();    // 로그 시작 메세지 출력
-        SoundManager.Play("E:\\7.Data\\1.bgm\\출정(mix).wav");
+        SoundManager.Play(bgmPath2);
 
         while (true)
         {
             DisplayStatus();        // UI 그리기
             Console.WriteLine();
-            Console.Write("어떤 행동을 하시겠습니까? : ");
+            //Console.Write("어떤 행동을 하시겠습니까? : ");
+            FormatUtility.AlignWithPadding("어떤 행동을 하시겠습니까 ?",1);
             turnCount++;
 
             if (turnCount % 3 == 0)
@@ -165,6 +170,12 @@ internal class BattleScene : SceneBase
         switch (input)
         {
             case "1":
+                Console.Clear();
+                BattleUI.BattleStartInfo();
+                BattleUI.DrawPlayerInfo(player);
+                BattleUI.DrawEnemyList(enemies);
+                BattleUI.DrawActionMenu();
+                Console.WriteLine();
                 IPlayerAction attackAction = new NormalAttack();
                 attackAction.Execute(player, enemies);
                 return true;
@@ -200,6 +211,11 @@ internal class BattleScene : SceneBase
                 }
 
                 // 적 선택 (살아있는 적만 보여줌)
+                Console.Clear();
+                BattleUI.BattleStartInfo();
+                BattleUI.DrawPlayerInfo(player);
+                BattleUI.DrawEnemyList(enemies);
+                BattleUI.DrawActionMenu();
                 BattleLog.Log("대상을 선택하세요:");
                 List<Enemy> aliveEnemies = new List<Enemy>();
                 for (int i = 0; i < enemies.Count; i++)
@@ -217,7 +233,8 @@ internal class BattleScene : SceneBase
                     return false;
                 }
 
-                Console.Write("대상을 선택하세요: >> ");
+
+                
                 string targetInput = Console.ReadLine();
                 if (!int.TryParse(targetInput, out int targetIndex) || targetIndex < 1 || targetIndex > aliveEnemies.Count)
                 {
