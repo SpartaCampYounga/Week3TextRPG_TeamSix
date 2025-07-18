@@ -62,8 +62,8 @@ internal class BattleScene : SceneBase
                 case "1":
                     SoundManager.Stop();
                     Console.Clear();
-                    IntroScene intro = new IntroScene();
-                    intro.DisplayScene();
+                   // IntroScene intro = new IntroScene();
+                   // intro.DisplayScene();
                     StartBattleLoop();
                     return; // 또는 break; 이후 루프 바깥에서 이어지게 할 수도 있어
 
@@ -87,7 +87,6 @@ internal class BattleScene : SceneBase
                     break;
             }
         }
-
     }
 
     private void StartBattleLoop()
@@ -101,6 +100,7 @@ internal class BattleScene : SceneBase
         while (true)
         {
             DisplayStatus();        // UI 그리기
+            Console.WriteLine();
             string input = GetPlayerInput();
 
             bool playerActed = PlayerTurn(input);
