@@ -32,7 +32,7 @@ namespace TextRPG_TeamSix.Scenes
                 .ToList();
 
             Console.Clear();
-            Console.WriteLine("QuestScene");
+            Console.WriteLine("QuestAcceptScene");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', 120));
             Console.WriteLine("퀘스트를 수락할 수 있습니다.");
