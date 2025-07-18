@@ -24,7 +24,7 @@ namespace TextRPG_TeamSix.Scenes
         {
             Console.Clear();
             TextFlash.TextFlasht();
-            TextEffect.TypeEffect("✨ 어두운 그림자 속에서 비밀스러운 상인이 나타났습니다!", 40);
+            TextEffect.TypeEffect("✨ 어두운 그림자 속에서 비밀스러운 상점이 나타났습니다!", 40);
             TextEffect.TypeEffect("수상한 기운이 감도는 상점에 입장하시겠습니까?", 30);
 
 
