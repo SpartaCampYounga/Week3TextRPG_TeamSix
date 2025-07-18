@@ -82,8 +82,10 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Dungeon[] _dungeons =
         {
-            new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
-            new Dungeon(2, "Normal", 20, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
+            new Dungeon(1, "Easy", 10, 0, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(2, "Normal", 20, 1, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(3, "Hard", 30, 2, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(4, "Hell", 40, 3, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
         };
 
         private static Quest[] _quests =
