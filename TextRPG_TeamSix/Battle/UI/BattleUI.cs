@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Scenes;
 
 namespace TextRPG_TeamSix.Utils
 {
@@ -143,11 +144,26 @@ namespace TextRPG_TeamSix.Utils
             {
                 switch (command)
                 {
-                    case 1: Console.WriteLine("🗡️ 1. 일반 공격을 선택하셨습니다."); break;
-                    case 2: Console.WriteLine("🔥 2. 스킬 사용을 선택하셨습니다."); break;
-                    case 3: Console.WriteLine("⭐ 3. 아이템 사용을 선택하셨습니다."); break;
-                    case 4: Console.WriteLine("🐴 4. 도망을 선택하셨습니다."); break;
-                    default: Console.WriteLine("❌ 잘못된 입력입니다."); break;
+                    case 1: 
+                        Console.WriteLine("1. 일반 공격을 선택하셨습니다."); 
+                        break;
+                    case 2: 
+                        Console.WriteLine("2. 스킬 사용을 선택하셨습니다."); 
+                        break;
+                    case 3: 
+                        Console.WriteLine("3. 아이템 사용을 선택하셨습니다."); 
+                        break;
+                    case 4:
+                        Console.WriteLine("4. 도망을 선택하셨습니다.");
+                        SoundManager.Stop();
+                        Console.Clear();
+                        TextFlash.TextFlasht();
+                        MainScene main = new MainScene();
+                        main.DisplayScene();
+                        break;
+                    default: 
+                        Console.WriteLine("❌ 잘못된 입력입니다."); 
+                        break;
                 }
                 return command;
             }
