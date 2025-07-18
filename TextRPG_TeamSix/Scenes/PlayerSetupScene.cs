@@ -68,10 +68,6 @@ namespace TextRPG_TeamSix.Scenes
         {
             //이름을 입력 받아 일치하는 플레이어를 불러오는 로직
             Console.Write("이름을 입력하세요: ");
-            while (Console.In.Peek() == '\n')   //버퍼 비우기
-            {
-                Console.In.Read();
-            }
             string nameInput = Console.ReadLine();
 
             if (PlayerManager.Instance.InitializePlayerFromSaveData(nameInput))  //데이터에서 불러옴
@@ -98,10 +94,6 @@ namespace TextRPG_TeamSix.Scenes
 
             //이름 입력받아 신규 생성
             Console.Write("이름을 입력하세요:");
-            while (Console.In.Peek() == '\n')   //버퍼 비우기
-            {
-                Console.In.Read();
-            }
             string nameInput = Console.ReadLine();
             Console.WriteLine($"입력된 이름: {nameInput}");
             Console.WriteLine();
