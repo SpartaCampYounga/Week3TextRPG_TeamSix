@@ -32,7 +32,7 @@ internal class BattleScene : SceneBase
 
     public override void DisplayScene()
     {
-        player = new Player("SCV", JobType.Warrior); //Title Scene에서 데이터 받아오는걸로 변경
+        Player player = PlayerManager.Instance.CurrentPlayer;
         enemies = new List<Enemy>
             {
                  GameDataManager.Instance.AllEnemies.FirstOrDefault(e => e.Id == 1),
