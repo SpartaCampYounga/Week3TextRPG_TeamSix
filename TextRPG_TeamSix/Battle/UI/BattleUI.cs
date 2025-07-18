@@ -12,8 +12,8 @@ namespace TextRPG_TeamSix.Utils
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(2, 0);
-            Console.WriteLine("⚔️ [ 전투 시작 ]");
             Console.SetCursorPosition(2, 1);
+            Console.WriteLine("⚔️ [ 전투 시작 ]");
             Console.ResetColor();
         }
 
@@ -52,7 +52,16 @@ namespace TextRPG_TeamSix.Utils
             Console.SetCursorPosition(2, y++); Console.WriteLine("┌────────────[ 적 목록 ]────────────┐");
             foreach (var e in enemies)
             {
-                string status = e.IsAlive ? $"HP: {e.HP}" : "💀(죽음)";
+                string status;
+                if (e.IsAlive)
+                {
+                    status = $"HP: {e.HP}";
+                }
+                else
+                {
+                    status = "💀(죽음)";
+                }
+
                 string line = $"[{enemies.IndexOf(e) + 1}] {e.Name} Lv. 상태 : {status}";
                 Console.SetCursorPosition(2, y++); Console.WriteLine($"│ {line,-29}│");
             }

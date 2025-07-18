@@ -25,6 +25,7 @@ namespace TextRPG_TeamSix.Characters
             Name = name;
             IsAlive = true;
         }
+
         [JsonConstructor]
         public Character(
             uint id,
@@ -42,6 +43,7 @@ namespace TextRPG_TeamSix.Characters
             this.Attack = attack;
             this.Defense = defense;
             this.Luck = luck;
+            this.IsAlive = true;
         }
         public void TakeDamage(uint damage)
         {

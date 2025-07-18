@@ -6,6 +6,7 @@ using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Utils;
 
 namespace TextRPG_TeamSix.Scenes
 {
@@ -59,10 +60,13 @@ namespace TextRPG_TeamSix.Scenes
                 }
             }
 
+            Player player = PlayerManager.Instance.CurrentPlayer;
+            player.EarnExp(100);
+
             Console.WriteLine("\n아무 키나 누르면 메인 화면으로 돌아갑니다...");
             Console.ReadKey();
 
-            Player player = PlayerManager.Instance.CurrentPlayer; // 현재 플레이어 인스턴스 가져오기(행운스텟)
+            
             float baseChance = 0.1f; // 기본 확률은 원래 10%
             float luckBonus = player.Luck * 0.01f; // 행운 보너스 (예: Luck 10 → 10%)
             float finalChance = baseChance + luckBonus;

@@ -50,6 +50,11 @@ internal class BattleScene : SceneBase
         Console.WriteLine();
         Console.Write($"{choice1}   {choice2}");
 
+        foreach (var e in enemies)
+        {
+            Console.WriteLine($"{e.Name} - HP: {e.HP}, IsAlive: {e.IsAlive}");
+        }
+
         Console.WriteLine();
         while (true)
         {
@@ -88,6 +93,7 @@ internal class BattleScene : SceneBase
             }
         }
     }
+
     private void StartBattleLoop()
     {
         int turnCount = 1;
@@ -98,25 +104,20 @@ internal class BattleScene : SceneBase
         BattleLog.BattleStart();    // 로그 시작 메세지 출력
         SoundManager.Play("E:\\7.Data\\1.bgm\\출정(mix).wav");
 
+        if (turnCount % 3 == 0)
+        {
+            Console.Clear();
+            BattleLog.DrawLogBox();
+        }
+
         while (true)
         {
-            if (turnCount % 4 == 0)
-            {
-                BattleLog.ClearLogs();
-            }
-
             DisplayStatus();        // UI 그리기
             Console.WriteLine();
-            Console.WriteLine("────────────────────────────");
+            Console.Write("어떤 행동을 하시겠습니까? : ");
+            string input = GetPlayerInput();
 
-            // 🔁 잘못된 입력을 받을 경우 다시 입력 요청
-            bool validInput = false;
-            while (!validInput)
-            {
-                Console.Write("어떤 행동을 하시겠습니까? : ");
-                string input = GetPlayerInput();
-                validInput = PlayerTurn(input);
-            }
+            bool playerActed = PlayerTurn(input);
 
             if (!player.IsAlive)
             {
@@ -130,12 +131,16 @@ internal class BattleScene : SceneBase
                 BattleLog.Victory();
 
                 EndBattleScene endBattleScene = new EndBattleScene(player);
-                endBattleScene.DisplayScene(); // 보상 씬 실행
+                endBattleScene.DisplayScene();                         // 보상 씬 실행
+
                 return;
             }
 
-            EnemyTurn();
-            turnCount++;
+            if (playerActed)
+            {
+                EnemyTurn();
+                turnCount++;
+            }
 
             if (!player.IsAlive)
             {
@@ -144,7 +149,6 @@ internal class BattleScene : SceneBase
             }
         }
     }
-
 
 
     private void DisplayStatus()
@@ -204,12 +208,12 @@ internal class BattleScene : SceneBase
                 // 적 선택 (살아있는 적만 보여줌)
                 BattleLog.Log("대상을 선택하세요:");
                 List<Enemy> aliveEnemies = new List<Enemy>();
-                for (int i = 1; i < enemies.Count; i++)
+                for (int i = 0; i < enemies.Count; i++)
                 {
                     if (enemies[i].IsAlive)
                     {
                         aliveEnemies.Add(enemies[i]);
-                        BattleLog.Log($"{aliveEnemies.Count}. {enemies[i].Name} (HP: {enemies[i].HP})");
+                        BattleLog.Log($"{aliveEnemies.Count}. {enemies[i].Name}");
                     }
                 }
 
@@ -227,7 +231,7 @@ internal class BattleScene : SceneBase
                     return false;
                 }
 
-                var target = aliveEnemies[targetIndex - 1]; 
+                var target = aliveEnemies[targetIndex - 1];
 
                 // 스킬 사용
                 selectedSkill.Cast(target);
