@@ -174,26 +174,64 @@ namespace TextRPG_TeamSix.Characters
         {
             NumOfStones += numOfStones;
         }
-
-        public void RecalculateStats()
+        public void PurchaseItem(uint itemId)
         {
-            uint bonusAttack = 0;
-            uint bonusDefense = 0;
-            foreach (var item in Inventory.ItemList)
+            // 구매 bool 체크는 상점 SellToPlayer로 이동
+            // 예: 플레이어의 골드가 충분한지 확인하고, 아이템을 인벤토리에 추가
+            Item? item = GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == itemId);
+            if (item == null)
             {
-                //if (item.IsEquipped)
-                //{
-                //    if (item is Weapon weapon)
-                //    {
-                //        bonusAttack += this.Attack;
-                //    }
-                //    else if (item is Armor armor)
-                //    {
-                //        bonusDefense += this.Defense;
-                //    }
-                //}
+                Console.WriteLine("해당 아이템이 존재하지 않습니다.");
+                return;
             }
+
+            if (Gold < item.Price)
+            {
+                Console.WriteLine("골드가 부족합니다.");
+                return;
+            }
+
+            Gold -= item.Price;
+            this.Inventory.ItemList.Add(item);
+            Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
         }
+        public void SellItem(uint itemId)
+        {
+            // 아이템 판매 로직
+            // 아이템이 인벤토리에 있는지 확인
+            // 아이템이 존재하지 않으면 메시지 출력
+            // 아이템이 존재하면 플레이어의 골드를 증가시키고 인벤토리에서 제거
+            Item? item = this.Inventory.GetItem(itemId);
+            if (item == null)
+            {
+                Console.WriteLine("해당 아이템이 인벤토리에 없습니다.");
+                return;
+            }
+            // 판매 로직 추가
+            uint sellPrice = (uint)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
+            Gold += sellPrice;
+            this.Inventory.ItemList.Remove(item);
+            Console.WriteLine($"{item.Name}을 {sellPrice}G에 판매 했습니다.");
+        }
+        //public void RecalculateStats()
+        //{
+        //    uint bonusAttack = 0;
+        //    uint bonusDefense = 0;
+        //    foreach (var item in Inventory.ItemList)
+        //    {
+        //        //if (item.IsEquipped)
+        //        //{
+        //        //    if (item is Weapon weapon)
+        //        //    {
+        //        //        bonusAttack += this.Attack;
+        //        //    }
+        //        //    else if (item is Armor armor)
+        //        //    {
+        //        //        bonusDefense += this.Defense;
+        //        //    }
+        //        //}
+        //    }
+        //}
 
         public void LearnSkill(Skill skillToLearn)
         {

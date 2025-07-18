@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Midi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,10 @@ using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Dungeons;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
-using TextRPG_TeamSix.Quests;
-using NAudio.Midi;
+using TextRPG_TeamSix.Stores;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -25,6 +26,7 @@ namespace TextRPG_TeamSix.Controllers
         public List<Enemy> AllEnemies { get; private set; }
         public List<Dungeon> AllDungeons { get; private set; }
         public List<Quest> AllQuests { get; private set; } // 퀘스트 추가
+        public List<Store> AllStores { get; private set; }
         private GameDataManager()
         {
             AllSkills = new List<Skill>();
@@ -33,6 +35,7 @@ namespace TextRPG_TeamSix.Controllers
             AllEnemies = new List<Enemy>();
             AllDungeons = new List<Dungeon>();
             AllQuests = new List<Quest>(); // 퀘스트 추가
+            AllStores = new List<Store>();
         }
         private static GameDataManager instance;
         public static GameDataManager Instance
@@ -102,6 +105,17 @@ namespace TextRPG_TeamSix.Controllers
                 Quest temp = quest.CreateInstance();
                 temp.Clone(quest);
                 AllQuests.Add(temp);
+            }
+        }
+
+        //상점 초기화
+        public void InitializeStores(Store[] stores)
+        {
+            foreach (Store store in stores)
+            {
+                Store temp = store.CreateInstance();
+                temp.Clone(store);
+                AllStores.Add(temp);
             }
         }
     }

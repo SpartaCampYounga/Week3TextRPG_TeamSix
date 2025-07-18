@@ -9,60 +9,102 @@ using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Stores;
 using TextRPG_TeamSix.Utilities;
 
 
 namespace TextRPG_TeamSix.Scenes
 {
-    internal class StoresScene : SceneBase
+    internal class StorePurchaseScene : SceneBase
     {
-        public override SceneType SceneType => SceneType.Store;
+        public override SceneType SceneType => SceneType.StorePurchase;
 
-        Player player = PlayerManager.Instance.CurrentPlayer;
-        private Store currentStore = new Store(); // 상점 인스턴스
+        Player player;
+
+        private Store currentStore;
+                    
+        bool isSpecial = false;
+
         int input;
-        private StoreMode currentMode = StoreMode.None; // 상점 모드 (구매, 판매 등)
+
+        private List<Item> availableItems;
         
+        public void SetStoreSpectial(bool isSpecial)  //여기서 스토어 타입 변경함.
+        {
+            this.isSpecial = isSpecial;
+        }
         public override void DisplayScene() //출력 하는 시스템
         {
+            player = PlayerManager.Instance.CurrentPlayer;
+            if (!this.isSpecial) 
+            { currentStore = new Store(StoreType.Normal, GameDataManager.Instance.AllItems.Where(x => x.IsSpecialItem == false).ToList()); }
+            else 
+            { currentStore = new Store(StoreType.Special, GameDataManager.Instance.AllItems.Where(x => x.IsSpecialItem == true).ToList()); }
+
+            availableItems = currentStore.ItemList.Where(x => player.Inventory.ItemList.All(i => i.Id != x.Id)).ToList();
+
             Console.Clear();
             //Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("╔══════════════════════════════════════╗");
             Console.WriteLine("║               상   점                ║");
             Console.WriteLine("╚══════════════════════════════════════╝");
             Console.WriteLine($"보유 골드: {player.Gold} G");
-            Console.WriteLine("1. 아이템 구매 ");
-            Console.WriteLine("2. 아이템 판매 ");
-            Console.WriteLine("0. 상점 나가기 ");
-            Console.WriteLine(">");
 
-            string menuInput = Console.ReadLine();
-
-            switch (menuInput)
+            //아이템
+            if (availableItems.Count == 0)
             {
-                case "1":
-                    currentMode = StoreMode.Buy;
-                    Console.WriteLine("아이템 구매 모드로 전환되었습니다.");//debug용
-                    LoadBuyItems();
-                    break;
-                case "2":
-                    currentMode = StoreMode.Sell;
-                    Console.WriteLine("아이템 판매 모드로 전환되었습니다."); //debug용
-                    LoadSellItems();
-                    break;
-                case "0":
-                    SceneManager.Instance.SetScene(SceneType.Main);
-                    return;
-                default:
-                    Console.WriteLine("잘못된 입력입니다. 다시 시도해주세요."); //debug용
-                    Console.ReadLine();
-                    SceneManager.Instance.SetScene(SceneType.Store); 
-                    return;
+                Console.WriteLine("판매 준비중입니다... 다음에 다시 오세요.");
+                Console.WriteLine("아니면 던전 안에 출장 가 있을 수도?");
+                input = -2;
             }
-            input = TextDisplayer.PageNavigation(currentStore.ItemList);
+            else
+            {
+                //테이블 헤더
+                Console.ForegroundColor = ConsoleColor.White;
+                string header = "      ";
+                header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
+                header += FormatUtility.AlignWithPadding("설명", 50) + " | ";
+                header += FormatUtility.AlignWithPadding("금액" + " G", 8);
+                Console.WriteLine(header);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(new string('-', Console.WindowWidth));
+                Console.ResetColor();
 
+                input = TextDisplayer.PageNavigation(availableItems);
+            }
             HandleInput();
+
+            //Console.WriteLine("1. 아이템 구매 ");
+            //Console.WriteLine("2. 아이템 판매 ");
+            //Console.WriteLine("0. 상점 나가기 ");
+
+            //string menuInput = Console.ReadLine();
+
+            //switch (menuInput)
+            //{
+            //    case "1":
+            //        currentMode = StoreMode.Buy;
+            //        Console.WriteLine("아이템 구매 모드로 전환되었습니다.");//debug용
+            //        LoadBuyItems();
+            //        break;
+            //    case "2":
+            //        currentMode = StoreMode.Sell;
+            //        Console.WriteLine("아이템 판매 모드로 전환되었습니다."); //debug용
+            //        LoadSellItems();
+            //        break;
+            //    case "0":
+            //        SceneManager.Instance.SetScene(SceneType.Main);
+            //        return;
+            //    default:
+            //        Console.WriteLine("잘못된 입력입니다. 다시 시도해주세요."); //debug용
+            //        Console.ReadLine();
+            //        SceneManager.Instance.SetScene(SceneType.Store); 
+            //        return;
+            //}
+            //input = TextDisplayer.PageNavigation(currentStore.ItemList);
+
+            //HandleInput();
         }
         private void LoadBuyItems() // 상점에서 아이템 구매 모드로 전환
         {
@@ -87,30 +129,55 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void HandleInput() //입력 받고 실행하는 시스템
         {
-            switch (input)
+            switch(input)
             {
                 case -1:
+                case -2:
                     SceneManager.Instance.SetScene(SceneType.Store);
                     break;
                 default:
-                    Item selectedItem = currentStore.ItemList[input];
-
-                    if (currentMode == StoreMode.Buy)
+                    //구매 로직
+                    Item selectedItem = availableItems[input];
+                    if (currentStore.SellToPlayer(selectedItem))
                     {
-                        player.Inventory.PurchaseItem(selectedItem.Id);
-                        Console.WriteLine($"{selectedItem.Name}을 구매했습니다.");
+                        player.PurchaseItem(selectedItem.Id);
+                        Console.WriteLine($"{selectedItem.Name}을 구매했다...");
+                        InputHelper.WaitResponse();
                     }
-                    else if (currentMode == StoreMode.Sell)
+                    else
                     {
-                        player.Inventory.SellItem(selectedItem.Id);
-                        Console.WriteLine($"{selectedItem.Name}을 판매했습니다.");
+                        Console.WriteLine("보유한 금액이 부족해서 배우지 못했다...");
+                        InputHelper.WaitResponse();
                     }
 
-                    Console.WriteLine($"[보유 골드] {player.Gold} Gold");
-                    Console.ReadLine();
-                    SceneManager.Instance.SetScene(SceneType.Store);
+                    SceneManager.Instance.SetScene(SceneType.StorePurchase);
                     break;
-            }            
+
+            }
+            //switch (input)
+            //{
+            //    case -1:
+            //        SceneManager.Instance.SetScene(SceneType.Store);
+            //        break;
+            //    default:
+            //        Item selectedItem = currentStore.ItemList[input];
+
+            //        if (currentMode == StoreMode.Buy)
+            //        {
+            //            player.Inventory.PurchaseItem(selectedItem.Id);
+            //            Console.WriteLine($"{selectedItem.Name}을 구매했습니다.");
+            //        }
+            //        else if (currentMode == StoreMode.Sell)
+            //        {
+            //            player.Inventory.SellItem(selectedItem.Id);
+            //            Console.WriteLine($"{selectedItem.Name}을 판매했습니다.");
+            //        }
+
+            //        Console.WriteLine($"[보유 골드] {player.Gold} Gold");
+            //        Console.ReadLine();
+            //        SceneManager.Instance.SetScene(SceneType.Store);
+            //        break;
+            //}            
         }
     }
 }
