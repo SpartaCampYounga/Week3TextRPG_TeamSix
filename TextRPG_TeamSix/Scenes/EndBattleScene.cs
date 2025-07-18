@@ -61,7 +61,22 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.WriteLine("\n아무 키나 누르면 메인 화면으로 돌아갑니다...");
             Console.ReadKey();
-            SceneManager.Instance.SetScene(SceneType.Main);
+
+            Player player = PlayerManager.Instance.CurrentPlayer; // 현재 플레이어 인스턴스 가져오기(행운스텟)
+            float baseChance = 0.8f; // 기본 확률은 원래 10% (테스트용 80%)
+            float luckBonus = player.Luck * 0.01f; // 행운 보너스 (예: Luck 10 → 10%)
+            float finalChance = baseChance + luckBonus;
+            finalChance = Math.Min(finalChance, 1.0f); // 100% 이상 제한
+
+            Random rnd = new Random();
+            if (rnd.NextDouble() < finalChance)
+            {
+                SceneManager.Instance.SetScene(SceneType.SpecialStoreEnter);
+            }
+            else
+            {
+                SceneManager.Instance.SetScene(SceneType.Main);
+            }
         }
 
         private void DrawBoxes()

@@ -41,18 +41,18 @@ namespace TextRPG_TeamSix.Utils
             Console.WriteLine("┌────────────[ 플레이어 ]────────────┐");
 
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine($"│ ✨ 이름: {player.Name,-28}│");
+            Console.WriteLine($"│ ✨ 이름: {player.Name,-26}│");
 
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine($"│ ❤️ HP: {player.HP,3} / {player.MaxHP,-23}│");
+            Console.WriteLine($"│ ❤️ HP: {player.HP,3} / {player.MaxHP,-22}│");
             DrawBar(player.HP, player.MaxHP, 20, ConsoleColor.Red, 2, y++);
 
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine($"│ 💧 MP: {player.MP,3} / {player.MaxMP,-23}│");
+            Console.WriteLine($"│ 💧 MP: {player.MP,3} / {player.MaxMP,-22}│");
             DrawBar(player.MP, player.MaxMP, 20, ConsoleColor.Blue, 2, y++);
 
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine($"│ 🛡️ 방어력: {player.Defense,-28}│");
+            Console.WriteLine($"│ 🛡️ 방어력: {player.Defense,-23}│");
 
             Console.SetCursorPosition(2, y++);
             Console.WriteLine("└────────────────────────────────────┘");
@@ -75,7 +75,7 @@ namespace TextRPG_TeamSix.Utils
                 string status = e.IsAlive ? $"HP: {e.HP}" : "💀(죽음)";
                 string line = $"[{enemies.IndexOf(e) + 1}] {e.Name} Lv. 상태 : {status}";
                 Console.SetCursorPosition(2, y++);
-                Console.WriteLine($"│ {line,-32}│");
+                Console.WriteLine($"│ {line,-29}│");
             }
             Console.SetCursorPosition(2, y++);
             Console.WriteLine("└───────────────────────────────────┘");
@@ -91,15 +91,15 @@ namespace TextRPG_TeamSix.Utils
             Console.SetCursorPosition(2, y++);
             Console.WriteLine("╔══════════════════════╗");
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine("║ 행동을 선택하세요:       ║");
+            Console.WriteLine("║ 행동을 선택하세요:   ║");
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine("║ ⚔️ 1. 일반 공격         ║");
+            Console.WriteLine("║ ⚔️ 1. 일반 공격      ║");
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine("║ 🔥 2. 스킬 사용         ║");
+            Console.WriteLine("║ 🔥 2. 스킬 사용      ║");
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine("║ ⭐ 3. 아이템 사용        ║");
+            Console.WriteLine("║ ⭐ 3. 아이템 사용    ║");
             Console.SetCursorPosition(2, y++);
-            Console.WriteLine("║ 🐿️ 4. 도망             ║");
+            Console.WriteLine("║ 🐿️ 4. 도망           ║");
             Console.SetCursorPosition(2, y++);
             Console.WriteLine("╚══════════════════════╝");
 
