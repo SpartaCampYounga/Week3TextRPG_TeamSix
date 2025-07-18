@@ -140,11 +140,11 @@ namespace TextRPG_TeamSix.Characters
                 {
                     if (item is Weapon weapon)
                     {
-                        bonusAttack += this.Attack;
+                        bonusAttack += weapon.Enhancement;
                     }
                     else if (item is Armor armor)
                     {
-                        bonusDefense += this.Defense;
+                        bonusDefense += armor.Enhancement;
                     }
                 }
             }
