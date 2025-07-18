@@ -15,7 +15,11 @@ namespace TextRPG_TeamSix
         {
             GameInitializer.InitializeAll();
 
+<<<<<<< HEAD
             //SceneManager.Instance.SetScene(SceneType.Player);
+=======
+            //SceneManager.Instance.SetScene(SceneType.Dungeon);
+>>>>>>> master
            SceneManager.Instance.SetScene(SceneType.Title);
             //SceneManager.Instance.SetScene(SceneType.Battle);
 
