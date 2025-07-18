@@ -54,8 +54,13 @@ namespace TextRPG_TeamSix.Controllers
 
 
             new Weapon(4, "녹슨검", "낡았습니다", 80, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(5, "나무검", "가볍고 약한 검입니다.", 120, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new Weapon(5, "나무검", "가볍고 약한 검입니다.", 120, ItemType.Weapon, Ability.Attack, 20, EquipSlot.Weapon),
+            new Weapon(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 200, ItemType.Weapon, Ability.Attack, 40, EquipSlot.Weapon),
+            new Weapon(7, "철검", "무딘감 이 있지만 꽤 강한 검입니다.", 220, ItemType.Weapon, Ability.Attack, 55, EquipSlot.Weapon),
+            new Weapon(7, "장인의 검", "날카롭게 제련된 강한 검입니다.", 300, ItemType.Weapon, Ability.Attack, 70, EquipSlot.Weapon),
+            new Weapon(8, "용의 검", "드래곤의 힘이 깃든 전설의 검입니다.", 500, ItemType.Weapon, Ability.Attack, 80, EquipSlot.Weapon),
+            new Weapon(9, "화염검", "불의 속성이 담긴 강력한 무기입니다.", 400, ItemType.Weapon, Ability.Attack, 60, EquipSlot.Weapon),
+
 
 
 
@@ -63,9 +68,12 @@ namespace TextRPG_TeamSix.Controllers
 
 
 
-            new Armor(7, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(11, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new Armor(12, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 20, EquipSlot.Armor),
+            new Armor(13, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, ItemType.Armor, Ability.Defense, 30, EquipSlot.Armor),
+            new Armor(14, "성기사의 갑옷", "신의 가호가 깃든 중갑입니다.", 350, ItemType.Armor, Ability.Defense, 70, EquipSlot.Armor),
+            new Armor(15, "어둠의 로브", "마력이 깃든 강철갑옷입니다.", 250, ItemType.Armor, Ability.Defense, 40, EquipSlot.Armor),
+
 
         };
 
