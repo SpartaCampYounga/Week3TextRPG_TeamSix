@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
@@ -64,9 +65,12 @@ namespace TextRPG_TeamSix.Scenes
         private void LoadBuyItems()
         {
             specialStore.ItemList.Clear();
-            foreach (var item in GameDataManager.Instance.AllItems) //스페셜상점은 기존의 상점과 같은아이템을 출력하면안된는데 이기능 알아보기
+            foreach (var item in GameDataManager.Instance.AllItems) // 게임 데이터 매니저에서 모든 아이템을 가져와서 스페셜 상점에 추가
             {
-                specialStore.ItemList.Add(item);
+                if (item.IsSpecialItem) // 아이템이 스페셜 아이템인지 확인
+                {
+                    specialStore.ItemList.Add(item);
+                }
             }
         }
 
@@ -112,3 +116,17 @@ namespace TextRPG_TeamSix.Scenes
 //스페셜상점 기존확률(0.1f) + 행운(0.0.f) 하여 등장확률로 넣기(던전이 끝나면)
 //스페셜상점은 기존의 상점과 같은아이템을 출력하면안됨(아이템을 가져오되 기존데이터만 제외하고 보여주기)
 //위에기능을 이용해 아이템을 추가하고 이것또한 상점에서 스페셜상점아이템은 보여지지 않게 하기
+
+//float baseChance = 0.8f; // 기존 확률은 0.1f
+//float luckBonus = player.Luck * 0.01f; // 예: 행운 수치에 따른 보너스 확률
+//float finalChance = baseChance + luckBonus; // 최종 확률 계산
+
+//Random rnd = new Random();
+//if (rnd.NextDouble() < finalChance) // 확률에 따라 스페셜 상점으로 이동
+//{
+//    SceneManager.Instance.SetScene(SceneType.SpecialStore);
+//}
+//else
+//{
+//    SceneManager.Instance.SetScene(SceneType.Main);
+//}
