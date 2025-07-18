@@ -62,13 +62,9 @@ namespace TextRPG_TeamSix.Controllers
             new EquipItem(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
 
 
-
             new EquipItem(101, "완성", "과거와 현재 미래가 합친 작품입니다.", 1000, ItemType.Weapon, Ability.Attack, 20, EquipSlot.Weapon, true),
             new EquipItem(102, "협업", "여러 명인들이 모여 만든 작품입니다.", 1500, ItemType.Armor, Ability.Defense, 20, EquipSlot.Armor, true),
             new Portion(103, "엘릭서", "마법의 힘이 담긴 물약입니다.", 500, ItemType.Consumable, 300, RestoreType.All),
-
-
-
 
             new EquipItem(7, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
             new EquipItem(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),

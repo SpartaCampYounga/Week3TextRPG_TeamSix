@@ -26,6 +26,7 @@
 //            EquipSlot = equipSlot;
 //        }
 
+
 //        //장착을 하는 주체는 Player 이므로 그쪽으로 구현.
 //        //public void Equip(Character character)
 //        //{
