@@ -33,14 +33,14 @@ namespace TextRPG_TeamSix.Utils
             Console.ForegroundColor = ConsoleColor.Yellow;
             int y = 2;
 
-            Console.SetCursorPosition(2, y++); Console.WriteLine("┌────────────[ 플레이어 ]────────────┐");
-            Console.SetCursorPosition(2, y++); Console.WriteLine($"│ ✨ 이름: {player.Name,-26}│");
-            Console.SetCursorPosition(2, y++); Console.WriteLine($"│ ❤️ HP: {player.HP,3} / {player.MaxHP,-22}│");
-            DrawBar(player.HP, player.MaxHP, 20, ConsoleColor.Red, 2, y++);
-            Console.SetCursorPosition(2, y++); Console.WriteLine($"│ 💧 MP: {player.MP,3} / {player.MaxMP,-22}│");
-            DrawBar(player.MP, player.MaxMP, 20, ConsoleColor.Blue, 2, y++);
-            Console.SetCursorPosition(2, y++); Console.WriteLine($"│ 🛡️ 방어력: {player.Defense,-23}│");
-            Console.SetCursorPosition(2, y++); Console.WriteLine("└────────────────────────────────────┘");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("┌────────────[ 플레이어 ]────────────┐");
+            Console.SetCursorPosition(0, y++); Console.WriteLine($"│ ✨ 이름: {player.Name,-26}│");
+            Console.SetCursorPosition(0, y++); Console.WriteLine($"│ ❤️ HP: {player.HP,3} / {player.MaxHP,-22}│");
+            DrawBar(player.HP, player.MaxHP, 20, ConsoleColor.Red, 0, y++);
+            Console.SetCursorPosition(0, y++); Console.WriteLine($"│ 💧 MP: {player.MP,3} / {player.MaxMP,-22}│");
+            DrawBar(player.MP, player.MaxMP, 20, ConsoleColor.Blue, 0, y++);
+            Console.SetCursorPosition(0, y++); Console.WriteLine($"│ 🛡️ 방어력: {player.Defense,-23}│");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("└────────────────────────────────────┘");
             Console.ResetColor();
         }
 
@@ -49,7 +49,7 @@ namespace TextRPG_TeamSix.Utils
             Console.ForegroundColor = ConsoleColor.Red;
             int y = 9;
 
-            Console.SetCursorPosition(2, y++); Console.WriteLine("┌────────────[ 적 목록 ]────────────┐");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("┌────────────[ 적 목록 ]────────────┐");
             foreach (var e in enemies)
             {
                 string status;
@@ -63,9 +63,9 @@ namespace TextRPG_TeamSix.Utils
                 }
 
                 string line = $"[{enemies.IndexOf(e) + 1}] {e.Name} Lv. 상태 : {status}";
-                Console.SetCursorPosition(2, y++); Console.WriteLine($"│ {line,-29}│");
+                Console.SetCursorPosition(0, y++); Console.WriteLine($"│ {line,-29}│");
             }
-            Console.SetCursorPosition(2, y++); Console.WriteLine("└───────────────────────────────────┘");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("└───────────────────────────────────┘");
             Console.ResetColor();
         }
 
@@ -74,13 +74,13 @@ namespace TextRPG_TeamSix.Utils
             Console.ForegroundColor = ConsoleColor.Cyan;
             int y = 14;
 
-            Console.SetCursorPosition(2, y++); Console.WriteLine("╔══════════════════════╗");
-            Console.SetCursorPosition(2, y++); Console.WriteLine("║ 행동을 선택하세요:   ║");
-            Console.SetCursorPosition(2, y++); Console.WriteLine("║ ⚔️ 1. 일반 공격      ║");
-            Console.SetCursorPosition(2, y++); Console.WriteLine("║ 🔥 2. 스킬 사용      ║");
-            Console.SetCursorPosition(2, y++); Console.WriteLine("║ ⭐ 3. 아이템 사용    ║");
-            Console.SetCursorPosition(2, y++); Console.WriteLine("║ 🐿️ 4. 도망           ║");
-            Console.SetCursorPosition(2, y++); Console.WriteLine("╚══════════════════════╝");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("╔══════════════════════╗");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("║ 행동을 선택하세요:   ║");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("║ ⚔️ 1. 일반 공격      ║");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("║ 🔥 2. 스킬 사용      ║");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("║ ⭐ 3. 아이템 사용    ║");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("║ 🐿️ 4. 도망           ║");
+            Console.SetCursorPosition(0, y++); Console.WriteLine("╚══════════════════════╝");
             Console.ResetColor();
         }
     }

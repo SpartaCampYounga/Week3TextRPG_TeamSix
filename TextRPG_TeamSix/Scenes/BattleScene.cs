@@ -99,17 +99,18 @@ internal class BattleScene : SceneBase
         BattleLog.BattleStart();    // 로그 시작 메세지 출력
         SoundManager.Play("E:\\7.Data\\1.bgm\\출정(mix).wav");
 
-        if (turnCount % 3 == 0)
-        {
-            Console.Clear();
-            BattleLog.DrawLogBox();
-        }
-
         while (true)
         {
             DisplayStatus();        // UI 그리기
             Console.WriteLine();
             Console.Write("어떤 행동을 하시겠습니까? : ");
+            turnCount++;
+
+            if (turnCount % 3 == 0)
+            {
+                BattleLog.ClearLogs();
+            }
+
             string input = GetPlayerInput();
 
             bool playerActed = PlayerTurn(input);
@@ -134,7 +135,6 @@ internal class BattleScene : SceneBase
             if (playerActed)
             {
                 EnemyTurn();
-                turnCount++;
             }
 
             if (!player.IsAlive)
@@ -149,7 +149,6 @@ internal class BattleScene : SceneBase
     private void DisplayStatus()
     {
         // 매 턴마다 깔끔하게 새로 출력
-
         BattleUI.BattleStartInfo();
         BattleUI.DrawPlayerInfo(player);
         BattleUI.DrawEnemyList(enemies);

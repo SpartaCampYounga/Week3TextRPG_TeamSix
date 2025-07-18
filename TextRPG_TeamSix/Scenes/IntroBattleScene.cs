@@ -19,9 +19,6 @@ namespace TextRPG_TeamSix.Scenes
         {
            
         }
-
-
-
         public void FlashEffect(int times = 2, int delay = 150)
         {
             for (int i = 0; i < times; i++)
@@ -37,7 +34,6 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.ResetColor();
         }
-
         private void PullInEffect()
         {
             Console.Clear();
