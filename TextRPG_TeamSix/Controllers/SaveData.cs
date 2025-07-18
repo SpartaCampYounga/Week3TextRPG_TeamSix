@@ -13,13 +13,13 @@ namespace TextRPG_TeamSix.Controllers
     {
 
         public Player PlayerSave { get; set; }
-        public List<uint> AvailableDungeonList { get; set; }   //입장 가능한 던전 아이디만 저장
+        public List<uint> ClearedDungeonList { get; set; }   //입장 가능한 던전 아이디만 저장
                                                              //그 외에 도감, 던전 진행도 등 저장할 것들 필드로 삼고, 생성자에 입력. 
         [JsonConstructor]
-        public SaveData(Player playerSave, List<uint> availableDungeonList)
+        public SaveData(Player playerSave, List<uint> clearedDungeonList)
         {
             this.PlayerSave = playerSave;
-            this.AvailableDungeonList = availableDungeonList;
+            this.ClearedDungeonList = clearedDungeonList;
         }
     }
 }

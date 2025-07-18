@@ -14,6 +14,7 @@ namespace TextRPG_TeamSix.Dungeons
         public uint Id { get; private set; }
         public string Name { get; private set; }
         public uint RequiredDefense { get; private set; }
+        public uint RequiredDungeonId { get; private set; } //0일 경우 기본 던전 (항상 열려있음)
         public uint RewardGold { get; private set; }
         public uint RewardExp { get; private set; }
         public Gatcha RewardGatcha { get; private set; }
@@ -21,11 +22,15 @@ namespace TextRPG_TeamSix.Dungeons
         //public DungeonType DungeonType { get; private set; } //던전 타입 별로 구현하실거면...
 
         [JsonConstructor]
-        public Dungeon (uint id,string name, uint requiredDefense, uint rewardGold, uint rewardExp, Gatcha rewardGatcha, List<Enemy> enemies)
+        public Dungeon (
+            uint id,string name, uint requiredDefense, uint requiredDungeonId,
+            uint rewardGold, uint rewardExp,
+            Gatcha rewardGatcha, List<Enemy> enemies)
         {
             Id = id;
             Name = name;
             RequiredDefense = requiredDefense;
+            RequiredDungeonId = requiredDungeonId;
             RewardGold = rewardGold;
             RewardExp = rewardExp;
             RewardGatcha = rewardGatcha;
@@ -51,14 +56,15 @@ namespace TextRPG_TeamSix.Dungeons
                 Console.WriteLine("방어력이 부족하여 입장할 수 없습니다.");
                 return false;
             }
-            else if(PlayerManager.Instance.AvailableDungeonList.Contains(this.Id) || this.Id == 1)
+            else if(PlayerManager.Instance.ClearedDungeonList.Contains(this.RequiredDungeonId) || this.RequiredDungeonId == 0)
             {
                 Console.WriteLine($"{this.Name}던전에 입장합니다.");
                 return true;
             }
             else //AvailableDungeonList에 없을 경우
             {
-                Console.WriteLine("이전 난이도의 레벨을 먼저 도전해주세요.");
+                string requiredDungeonName = GameDataManager.Instance.AllDungeons.FirstOrDefault(x => x.Id == this.RequiredDungeonId).Name;
+                Console.WriteLine($"{requiredDungeonName} 던전을 먼저 도전해주세요.");
                 return false;
             }
         }
