@@ -14,7 +14,7 @@ namespace TextRPG_TeamSix.Scenes
     {
         public override SceneType SceneType => SceneType.Title;
         private int input;
-
+        List<string> selection;
 
         public override void DisplayScene() //출력 하는 시스템
         {
@@ -47,15 +47,15 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine("");
             Console.WriteLine("");
 
-            Console.WriteLine("1. 시작");
-            Console.WriteLine("2. 종료");
-
-
             Console.ResetColor();// 그린컬러 초기화
 
-            Console.Write("번호를 입력해 주세요 : ");
 
-            input = InputHelper.GetIntegerRange(1, 3);
+            selection = new List<string>()
+            {
+                "시작하기",
+                "종료하기"
+            };
+            input = TextDisplayer.PageNavigation(selection);
             HandleInput();
         }
 
@@ -64,10 +64,10 @@ namespace TextRPG_TeamSix.Scenes
             switch (input)
             {
                 case 0:
-                    Environment.Exit(0);
+                    SceneManager.Instance.SetScene(SceneType.PlayerSetup);
                     break;
                 case 1:
-                    SceneManager.Instance.SetScene(SceneType.PlayerSetup);
+                    Environment.Exit(0);
                     break;
             }
         }

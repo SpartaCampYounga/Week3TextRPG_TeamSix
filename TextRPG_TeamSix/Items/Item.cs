@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Items
@@ -41,8 +42,15 @@ namespace TextRPG_TeamSix.Items
         public override string ToString()    //자식 클래스들도 override 메서드 생성해주기
         {
             string display = "";
+            if (IsEquipped)
+            {
+                display += "[E] ";
+            }else
+            {
+                display += "    ";
+            }
             display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
-            display += FormatUtility.AlignWithPadding(Description, 30) + " | ";
+            display += FormatUtility.AlignWithPadding(Description, 50) + " | ";
             display += FormatUtility.AlignWithPadding(Price.ToString() + " G", 8);
             return display;
         }

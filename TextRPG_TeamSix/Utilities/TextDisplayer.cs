@@ -17,6 +17,9 @@ namespace TextRPG_TeamSix.Utilities
             Console.OutputEncoding = Encoding.UTF8;
             //header는 밖에서 출력하고 들어올 것
 
+            Console.CursorVisible = false;  //커서 숨김
+
+
             //현재 위치 저장
             int currentLeft = Console.CursorLeft;
             int currentTop = Console.CursorTop;
@@ -59,6 +62,7 @@ namespace TextRPG_TeamSix.Utilities
 
             } while (key != ConsoleKey.Enter && key != ConsoleKey.Escape);
             Console.SetCursorPosition(0, 0);   //커서 옮기기
+            Console.CursorVisible = true;  //커서 다시 보임
             Console.Clear();
             if (key == ConsoleKey.Enter)
             {
