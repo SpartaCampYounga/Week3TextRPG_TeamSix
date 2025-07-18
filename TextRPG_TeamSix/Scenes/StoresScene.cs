@@ -66,7 +66,10 @@ namespace TextRPG_TeamSix.Scenes
             currentStore.ItemList.Clear();
             foreach (var item in GameDataManager.Instance.AllItems)
             {
-                currentStore.ItemList.Add(item);
+                if (!item.IsSpecialItem)
+                {
+                    currentStore.ItemList.Add(item);
+                }
             }
         }
 

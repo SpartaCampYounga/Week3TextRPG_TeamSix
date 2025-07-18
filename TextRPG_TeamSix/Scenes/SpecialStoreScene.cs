@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
@@ -64,9 +65,12 @@ namespace TextRPG_TeamSix.Scenes
         private void LoadBuyItems()
         {
             specialStore.ItemList.Clear();
-            foreach (var item in GameDataManager.Instance.AllItems) //스페셜상점은 기존의 상점과 같은아이템을 출력하면안된는데 이기능 알아보기
+            foreach (var item in GameDataManager.Instance.AllItems) // 게임 데이터 매니저에서 모든 아이템을 가져와서 스페셜 상점에 추가
             {
-                specialStore.ItemList.Add(item);
+                if (item.IsSpecialItem) // 아이템이 스페셜 아이템인지 확인
+                {
+                    specialStore.ItemList.Add(item);
+                }
             }
         }
 
