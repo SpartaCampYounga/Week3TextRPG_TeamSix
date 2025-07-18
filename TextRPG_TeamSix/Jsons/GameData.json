@@ -1,0 +1,385 @@
+{
+  "$type": "TextRPG_TeamSix.Controllers.GamaData, TextRPG_TeamSix",
+  "_scenes": {
+    "$type": "TextRPG_TeamSix.Scenes.SceneBase[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Scenes.SkillScene, TextRPG_TeamSix",
+        "SceneType": "Skill"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.InventoryScene, TextRPG_TeamSix",
+        "SceneType": "Inventory"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.TitleScene, TextRPG_TeamSix",
+        "SceneType": "Title"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.PlayerSetupScene, TextRPG_TeamSix",
+        "SceneType": "PlayerSetup"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.SkillLearnScene, TextRPG_TeamSix",
+        "SceneType": "SkillLearn"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.MainScene, TextRPG_TeamSix",
+        "SceneType": "Main"
+      },
+      {
+        "$type": "BattleScene, TextRPG_TeamSix",
+        "SceneType": "Battle"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.QuestScene, TextRPG_TeamSix",
+        "SceneType": "Quest"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.StoresScene, TextRPG_TeamSix",
+        "SceneType": "Store"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.DungeonScene, TextRPG_TeamSix",
+        "SceneType": "Dungeon"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.PlayerScene, TextRPG_TeamSix",
+        "SceneType": "Player"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.QuestAcceptScene, TextRPG_TeamSix",
+        "SceneType": "QuestAccept"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.QuestRewardScene, TextRPG_TeamSix",
+        "SceneType": "QuestReward"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.SpecialStoreScene, TextRPG_TeamSix",
+        "SceneType": "SpecialStore"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.SpecialStoreEnterScene, TextRPG_TeamSix",
+        "SceneType": "SpecialStoreEnter"
+      }
+    ]
+  },
+  "_skills": {
+    "$type": "TextRPG_TeamSix.Skills.Skill[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+        "Id": 1,
+        "Name": "스매시",
+        "Description": "강하게 내려칩니다.",
+        "ConsumeMP": 10,
+        "RequiredStones": 3,
+        "SkillType": "Attack",
+        "Amount": 20
+      },
+      {
+        "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+        "Id": 2,
+        "Name": "후려치기",
+        "Description": "강하게 후려칩니다.",
+        "ConsumeMP": 5,
+        "RequiredStones": 1,
+        "SkillType": "Attack",
+        "Amount": 10
+      },
+      {
+        "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+        "Id": 3,
+        "Name": "파이어볼",
+        "Description": "불을 소환합니다.",
+        "ConsumeMP": 20,
+        "RequiredStones": 3,
+        "SkillType": "Attack",
+        "Amount": 30
+      },
+      {
+        "$type": "TextRPG_TeamSix.Skills.HealSkill, TextRPG_TeamSix",
+        "Id": 4,
+        "Name": "치료하기",
+        "Description": "HP를 회복합니다.",
+        "ConsumeMP": 30,
+        "RequiredStones": 5,
+        "SkillType": "Heal",
+        "Amount": 30
+      }
+    ]
+  },
+  "_items": {
+    "$type": "TextRPG_TeamSix.Items.Item[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+        "RestoreType": "Health",
+        "RestoreAmount": 30,
+        "Id": 1,
+        "Name": "소형 회복물약",
+        "Description": "작은 체력을 회복합니다",
+        "Price": 50,
+        "Type": "Consumable",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+        "RestoreType": "Health",
+        "RestoreAmount": 100,
+        "Id": 2,
+        "Name": "중형 회복물약",
+        "Description": "중간 정도의 체력을 회복합니다",
+        "Price": 100,
+        "Type": "Consumable",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+        "RestoreType": "Health",
+        "RestoreAmount": 450,
+        "Id": 3,
+        "Name": "대형 회복물약",
+        "Description": "많은 체력을 회복합니다",
+        "Price": 300,
+        "Type": "Consumable",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Attack",
+        "Enhancement": 10,
+        "EquipSlot": "Weapon",
+        "Id": 4,
+        "Name": "녹슨검",
+        "Description": "낡았습니다",
+        "Price": 80,
+        "Type": "Weapon",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Attack",
+        "Enhancement": 10,
+        "EquipSlot": "Weapon",
+        "Id": 5,
+        "Name": "나무검",
+        "Description": "가볍고 약한 검입니다.",
+        "Price": 120,
+        "Type": "Weapon",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Attack",
+        "Enhancement": 10,
+        "EquipSlot": "Weapon",
+        "Id": 6,
+        "Name": "포레스트검f",
+        "Description": "Just Do it의 정수 우리도 노력하면 됩니다.",
+        "Price": 300,
+        "Type": "Weapon",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Attack",
+        "Enhancement": 20,
+        "EquipSlot": "Weapon",
+        "Id": 101,
+        "Name": "완성",
+        "Description": "과거와 현재 미래가 합친 작품입니다.",
+        "Price": 1000,
+        "Type": "Weapon",
+        "IsSpecialItem": true
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Defense",
+        "Enhancement": 20,
+        "EquipSlot": "Armor",
+        "Id": 102,
+        "Name": "협업",
+        "Description": "여러 명인들이 모여 만든 작품입니다.",
+        "Price": 1500,
+        "Type": "Armor",
+        "IsSpecialItem": true
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+        "RestoreType": "All",
+        "RestoreAmount": 300,
+        "Id": 103,
+        "Name": "엘릭서",
+        "Description": "마법의 힘이 담긴 물약입니다.",
+        "Price": 500,
+        "Type": "Consumable",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Defense",
+        "Enhancement": 10,
+        "EquipSlot": "Armor",
+        "Id": 7,
+        "Name": "천옷",
+        "Description": "기본 복장입니다.",
+        "Price": 50,
+        "Type": "Armor",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Defense",
+        "Enhancement": 10,
+        "EquipSlot": "Armor",
+        "Id": 8,
+        "Name": "가죽 갑옷",
+        "Description": "튼튼한 가죽으로 만들었습니다.",
+        "Price": 80,
+        "Type": "Armor",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Defense",
+        "Enhancement": 10,
+        "EquipSlot": "Armor",
+        "Id": 9,
+        "Name": "강철갑옷",
+        "Description": "단단한 금속 갑옷 입니다.",
+        "Price": 50,
+        "Type": "Armor",
+        "IsSpecialItem": false
+      }
+    ]
+  },
+  "_gatchas": {
+    "$type": "TextRPG_TeamSix.Items.Gatcha[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
+        "Name": "일반",
+        "ItemList": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+              "RestoreType": "Health",
+              "RestoreAmount": 30,
+              "Id": 1,
+              "Name": "소형 회복물약",
+              "Description": "작은 체력을 회복합니다",
+              "Price": 50,
+              "Type": "Consumable",
+              "IsSpecialItem": false
+            },
+            {
+              "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+              "RestoreType": "Health",
+              "RestoreAmount": 100,
+              "Id": 2,
+              "Name": "중형 회복물약",
+              "Description": "중간 정도의 체력을 회복합니다",
+              "Price": 100,
+              "Type": "Consumable",
+              "IsSpecialItem": false
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "_emenies": {
+    "$type": "TextRPG_TeamSix.Characters.Enemy[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+        "EnemyType": "Type1",
+        "Id": 1,
+        "Name": "고블린",
+        "HP": 100,
+        "MP": 300,
+        "Attack": 10,
+        "Defense": 10,
+        "Luck": 0,
+        "SkillList": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": []
+        },
+        "IsAlive": true
+      },
+      {
+        "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+        "EnemyType": "Type1",
+        "Id": 2,
+        "Name": "슬라임",
+        "HP": 100,
+        "MP": 300,
+        "Attack": 10,
+        "Defense": 10,
+        "Luck": 0,
+        "SkillList": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": []
+        },
+        "IsAlive": true
+      }
+    ]
+  },
+  "_dungeons": null,
+  "_quests": {
+    "$type": "TextRPG_TeamSix.Quests.Quest[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 1,
+        "QuestType": "Enemy",
+        "Description": "고블린 3마리를 처치하세요.",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 3,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 1,
+        "QuestType": "Enemy",
+        "Description": "슬라임 5마리를 처치하세요.",
+        "RewardGold": 200,
+        "RewardExp": 20,
+        "GoalId": 2,
+        "GoalCount": 5,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 2,
+        "QuestType": "Dungeon",
+        "Description": "Easy 던전을 클리어하세요",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 2,
+        "QuestType": "Dungeon",
+        "Description": "Normal 던전을 클리어하세요",
+        "RewardGold": 300,
+        "RewardExp": 30,
+        "GoalId": 2,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      }
+    ]
+  }
+}

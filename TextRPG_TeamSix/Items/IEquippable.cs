@@ -12,7 +12,8 @@ namespace TextRPG_TeamSix.Items
     internal interface IEquippable
     {
         public EquipSlot EquipSlot { get; }
-        public void Equip(Character character);
-        public void Unequip(Character character);
+        //장착을 하는 주체는 Player 이므로 그쪽으로 구현.
+        //public void Equip(Character character);
+        //public void Unequip(Character character);
     }
 }

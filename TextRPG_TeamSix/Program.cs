@@ -13,7 +13,7 @@ namespace TextRPG_TeamSix
     {
         static void Main(string[] args)
         {
-            GameInitializer.InitializeAll();
+            GameInitializer.InitializeFromJson();
 
             //SceneManager.Instance.SetScene(SceneType.Dungeon);
            SceneManager.Instance.SetScene(SceneType.Title);
