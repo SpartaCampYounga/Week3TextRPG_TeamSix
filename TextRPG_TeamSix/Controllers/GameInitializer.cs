@@ -1,23 +1,27 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Dungeons;
 using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Items;
+using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
-using TextRPG_TeamSix.Dungeons;
-using TextRPG_TeamSix.Quests;
+using TextRPG_TeamSix.Utilities;
 using static TextRPG_TeamSix.Items.Item;
 
 namespace TextRPG_TeamSix.Controllers
 {
     //게임 시작 시 싱글톤 처리된 매니저(Controller)들 초기화/로드 작업
-    internal static class GameInitializer
+    internal class GameInitializer
     {
+        public static GamaData GamaData { get; private set; }
+
         //일단 하드코딩. 추후 Json 으로 담당할 것.  (Json 생성용)
         private static SceneBase[] _scenes = {
             new SkillScene(),
@@ -104,6 +108,54 @@ namespace TextRPG_TeamSix.Controllers
             GameDataManager.Instance.InitializeEnemies(_emenies);
             GameDataManager.Instance.InitializeDungeons(_dungeons);
             GameDataManager.Instance.InitializeQuests(_quests);
+            CreateJsonGameData();
+        }
+
+
+        public static void CreateJsonGameData()
+        {
+            //저장해야하는 데이터 리스트가 담김 (생성자에서)
+            GamaData = new GamaData(_scenes,_skills, _items, _gatchas, _emenies, _dungeons, _quests);
+
+            JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
+            // 파일 생성 후 쓰기
+
+            File.WriteAllText(JsonHelper.path + $@"\\GameData.json", JsonConvert.SerializeObject(GamaData, setting));
+            Console.WriteLine($"인게임 데이터가 저장되었습니다.");
+        }
+        public static bool InitializeFromJson()
+        {
+            JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
+
+            //Console.WriteLine("1매개변수: " + playerName);
+            //Console.WriteLine("1CurrentPlayer: " + PlayerManager.Instance.CurrentPlayer.Name);
+            try
+            {
+                //JsonConvert.PopulateObject(File.ReadAllText(path + $@"\\player_{playerName}.json"), player);
+                GamaData = JsonConvert.DeserializeObject<GamaData>(File.ReadAllText(JsonHelper.path + $@"\\GameData.json"), setting);
+                //Console.WriteLine("역직렬화된 Player 이름: " + SaveData.PlayerSave.Name);
+                //Console.WriteLine("2매개변수: " + playerName);
+                //Console.WriteLine("2CurrentPlayer: " + PlayerManager.Instance.CurrentPlayer.Name);
+
+                Console.WriteLine($"GameData를 불러왔습니다.");
+
+                SceneManager.Instance.InitializeScenes(GamaData._scenes);
+                GameDataManager.Instance.InitializeSkills(GamaData._skills);
+                GameDataManager.Instance.InitializeItems(GamaData._items);
+                GameDataManager.Instance.InitializeEnemies(GamaData._emenies);
+                GameDataManager.Instance.InitializeDungeons(GamaData._dungeons);
+                GameDataManager.Instance.InitializeQuests(GamaData._quests);
+
+                //Console.WriteLine("3매개변수: " + playerName);
+                //Console.WriteLine("3CurrentPlayer: " + PlayerManager.Instance.CurrentPlayer.Name);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine($"GameData가 존재하지 않습니다.");
+                return false;
+            }
         }
     }
 }
