@@ -131,38 +131,79 @@ namespace TextRPG_TeamSix.Characters
         //}
         public void EquipItem(uint itemId)
         {
-            Item? item = GetItem((uint)itemId);
-            if (item == null)
+            Item? item = GetItem((uint)itemId); //인벤토리에서 확인함
+
+            switch (item)    //패턴매칭 및 캐스팅 사용 가시성을 위해 if에서 switch문으로 변경하였습니다.
             {
-                Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
-                return;
-            }
-            if (item.Type == Item.ItemType.Consumable)
-            {
-                Console.WriteLine("회복물약은 던전에서 사용해 주세요.");
-                return;
-            }
-            if (item.IsEquipped)
-            {
-                item.IsEquipped = false; // 아이템이 장착되어 있으면 장착 해제
-                Console.WriteLine($"{item.Name} 해제되었습니다.");
-                return;
-            }
-            foreach (var otherItem in ItemList)
-            {
-                if (otherItem.IsEquipped && otherItem.Type == item.Type)
-                {
-                    otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
-                    Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
-                    if (otherItem.Type == Item.ItemType.Weapon)
+                case null:                
+                    //null일경우 인벤토리에서 아이템을 찾지 못한 것이므로 소지하지 않고 있다는 내용으로 변경함
+                    Console.WriteLine("해당 아이템을 소지하고 있지 않습니다.");
+                    //Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
+                    break;
+                case IConsumable portion:
+                    Console.WriteLine("회복물약은 던전에서 사용해 주세요.");
+                    break;
+                case EquipItem equipment:
+                    if (PlayerManager.Instance.EquipmentList.ContainsKey(equipment.EquipSlot))
                     {
-                        //InvenWeapon = null; // 무기 장착 해제
+                        if (PlayerManager.Instance.EquipmentList[equipment.EquipSlot].Id == item.Id)
+                        {
+                            //장착된 아이템을 재선택함.
+                            //이미 딕셔너리에 같은 키가 저장되어있으므로, 해제. (딕셔너리에서 지우기)
+                            PlayerManager.Instance.EquipmentList.Remove(equipment.EquipSlot);
+                            Console.WriteLine($"{item.Name} 장착을 해제했습니다.");
+                        }
+                        else
+                        {
+                            //장착된 템과 다른 아이템을 선택함.
+                            //이미 딕셔너리에 같은 키가 저장되어있으므로, 기존 장비 해제 먼저. (딕셔너리에서 지우기)
+                            PlayerManager.Instance.EquipmentList.Remove(equipment.EquipSlot);
+                            Console.WriteLine($"{PlayerManager.Instance.EquipmentList[equipment.EquipSlot].Name} 장착을 해제했습니다.");
+                            //장착해야하는 아이템 더하기.
+                            PlayerManager.Instance.EquipmentList.Add(equipment.EquipSlot, equipment);
+                            Console.WriteLine($"{item.Name} 을 장착했습니다.");
+                        }
                     }
-                }
+                    else
+                    {
+                        //딕셔너리에 같은 키 없으므로, 장착. (딕셔너리에서 더하기)
+                        PlayerManager.Instance.EquipmentList.Add(equipment.EquipSlot, equipment);
+                        Console.WriteLine($"{item.Name} 을 장착했습니다.");
+                    }
+                    break;
             }
-            item.IsEquipped = true; // 아이템 장착
-          
-            Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
+
+            //Item? item = GetItem((uint)itemId);
+            //if (item == null)
+            //{
+            //    Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
+            //    return;
+            //}
+            //if (item.Type == Item.ItemType.Consumable)
+            //{
+            //    Console.WriteLine("회복물약은 던전에서 사용해 주세요.");
+            //    return;
+            //}
+            //if (item.IsEquipped)
+            //{
+            //    item.IsEquipped = false; // 아이템이 장착되어 있으면 장착 해제
+            //    Console.WriteLine($"{item.Name} 해제되었습니다.");
+            //}
+            //foreach (var otherItem in ItemList)
+            //{
+            //    if (otherItem.IsEquipped && otherItem.Type == item.Type)
+            //    {
+            //        otherItem.IsEquipped = false; // 같은 타입의 아이템이 장착되어 있으면 장착 해제
+            //        Console.WriteLine($"{otherItem.Name}은(는) 장착 해제되었습니다.");
+            //        if (otherItem.Type == Item.ItemType.Weapon)
+            //        {
+            //            //InvenWeapon = null; // 무기 장착 해제
+            //        }
+            //    }
+            //}
+            //item.IsEquipped = true; // 아이템 장착
+
+            //Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
         }
 

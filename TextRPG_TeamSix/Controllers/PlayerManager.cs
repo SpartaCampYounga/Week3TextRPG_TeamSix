@@ -18,12 +18,12 @@ namespace TextRPG_TeamSix.Controllers
     {
         public Player CurrentPlayer { get; private set; }
         public List<uint> ClearedDungeonList { get; private set;}
-        public Dictionary<EquipSlot, Item> EquipmentList { get; private set; }
+        public Dictionary<EquipSlot, EquipItem> EquipmentList { get; private set; }
         private PlayerManager()
         {
             CurrentPlayer = new Player("PlayerManager", JobType.Warrior);
             ClearedDungeonList = new List<uint>();
-            EquipmentList = new Dictionary<EquipSlot, Item>();
+            EquipmentList = new Dictionary<EquipSlot, EquipItem>();
         }
         private static PlayerManager instance;
         public static PlayerManager Instance

@@ -57,22 +57,22 @@ namespace TextRPG_TeamSix.Controllers
             new Portion(3, "대형 회복물약", "많은 체력을 회복합니다", 300, ItemType.Consumable, 450, RestoreType.Health),
 
 
-            new Weapon(4, "녹슨검", "낡았습니다", 80, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(5, "나무검", "가볍고 약한 검입니다.", 120, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
-            new Weapon(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new EquipItem(4, "녹슨검", "낡았습니다", 80, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new EquipItem(5, "나무검", "가볍고 약한 검입니다.", 120, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new EquipItem(6, "포레스트검f", "Just Do it의 정수 우리도 노력하면 됩니다.", 300, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
 
 
 
-            new Weapon(101, "완성", "과거와 현재 미래가 합친 작품입니다.", 1000, ItemType.Weapon, Ability.Attack, 20, EquipSlot.Weapon, true),
-            new Armor(102, "협업", "여러 명인들이 모여 만든 작품입니다.", 1500, ItemType.Armor, Ability.Defense, 20, EquipSlot.Armor, true),
+            new EquipItem(101, "완성", "과거와 현재 미래가 합친 작품입니다.", 1000, ItemType.Weapon, Ability.Attack, 20, EquipSlot.Weapon, true),
+            new EquipItem(102, "협업", "여러 명인들이 모여 만든 작품입니다.", 1500, ItemType.Armor, Ability.Defense, 20, EquipSlot.Armor, true),
             new Portion(103, "엘릭서", "마법의 힘이 담긴 물약입니다.", 500, ItemType.Consumable, 300, RestoreType.All),
 
 
 
 
-            new Armor(7, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
-            new Armor(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new EquipItem(7, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new EquipItem(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
+            new EquipItem(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
 
         };
 
@@ -155,8 +155,10 @@ namespace TextRPG_TeamSix.Controllers
             }
             catch (Exception ex)
             {
+                CreateJsonGameData();
                 Console.WriteLine(ex.Message);
-                Console.WriteLine($"GameData가 존재하지 않습니다.");
+                Console.WriteLine("GameData가 존재하지 않습니다.");
+                Console.WriteLine("다시 시작해보세요.");
                 return false;
             }
         }

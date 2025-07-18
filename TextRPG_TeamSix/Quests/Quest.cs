@@ -91,5 +91,10 @@ namespace TextRPG_TeamSix.Quests
                 return false;
             }
         }
+
+        public void Clone(Quest quest)
+        {
+
+        }
     }
 }

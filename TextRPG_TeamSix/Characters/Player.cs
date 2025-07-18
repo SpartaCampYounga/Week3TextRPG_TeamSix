@@ -126,7 +126,50 @@ namespace TextRPG_TeamSix.Characters
         {
             this.Exp += exp;
         }
+        public uint GetTotalAttack()
+        {
+            return Attack + GetEquipBonusAttack();
+        }
+        public uint GetEquipBonusAttack()
+        {
+            Dictionary<EquipSlot, EquipItem> EquipmentList = PlayerManager.Instance.EquipmentList;
+            uint totalAttackBonus = 0;
 
+            if (EquipmentList.Count != 0)
+            {
+                foreach(EquipItem item in EquipmentList.Values)
+                {
+                    if(item.Ability == Ability.Attack)
+                    {
+                        totalAttackBonus += item.Enhancement;
+                    }
+                }
+            }
+
+            return totalAttackBonus;
+        }
+        public uint GetTotalDefense()
+        {
+            return Defense + GetEquipBonusDefense();
+        }
+        public uint GetEquipBonusDefense()
+        {
+            Dictionary<EquipSlot, EquipItem> EquipmentList = PlayerManager.Instance.EquipmentList;
+            uint totalDefenseBonus = 0;
+
+            if (EquipmentList.Count != 0)
+            {
+                foreach (EquipItem item in EquipmentList.Values)
+                {
+                    if (item.Ability == Ability.Defense)
+                    {
+                        totalDefenseBonus += item.Enhancement;
+                    }
+                }
+            }
+
+            return totalDefenseBonus;
+        }
         public void AcquireSkillStone(uint numOfStones)
         {
             NumOfStones += numOfStones;
@@ -138,17 +181,17 @@ namespace TextRPG_TeamSix.Characters
             uint bonusDefense = 0;
             foreach (var item in Inventory.ItemList)
             {
-                if (item.IsEquipped)
-                {
-                    if (item is Weapon weapon)
-                    {
-                        bonusAttack += this.Attack;
-                    }
-                    else if (item is Armor armor)
-                    {
-                        bonusDefense += this.Defense;
-                    }
-                }
+                //if (item.IsEquipped)
+                //{
+                //    if (item is Weapon weapon)
+                //    {
+                //        bonusAttack += this.Attack;
+                //    }
+                //    else if (item is Armor armor)
+                //    {
+                //        bonusDefense += this.Defense;
+                //    }
+                //}
             }
         }
 

@@ -20,10 +20,6 @@ namespace TextRPG_TeamSix.Scenes
     {
         Player player = PlayerManager.Instance.CurrentPlayer;
         public override SceneType SceneType => SceneType.Player;
-
-        private List<Item> items = new List<Item>();
-        private List<Quest> Quests = new List<Quest>();
-
         int input;
 
         //private MainScene mainScene = new MainScene(); // MainScene 인스턴스 생성
@@ -48,8 +44,8 @@ namespace TextRPG_TeamSix.Scenes
 
 
                 PrintStat(" 이름", $"{player.Name} ({player.JobType})", ConsoleColor.Green);
-                PrintStat(" 공격력", $"{player.Attack}", ConsoleColor.Red);
-                PrintStat(" 방어력", $"{player.Defense}", ConsoleColor.Blue);
+                PrintStat(" 공격력", $"{player.GetTotalAttack} (+ {player.GetEquipBonusAttack()})", ConsoleColor.Red);
+                PrintStat(" 방어력", $"{player.GetTotalDefense} (+ {player.GetEquipBonusDefense()})", ConsoleColor.Blue);
                 PrintStat(" 체력", $"{player.HP}", ConsoleColor.DarkRed);
                 PrintStat(" 마나", $"{player.MP}", ConsoleColor.DarkCyan);
 
@@ -64,11 +60,11 @@ namespace TextRPG_TeamSix.Scenes
                 Thread.Sleep(200);
                 Console.WriteLine();
                 List<string> selections = new List<string>()
-            {
-                "인벤토리",  //0
-                "스킬",  //1
-                "나가기",   //2
-            };
+                {
+                    "인벤토리",  //0
+                    "스킬",  //1
+                    "나가기",   //2
+                };
 
                 input = TextDisplayer.PageNavigation(selections);
                 HandleInput();
@@ -145,11 +141,10 @@ namespace TextRPG_TeamSix.Scenes
                     SceneManager.Instance.SetScene(SceneType.Skill);
                     break;
                 case 2:
-                    Console.WriteLine("상태창을 나갑니다.");
+                case -1:
+                    //Console.WriteLine("상태창을 나갑니다.");
                     SceneManager.Instance.SetScene(SceneType.Main);
                     //mainScene.DisplayScene(); // MainScene 인스턴스를 사용하여 호출
-                    break;
-                case -1:
                     break;
             }
         } //입력 받고 실행하는 시스템
