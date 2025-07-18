@@ -18,21 +18,10 @@ internal class BattleScene : SceneBase
     private Player player;
     private List<Enemy> enemies;
 
-    public void Character_Status(Player A)
-    { 
-        Console.Clear();
-        BattleLog.Log($"이름: {A.Name}");
-        BattleLog.Log($"직업: {A.JobType}");
-        BattleLog.Log($"HP: {A.HP}");
-        BattleLog.Log($"MP: {A.MP}");
-        BattleLog.Log($"공격력: {A.Attack}");
-        BattleLog.Log($"방어력: {A.Defense}");
-        BattleLog.Log($"행운: {A.Luck}");
-    }
-
     public override void DisplayScene()
     {
-        Player player = PlayerManager.Instance.CurrentPlayer;
+        player = PlayerManager.Instance.CurrentPlayer;
+
         enemies = new List<Enemy>
             {
                  GameDataManager.Instance.AllEnemies.FirstOrDefault(e => e.Id == 1),
