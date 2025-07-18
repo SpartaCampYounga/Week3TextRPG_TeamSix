@@ -34,7 +34,6 @@ namespace TextRPG_TeamSix.Scenes
                 Console.WriteLine("║           🛡️  상태창 보기            ║");
                 Console.WriteLine("╚══════════════════════════════════════╝");
 
-                Thread.Sleep(200);
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" 캐릭터 정보");
@@ -44,8 +43,8 @@ namespace TextRPG_TeamSix.Scenes
 
 
                 PrintStat(" 이름", $"{player.Name} ({player.JobType})", ConsoleColor.Green);
-                PrintStat(" 공격력", $"{player.GetTotalAttack} (+ {player.GetEquipBonusAttack()})", ConsoleColor.Red);
-                PrintStat(" 방어력", $"{player.GetTotalDefense} (+ {player.GetEquipBonusDefense()})", ConsoleColor.Blue);
+                PrintStat(" 공격력", $"{player.GetTotalAttack()} (+ {player.GetEquipBonusAttack()})", ConsoleColor.Red);
+                PrintStat(" 방어력", $"{player.GetTotalDefense()} (+ {player.GetEquipBonusDefense()})", ConsoleColor.Blue);
                 PrintStat(" 체력", $"{player.HP}", ConsoleColor.DarkRed);
                 PrintStat(" 마나", $"{player.MP}", ConsoleColor.DarkCyan);
 
@@ -57,7 +56,6 @@ namespace TextRPG_TeamSix.Scenes
 
                 Console.WriteLine("----------------------------------------\n");
 
-                Thread.Sleep(200);
                 Console.WriteLine();
                 List<string> selections = new List<string>()
                 {
