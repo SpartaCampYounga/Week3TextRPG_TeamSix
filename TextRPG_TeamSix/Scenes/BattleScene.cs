@@ -66,8 +66,8 @@ internal class BattleScene : SceneBase
                 case "1":
                     SoundManager.Stop();
                     Console.Clear();
-                    // IntroScene intro = new IntroScene();
-                    // intro.DisplayScene();
+                    IntroScene intro = new IntroScene();
+                    intro.DisplayScene();
                     StartBattleLoop();
                     return; // 또는 break; 이후 루프 바깥에서 이어지게 할 수도 있어
 
