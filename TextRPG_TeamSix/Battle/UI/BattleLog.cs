@@ -18,22 +18,22 @@ namespace TextRPG_TeamSix.Utils
             int width = 50;
             int height = 20;
 
-            // 상단
-            Console.SetCursorPosition(logLeft, logTop - 1);
-            Console.Write("┌" + new string('─', width - 2) + "┐");
+            /// 상단
+            //Console.SetCursorPosition(logLeft, logTop - 1);
+            //Console.Write("┌" + new string('─', width - 2) + "┐");
 
-            // 중간
-            for (int i = 0; i < height; i++)
-            {
-                Console.SetCursorPosition(logLeft, logTop + i);
-                Console.Write("│" + new string(' ', width - 2) + "│");
-            }
+            //// 중간
+            //for (int i = 0; i < height; i++)
+            //{
+            //    Console.SetCursorPosition(logLeft, logTop + i);
+            //    Console.Write("│" + new string(' ', width - 2) + "│");
+            //}
 
-            // 하단
-            Console.SetCursorPosition(logLeft, logTop + height);
-            Console.Write("└" + new string('─', width - 2) + "┘");
+            //// 하단
+            //Console.SetCursorPosition(logLeft, logTop + height);
+            //Console.Write("└" + new string('─', width - 2) + "┘");
 
-            Console.ResetColor();
+            //Console.ResetColor();
         }
 
 

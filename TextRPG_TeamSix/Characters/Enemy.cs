@@ -43,13 +43,13 @@ namespace TextRPG_TeamSix.Characters
             uint luck, 
             EnemyType enemyType) : base(id, name, hP,mP, attack,defense, luck) 
         {
-            //this.Id = id;
-            //this.Name = name;
-            //this.HP = hP;
-            //this.MP = mP;
-            //this.Attack = attack;
-            //this.Defense = defense;
-            //this.Luck = luck;
+            this.Id = id;
+            this.Name = name;
+            this.HP = hP;
+            this.MP = mP;
+            this.Attack = attack;
+            this.Defense = defense;
+            this.Luck = luck;
             this.EnemyType = enemyType;
         }
 

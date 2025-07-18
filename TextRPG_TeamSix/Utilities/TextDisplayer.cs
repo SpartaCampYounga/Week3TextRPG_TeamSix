@@ -55,6 +55,7 @@ namespace TextRPG_TeamSix.Utilities
                 }
                 else if (key == ConsoleKey.DownArrow)
                 {
+                    
                     selectedIndex = (selectedIndex + 1) % list.Count();
                 }
 
