@@ -27,7 +27,9 @@ namespace TextRPG_TeamSix.Scenes
         public override void DisplayScene() //출력 하는 시스템
         {
             Console.Clear();
-            Console.WriteLine("===== 스페셜 상점 =====");
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine("║      수상한 기운이 감도는 상점       ║");
+            Console.WriteLine("╚══════════════════════════════════════╝");
             Console.WriteLine($"보유 골드: {player.Gold} G");
             Console.WriteLine("1. 아이템 구매 ");
             Console.WriteLine("2. 아이템 판매 ");
