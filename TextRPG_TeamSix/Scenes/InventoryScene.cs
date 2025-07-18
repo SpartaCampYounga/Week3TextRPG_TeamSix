@@ -39,9 +39,9 @@ namespace TextRPG_TeamSix.Scenes
             //}
             Console.WriteLine("▬▬ι═══════ﺤ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("╔══════════════════════════════════════╗");
-            Console.WriteLine("║               인벤토리               ║");
-            Console.WriteLine("╚══════════════════════════════════════╝");
+            Console.WriteLine("╔════════════════인벤토리═════════════════╗");
+            Console.WriteLine("║        ╱┈▬▬ι═══════ﺤ    ╱ ❚  ╱        ║");
+            Console.WriteLine("╚═══    ═▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇╱ [_■__]╱   ════╝");
             //Console.WriteLine();
             //Console.WriteLine("-------------------------------------");
             
