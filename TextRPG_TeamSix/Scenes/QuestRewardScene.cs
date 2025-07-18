@@ -33,7 +33,7 @@ namespace TextRPG_TeamSix.Scenes
 
 
             Console.Clear();
-            Console.WriteLine("QuestScene");
+            Console.WriteLine("QuestRewardScene");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', 120));
             Console.WriteLine("완료한 퀘스트 보상을 받을 수 있습니다.");
