@@ -63,7 +63,6 @@ namespace TextRPG_TeamSix.Scenes
                 {
                     "인벤토리",  //0
                     "스킬",  //1
-                    "나가기",   //2
                 };
 
                 input = TextDisplayer.PageNavigation(selections);

@@ -328,7 +328,319 @@
       }
     ]
   },
-  "_dungeons": null,
+  "_dungeons": {
+    "$type": "TextRPG_TeamSix.Dungeons.Dungeon[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Dungeons.Dungeon, TextRPG_TeamSix",
+        "Id": 1,
+        "Name": "Easy",
+        "RequiredDefense": 10,
+        "RequiredDungeonId": 0,
+        "RewardGold": 1000,
+        "RewardExp": 100,
+        "RewardGatcha": {
+          "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
+          "Name": "일반",
+          "ItemList": {
+            "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+            "$values": [
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 30,
+                "Id": 1,
+                "Name": "소형 회복물약",
+                "Description": "작은 체력을 회복합니다",
+                "Price": 50,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              },
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 100,
+                "Id": 2,
+                "Name": "중형 회복물약",
+                "Description": "중간 정도의 체력을 회복합니다",
+                "Price": 100,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              }
+            ]
+          }
+        },
+        "Enemies": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            },
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            }
+          ]
+        }
+      },
+      {
+        "$type": "TextRPG_TeamSix.Dungeons.Dungeon, TextRPG_TeamSix",
+        "Id": 2,
+        "Name": "Normal",
+        "RequiredDefense": 20,
+        "RequiredDungeonId": 1,
+        "RewardGold": 3000,
+        "RewardExp": 300,
+        "RewardGatcha": {
+          "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
+          "Name": "일반",
+          "ItemList": {
+            "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+            "$values": [
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 30,
+                "Id": 1,
+                "Name": "소형 회복물약",
+                "Description": "작은 체력을 회복합니다",
+                "Price": 50,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              },
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 100,
+                "Id": 2,
+                "Name": "중형 회복물약",
+                "Description": "중간 정도의 체력을 회복합니다",
+                "Price": 100,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              }
+            ]
+          }
+        },
+        "Enemies": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            },
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            }
+          ]
+        }
+      },
+      {
+        "$type": "TextRPG_TeamSix.Dungeons.Dungeon, TextRPG_TeamSix",
+        "Id": 3,
+        "Name": "Hard",
+        "RequiredDefense": 30,
+        "RequiredDungeonId": 2,
+        "RewardGold": 3000,
+        "RewardExp": 300,
+        "RewardGatcha": {
+          "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
+          "Name": "일반",
+          "ItemList": {
+            "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+            "$values": [
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 30,
+                "Id": 1,
+                "Name": "소형 회복물약",
+                "Description": "작은 체력을 회복합니다",
+                "Price": 50,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              },
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 100,
+                "Id": 2,
+                "Name": "중형 회복물약",
+                "Description": "중간 정도의 체력을 회복합니다",
+                "Price": 100,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              }
+            ]
+          }
+        },
+        "Enemies": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            },
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            }
+          ]
+        }
+      },
+      {
+        "$type": "TextRPG_TeamSix.Dungeons.Dungeon, TextRPG_TeamSix",
+        "Id": 4,
+        "Name": "Hell",
+        "RequiredDefense": 40,
+        "RequiredDungeonId": 3,
+        "RewardGold": 3000,
+        "RewardExp": 300,
+        "RewardGatcha": {
+          "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
+          "Name": "일반",
+          "ItemList": {
+            "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+            "$values": [
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 30,
+                "Id": 1,
+                "Name": "소형 회복물약",
+                "Description": "작은 체력을 회복합니다",
+                "Price": 50,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              },
+              {
+                "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+                "RestoreType": "Health",
+                "RestoreAmount": 100,
+                "Id": 2,
+                "Name": "중형 회복물약",
+                "Description": "중간 정도의 체력을 회복합니다",
+                "Price": 100,
+                "Type": "Consumable",
+                "IsSpecialItem": false
+              }
+            ]
+          }
+        },
+        "Enemies": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            },
+            {
+              "$type": "TextRPG_TeamSix.Characters.Enemy, TextRPG_TeamSix",
+              "EnemyType": "Type1",
+              "Id": 1,
+              "Name": "고블린",
+              "HP": 100,
+              "MP": 300,
+              "Attack": 10,
+              "Defense": 10,
+              "Luck": 0,
+              "SkillList": {
+                "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+                "$values": []
+              },
+              "IsAlive": true
+            }
+          ]
+        }
+      }
+    ]
+  },
   "_quests": {
     "$type": "TextRPG_TeamSix.Quests.Quest[], TextRPG_TeamSix",
     "$values": [
@@ -346,7 +658,7 @@
       },
       {
         "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
-        "Id": 1,
+        "Id": 2,
         "QuestType": "Enemy",
         "Description": "슬라임 5마리를 처치하세요.",
         "RewardGold": 200,
@@ -358,7 +670,7 @@
       },
       {
         "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
-        "Id": 2,
+        "Id": 3,
         "QuestType": "Dungeon",
         "Description": "Easy 던전을 클리어하세요",
         "RewardGold": 100,
@@ -370,7 +682,7 @@
       },
       {
         "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
-        "Id": 2,
+        "Id": 4,
         "QuestType": "Dungeon",
         "Description": "Normal 던전을 클리어하세요",
         "RewardGold": 300,
