@@ -19,7 +19,7 @@ namespace TextRPG_TeamSix.Items
 
         [JsonConstructor]
         public Armor(uint id, string name, string description, uint price, ItemType type, Ability ability, uint enhancement, EquipSlot equipSlot, bool isSpecialItem = false)
-            : base(id, name, description, price, type)
+            : base(id, name, description, price, type, isSpecialItem)
         {
             Ability = ability;
             Enhancement = enhancement;

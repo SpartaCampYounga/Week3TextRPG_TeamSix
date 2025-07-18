@@ -18,7 +18,7 @@ namespace TextRPG_TeamSix.Items
 
         // 생성자: 포션의 ID, 이름, 설명, 가격, 회복량, 회복 타입을 초기화합니다.
         [JsonConstructor]
-        public Portion(uint id, string name, string description, uint price, ItemType type, int restoreAmount, RestoreType restoreType) : base(id, name, description, price, type) // Item(부모) 클래스의 생성자를 호출합니다.
+        public Portion(uint id, string name, string description, uint price, ItemType type, int restoreAmount, RestoreType restoreType, bool isSpecialItem = false) : base(id, name, description, price, type, isSpecialItem) // Item(부모) 클래스의 생성자를 호출합니다.
         {
             RestoreAmount = restoreAmount;
             RestoreType = restoreType;
