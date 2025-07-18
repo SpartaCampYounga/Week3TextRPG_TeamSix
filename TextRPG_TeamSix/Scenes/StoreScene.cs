@@ -52,7 +52,7 @@ namespace TextRPG_TeamSix.Scenes
             switch(input)
             {
                 case -1:
-                    SceneManager.Instance.SetScene(SceneType.Store);
+                    SceneManager.Instance.SetScene(SceneType.Main);
                     break;
                 case 0:
                     SceneManager.Instance.SetScene(SceneType.StorePurchase);

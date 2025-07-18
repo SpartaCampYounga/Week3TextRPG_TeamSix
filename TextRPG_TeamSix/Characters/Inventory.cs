@@ -146,6 +146,8 @@ namespace TextRPG_TeamSix.Characters
                 case EquipItem equipment:
                     if (PlayerManager.Instance.EquipmentList.ContainsKey(equipment.EquipSlot))
                     {
+                        EquipItem currentlyEquipped = PlayerManager.Instance.EquipmentList[equipment.EquipSlot];
+
                         if (PlayerManager.Instance.EquipmentList[equipment.EquipSlot].Id == item.Id)
                         {
                             //장착된 아이템을 재선택함.
@@ -158,7 +160,7 @@ namespace TextRPG_TeamSix.Characters
                             //장착된 템과 다른 아이템을 선택함.
                             //이미 딕셔너리에 같은 키가 저장되어있으므로, 기존 장비 해제 먼저. (딕셔너리에서 지우기)
                             PlayerManager.Instance.EquipmentList.Remove(equipment.EquipSlot);
-                            Console.WriteLine($"{PlayerManager.Instance.EquipmentList[equipment.EquipSlot].Name} 장착을 해제했습니다.");
+                            Console.WriteLine($"{currentlyEquipped.Name} 장착을 해제했습니다.");
                             //장착해야하는 아이템 더하기.
                             PlayerManager.Instance.EquipmentList.Add(equipment.EquipSlot, equipment);
                             Console.WriteLine($"{item.Name} 을 장착했습니다.");

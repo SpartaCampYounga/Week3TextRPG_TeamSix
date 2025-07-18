@@ -131,9 +131,9 @@ namespace TextRPG_TeamSix.Characters
         public void EarnExp(uint exp)
         {
             this.Exp += exp;
-            if (this.Exp >= 1000)
+            if (this.Exp >= 100)
             {
-                this.Exp -= 1000;
+                this.Exp -= 100;
                 Console.WriteLine($"레벨이 증가하여 {this.Level++}이 {this.Level} 되었다!");
                 LevelUp();
             }
