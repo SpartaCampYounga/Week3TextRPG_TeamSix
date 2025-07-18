@@ -144,6 +144,7 @@ internal class BattleScene : SceneBase
         BattleUI.DrawPlayerInfo(player);
         BattleUI.DrawEnemyList(enemies);
         BattleUI.DrawActionMenu();
+        BattleUI.DrawCommandMenu();
     }
 
     private string GetPlayerInput()
