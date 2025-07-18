@@ -8,21 +8,53 @@ using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Scenes;
+using Newtonsoft.Json;
 
 namespace TextRPG_TeamSix.Stores
 {
     internal class Store // 상점 클래스
     {
+        public StoreType StoreType { get; private set; }
         public List<Item> ItemList { get; private set; } // 상점에서 판매하는 아이템 리스트
-        public Store() // 
-        {
-            ItemList = new List<Item>();
-            // GameDataManager에 있는 모든 아이템을 상점에서 판매
-            foreach (var item in GameDataManager.Instance.AllItems) // GameDataManager에서 모든 아이템을 가져와 상점의 아이템 리스트에 추가
-            {
-                ItemList.Add(item);
-            }
 
+        [JsonConstructor]
+        public Store(StoreType storeType, List<Item> ItemList)
+        {
+            this.StoreType = storeType;
+            this.ItemList = new List<Item>();
+            foreach (Item item in ItemList)
+            {
+                Item temp;
+                switch (item)
+                {
+                    case Portion portion:
+                        temp = portion.CreateInstance();
+                        break;
+                    case EquipItem equipItem:
+                        temp = equipItem.CreateInstance();
+                        break;
+                    default:
+                        temp = item.CreateInstance();
+                        break;
+                }    
+                temp.Clone(item);
+                this.ItemList.Add(temp);
+            }
+        }
+        //public Store() // 
+        //{
+        //    ItemList = new List<Item>();
+        //    // GameDataManager에 있는 모든 아이템을 상점에서 판매
+        //    foreach (var item in GameDataManager.Instance.AllItems) // GameDataManager에서 모든 아이템을 가져와 상점의 아이템 리스트에 추가
+        //    {
+        //        ItemList.Add(item);
+        //    }
+
+        //}
+        private Store() { }
+        public Store CreateInstance()
+        {
+            return new Store();
         }
         public bool SellToPlayer(Item item) // 플레이어에게 아이템을 판매하는 메서드
         {
@@ -48,6 +80,18 @@ namespace TextRPG_TeamSix.Stores
             {
                 // 구매 불가능
                 return false;
+            }
+        }
+
+        public void Clone(Store store)
+        {
+            StoreType = store.StoreType;
+            ItemList = new List<Item>();
+            foreach (Item item in ItemList)
+            {
+                Item temp = item.CreateInstance();
+                temp.Clone(item);
+                ItemList.Add(temp);
             }
         }
     }

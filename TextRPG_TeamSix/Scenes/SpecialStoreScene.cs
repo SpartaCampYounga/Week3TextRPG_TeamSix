@@ -20,7 +20,7 @@ namespace TextRPG_TeamSix.Scenes
         public override SceneType SceneType => SceneType.SpecialStore;
 
         Player player = PlayerManager.Instance.CurrentPlayer;
-        private Store specialStore = new Store(); // 스페셜 상점 인스턴스
+        private Store specialStore; // 스페셜 상점 인스턴스
         int input;
         private StoreMode currentMode = StoreMode.None; // 상점 모드 (구매, 판매 등)
 
@@ -60,7 +60,7 @@ namespace TextRPG_TeamSix.Scenes
                     return;
             }
 
-            input = TextDisplayer.PageNavigation(specialStore.ItemList);
+            input = TextDisplayer.SelectNavigation(specialStore.ItemList);
             HandleInput();
         }
 
@@ -97,12 +97,12 @@ namespace TextRPG_TeamSix.Scenes
 
                     if (currentMode == StoreMode.Buy)
                     {
-                        player.Inventory.PurchaseItem(selectedItem.Id);
+                        player.PurchaseItem(selectedItem.Id);
                         Console.WriteLine($"{selectedItem.Name}을 구매했습니다.");
                     }
                     else if (currentMode == StoreMode.Sell)
                     {
-                        player.Inventory.SellItem(selectedItem.Id);
+                        player.SellItem(selectedItem.Id);
                         Console.WriteLine($"{selectedItem.Name}을 판매했습니다.");
                     }
 

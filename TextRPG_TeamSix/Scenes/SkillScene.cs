@@ -76,7 +76,7 @@ namespace TextRPG_TeamSix.Scenes
                 "새 스킬 배우기"
             };
 
-            input = TextDisplayer.PageNavigation(selections);
+            input = TextDisplayer.SelectNavigation(selections);
             HandleInput();
         }
 

@@ -49,6 +49,16 @@ namespace TextRPG_TeamSix.Characters
         {
             HP = Math.Max(0, HP > damage ? HP - damage : 0);
             IsAlive = HP > 0;
+            if (IsAlive == false && this is Enemy enemy)
+            {
+                foreach (Quest quest in PlayerManager.Instance.AcceptedQuestList)
+                {
+                    if (quest.QuestType == Enums.QuestType.Enemy && quest.GoalId == enemy.Id)
+                    {
+                        quest.CountGoal();
+                    }
+                }
+            }
         }
 
         //스킬 구현 

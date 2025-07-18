@@ -1,0 +1,90 @@
+{
+  "$type": "TextRPG_TeamSix.Controllers.SaveData, TextRPG_TeamSix",
+  "PlayerSave": {
+    "$type": "TextRPG_TeamSix.Characters.Player, TextRPG_TeamSix",
+    "JobType": "Warrior",
+    "Inventory": {
+      "$type": "TextRPG_TeamSix.Characters.Inventory, TextRPG_TeamSix",
+      "ItemList": {
+        "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+            "Ability": "Attack",
+            "Enhancement": 10,
+            "EquipSlot": "Weapon",
+            "Id": 6,
+            "Name": "포레스트검f",
+            "Description": "Just Do it의 정수 우리도 노력하면 됩니다.",
+            "Price": 300,
+            "Type": "Weapon",
+            "IsSpecialItem": false
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+            "Ability": "Defense",
+            "Enhancement": 10,
+            "EquipSlot": "Armor",
+            "Id": 9,
+            "Name": "강철갑옷",
+            "Description": "단단한 금속 갑옷 입니다.",
+            "Price": 50,
+            "Type": "Armor",
+            "IsSpecialItem": false
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+            "RestoreType": "Health",
+            "RestoreAmount": 450,
+            "Id": 3,
+            "Name": "대형 회복물약",
+            "Description": "많은 체력을 회복합니다",
+            "Price": 300,
+            "Type": "Consumable",
+            "IsSpecialItem": false
+          }
+        ]
+      },
+      "EquipmentList": null
+    },
+    "NumOfStones": 0,
+    "Gold": 350,
+    "Exp": 0,
+    "Level": 1,
+    "MaxHP": 300,
+    "MaxMP": 100,
+    "Id": 3,
+    "Name": "poi",
+    "HP": 300,
+    "MP": 100,
+    "Attack": 10,
+    "Defense": 10,
+    "Luck": 0,
+    "SkillList": {
+      "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+      "$values": []
+    },
+    "IsAlive": true
+  },
+  "ClearedDungeonList": {
+    "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": []
+  },
+  "AcceptedQuestList": {
+    "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix]], System.Private.CoreLib",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 5,
+        "QuestType": "Enemy",
+        "Description": "고블린 3마리를 처치하세요.",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      }
+    ]
+  }
+}

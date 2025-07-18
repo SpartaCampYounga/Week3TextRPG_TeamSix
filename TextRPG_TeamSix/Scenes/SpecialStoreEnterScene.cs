@@ -29,7 +29,7 @@ namespace TextRPG_TeamSix.Scenes
 
 
             List<string> options = new List<string> { "입장한다", "돌아간다" };
-            int selected = TextDisplayer.PageNavigation(options);
+            int selected = TextDisplayer.SelectNavigation(options);
 
             switch (selected)
             {

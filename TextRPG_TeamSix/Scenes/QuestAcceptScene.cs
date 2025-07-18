@@ -61,7 +61,7 @@ namespace TextRPG_TeamSix.Scenes
                 Console.WriteLine(new string('-', 120));
                 Console.ResetColor();
 
-                input = TextDisplayer.PageNavigation(availableQuests);
+                input = TextDisplayer.SelectNavigation(availableQuests);
             }
             HandleInput();
         }
@@ -75,10 +75,11 @@ namespace TextRPG_TeamSix.Scenes
                     SceneManager.Instance.SetScene(SceneType.Quest);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 default:
-                    Quest selectedQuest = availableQuests[input];
+                    Quest selectedQuest = availableQuests[input].CreateInstance();
+
+                    selectedQuest.Clone(availableQuests[input]);
 
                     acceptedQuests.Add(selectedQuest);  //테스트용 임시 처리
-                    availableQuests.Remove(selectedQuest);
 
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine($"'{selectedQuest.Description}' 퀘스트를 수락하였습니다!");

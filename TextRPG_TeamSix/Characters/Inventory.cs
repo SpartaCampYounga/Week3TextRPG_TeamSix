@@ -135,7 +135,7 @@ namespace TextRPG_TeamSix.Characters
 
             switch (item)    //패턴매칭 및 캐스팅 사용 가시성을 위해 if에서 switch문으로 변경하였습니다.
             {
-                case null:                
+                case null:
                     //null일경우 인벤토리에서 아이템을 찾지 못한 것이므로 소지하지 않고 있다는 내용으로 변경함
                     Console.WriteLine("해당 아이템을 소지하고 있지 않습니다.");
                     //Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
@@ -146,6 +146,8 @@ namespace TextRPG_TeamSix.Characters
                 case EquipItem equipment:
                     if (PlayerManager.Instance.EquipmentList.ContainsKey(equipment.EquipSlot))
                     {
+                        EquipItem currentlyEquipped = PlayerManager.Instance.EquipmentList[equipment.EquipSlot];
+
                         if (PlayerManager.Instance.EquipmentList[equipment.EquipSlot].Id == item.Id)
                         {
                             //장착된 아이템을 재선택함.
@@ -158,7 +160,7 @@ namespace TextRPG_TeamSix.Characters
                             //장착된 템과 다른 아이템을 선택함.
                             //이미 딕셔너리에 같은 키가 저장되어있으므로, 기존 장비 해제 먼저. (딕셔너리에서 지우기)
                             PlayerManager.Instance.EquipmentList.Remove(equipment.EquipSlot);
-                            Console.WriteLine($"{PlayerManager.Instance.EquipmentList[equipment.EquipSlot].Name} 장착을 해제했습니다.");
+                            Console.WriteLine($"{currentlyEquipped.Name} 장착을 해제했습니다.");
                             //장착해야하는 아이템 더하기.
                             PlayerManager.Instance.EquipmentList.Add(equipment.EquipSlot, equipment);
                             Console.WriteLine($"{item.Name} 을 장착했습니다.");
@@ -171,7 +173,7 @@ namespace TextRPG_TeamSix.Characters
                         Console.WriteLine($"{item.Name} 을 장착했습니다.");
                     }
                     break;
-            }
+            }   }
 
             //Item? item = GetItem((uint)itemId);
             //if (item == null)
@@ -205,53 +207,14 @@ namespace TextRPG_TeamSix.Characters
 
             //Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
-        }
+
+        
 
         public Item? GetItem(uint id)
         {
             Item? item = ItemList.FirstOrDefault(x => x.Id == id);
             return item;
         }
-        public void PurchaseItem(uint itemId)
-        {
-            // 구매 bool 체크는 상점 SellToPlayer로 이동
-            // 예: 플레이어의 골드가 충분한지 확인하고, 아이템을 인벤토리에 추가
-            Item? item = GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == itemId);
-            if (item == null)
-            {
-                Console.WriteLine("해당 아이템이 존재하지 않습니다.");
-                return;
-            }
-
-            if (Owner.Gold < item.Price)
-            {
-                Console.WriteLine("골드가 부족합니다.");
-                return;
-            }
-
-            Owner.EarnGold(0 - item.Price);
-            ItemList.Add(item);
-            Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
-        }
-        public void SellItem(uint itemId)
-        {
-            // 아이템 판매 로직
-            // 아이템이 인벤토리에 있는지 확인
-            // 아이템이 존재하지 않으면 메시지 출력
-            // 아이템이 존재하면 플레이어의 골드를 증가시키고 인벤토리에서 제거
-            Item? item = GetItem(itemId);
-            if (item == null)
-            {
-                Console.WriteLine("해당 아이템이 인벤토리에 없습니다.");
-                return;
-            }
-            // 판매 로직 추가
-            int sellPrice = (int)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
-            Owner.EarnGold(0 + item.Price);
-            ItemList.Remove(item);
-            Console.WriteLine($"{item.Name}을 판매 했습니다.");
-        }
-
         public void AddItem(uint itemId)  //공짜 템 주려고 만듬.
         {
             Item item = GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == itemId);

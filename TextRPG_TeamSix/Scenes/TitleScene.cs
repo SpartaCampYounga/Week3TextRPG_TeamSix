@@ -55,7 +55,7 @@ namespace TextRPG_TeamSix.Scenes
                 "시작하기",
                 "종료하기"
             };
-            input = TextDisplayer.PageNavigation(selection);
+            input = TextDisplayer.SelectNavigation(selection);
             HandleInput();
         }
 

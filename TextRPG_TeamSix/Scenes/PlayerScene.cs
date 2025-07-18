@@ -30,10 +30,10 @@ namespace TextRPG_TeamSix.Scenes
                 Console.Clear();
 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("╔══════════════════════════════════════╗");
-                Console.WriteLine("║           🛡️  상태창 보기            ║");
-                Console.WriteLine("╚══════════════════════════════════════╝");
-
+                Console.WriteLine("╔══════════════════상태창 보기════════════════════╗");
+                Console.WriteLine("                        O                          ");
+                Console.WriteLine("╚══════════════════    /|[*]   ═══════════════════╝");
+                Console.WriteLine("______________________ / | ________________________");
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" 캐릭터 정보");
@@ -63,7 +63,7 @@ namespace TextRPG_TeamSix.Scenes
                     "스킬",  //1
                 };
 
-                input = TextDisplayer.PageNavigation(selections);
+                input = TextDisplayer.SelectNavigation(selections);
                 HandleInput();
 
             }
@@ -86,38 +86,6 @@ namespace TextRPG_TeamSix.Scenes
                 Console.WriteLine(description);
             }
 
-
-      
-            //while (true)
-            //{
-            //    Console.Write("원하는 번호를 입력하세요: ");
-            //    int userInpt;
-            //    bool InputChoice = int.TryParse(Console.ReadLine(), out userInpt);
-            //    if (!InputChoice)
-            //    {
-            //        Console.WriteLine("잘못된 입력입니다. 다시 시도해주세요.");
-            //        return;
-            //    }
-            //    switch (userInpt)
-            //    {
-            //        case 1:
-            //            SceneManager.Instance.SetScene(SceneType.Inventory); //씬 호출하는 방식으로 변경
-            //            //player.Inventory.DisplayItems(); // 인벤토리 출력
-            //            break;
-            //        case 2:
-            //            SceneManager.Instance.SetScene(SceneType.Skill);
-            //            break;
-            //        case 0:
-            //            Console.WriteLine("상태창을 나갑니다.");
-            //            SceneManager.Instance.SetScene(SceneType.Main);
-            //            //mainScene.DisplayScene(); // MainScene 인스턴스를 사용하여 호출
-            //            break;
-            //        default:
-            //            Console.WriteLine("잘못된 입력입니다. 다시 시도해주세요.");
-            //            break;
-            //    }
-            //    //DisplayScene(); //다시 출력  //이렇게 진행할 경우, 메인 화면에서 나가기를 선택하였을 때 종료가 되지 않고 캐릭터 선택 창으로 오게 됩니다. 비교를 위해서 while문 놔두고 주석 처리 하였습니다.
-            //}
 
         }    //출력 하는 시스템
 

@@ -10,6 +10,7 @@ using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Scenes;
+using TextRPG_TeamSix.Stores;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -22,9 +23,10 @@ namespace TextRPG_TeamSix.Controllers
         public Enemy[] _emenies { get; set; }
         public Dungeon[] _dungeons { get; set; }
         public Quest[] _quests { get; set; }
+        public Store[]  _stores { get; set; }
 
         [JsonConstructor]
-        public GamaData(SceneBase[] scenes, Skill[] skills, Item[] items, Gatcha[] gatchas, Enemy[] enemies, Dungeon[] gundeons, Quest[] quests)
+        public GamaData(SceneBase[] scenes, Skill[] skills, Item[] items, Gatcha[] gatchas, Enemy[] enemies, Dungeon[] gundeons, Quest[] quests, Store[] stores)
         {
             _scenes = scenes;
             _skills = skills;
@@ -33,6 +35,7 @@ namespace TextRPG_TeamSix.Controllers
             _emenies = enemies;
             _dungeons = gundeons;
             _quests = quests;
+            _stores = stores;
         }
     }
 }

@@ -73,11 +73,15 @@ namespace TextRPG_TeamSix.Quests
             display += FormatUtility.AlignWithPadding(Count.ToString() + "/" + GoalCount.ToString(), 10);
             return display;
         }
+        public void AcceptThisQuest()
+        {
+            PlayerManager.Instance.AcceptedQuestList.Add(this);
+        }
         public void CountGoal()     //호출될때 GoalId체크하고 호출할것. //아직은.. 
         {
-            Count--;
+            Count++;
 
-            if (Count == 0)
+            if (Count == GoalCount)
             {
                 IsFinished = true;
             }
@@ -86,13 +90,16 @@ namespace TextRPG_TeamSix.Quests
         {
             Player player = PlayerManager.Instance.CurrentPlayer;
             if (IsFinished)
-            { 
+            {
+                Console.WriteLine($"{RewardGold}G를 획득합니다.");
+                Console.WriteLine($"경험치 {RewardExp}를 획득합니다.");
                 player.EarnGold(RewardGold);
                 player.EarnExp(RewardExp);
                 return true;
             }
             else
             {
+                Console.WriteLine("아직 조건을 달성하지 못했다...");
                 return false;
             }
         }
