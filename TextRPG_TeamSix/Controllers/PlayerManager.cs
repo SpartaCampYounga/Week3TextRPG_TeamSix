@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,12 +19,14 @@ namespace TextRPG_TeamSix.Controllers
     {
         public Player CurrentPlayer { get; private set; }
         public List<uint> ClearedDungeonList { get; private set;}
+        public List<Quest> AcceptedQuestList { get; private set; }
         public Dictionary<EquipSlot, EquipItem> EquipmentList { get; private set; }
         private PlayerManager()
         {
             CurrentPlayer = new Player("PlayerManager", JobType.Warrior);
             ClearedDungeonList = new List<uint>();
             EquipmentList = new Dictionary<EquipSlot, EquipItem>();
+            AcceptedQuestList = new List<Quest>();
         }
         private static PlayerManager instance;
         public static PlayerManager Instance
@@ -48,6 +51,19 @@ namespace TextRPG_TeamSix.Controllers
                 {
                     this.ClearedDungeonList.Add(id);
                 }
+                foreach(Quest quest in SaveManager.Instance.SaveData.AcceptedQuestList)
+                {
+                    Quest temp = quest.CreateInstance();    //빈객체 활용
+                    temp.Clone(quest);
+                    this.AcceptedQuestList.Add(temp);
+                }
+                foreach(EquipItem equipItem in EquipmentList.Values)
+                {
+                    EquipItem temp = (EquipItem)equipItem.CreateInstance();
+                    temp.Clone(equipItem);
+                    EquipmentList.Add(temp.EquipSlot, temp);
+                }
+                //Dictionary<EquipSlot, EquipItem> EquipmentList
                 Console.WriteLine("플레이어 데이터를 불러왔습니다.");
                 Console.WriteLine($"불러온 플레이어 이름: {SaveManager.Instance.SaveData.PlayerSave.Name}");
                 Console.WriteLine($"CurrentPlayer 이름: {CurrentPlayer.Name}");

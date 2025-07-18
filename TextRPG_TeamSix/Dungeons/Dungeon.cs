@@ -19,7 +19,6 @@ namespace TextRPG_TeamSix.Dungeons
         public uint RewardExp { get; private set; }
         public Gatcha RewardGatcha { get; private set; }
         public List<Enemy> Enemies { get; private set; }
-        //public DungeonType DungeonType { get; private set; } //던전 타입 별로 구현하실거면...
 
         [JsonConstructor]
         public Dungeon (

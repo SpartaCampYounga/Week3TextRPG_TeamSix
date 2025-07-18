@@ -10,6 +10,7 @@ using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Quests;
+using NAudio.Midi;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -98,7 +99,9 @@ namespace TextRPG_TeamSix.Controllers
         {
             foreach (Quest quest in quests)
             {
-                AllQuests.Add(quest);
+                Quest temp = quest.CreateInstance();
+                temp.Clone(quest);
+                AllQuests.Add(temp);
             }
         }
     }

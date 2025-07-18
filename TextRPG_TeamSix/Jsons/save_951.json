@@ -5,47 +5,19 @@
     "JobType": "Warrior",
     "Inventory": {
       "$type": "TextRPG_TeamSix.Characters.Inventory, TextRPG_TeamSix",
-      "Character": null,
-      "InvenWeapon": null,
       "ItemList": {
         "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
-        "$values": [
-          {
-            "$type": "TextRPG_TeamSix.Items.Armor, TextRPG_TeamSix",
-            "Ability": "Defense",
-            "Enhancement": 10,
-            "EquipSlot": "Armor",
-            "Id": 7,
-            "Name": "천옷",
-            "Description": "기본 복장입니다.",
-            "Price": 50,
-            "IsEquipped": false,
-            "Type": "Armor"
-          },
-          {
-            "$type": "TextRPG_TeamSix.Items.Weapon, TextRPG_TeamSix",
-            "Ability": "Attack",
-            "Enhancement": 10,
-            "EquipSlot": "Weapon",
-            "Id": 4,
-            "Name": "녹슨검",
-            "Description": "낡았습니다",
-            "Price": 80,
-            "IsEquipped": false,
-            "Type": "Weapon"
-          }
-        ]
-      }
+        "$values": []
+      },
+      "EquipmentList": null
     },
-    "Weapon": null,
-    "Armor": null,
     "NumOfStones": 0,
     "Gold": 1000,
     "Exp": 0,
     "MaxHP": 300,
     "MaxMP": 100,
     "Id": 3,
-    "Name": "qwe",
+    "Name": "951",
     "HP": 300,
     "MP": 100,
     "Attack": 10,
@@ -57,7 +29,7 @@
     },
     "IsAlive": true
   },
-  "AvailableDungeonList": {
+  "ClearedDungeonList": {
     "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": []
   }

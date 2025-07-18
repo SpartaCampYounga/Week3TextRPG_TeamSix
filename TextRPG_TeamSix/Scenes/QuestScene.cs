@@ -18,20 +18,11 @@ namespace TextRPG_TeamSix.Scenes
         public override SceneType SceneType => SceneType.Quest;
 
         // 필드로 선언
-        private List<Quest> acceptedQuests = new List<Quest>();
+        private List<Quest> acceptedQuests = PlayerManager.Instance.AcceptedQuestList;
         int input;
 
         public override void DisplayScene()
         {
-            //디버깅용
-            acceptedQuests.Add(
-            new Quest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, 1, 3, 0, false)
-                );
-            acceptedQuests.Add(
-            new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, 1, 3, 0, false)
-                );
-
-
             Console.Clear();
             Console.WriteLine("QuestScene");
             Console.ForegroundColor = ConsoleColor.Green;

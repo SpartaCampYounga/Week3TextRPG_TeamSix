@@ -17,7 +17,7 @@
     "MaxHP": 300,
     "MaxMP": 100,
     "Id": 3,
-    "Name": "123",
+    "Name": "5643",
     "HP": 300,
     "MP": 100,
     "Attack": 10,
@@ -29,7 +29,7 @@
     },
     "IsAlive": true
   },
-  "AvailableDungeonList": {
+  "ClearedDungeonList": {
     "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": []
   }

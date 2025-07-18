@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Dungeons;
+using TextRPG_TeamSix.Quests;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -15,11 +16,13 @@ namespace TextRPG_TeamSix.Controllers
         public Player PlayerSave { get; set; }
         public List<uint> ClearedDungeonList { get; set; }   //입장 가능한 던전 아이디만 저장
                                                              //그 외에 도감, 던전 진행도 등 저장할 것들 필드로 삼고, 생성자에 입력. 
+        public List<Quest> AcceptedQuestList { get; private set; }
         [JsonConstructor]
-        public SaveData(Player playerSave, List<uint> clearedDungeonList)
+        public SaveData(Player playerSave, List<uint> clearedDungeonList, List<Quest> acceptedQuestList)
         {
             this.PlayerSave = playerSave;
             this.ClearedDungeonList = clearedDungeonList;
+            this.AcceptedQuestList = acceptedQuestList;
         }
     }
 }
