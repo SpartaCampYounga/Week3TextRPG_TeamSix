@@ -40,6 +40,12 @@ namespace TextRPG_TeamSix.Items
                 //character.MP += (uint)RestoreAmount;
                 Console.WriteLine($"{character.Name}의 마나가 {RestoreAmount}만큼 회복되었습니다."); //현재 마나: {character.MP}
             }
+            else if (RestoreType == RestoreType.All)
+            {
+                //character.HP += (uint)RestoreAmount;
+                //character.MP += (uint)RestoreAmount;
+                Console.WriteLine($"{character.Name}의 체력과 마나가 {RestoreAmount}만큼 회복되었습니다."); //현재 체력: {character.HP}, 현재 마나: {character.MP}
+            }
         }
 
         public override void Clone<T>(T item)

@@ -65,6 +65,9 @@ namespace TextRPG_TeamSix.Controllers
 
 
             new Weapon(101, "완성", "과거와 현재 미래가 합친 작품입니다.", 1000, ItemType.Weapon, Ability.Attack, 20, EquipSlot.Weapon, true),
+            new Armor(102, "협업", "여러 명인들이 모여 만든 작품입니다.", 1500, ItemType.Armor, Ability.Defense, 20, EquipSlot.Armor, true),
+            new Portion(103, "엘릭서", "마법의 힘이 담긴 물약입니다.", 500, ItemType.Consumable, 300, RestoreType.All),
+
 
 
 
