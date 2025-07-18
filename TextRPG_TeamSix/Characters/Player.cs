@@ -32,6 +32,7 @@ namespace TextRPG_TeamSix.Characters
             switch (jobType)
             {
                 case JobType.Magician:
+                    this.JobType = JobType.Magician;
                     MaxHP = 100;
                     MaxMP = 300;
                     HP = MaxHP;
@@ -46,6 +47,7 @@ namespace TextRPG_TeamSix.Characters
                     Inventory = new Inventory(this);
                     break;
                 case JobType.Warrior:
+                    this.JobType = JobType.Warrior;
                     MaxHP = 300;
                     MaxMP = 100;
                     HP = MaxHP;

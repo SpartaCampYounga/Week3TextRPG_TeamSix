@@ -14,12 +14,12 @@
     "NumOfStones": 0,
     "Gold": 1000,
     "Exp": 0,
-    "MaxHP": 300,
-    "MaxMP": 100,
+    "MaxHP": 100,
+    "MaxMP": 300,
     "Id": 3,
-    "Name": "1",
-    "HP": 300,
-    "MP": 100,
+    "Name": "11",
+    "HP": 100,
+    "MP": 300,
     "Attack": 10,
     "Defense": 10,
     "Luck": 0,
@@ -29,7 +29,7 @@
     },
     "IsAlive": true
   },
-  "ClearedDungeonList": {
+  "AvailableDungeonList": {
     "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
     "$values": []
   }

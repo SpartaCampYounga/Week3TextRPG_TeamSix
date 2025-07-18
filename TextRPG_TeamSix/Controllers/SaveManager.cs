@@ -38,7 +38,7 @@ namespace TextRPG_TeamSix.Game
         public void SaveGame()
         {
             //저장해야하는 데이터 리스트가 담김 (생성자에서)
-            SaveData = new SaveData(PlayerManager.Instance.CurrentPlayer, PlayerManager.Instance.AvailableDungeonList);
+            SaveData = new SaveData(PlayerManager.Instance.CurrentPlayer, PlayerManager.Instance.ClearedDungeonList);
 
             JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
             // 파일 생성 후 쓰기
