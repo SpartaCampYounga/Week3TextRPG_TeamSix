@@ -68,6 +68,10 @@ namespace TextRPG_TeamSix.Scenes
         {
             //이름을 입력 받아 일치하는 플레이어를 불러오는 로직
             Console.Write("이름을 입력하세요: ");
+            while (Console.In.Peek() == '\n')   //버퍼 비우기
+            {
+                Console.In.Read();
+            }
             string nameInput = Console.ReadLine();
 
             if (PlayerManager.Instance.InitializePlayerFromSaveData(nameInput))  //데이터에서 불러옴
@@ -93,8 +97,14 @@ namespace TextRPG_TeamSix.Scenes
 
 
             //이름 입력받아 신규 생성
-            Console.Write("이름을 입력하세요: ");
+            Console.Write("이름을 입력하세요:");
+            while (Console.In.Peek() == '\n')   //버퍼 비우기
+            {
+                Console.In.Read();
+            }
             string nameInput = Console.ReadLine();
+            Console.WriteLine($"입력된 이름: {nameInput}");
+            Console.WriteLine();
 
             //Console.WriteLine("사용자 직업을 선택해주세요:");
             //Console.WriteLine("1. 전사(Warrior)");
@@ -112,13 +122,16 @@ namespace TextRPG_TeamSix.Scenes
                 "전사(Warrior)",
                 "마법사(Magician)",
                 "도적(Assassin) (업데이트 예정)",
-                "궁수(Archer) (업데이트 예정)"
+                "궁수(Archer) (업데이트 예정)",
+                "나가기"
             };
             jobInput = TextDisplayer.PageNavigation(jobList);
 
             switch (jobInput)
             {
                 case -1:
+                case 4:
+                    SceneManager.Instance.SetScene(SceneType.PlayerSetup);
                     break;
                 case 0:
                     player = new Player(nameInput, JobType.Warrior);
