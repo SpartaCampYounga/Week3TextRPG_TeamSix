@@ -7,11 +7,13 @@ using TextRPG_TeamSix.Enums;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Controllers;
+using System.Text.Json.Serialization;
 
 namespace TextRPG_TeamSix.Skills
 {
     internal class HealSkill : Skill
     {
+        [JsonConstructor]
         public HealSkill(uint id, string name, string description, uint consumeMP, uint requiredStones, SkillType skillType, uint amount)
             : base(id, name, description, consumeMP, requiredStones, skillType, amount)
         {
@@ -40,7 +42,7 @@ namespace TextRPG_TeamSix.Skills
 
             if (skill == null)
             {
-                // 없을때.
+                Console.WriteLine($"{skillId}를 갖는 Skill을 찾을 수 없습니다.");
             }
             else
             {

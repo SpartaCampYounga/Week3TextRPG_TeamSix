@@ -103,30 +103,6 @@ namespace TextRPG_TeamSix.Scenes
                     SceneManager.Instance.SetScene(SceneType.SkillLearn);
                     break;
             }
-            //switch (input)
-            //{
-            //    case 0:
-            //        Console.WriteLine("0선택함"); //debug용
-            //        Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
-            //        SaveManager.Instance.SaveGame();
-            //        Console.WriteLine(PlayerManager.Instance.CurrentPlayer.SkillList.Count() + PlayerManager.Instance.CurrentPlayer.Name);
-            //        InputHelper.WaitResponse();
-            //        SceneManager.Instance.SetScene(SceneType.Skill);    //0번 누르면 해당 타입의 씬 출력
-            //        break;
-            //    default:
-            //        Skill selectedSkill = availableToLearn[input - 1];
-            //        if (selectedSkill.IsAvailableToLearn(player))
-            //        {
-            //            player.LearnSkill(selectedSkill);
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("보유한 스킬석이 부족해서 배우지 못했다...");
-            //        }
-
-            //        SceneManager.Instance.SetScene(SceneType.SkillLearn);
-            //        break;
-            //}
         }
     }
 }

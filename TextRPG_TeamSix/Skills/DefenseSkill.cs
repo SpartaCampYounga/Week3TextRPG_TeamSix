@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace TextRPG_TeamSix.Skills
 {
     internal class DefenseSkill : Skill
     {
+        [JsonConstructor]
         public DefenseSkill(uint id, string name, string description, uint consumeMP, uint requiredStones, SkillType skillType, uint amount) : base(id, name, description, consumeMP, requiredStones, skillType, amount)
         {
         }

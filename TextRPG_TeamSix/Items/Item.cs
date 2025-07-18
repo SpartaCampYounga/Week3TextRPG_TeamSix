@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Items
@@ -20,6 +21,7 @@ namespace TextRPG_TeamSix.Items
         public bool IsEquipped { get; set; } // 아이템이 장착되었는지 여부
         //[JsonProperty("ItemType")]
         public ItemType Type { get; protected set; }  // 아이템 종류 구분
+        public bool IsSpecialItem { get; protected set; } = false; // 특별 아이템 여부(일반아이템은 false, 특별 아이템은 true)
         public enum ItemType 
         {
             Weapon, 
@@ -29,20 +31,28 @@ namespace TextRPG_TeamSix.Items
         } // 아이템의 종류 (ex : 무기, 방어구 등)
         protected Item() { }
 
-        public Item(uint id, string name, string description, uint price, ItemType type) // 생성자(이 클래스(자식 클래스)가 생성될때 마다 필요한 값들)
+        public Item(uint id, string name, string description, uint price, ItemType type, bool isSpecialItem = false) // 생성자(이 클래스(자식 클래스)가 생성될때 마다 필요한 값들)
         {
             Id = id; // 아이템의 고유 ID
             Name = name; // 아이템의 이름
             Description = description; // 아이템의 설명
             Price = price; // 아이템의 가격
-            Type = type;
+            Type = type; // 아이템 종류 구분
+            IsSpecialItem = isSpecialItem; // 특별 아이템 여부
         }
 
         public override string ToString()    //자식 클래스들도 override 메서드 생성해주기
         {
             string display = "";
+            if (IsEquipped)
+            {
+                display += "[E] ";
+            }else
+            {
+                display += "    ";
+            }
             display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
-            display += FormatUtility.AlignWithPadding(Description, 30) + " | ";
+            display += FormatUtility.AlignWithPadding(Description, 50) + " | ";
             display += FormatUtility.AlignWithPadding(Price.ToString() + " G", 8);
             return display;
         }
