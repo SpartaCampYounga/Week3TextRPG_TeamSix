@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 using System.Text;
 using TextRPG_TeamSix.Battle.Actions;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
 using TextRPG_TeamSix.Utils;
-using System.Media;
-using TextRPG_TeamSix.Controllers;
 
 internal class BattleScene : SceneBase
 {
@@ -31,12 +32,12 @@ internal class BattleScene : SceneBase
 
     public override void DisplayScene()
     {
-        player = new Player("SCV", JobType.Warrior);
+        player = new Player("SCV", JobType.Warrior); //Title Scene에서 데이터 받아오는걸로 변경
         enemies = new List<Enemy>
-        {
-            new Enemy(2, "미니언", EnemyType.Type1),
-            new Enemy(3, "대포미니언", EnemyType.Type1)
-        };
+            {
+                 GameDataManager.Instance.AllEnemies.FirstOrDefault(e => e.Id == 1),
+                 GameDataManager.Instance.AllEnemies.FirstOrDefault(e => e.Id == 2)
+            };
 
         string desc1 = "...여긴 어디지?\n공기마저 숨을 죽인 듯, 적막만이 감도는 이곳. 앞에는 낯선 문 하나가 서 있을 뿐.";
         string desc2 = "문에서 희미하게 빛이 새어 나온다… 누군가, 혹은 무언가 날 기다리고 있는 걸까?\n";
@@ -106,6 +107,7 @@ internal class BattleScene : SceneBase
         BattleLog.DrawLogBox();     // 박스 먼저 그림
         BattleLog.ClearLogs();      // 로그 내부 클리어
         BattleLog.BattleStart();    // 로그 시작 메세지 출력
+        SoundManager.Play("E:\\7.Data\\1.bgm\\출정(mix).wav");
 
         while (true)
         {
@@ -122,8 +124,13 @@ internal class BattleScene : SceneBase
 
             if (enemies.TrueForAll(e => !e.IsAlive))
             {
+                SoundManager.Stop();
                 BattleLog.Victory();
-                break;
+
+                EndBattleScene endBattleScene = new EndBattleScene(player);
+                endBattleScene.DisplayScene();                         // 보상 씬 실행
+
+                return;
             }
 
             if (playerActed)
@@ -148,7 +155,6 @@ internal class BattleScene : SceneBase
         BattleUI.DrawPlayerInfo(player);
         BattleUI.DrawEnemyList(enemies);
         BattleUI.DrawActionMenu();
-        SoundManager.Play("E:\\7.Data\\1.bgm\\출정(mix).wav");
     }
 
     private string GetPlayerInput()

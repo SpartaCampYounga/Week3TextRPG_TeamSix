@@ -23,6 +23,7 @@ namespace TextRPG_TeamSix.Enums
         Player,
         QuestAccept,
         QuestReward,
-        SpecialStore
+        SpecialStore,
+        EndBattle
     }
 }
