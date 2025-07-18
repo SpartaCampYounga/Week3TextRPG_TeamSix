@@ -75,9 +75,9 @@ namespace TextRPG_TeamSix.Quests
         }
         public void CountGoal()     //호출될때 GoalId체크하고 호출할것. //아직은.. 
         {
-            Count--;
+            Count++;
 
-            if (Count == 0)
+            if (Count == GoalCount)
             {
                 IsFinished = true;
             }

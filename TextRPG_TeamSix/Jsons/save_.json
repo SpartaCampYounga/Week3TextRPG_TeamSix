@@ -30,6 +30,29 @@
             "Price": 120,
             "Type": "Weapon",
             "IsSpecialItem": false
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+            "RestoreType": "All",
+            "RestoreAmount": 300,
+            "Id": 103,
+            "Name": "엘릭서",
+            "Description": "마법의 힘이 담긴 물약입니다.",
+            "Price": 500,
+            "Type": "Consumable",
+            "IsSpecialItem": false
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+            "Ability": "Attack",
+            "Enhancement": 10,
+            "EquipSlot": "Weapon",
+            "Id": 5,
+            "Name": "나무검",
+            "Description": "가볍고 약한 검입니다.",
+            "Price": 120,
+            "Type": "Weapon",
+            "IsSpecialItem": false
           }
         ]
       },
@@ -42,7 +65,7 @@
     "MaxMP": 100,
     "Id": 3,
     "Name": "",
-    "HP": 300,
+    "HP": 274,
     "MP": 100,
     "Attack": 10,
     "Defense": 10,
@@ -58,7 +81,8 @@
           "ConsumeMP": 10,
           "RequiredStones": 3,
           "SkillType": "Attack",
-          "Amount": 20
+          "Amount": 20,
+          "Power": 0
         }
       ]
     },
@@ -70,6 +94,55 @@
   },
   "AcceptedQuestList": {
     "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix]], System.Private.CoreLib",
-    "$values": []
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 1,
+        "QuestType": "Enemy",
+        "Description": "고블린 3마리를 처치하세요.",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 3,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 2,
+        "QuestType": "Enemy",
+        "Description": "슬라임 5마리를 처치하세요.",
+        "RewardGold": 200,
+        "RewardExp": 20,
+        "GoalId": 2,
+        "GoalCount": 5,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 3,
+        "QuestType": "Dungeon",
+        "Description": "Easy 던전을 클리어하세요",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 4,
+        "QuestType": "Dungeon",
+        "Description": "Normal 던전을 클리어하세요",
+        "RewardGold": 300,
+        "RewardExp": 30,
+        "GoalId": 2,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      }
+    ]
   }
 }
