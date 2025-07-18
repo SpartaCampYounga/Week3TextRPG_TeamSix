@@ -58,6 +58,10 @@ namespace TextRPG_TeamSix.Controllers
 
 
 
+            new Weapon(101, "완성", "과거와 현재 미래가 합친 작품입니다.", 1000, ItemType.Weapon, Ability.Attack, 20, EquipSlot.Weapon, true),
+
+
+
             new Armor(7, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
             new Armor(8, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 80, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),
             new Armor(9, "강철갑옷", "단단한 금속 갑옷 입니다.", 50, ItemType.Armor, Ability.Defense, 10, EquipSlot.Armor),

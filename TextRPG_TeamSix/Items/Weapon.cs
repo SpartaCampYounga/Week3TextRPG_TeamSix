@@ -17,7 +17,7 @@ namespace TextRPG_TeamSix.Items
         protected Weapon() { }
 
         [JsonConstructor]
-        public Weapon(uint id, string name, string description, uint price, ItemType type, Ability ability, uint enhancement, EquipSlot equipSlot) : base(id, name, description, price, type)
+        public Weapon(uint id, string name, string description, uint price, ItemType type, Ability ability, uint enhancement, EquipSlot equipSlot, bool isSpecialItem = false) : base(id, name, description, price, type, isSpecialItem)
         {
             Ability = ability;
             Enhancement = enhancement;
