@@ -39,6 +39,11 @@ namespace TextRPG_TeamSix.Quests
             IsFinished = isFinished;
         }
 
+        private Quest() { }
+        public Quest CreateInstance()
+        {
+            return new Quest();
+        }
 
         // ㅁㅁㅁ크리처 사냥 | ㅁㅁㅁ크리처를 잡아주세요. | 보상: 100골드, 10경험치
         // Hard던전 클리어  | Hard던전을 소탕하세요. | 보상: 1000골드, 100경험치
@@ -94,7 +99,15 @@ namespace TextRPG_TeamSix.Quests
 
         public void Clone(Quest quest)
         {
-
+            Id = quest.Id;
+            QuestType = quest.QuestType;
+            Description = quest.Description;
+            RewardGold = quest.RewardGold;
+            RewardExp = quest.RewardExp;
+            GoalCount = quest.GoalCount;
+            GoalId = quest.GoalId;
+            Count = quest.Count;
+            IsFinished = quest.IsFinished;
         }
     }
 }

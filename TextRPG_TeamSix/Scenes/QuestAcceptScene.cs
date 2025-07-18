@@ -20,7 +20,7 @@ namespace TextRPG_TeamSix.Scenes
         public override SceneType SceneType => SceneType.QuestAccept;
 
         // 필드로 선언
-        List<Quest> acceptedQuests = new List<Quest>(); //추후 Quest DeepCopy 만든 뒤에 PlayerManager에 넣기
+        List<Quest> acceptedQuests = PlayerManager.Instance.AcceptedQuestList;
         List<Quest> availableQuests;
         int input;
 

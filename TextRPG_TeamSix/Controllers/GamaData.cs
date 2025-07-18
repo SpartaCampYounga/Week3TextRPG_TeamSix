@@ -31,6 +31,7 @@ namespace TextRPG_TeamSix.Controllers
             _items = items;
             _gatchas = gatchas;
             _emenies = enemies;
+            _dungeons = gundeons;
             _quests = quests;
         }
     }
