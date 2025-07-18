@@ -33,7 +33,8 @@ namespace TextRPG_TeamSix.Controllers
             new PlayerScene(),
             new QuestAcceptScene(),
             new QuestRewardScene(),
-            new SpecialStoreScene()
+            new SpecialStoreScene(),
+            new SpecialStoreEnterScene()
         };
 
         private static Skill[] _skills =
