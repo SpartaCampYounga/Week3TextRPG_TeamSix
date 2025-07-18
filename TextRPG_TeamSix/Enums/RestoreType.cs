@@ -10,6 +10,7 @@ namespace TextRPG_TeamSix.Enums
     {
         // 마나나 스테미나 포션 종류 추가할때. RestoreType Enum 추가하여 관리
         Health, 
-        Mana  
+        Mana,
+        All // 모든 상태를 회복하는 포션
     }
 }
