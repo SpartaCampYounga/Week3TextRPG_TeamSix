@@ -50,11 +50,6 @@ internal class BattleScene : SceneBase
         Console.WriteLine();
         Console.Write($"{choice1}   {choice2}");
 
-        foreach (var e in enemies)
-        {
-            Console.WriteLine($"{e.Name} - HP: {e.HP}, IsAlive: {e.IsAlive}");
-        }
-
         Console.WriteLine();
         while (true)
         {
