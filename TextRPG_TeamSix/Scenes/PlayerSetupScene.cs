@@ -33,7 +33,7 @@ namespace TextRPG_TeamSix.Scenes
                 "불러오기",
                 "새로 만들기"
             };
-            input = TextDisplayer.PageNavigation(selection);
+            input = TextDisplayer.SelectNavigation(selection);
             HandleInput();
         }
 
@@ -117,7 +117,7 @@ namespace TextRPG_TeamSix.Scenes
                 "궁수(Archer) (업데이트 예정)",
                 "나가기"
             };
-            jobInput = TextDisplayer.PageNavigation(jobList);
+            jobInput = TextDisplayer.SelectNavigation(jobList);
 
             switch (jobInput)
             {

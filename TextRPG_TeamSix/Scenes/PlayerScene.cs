@@ -63,7 +63,7 @@ namespace TextRPG_TeamSix.Scenes
                     "스킬",  //1
                 };
 
-                input = TextDisplayer.PageNavigation(selections);
+                input = TextDisplayer.SelectNavigation(selections);
                 HandleInput();
 
             }

@@ -44,7 +44,7 @@ namespace TextRPG_TeamSix.Scenes
                     "판매하기",  //1
                 };
 
-            input = TextDisplayer.PageNavigation(selections);
+            input = TextDisplayer.SelectNavigation(selections);
             HandleInput();
         }
         public override void HandleInput() //입력 받고 실행하는 시스템

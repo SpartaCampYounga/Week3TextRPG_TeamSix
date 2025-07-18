@@ -44,7 +44,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.ResetColor();
 
 
-            input = TextDisplayer.PageNavigation(acceptedQuests);
+            input = TextDisplayer.SelectNavigation(acceptedQuests);
             HandleInput();
 
             //while (true)

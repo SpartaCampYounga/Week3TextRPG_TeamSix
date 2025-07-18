@@ -62,7 +62,7 @@ namespace TextRPG_TeamSix.Scenes
                 Console.WriteLine(new string('-', Console.WindowWidth));
 
 
-                input = TextDisplayer.PageNavigation(availableToLearn);
+                input = TextDisplayer.SelectNavigation(availableToLearn);
 
                 Console.WriteLine(new string('-', Console.WindowWidth));
 

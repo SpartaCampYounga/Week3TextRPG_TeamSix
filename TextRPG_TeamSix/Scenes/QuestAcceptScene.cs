@@ -61,7 +61,7 @@ namespace TextRPG_TeamSix.Scenes
                 Console.WriteLine(new string('-', 120));
                 Console.ResetColor();
 
-                input = TextDisplayer.PageNavigation(availableQuests);
+                input = TextDisplayer.SelectNavigation(availableQuests);
             }
             HandleInput();
         }

@@ -53,7 +53,7 @@ namespace TextRPG_TeamSix.Scenes
                 "퀘스트 완료 보상 확인"
             };
 
-            input = TextDisplayer.PageNavigation(selections);
+            input = TextDisplayer.SelectNavigation(selections);
             HandleInput();
 
             //while (true)

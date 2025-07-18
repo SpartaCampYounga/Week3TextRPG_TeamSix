@@ -65,7 +65,7 @@ namespace TextRPG_TeamSix.Scenes
                 "디버그용 스페셜" //6
             };
 
-            input = TextDisplayer.PageNavigation(selections);
+            input = TextDisplayer.SelectNavigation(selections);
 
             HandleInput();
         }

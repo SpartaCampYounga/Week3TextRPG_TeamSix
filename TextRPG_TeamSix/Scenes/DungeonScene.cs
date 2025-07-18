@@ -45,7 +45,7 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('-', Console.WindowWidth));
 
 
-            input = TextDisplayer.PageNavigation(dungeons);
+            input = TextDisplayer.SelectNavigation(dungeons);
 
 
             //던전 리스트 출력

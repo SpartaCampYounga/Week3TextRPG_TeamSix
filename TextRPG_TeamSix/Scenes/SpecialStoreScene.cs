@@ -60,7 +60,7 @@ namespace TextRPG_TeamSix.Scenes
                     return;
             }
 
-            input = TextDisplayer.PageNavigation(specialStore.ItemList);
+            input = TextDisplayer.SelectNavigation(specialStore.ItemList);
             HandleInput();
         }
 
