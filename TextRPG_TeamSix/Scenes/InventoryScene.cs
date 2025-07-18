@@ -37,6 +37,7 @@ namespace TextRPG_TeamSix.Scenes
             //    player.Inventory.PurchaseItem(item.Id);
             //    Console.WriteLine(item.Name+"을 강매당했다!");
             //}
+            Console.WriteLine("▬▬ι═══════ﺤ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("╔══════════════════════════════════════╗");
             Console.WriteLine("║               인벤토리               ║");
