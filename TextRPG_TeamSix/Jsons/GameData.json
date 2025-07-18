@@ -36,8 +36,8 @@
         "SceneType": "Quest"
       },
       {
-        "$type": "TextRPG_TeamSix.Scenes.StoresScene, TextRPG_TeamSix",
-        "SceneType": "Store"
+        "$type": "TextRPG_TeamSix.Scenes.StorePurchaseScene, TextRPG_TeamSix",
+        "SceneType": "StorePurchase"
       },
       {
         "$type": "TextRPG_TeamSix.Scenes.DungeonScene, TextRPG_TeamSix",
@@ -62,6 +62,14 @@
       {
         "$type": "TextRPG_TeamSix.Scenes.SpecialStoreEnterScene, TextRPG_TeamSix",
         "SceneType": "SpecialStoreEnter"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.StoreScene, TextRPG_TeamSix",
+        "SceneType": "Store"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.StoreSellScene, TextRPG_TeamSix",
+        "SceneType": "StoreSell"
       }
     ]
   },
@@ -695,6 +703,42 @@
         "GoalCount": 1,
         "Count": 0,
         "IsFinished": false
+      }
+    ]
+  },
+  "_stores": {
+    "$type": "TextRPG_TeamSix.Stores.Store[], TextRPG_TeamSix",
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Stores.Store, TextRPG_TeamSix",
+        "StoreType": "Normal",
+        "ItemList": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+              "RestoreType": "Health",
+              "RestoreAmount": 30,
+              "Id": 1,
+              "Name": "소형 회복물약",
+              "Description": "작은 체력을 회복합니다",
+              "Price": 50,
+              "Type": "Consumable",
+              "IsSpecialItem": false
+            },
+            {
+              "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+              "RestoreType": "Health",
+              "RestoreAmount": 100,
+              "Id": 2,
+              "Name": "중형 회복물약",
+              "Description": "중간 정도의 체력을 회복합니다",
+              "Price": 100,
+              "Type": "Consumable",
+              "IsSpecialItem": false
+            }
+          ]
+        }
       }
     ]
   }

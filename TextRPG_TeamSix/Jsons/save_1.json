@@ -58,7 +58,8 @@
           "ConsumeMP": 10,
           "RequiredStones": 3,
           "SkillType": "Attack",
-          "Amount": 20
+          "Amount": 20,
+          "Power": 0
         },
         {
           "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
@@ -68,7 +69,8 @@
           "ConsumeMP": 5,
           "RequiredStones": 1,
           "SkillType": "Attack",
-          "Amount": 10
+          "Amount": 10,
+          "Power": 0
         }
       ]
     },
