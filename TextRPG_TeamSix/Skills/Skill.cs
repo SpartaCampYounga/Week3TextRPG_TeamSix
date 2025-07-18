@@ -46,6 +46,8 @@ namespace TextRPG_TeamSix.Skills
         }
         public abstract void Cast(Character opponent);
 
+        public int Power { get; set; }
+
         public bool IsAvailableToLearn(Player player)
         {
             return player.NumOfStones < RequiredStones ? false : true;

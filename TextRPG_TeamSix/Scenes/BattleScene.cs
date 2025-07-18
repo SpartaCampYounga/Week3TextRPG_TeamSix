@@ -17,7 +17,7 @@ internal class BattleScene : SceneBase
 
     private Player player;
     private List<Enemy> enemies;
-
+    MainScene main = new MainScene();
     public override void DisplayScene()
     {
         player = PlayerManager.Instance.CurrentPlayer;
@@ -32,13 +32,13 @@ internal class BattleScene : SceneBase
         string desc2 = "문에서 희미하게 빛이 새어 나온다… 누군가, 혹은 무언가 날 기다리고 있는 걸까?\n";
         string desc3 = "오랜만에 두근두근하는군... 이런 순간을 위해 스파르타의 수강생이 된 거긴한데... 조금은... 무섭달까?";
         string choice1 = "1. 가까이 다가간다.";
-        string choice2 = "2. 버즈 - 겁쟁이 처럼 물러난다.";
+        string choice2 = "2. 겁쟁이 처럼 물러난다.";
         string choice2_1 = "겁쟁이 녀석...썩 물러가라";
 
         SoundManager.Play("E:\\7.Data\\1.bgm\\착신아리-오르골.wav");
         Console.Clear();
         Console.ForegroundColor = ConsoleColor.Green;
-        TextEffect.TypeEffect(desc1,70);
+        TextEffect.TypeEffect(desc1, 70);
         Thread.Sleep(1000);
 
         TextEffect.TypeEffect(desc2, 70);
@@ -62,18 +62,18 @@ internal class BattleScene : SceneBase
                 case "1":
                     SoundManager.Stop();
                     Console.Clear();
-                   // IntroScene intro = new IntroScene();
-                   // intro.DisplayScene();
+                    // IntroScene intro = new IntroScene();
+                    // intro.DisplayScene();
                     StartBattleLoop();
                     return; // 또는 break; 이후 루프 바깥에서 이어지게 할 수도 있어
 
                 case "2":
+                    SoundManager.Stop();
                     Console.Clear();
                     Console.ResetColor();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"{choice2_1}");
                     Console.ReadKey();
-                    MainScene main = new MainScene();
                     TextFlash.TextFlasht();
                     main.DisplayScene();
                     Console.ResetColor();
@@ -91,6 +91,8 @@ internal class BattleScene : SceneBase
 
     private void StartBattleLoop()
     {
+        int turnCount = 1;
+
         Console.Clear();
         BattleLog.DrawLogBox();     // 박스 먼저 그림
         BattleLog.ClearLogs();      // 로그 내부 클리어
@@ -99,8 +101,15 @@ internal class BattleScene : SceneBase
 
         while (true)
         {
+            if (turnCount % 4 == 0)
+            {
+                BattleLog.ClearLogs();
+            }
+
             DisplayStatus();        // UI 그리기
             Console.WriteLine();
+            Console.WriteLine("────────────────────────────");
+            Console.Write("어떤 행동을 하시겠습니까? : ");
             string input = GetPlayerInput();
 
             bool playerActed = PlayerTurn(input);
@@ -125,6 +134,7 @@ internal class BattleScene : SceneBase
             if (playerActed)
             {
                 EnemyTurn();
+                turnCount++;
             }
 
             if (!player.IsAlive)
@@ -144,7 +154,6 @@ internal class BattleScene : SceneBase
         BattleUI.DrawPlayerInfo(player);
         BattleUI.DrawEnemyList(enemies);
         BattleUI.DrawActionMenu();
-        BattleUI.DrawCommandMenu();
     }
 
     private string GetPlayerInput()
@@ -175,7 +184,7 @@ internal class BattleScene : SceneBase
                     BattleLog.Log($"{i + 1}. {skill.Name} (MP: {skill.ConsumeMP}) - {skill.Description}");
                 }
 
-                Console.Write(">> ");
+
                 string skillInput = Console.ReadLine();
                 if (!int.TryParse(skillInput, out int skillIndex) || skillIndex < 1 || skillIndex > player.SkillList.Count)
                 {
@@ -209,7 +218,7 @@ internal class BattleScene : SceneBase
                     return false;
                 }
 
-                Console.Write(">> ");
+                Console.Write("대상을 선택하세요: >> ");
                 string targetInput = Console.ReadLine();
                 if (!int.TryParse(targetInput, out int targetIndex) || targetIndex < 1 || targetIndex > aliveEnemies.Count)
                 {
@@ -217,21 +226,23 @@ internal class BattleScene : SceneBase
                     return false;
                 }
 
-                var target = aliveEnemies[targetIndex - 1];
+                var target = aliveEnemies[targetIndex - 1]; 
 
                 // 스킬 사용
                 selectedSkill.Cast(target);
                 player.ConsumeMP(selectedSkill.ConsumeMP);
                 BattleLog.SkillUse(player.Name, selectedSkill.Name, target.Name);
                 return true;
-
             case "3":
                 BattleLog.Log("아이템 사용은 아직 구현되지 않았습니다!");
                 return false;
 
             case "4":
+                SoundManager.Stop();
                 BattleLog.RunAway();
-                Environment.Exit(0);
+                TextFlash.TextFlasht();
+                main.DisplayScene();
+                Console.ResetColor();
                 return false;
 
             default:
