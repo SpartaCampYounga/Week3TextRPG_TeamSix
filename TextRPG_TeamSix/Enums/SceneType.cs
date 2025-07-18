@@ -25,6 +25,8 @@ namespace TextRPG_TeamSix.Enums
         QuestReward,
         SpecialStore,
         SpecialStoreEnter,
-        EndBattle
+        EndBattle,
+        StorePurchase,
+        StoreSell
     }
 }

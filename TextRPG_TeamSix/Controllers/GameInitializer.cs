@@ -12,6 +12,7 @@ using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Scenes;
 using TextRPG_TeamSix.Skills;
+using TextRPG_TeamSix.Stores;
 using TextRPG_TeamSix.Utilities;
 using static TextRPG_TeamSix.Items.Item;
 
@@ -32,13 +33,15 @@ namespace TextRPG_TeamSix.Controllers
             new MainScene(),
             new BattleScene(),
             new QuestScene(),
-            new StoresScene(),
+            new StorePurchaseScene(),
             new DungeonScene(),
             new PlayerScene(),
             new QuestAcceptScene(),
             new QuestRewardScene(),
             new SpecialStoreScene(),
-            new SpecialStoreEnterScene()
+            new SpecialStoreEnterScene(),
+            new StoreScene(),
+            new StoreSellScene()
         };
 
         private static Skill[] _skills =
@@ -118,6 +121,11 @@ namespace TextRPG_TeamSix.Controllers
             new Quest(4, QuestType.Dungeon, "Normal 던전을 클리어하세요", 300, 30, _dungeons[1].Id,1, 0, false),
         };
 
+        private static Store[] _stores =
+        {
+            new Store(StoreType.Normal, new List<Item>{_items[0], _items[1] })
+        };
+
         public static void InitializeAll() 
         {
             SceneManager.Instance.InitializeScenes(_scenes);
@@ -133,7 +141,7 @@ namespace TextRPG_TeamSix.Controllers
         public static void CreateJsonGameData()
         {
             //저장해야하는 데이터 리스트가 담김 (생성자에서)
-            GamaData = new GamaData(_scenes,_skills, _items, _gatchas, _emenies, _dungeons, _quests);
+            GamaData = new GamaData(_scenes,_skills, _items, _gatchas, _emenies, _dungeons, _quests, _stores);
 
             JsonSerializerSettings setting = JsonHelper.GetJsonSetting();
             // 파일 생성 후 쓰기
@@ -163,6 +171,7 @@ namespace TextRPG_TeamSix.Controllers
                 GameDataManager.Instance.InitializeEnemies(GamaData._emenies);
                 GameDataManager.Instance.InitializeDungeons(GamaData._dungeons);
                 GameDataManager.Instance.InitializeQuests(GamaData._quests);
+                GameDataManager.Instance.InitializeStores(GamaData._stores);
 
                 //Console.WriteLine("3매개변수: " + playerName);
                 //Console.WriteLine("3CurrentPlayer: " + PlayerManager.Instance.CurrentPlayer.Name);

@@ -213,46 +213,6 @@ namespace TextRPG_TeamSix.Characters
             Item? item = ItemList.FirstOrDefault(x => x.Id == id);
             return item;
         }
-        public void PurchaseItem(uint itemId)
-        {
-            // 구매 bool 체크는 상점 SellToPlayer로 이동
-            // 예: 플레이어의 골드가 충분한지 확인하고, 아이템을 인벤토리에 추가
-            Item? item = GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == itemId);
-            if (item == null)
-            {
-                Console.WriteLine("해당 아이템이 존재하지 않습니다.");
-                return;
-            }
-
-            if (Owner.Gold < item.Price)
-            {
-                Console.WriteLine("골드가 부족합니다.");
-                return;
-            }
-
-            Owner.EarnGold(0 - item.Price);
-            ItemList.Add(item);
-            Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
-        }
-        public void SellItem(uint itemId)
-        {
-            // 아이템 판매 로직
-            // 아이템이 인벤토리에 있는지 확인
-            // 아이템이 존재하지 않으면 메시지 출력
-            // 아이템이 존재하면 플레이어의 골드를 증가시키고 인벤토리에서 제거
-            Item? item = GetItem(itemId);
-            if (item == null)
-            {
-                Console.WriteLine("해당 아이템이 인벤토리에 없습니다.");
-                return;
-            }
-            // 판매 로직 추가
-            int sellPrice = (int)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
-            Owner.EarnGold(0 + item.Price);
-            ItemList.Remove(item);
-            Console.WriteLine($"{item.Name}을 판매 했습니다.");
-        }
-
         public void AddItem(uint itemId)  //공짜 템 주려고 만듬.
         {
             Item item = GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == itemId);

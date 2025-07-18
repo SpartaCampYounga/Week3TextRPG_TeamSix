@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Controllers;
@@ -21,6 +22,7 @@ namespace TextRPG_TeamSix.Characters
         public uint NumOfStones { get; private set; }
         public uint Gold { get; private set; } // 플레이어의 금액
         public uint Exp { get; private set; } // 플레이어의 경험치
+        public uint Level { get; private set; }
         public uint MaxHP { get; private set; } // 최대 체력
         public uint MaxMP { get; private set; } // 최대 마나
 
@@ -44,6 +46,7 @@ namespace TextRPG_TeamSix.Characters
                     NumOfStones = 0;
                     Gold = 1000;
                     Exp = 0;
+                    Level = 1;
                     Inventory = new Inventory(this);
                     break;
                 case JobType.Warrior:
@@ -59,6 +62,7 @@ namespace TextRPG_TeamSix.Characters
                     NumOfStones = 0;
                     Gold = 1000;
                     Exp = 0;
+                    Level = 1;
                     Inventory = new Inventory(this);
                     break;
             }
@@ -80,6 +84,7 @@ namespace TextRPG_TeamSix.Characters
             Inventory inventory,
             uint gold,
             uint exp,
+            uint level,
             uint maxHp,
             uint maxMp
         ) : base(name)
@@ -106,6 +111,7 @@ namespace TextRPG_TeamSix.Characters
             this.Inventory.Clone(inventory);
             this.Gold = gold;
             this.Exp = exp;
+            this.Level = level;
             this.MaxHP = maxHp;
             this.MaxMP = maxMp;
         }
@@ -132,6 +138,29 @@ namespace TextRPG_TeamSix.Characters
         public void EarnExp(uint exp)
         {
             this.Exp += exp;
+            if (this.Exp >= 1000)
+            {
+                this.Exp -= 1000;
+                Console.WriteLine($"레벨이 증가하여 {this.Level++}이 {this.Level} 되었다!");
+                LevelUp();
+            }
+        }
+        public void LevelUp()
+        {
+            this.Attack += 10;
+            this.Defense += 10;
+            this.Luck++;
+            this.MaxHP += 10;
+            this.MaxMP += 10;
+            this.HP = this.MaxHP;
+            this.MP = this.MaxMP;
+
+            Console.WriteLine($"공격력이 증가하여 {this.Level} 되었다!");
+            Console.WriteLine($"방어력이 증가하여 {this.Level} 되었다!");
+            Console.WriteLine($"행운이 증가하여 {this.Level} 되었다!");
+            Console.WriteLine($"최대체력이 증가하여 {this.Level} 되었다!");
+            Console.WriteLine($"최대마나가 증가하여 {this.Level} 되었다!");
+            Console.WriteLine("레벨업 보너스로 체력과 마나가 완전히 회복되었다!");
         }
         public uint GetTotalAttack()
         {
@@ -181,31 +210,66 @@ namespace TextRPG_TeamSix.Characters
         {
             NumOfStones += numOfStones;
         }
-
-        public void RecalculateStats()
+        public void PurchaseItem(uint itemId)
         {
-            uint bonusAttack = 0;
-            uint bonusDefense = 0;
-            foreach (var item in Inventory.ItemList)
+            // 구매 bool 체크는 상점 SellToPlayer로 이동
+            // 예: 플레이어의 골드가 충분한지 확인하고, 아이템을 인벤토리에 추가
+            Item? item = GameDataManager.Instance.AllItems.FirstOrDefault(x => x.Id == itemId);
+            if (item == null)
             {
-                //if (item.IsEquipped)
-                //{
-                //    if (item is Weapon weapon)
-                //    {
-                //        bonusAttack += this.Attack;
-                //    }
-                //    else if (item is Armor armor)
-                //    {
-                //        bonusDefense += this.Defense;
-                //    }
-                //}
 
+                Console.WriteLine("해당 아이템이 존재하지 않습니다.");
+                return;
             }
 
-            Attack = BaseAttack + bonusAttack;
-            Defense = BaseDefense + bonusDefense;
+            if (Gold < item.Price)
+            {
+                Console.WriteLine("골드가 부족합니다.");
+                return;
+            }
+
+            Gold -= item.Price;
+            this.Inventory.ItemList.Add(item);
+            Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
 
         }
+        public void SellItem(uint itemId)
+        {
+            // 아이템 판매 로직
+            // 아이템이 인벤토리에 있는지 확인
+            // 아이템이 존재하지 않으면 메시지 출력
+            // 아이템이 존재하면 플레이어의 골드를 증가시키고 인벤토리에서 제거
+            Item? item = this.Inventory.GetItem(itemId);
+            if (item == null)
+            {
+                Console.WriteLine("해당 아이템이 인벤토리에 없습니다.");
+                return;
+            }
+            // 판매 로직 추가
+            uint sellPrice = (uint)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
+            Gold += sellPrice;
+            this.Inventory.ItemList.Remove(item);
+            Console.WriteLine($"{item.Name}을 {sellPrice}G에 판매 했습니다.");
+        }
+        //public void RecalculateStats()
+        //{
+        //    uint bonusAttack = 0;
+        //    uint bonusDefense = 0;
+        //    foreach (var item in Inventory.ItemList)
+        //    {
+        //        //if (item.IsEquipped)
+        //        //{
+        //        //    if (item is Weapon weapon)
+        //        //    {
+        //        //        bonusAttack += this.Attack;
+        //        //    }
+        //        //    else if (item is Armor armor)
+        //        //    {
+        //        //        bonusDefense += this.Defense;
+        //        //    }
+        //        //}
+        //    }
+        //}
 
         public void LearnSkill(Skill skillToLearn)
         {
