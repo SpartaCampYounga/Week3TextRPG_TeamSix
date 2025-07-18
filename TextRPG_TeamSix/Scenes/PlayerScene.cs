@@ -35,7 +35,7 @@ namespace TextRPG_TeamSix.Scenes
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("╔══════════════════════════════════════╗");
-                Console.WriteLine("║           🛡️  상태창 보기            ║");
+                Console.WriteLine("║             상태창 보기            ║");
                 Console.WriteLine("╚══════════════════════════════════════╝");
 
                 Thread.Sleep(200);
