@@ -20,6 +20,7 @@ namespace TextRPG_TeamSix.Items
         public bool IsEquipped { get; set; } // 아이템이 장착되었는지 여부
         //[JsonProperty("ItemType")]
         public ItemType Type { get; protected set; }  // 아이템 종류 구분
+        public bool IsSpecialItem { get; protected set; } = false; // 특별 아이템 여부(일반아이템은 false, 특별 아이템은 true)
         public enum ItemType 
         {
             Weapon, 
@@ -29,13 +30,14 @@ namespace TextRPG_TeamSix.Items
         } // 아이템의 종류 (ex : 무기, 방어구 등)
         protected Item() { }
 
-        public Item(uint id, string name, string description, uint price, ItemType type) // 생성자(이 클래스(자식 클래스)가 생성될때 마다 필요한 값들)
+        public Item(uint id, string name, string description, uint price, ItemType type, bool isSpecialItem = false) // 생성자(이 클래스(자식 클래스)가 생성될때 마다 필요한 값들)
         {
             Id = id; // 아이템의 고유 ID
             Name = name; // 아이템의 이름
             Description = description; // 아이템의 설명
             Price = price; // 아이템의 가격
-            Type = type;
+            Type = type; // 아이템 종류 구분
+            IsSpecialItem = isSpecialItem; // 특별 아이템 여부
         }
 
         public override string ToString()    //자식 클래스들도 override 메서드 생성해주기
