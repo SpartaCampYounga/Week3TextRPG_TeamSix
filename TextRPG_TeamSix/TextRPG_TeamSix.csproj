@@ -20,7 +20,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Battle\BGM\" />
     <Folder Include="Jsons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Battle\BGM\fight.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Battle\BGM\scared.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

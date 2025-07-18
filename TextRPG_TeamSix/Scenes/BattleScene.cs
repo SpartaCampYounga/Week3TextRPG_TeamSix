@@ -16,8 +16,8 @@ internal class BattleScene : SceneBase
 {
     public override SceneType SceneType => SceneType.Battle;
 
-    string bgmPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "BGM", "scared.wav");
-    string bgmPath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "BGM", "fight.wav");
+    string bgmPath2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Battle\BGM\fight.wav");
+    string bgmPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Battle\BGM\scared.wav");
 
     private Player player;
     private List<Enemy> enemies;
@@ -53,6 +53,8 @@ internal class BattleScene : SceneBase
 
         Console.WriteLine();
         Console.Write($"{choice1}   {choice2}");
+
+        Console.WriteLine("경로: " + bgmPath);
 
         Console.WriteLine();
         while (true)
