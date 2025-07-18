@@ -31,9 +31,9 @@ namespace TextRPG_TeamSix.Scenes
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("╔══════════════════상태창 보기════════════════════╗");
-                Console.WriteLine("║                       O                         ║");
+                Console.WriteLine("                        O                          ");
                 Console.WriteLine("╚══════════════════    /|[*]   ═══════════════════╝");
-                Console.WriteLine("______________________ / | ______________________  ");
+                Console.WriteLine("______________________ / | ________________________");
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine(" 캐릭터 정보");

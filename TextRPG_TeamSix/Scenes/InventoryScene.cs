@@ -37,14 +37,14 @@ namespace TextRPG_TeamSix.Scenes
             //    player.Inventory.PurchaseItem(item.Id);
             //    Console.WriteLine(item.Name+"을 강매당했다!");
             //}
-            Console.WriteLine("▬▬ι═══════ﺤ");
+         
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("╔════════════════인벤토리═════════════════╗");
-            Console.WriteLine("║        ╱┈▬▬ι═══════ﺤ    ╱ ❚  ╱        ║");
-            Console.WriteLine("╚═══    ═▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇╱ [_■__]╱   ════╝");
-            //Console.WriteLine();
-            //Console.WriteLine("-------------------------------------");
-            
+            Console.WriteLine("╔══════════════════  인벤토리  ════════════════════╗");
+            Console.WriteLine("              ╱┈▬▬ι═══════-    ╱ ❚  ╱             ");
+            Console.WriteLine("╚═══      [*]═▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇╱ [_■__]╱       ════╝");
+            Console.WriteLine(); 
+            Console.WriteLine("---------------------------------------------------");
+
             //아이템
             if (player.Inventory.ItemList.Count == 0)
             {
