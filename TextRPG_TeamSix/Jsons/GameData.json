@@ -703,6 +703,18 @@
         "GoalCount": 1,
         "Count": 0,
         "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 5,
+        "QuestType": "Enemy",
+        "Description": "고블린 3마리를 처치하세요.",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
       }
     ]
   },

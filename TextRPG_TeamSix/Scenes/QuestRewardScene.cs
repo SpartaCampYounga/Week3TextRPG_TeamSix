@@ -18,19 +18,12 @@ namespace TextRPG_TeamSix.Scenes
         public override SceneType SceneType => SceneType.QuestReward;
 
         // 필드로 선언
-        private List<Quest> acceptedQuests = new List<Quest>();
+        private List<Quest> acceptedQuests;
         int input;
 
         public override void DisplayScene()
         {
-            //디버깅용
-            acceptedQuests.Add(
-            new Quest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, 1, 3, 0, false)
-                );
-            acceptedQuests.Add(
-            new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, 1, 3, 0, true)
-                );
-
+            acceptedQuests = PlayerManager.Instance.AcceptedQuestList;
 
             Console.Clear();
             Console.WriteLine("QuestRewardScene");
@@ -167,11 +160,6 @@ namespace TextRPG_TeamSix.Scenes
                     if (acceptedQuests[input].IsRewarded())
                     {
                         acceptedQuests.Remove(acceptedQuests[input]);   //GamaManager데이터 생기면 거기서 지우는 로직
-                        Console.WriteLine("퀘스트를 완료하였습니다.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("퀘스트를 완료할 수 없습니다.");
                     }
                     InputHelper.WaitResponse();
                     SceneManager.Instance.SetScene(SceneType.QuestReward);
