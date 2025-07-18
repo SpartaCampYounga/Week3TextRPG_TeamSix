@@ -135,7 +135,7 @@ namespace TextRPG_TeamSix.Characters
 
             switch (item)    //패턴매칭 및 캐스팅 사용 가시성을 위해 if에서 switch문으로 변경하였습니다.
             {
-                case null:                
+                case null:
                     //null일경우 인벤토리에서 아이템을 찾지 못한 것이므로 소지하지 않고 있다는 내용으로 변경함
                     Console.WriteLine("해당 아이템을 소지하고 있지 않습니다.");
                     //Console.WriteLine("해당 아이템은 사용 할 수 없습니다.");
@@ -173,7 +173,7 @@ namespace TextRPG_TeamSix.Characters
                         Console.WriteLine($"{item.Name} 을 장착했습니다.");
                     }
                     break;
-            }
+            }   }
 
             //Item? item = GetItem((uint)itemId);
             //if (item == null)
@@ -207,7 +207,8 @@ namespace TextRPG_TeamSix.Characters
 
             //Console.WriteLine($"{item.Name}을(를) 장착했습니다.");
 
-        }
+
+        
 
         public Item? GetItem(uint id)
         {
