@@ -54,8 +54,6 @@ internal class BattleScene : SceneBase
         Console.WriteLine();
         Console.Write($"{choice1}   {choice2}");
 
-        Console.WriteLine("경로: " + bgmPath);
-
         Console.WriteLine();
         while (true)
         {
