@@ -61,9 +61,10 @@ namespace TextRPG_TeamSix.Utilities
                 Console.SetCursorPosition(0, currentTop);   //커서 옮기기
 
             } while (key != ConsoleKey.Enter && key != ConsoleKey.Escape);
-            Console.SetCursorPosition(0, 0);   //커서 옮기기
+            Console.SetCursorPosition(0, currentTop + list.Count() + 1);   //커서 옮기기
+            Console.WriteLine(new string(' ', Console.WindowWidth));
             Console.CursorVisible = true;  //커서 다시 보임
-            Console.Clear();
+            //Console.Clear();
             if (key == ConsoleKey.Enter)
             {
                 return selectedIndex;

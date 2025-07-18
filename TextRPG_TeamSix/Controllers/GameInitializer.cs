@@ -82,16 +82,16 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Dungeon[] _dungeons =
         {
-            new Dungeon(1, "Easy", 10, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
-            new Dungeon(2, "Normal", 20, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
+            new Dungeon(1, "Easy", 10, 0, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(2, "Normal", 20, 1, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(3, "Hard", 30, 2, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(4, "Hell", 40, 3, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })
         };
 
         private static Quest[] _quests =
         {
             new Quest(1, QuestType.Enemy, "고블린 3마리를 처치하세요.", 100, 10, _emenies[0].Id,3, 0, false),
             new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, _dungeons[0].Id,3, 0, false)
-            //new Quest(1, QuestType.Enemy, "고블린 2마리를 처치하세요.", 100, 10, _emenies[0], 3), // "고블린" _enemies[0]
-            //new Quest(2, QuestType.Dungeon, "Easy 던전을 클리어하세요", 300, 30, _dungeons[0], 1) // "Easy" _dungeons[0]
         };
 
         public static void InitializeAll() 

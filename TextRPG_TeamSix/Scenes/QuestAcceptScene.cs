@@ -37,19 +37,32 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('=', 120));
             Console.WriteLine("퀘스트를 수락할 수 있습니다.");
             Console.WriteLine(new string('=', 120));
-            // 헤더
-            string header = "";
-            header += FormatUtility.AlignWithPadding("유형", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("내용", 30) + " | ";
-            header += FormatUtility.AlignWithPadding("골드보상", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("경험치보상", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("목표", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("진행", 7);
-            Console.WriteLine(header);
-            Console.WriteLine(new string('-', 120));
-            Console.ResetColor();
 
-            input = TextDisplayer.PageNavigation(availableQuests);
+
+            ////플레이어 미보유 중인 퀘스트만 띄우기
+            if (availableQuests.Count == 0)
+            {
+                Console.ResetColor();
+                Console.WriteLine("당장은 할 게 없는데?");
+                Console.WriteLine();
+                input = -2;
+                InputHelper.WaitResponse();
+            }
+            else
+            {   // 헤더
+                string header = "";
+                header += FormatUtility.AlignWithPadding("유형", 10) + " | ";
+                header += FormatUtility.AlignWithPadding("내용", 30) + " | ";
+                header += FormatUtility.AlignWithPadding("골드보상", 10) + " | ";
+                header += FormatUtility.AlignWithPadding("경험치보상", 10) + " | ";
+                header += FormatUtility.AlignWithPadding("목표", 10) + " | ";
+                header += FormatUtility.AlignWithPadding("진행", 7);
+                Console.WriteLine(header);
+                Console.WriteLine(new string('-', 120));
+                Console.ResetColor();
+
+                input = TextDisplayer.PageNavigation(availableQuests);
+            }
             HandleInput();
         }
 
@@ -58,6 +71,7 @@ namespace TextRPG_TeamSix.Scenes
             switch (input)
             {
                 case -1:
+                case -2:
                     SceneManager.Instance.SetScene(SceneType.Quest);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 default:
