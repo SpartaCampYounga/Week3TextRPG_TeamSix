@@ -33,12 +33,12 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine(new string('=', 120));
             // 헤더
             string header = "";
-            header += FormatUtility.AlignWithPadding("유형", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("내용", 30) + " | ";
-            header += FormatUtility.AlignWithPadding("골드보상", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("경험치보상", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("목표", 10) + " | ";
-            header += FormatUtility.AlignWithPadding("진행", 7);
+            header += FormatUtility.AlignLeftWithPadding("유형", 10) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("내용", 30) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("골드보상", 10) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("경험치보상", 10) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("목표", 10) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("진행", 7);
             Console.WriteLine(header);
             Console.WriteLine(new string('-', 120));
             Console.ResetColor();

@@ -49,14 +49,14 @@ namespace TextRPG_TeamSix.Scenes
             else
             {   //테이블 헤더
                 string header = "";
-                header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("No.", 3) + " | ";
                 //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
-                header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
-                header += FormatUtility.AlignWithPadding("설명", 30) + " | ";
-                header += FormatUtility.AlignWithPadding("소모MP", 7) + " | ";
-                header += FormatUtility.AlignWithPadding("스킬석", 7) + " | ";
-                header += FormatUtility.AlignWithPadding("스킬타입", 10) + " | ";
-                header += FormatUtility.AlignWithPadding("효과량", 7) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 30) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("소모MP", 7) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("스킬석", 7) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("스킬타입", 10) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("효과량", 7) + " | ";
 
                 Console.WriteLine(header);
                 Console.WriteLine(new string('-', Console.WindowWidth));

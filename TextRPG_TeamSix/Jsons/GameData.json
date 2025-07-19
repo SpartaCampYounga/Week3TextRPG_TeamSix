@@ -28,7 +28,7 @@
         "SceneType": "Main"
       },
       {
-        "$type": "TextRPG_TeamSix.Utilities.BattleScene, TextRPG_TeamSix",
+        "$type": "TextRPG_TeamSix.Scenes.BattleScene, TextRPG_TeamSix",
         "SceneType": "Battle"
       },
       {
@@ -156,185 +156,6 @@
         "Description": "많은 체력을 회복합니다",
         "Price": 300,
         "Type": "Consumable",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 5,
-        "EquipSlot": "Weapon",
-        "Id": 4,
-        "Name": "녹슨검",
-        "Description": "낡았습니다",
-        "Price": 200,
-        "Type": "Weapon",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 3,
-        "EquipSlot": "Weapon",
-        "Id": 5,
-        "Name": "나무검",
-        "Description": "가볍고 약한 검입니다.",
-        "Price": 80,
-        "Type": "Weapon",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 15,
-        "EquipSlot": "Weapon",
-        "Id": 6,
-        "Name": "포레스트검",
-        "Description": "Just Do it의 정수 우리도 노력하면 됩니다.",
-        "Price": 1500,
-        "Type": "Weapon",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 10,
-        "EquipSlot": "Weapon",
-        "Id": 7,
-        "Name": "철검",
-        "Description": "무딘감 이 있지만 꽤 강한 검입니다.",
-        "Price": 1000,
-        "Type": "Weapon",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 25,
-        "EquipSlot": "Weapon",
-        "Id": 8,
-        "Name": "장인의 검",
-        "Description": "날카롭게 제련된 강한 검입니다.",
-        "Price": 2500,
-        "Type": "Weapon",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 40,
-        "EquipSlot": "Weapon",
-        "Id": 101,
-        "Name": "완성",
-        "Description": "과거와 현재 미래가 합친 작품입니다.",
-        "Price": 4000,
-        "Type": "Weapon",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Defense",
-        "Enhancement": 35,
-        "EquipSlot": "Armor",
-        "Id": 102,
-        "Name": "협업",
-        "Description": "여러 명인들이 모여 만든 작품입니다.",
-        "Price": 3500,
-        "Type": "Armor",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
-        "RestoreType": "All",
-        "RestoreAmount": 300,
-        "Id": 103,
-        "Name": "엘릭서",
-        "Description": "마법의 힘이 담긴 물약입니다.",
-        "Price": 500,
-        "Type": "Consumable",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 90,
-        "EquipSlot": "Weapon",
-        "Id": 104,
-        "Name": "용의 검",
-        "Description": "드래곤의 힘이 깃든 전설의 검입니다.",
-        "Price": 9000,
-        "Type": "Weapon",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 70,
-        "EquipSlot": "Weapon",
-        "Id": 105,
-        "Name": "화염검",
-        "Description": "불의 속성이 담긴 강력한 무기입니다.",
-        "Price": 7000,
-        "Type": "Weapon",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Defense",
-        "Enhancement": 1,
-        "EquipSlot": "Armor",
-        "Id": 11,
-        "Name": "천옷",
-        "Description": "기본 복장입니다.",
-        "Price": 50,
-        "Type": "Armor",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Defense",
-        "Enhancement": 5,
-        "EquipSlot": "Armor",
-        "Id": 12,
-        "Name": "가죽 갑옷",
-        "Description": "튼튼한 가죽으로 만들었습니다.",
-        "Price": 200,
-        "Type": "Armor",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Defense",
-        "Enhancement": 8,
-        "EquipSlot": "Armor",
-        "Id": 13,
-        "Name": "강철갑옷",
-        "Description": "단단한 금속 갑옷 입니다.",
-        "Price": 500,
-        "Type": "Armor",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Defense",
-        "Enhancement": 20,
-        "EquipSlot": "Armor",
-        "Id": 14,
-        "Name": "성기사의 갑옷",
-        "Description": "신의 가호가 깃든 중갑입니다.",
-        "Price": 2000,
-        "Type": "Armor",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Defense",
-        "Enhancement": 25,
-        "EquipSlot": "Armor",
-        "Id": 15,
-        "Name": "어둠의 로브",
-        "Description": "마력이 깃든 강철갑옷입니다.",
-        "Price": 2500,
-        "Type": "Armor",
         "IsSpecialItem": false
       }
     ]
@@ -780,7 +601,7 @@
         "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
         "Id": 5,
         "QuestType": "Enemy",
-        "Description": "고블린 3마리를 처치하세요.",
+        "Description": "고블린 1마리를 처치하세요.",
         "RewardGold": 100,
         "RewardExp": 10,
         "GoalId": 1,

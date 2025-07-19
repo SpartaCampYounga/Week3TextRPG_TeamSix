@@ -65,12 +65,12 @@ namespace TextRPG_TeamSix.Quests
             }
 
             string display = "";
-            display += FormatUtility.AlignWithPadding(QuestType.ToString(), 10) + " | ";
-            display += FormatUtility.AlignWithPadding(Description, 30) + " | ";
-            display += FormatUtility.AlignWithPadding(RewardGold.ToString(), 10) + " | ";
-            display += FormatUtility.AlignWithPadding(RewardExp.ToString(), 10) + " | ";
-            display += FormatUtility.AlignWithPadding(goalName, 10) + " | ";
-            display += FormatUtility.AlignWithPadding(Count.ToString() + "/" + GoalCount.ToString(), 10);
+            display += FormatUtility.AlignLeftWithPadding(QuestType.ToString(), 10) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Description, 30) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(RewardGold.ToString(), 10) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(RewardExp.ToString(), 10) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(goalName, 10) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Count.ToString() + "/" + GoalCount.ToString(), 10);
             return display;
         }
         public void AcceptThisQuest()

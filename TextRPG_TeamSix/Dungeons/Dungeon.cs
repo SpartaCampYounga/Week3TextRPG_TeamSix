@@ -40,8 +40,8 @@ namespace TextRPG_TeamSix.Dungeons
         {
             string display = "";
 
-            display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
-            display += FormatUtility.AlignWithPadding(RequiredDefense.ToString(), 11) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Name, 15) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(RequiredDefense.ToString(), 11) + " | ";
 
             return display;
         }

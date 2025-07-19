@@ -56,9 +56,9 @@ namespace TextRPG_TeamSix.Scenes
                 //테이블 헤더
                 Console.ForegroundColor = ConsoleColor.White;
                 string header = "      ";
-                header += FormatUtility.AlignWithPadding("이름", 15) + " | ";
-                header += FormatUtility.AlignWithPadding("설명", 50) + " | ";
-                header += FormatUtility.AlignWithPadding("금액" + " G", 8);
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 50) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("금액" + " G", 8);
                 Console.WriteLine(header);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(new string('-', Console.WindowWidth));

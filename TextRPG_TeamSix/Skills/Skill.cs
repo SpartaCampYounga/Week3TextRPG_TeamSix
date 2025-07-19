@@ -36,12 +36,12 @@ namespace TextRPG_TeamSix.Skills
         public override string ToString()
         {
             string display = "";
-            display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
-            display += FormatUtility.AlignWithPadding(Description, 30) + " | ";
-            display += FormatUtility.AlignWithPadding(ConsumeMP.ToString(), 7) + " | ";
-            display += FormatUtility.AlignWithPadding(RequiredStones.ToString(), 7) + " | ";
-            display += FormatUtility.AlignWithPadding(SkillType.ToString(), 10) + " | ";
-            display += FormatUtility.AlignWithPadding(Amount.ToString(), 7) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Name, 15) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Description, 30) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(ConsumeMP.ToString(), 7) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(RequiredStones.ToString(), 7) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(SkillType.ToString(), 10) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Amount.ToString(), 7) + " | ";
             return display;
         }
         public abstract void Cast(Character opponent);

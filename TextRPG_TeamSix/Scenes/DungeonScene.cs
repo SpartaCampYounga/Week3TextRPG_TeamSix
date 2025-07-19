@@ -36,10 +36,10 @@ namespace TextRPG_TeamSix.Scenes
 
             //테이블 헤더
             string header = "";
-            header += FormatUtility.AlignWithPadding("No.", 3) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("No.", 3) + " | ";
             //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
-            header += FormatUtility.AlignWithPadding("던전이름", 15) + " | ";
-            header += FormatUtility.AlignWithPadding("권장 방어력", 11) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("던전이름", 15) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("권장 방어력", 11) + " | ";
 
             Console.WriteLine(header);
             Console.WriteLine(new string('-', Console.WindowWidth));

@@ -37,9 +37,9 @@ namespace TextRPG_TeamSix.Items
             {
                 display += "    ";
             }
-            display += FormatUtility.AlignWithPadding(Name, 15) + " | ";
-            display += FormatUtility.AlignWithPadding(Description, 50) + " | ";
-            display += FormatUtility.AlignWithPadding(Price.ToString() + " G", 8);
+            display += FormatUtility.AlignLeftWithPadding(Name, 15) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Description, 50) + " | ";
+            display += FormatUtility.AlignLeftWithPadding(Price.ToString() + " G", 8);
             return display;
         }
 
