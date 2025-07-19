@@ -12,12 +12,30 @@
 
             return width;
         }
-        public static string AlignWithPadding(string str, int width)
+        public static string AlignLeftWithPadding(string str, int width)
         {
             int padding = width - GetStringWidth(str);
             padding = Math.Max(0, padding);
 
             return str + new string(' ', padding);
         }
+        public static string AlignRightWithPadding(string str, int width)
+        {
+            int padding = width - GetStringWidth(str);
+            padding = Math.Max(0, padding);
+
+            return new string(' ', padding) + str;
+        }
+        public static string AlignCenterWithPadding(string str, int width)
+        {
+            int padding = width - GetStringWidth(str);
+            padding = Math.Max(0, padding);
+
+            int padLeft = padding / 2;
+            int padRight = padding - padLeft;
+
+            return new string(' ', padRight) + str + new string(' ', padRight);
+        }
+
     }
 }
