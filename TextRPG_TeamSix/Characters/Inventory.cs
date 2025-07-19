@@ -12,7 +12,6 @@ namespace TextRPG_TeamSix.Characters
         public Player Owner { get; private set; }
 
         public List<Item> ItemList { get; private set; } = new List<Item>();
-        public Dictionary<EquipSlot, Item> EquipmentList { get; private set; }
 
         public Inventory(Player owner)
         {

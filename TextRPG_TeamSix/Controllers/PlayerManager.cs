@@ -60,11 +60,11 @@ namespace TextRPG_TeamSix.Controllers
                     temp.Clone(quest);
                     this.AcceptedQuestList.Add(temp);
                 }
-                foreach(EquipItem equipItem in EquipmentList.Values)
+                foreach(EquipItem equipItem in SaveManager.Instance.SaveData.EquipmentList.Values)
                 {
                     EquipItem temp = (EquipItem)equipItem.CreateInstance();
                     temp.Clone(equipItem);
-                    EquipmentList.Add(temp.EquipSlot, temp);
+                    this.EquipmentList.Add(temp.EquipSlot, temp);
                 }
                 //Dictionary<EquipSlot, EquipItem> EquipmentList
                 Console.WriteLine("플레이어 데이터를 불러왔습니다.");
