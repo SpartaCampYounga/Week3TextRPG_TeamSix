@@ -248,7 +248,17 @@ namespace TextRPG_TeamSix.Characters
             // 판매 로직 추가
             uint sellPrice = (uint)(item.Price * 0.85f); // 판매 가격은 원래 가격의 85%
             Gold += sellPrice;
+
+            if (item is EquipItem equipItem)
+            {
+                if (PlayerManager.Instance.EquipmentList.ContainsKey(equipItem.EquipSlot))
+                {
+                    this.Inventory.EquipItem(item.Id);  //장착해제
+                }
+            }
+
             this.Inventory.ItemList.Remove(item);
+
             Console.WriteLine($"{item.Name}을 {sellPrice}G에 판매 했습니다.");
         }
         //public void RecalculateStats()
