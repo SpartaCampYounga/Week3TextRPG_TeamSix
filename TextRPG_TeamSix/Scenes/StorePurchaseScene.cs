@@ -51,27 +51,34 @@ namespace TextRPG_TeamSix.Scenes
             //Console.WriteLine("╚══════════════════════════════════════╝");
 
             FormatUtility.DisplayHeader("상점에서 물건을 구매할 수 있습니다");
-            Console.WriteLine($"보유 골드: {player.Gold} G");
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(FormatUtility.AlignCenterWithPadding($"보유 골드: {player.Gold} G", Console.WindowWidth - 6));
+            Console.ResetColor();
+            Console.WriteLine();
 
             //아이템
             if (availableItems.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("판매 준비중입니다... 다음에 다시 오세요.");
                 Console.WriteLine("아니면 던전 안에 출장 가 있을 수도?");
+                Console.ResetColor();
                 input = -2;
             }
             else
             {
+                Console.WriteLine(new string('═', Console.WindowWidth));
                 //테이블 헤더
-                Console.ForegroundColor = ConsoleColor.White;
+                //Console.ForegroundColor = ConsoleColor.White;
                 string header = "      ";
-                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("설명", 50) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 50) + " ┊ ";
                 header += FormatUtility.AlignLeftWithPadding("금액" + " G", 8);
                 Console.WriteLine(header);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(new string('-', Console.WindowWidth));
-                Console.ResetColor();
+                //Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(new string('═', Console.WindowWidth));
+                //Console.ResetColor();
 
                 input = TextDisplayer.SelectNavigation(availableItems);
             }

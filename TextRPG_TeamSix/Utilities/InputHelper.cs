@@ -29,8 +29,16 @@ namespace TextRPG_TeamSix.Utilities
         }
         public static void WaitResponse()
         {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("다음으로 넘어가려면 아무거나 누르세요");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.CursorVisible = false; // 커서 숨기기
             Console.ReadKey(true);
+            Console.CursorVisible = true; // 커서 다시 보이기
             //Console.WriteLine("0. 다음");
             //int input = GetIntegerRange(0, 1);
         }

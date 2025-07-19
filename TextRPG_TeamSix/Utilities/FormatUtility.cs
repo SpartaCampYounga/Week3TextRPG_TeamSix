@@ -44,11 +44,11 @@ namespace TextRPG_TeamSix.Utilities
             Console.WriteLine();
             Console.OutputEncoding = Encoding.UTF8;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("╔" + new string('═', Console.WindowWidth - 6) + "╗");
-            Console.WriteLine("║" + new string(' ', Console.WindowWidth - 6) + "║");
-            Console.WriteLine("║" + FormatUtility.AlignCenterWithPadding(title, Console.WindowWidth - 6) + "║");
-            Console.WriteLine("║" + new string(' ', Console.WindowWidth - 6) + "║");
-            Console.WriteLine("╚" + new string('═', Console.WindowWidth - 6) + "╝");
+            Console.WriteLine("  ╔" + new string('═', Console.WindowWidth - 6) + "╗");
+            Console.WriteLine("  ║" + new string(' ', Console.WindowWidth - 6) + "║");
+            Console.WriteLine("  ║" + FormatUtility.AlignCenterWithPadding(title, Console.WindowWidth - 6) + "║");
+            Console.WriteLine("  ║" + new string(' ', Console.WindowWidth - 6) + "║");
+            Console.WriteLine("  ╚" + new string('═', Console.WindowWidth - 6) + "╝");
             Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();

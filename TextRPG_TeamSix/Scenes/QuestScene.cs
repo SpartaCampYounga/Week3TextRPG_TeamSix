@@ -31,31 +31,41 @@ namespace TextRPG_TeamSix.Scenes
             //Console.WriteLine(new string('=', 120));
             FormatUtility.DisplayHeader("모험가 사무소에 오신 것을 환영합니다");
 
-            // 헤더
-            string header = "";
-            header += FormatUtility.AlignLeftWithPadding("유형", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("내용", 30) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("골드보상", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("경험치보상", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("목표", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("진행", 7);
-            Console.WriteLine(header);
-            Console.WriteLine(new string('-', 120));
-            Console.ResetColor();
-
-
-            foreach (Quest quest in acceptedQuests)
+            if (acceptedQuests.Count == 0)
             {
-                Console.WriteLine(quest);
+                Console.WriteLine("현재 수락한 퀘스트가 없습니다.");
+                Console.WriteLine();
+                Console.WriteLine();
             }
-            Console.WriteLine();
-            List<string> selections = new List<string>()
-            { 
-                "새 퀘스트 받기",
-                "퀘스트 완료 보상 확인"
-            };
+            else
+            {
+                // 헤더
+                string header = "  ";
+                header += FormatUtility.AlignLeftWithPadding("유형", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("내용", 30) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("골드보상", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("경험치보상", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("목표", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("진행", 7);
+                Console.WriteLine(header);
+                Console.WriteLine(new string('═', 120));
+                Console.ResetColor();
 
-            input = TextDisplayer.SelectNavigation(selections);
+
+                foreach (Quest quest in acceptedQuests)
+                {
+                    Console.WriteLine(quest);
+                }
+                Console.WriteLine();
+            }
+                Console.WriteLine();
+                List<string> selections = new List<string>()
+                {
+                    "새 퀘스트 받기",
+                    "퀘스트 완료 보상 확인"
+                };
+
+                input = TextDisplayer.SelectNavigation(selections);
             HandleInput();
 
             //while (true)

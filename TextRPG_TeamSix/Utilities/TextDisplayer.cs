@@ -44,6 +44,7 @@ namespace TextRPG_TeamSix.Utilities
                 }
 
                 Console.WriteLine();
+                Console.WriteLine();
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("원하는 항목을 선택한 후 Enter를 눌러 선택하거나 Esc 혹은 Backspace를 눌러 이전 화면으로 이동합니다.");
                 Console.ResetColor();
@@ -64,7 +65,7 @@ namespace TextRPG_TeamSix.Utilities
                 Console.SetCursorPosition(0, currentTop);   //커서 옮기기
 
             } while (key != ConsoleKey.Enter && key != ConsoleKey.Escape && key != ConsoleKey.Backspace);
-            Console.SetCursorPosition(0, currentTop + list.Count() + 1);   //커서 옮기기
+            Console.SetCursorPosition(0, currentTop + list.Count() + 2);   //커서 옮기기
             Console.WriteLine(new string(' ', Console.WindowWidth));
             Console.CursorVisible = true;  //커서 다시 보임
             //Console.Clear();

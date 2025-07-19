@@ -55,7 +55,7 @@ namespace TextRPG_TeamSix.Scenes
                 PrintStat(" 경험치", $"{player.Exp} / 100", ConsoleColor.Green);
                 PrintStat(" 돌의 개수", $"{player.NumOfStones}", ConsoleColor.Green);
 
-                Console.WriteLine("----------------------------------------\n");
+                //Console.WriteLine("----------------------------------------\n");
 
                 Console.WriteLine();
                 List<string> selections = new List<string>()

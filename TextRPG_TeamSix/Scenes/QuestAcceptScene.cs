@@ -43,23 +43,25 @@ namespace TextRPG_TeamSix.Scenes
             ////플레이어 미보유 중인 퀘스트만 띄우기
             if (availableQuests.Count == 0)
             {
-                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("당장은 할 게 없는데?");
+                Console.ResetColor();
                 Console.WriteLine();
                 input = -2;
                 InputHelper.WaitResponse();
             }
             else
             {   // 헤더
-                string header = "";
-                header += FormatUtility.AlignLeftWithPadding("유형", 10) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("내용", 30) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("골드보상", 10) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("경험치보상", 10) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("목표", 10) + " | ";
+                string header = "  ";
+                header += FormatUtility.AlignLeftWithPadding("유형", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("내용", 30) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("골드보상", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("경험치보상", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("목표", 10) + " ┊ ";
                 header += FormatUtility.AlignLeftWithPadding("진행", 7);
                 Console.WriteLine(header);
-                Console.WriteLine(new string('-', 120));
+                Console.WriteLine(new string('═', 120));
+                Console.ResetColor();
                 Console.ResetColor();
 
                 input = TextDisplayer.SelectNavigation(availableQuests);

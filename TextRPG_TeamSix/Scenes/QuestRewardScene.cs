@@ -34,20 +34,30 @@ namespace TextRPG_TeamSix.Scenes
 
             FormatUtility.DisplayHeader("퀘스트 완료 보상을 받을 수 있습니다 ");
 
-            // 헤더
-            string header = "";
-            header += FormatUtility.AlignLeftWithPadding("유형", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("내용", 30) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("골드보상", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("경험치보상", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("목표", 10) + " | ";
-            header += FormatUtility.AlignLeftWithPadding("진행", 7);
-            Console.WriteLine(header);
-            Console.WriteLine(new string('-', 120));
-            Console.ResetColor();
+            if (acceptedQuests.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("완료한 퀘스트가 없습니다.");
+                Console.ResetColor();
+                input = -1; // -1은 나가기
+                InputHelper.WaitResponse();
+            }
+            else
+            {
+                // 헤더
+                string header = "  ";
+                header += FormatUtility.AlignLeftWithPadding("유형", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("내용", 30) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("골드보상", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("경험치보상", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("목표", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("진행", 7);
+                Console.WriteLine(header);
+                Console.WriteLine(new string('═', 120));
+                Console.ResetColor();
 
-
-            input = TextDisplayer.SelectNavigation(acceptedQuests);
+                input = TextDisplayer.SelectNavigation(acceptedQuests);
+            }
             HandleInput();
 
             //while (true)

@@ -37,17 +37,24 @@ namespace TextRPG_TeamSix.Scenes
             //Console.WriteLine("상점 판매 - 물건을 80%의 가격으로 판매할 수 있습니다.");
 
             FormatUtility.DisplayHeader("상점에 물건의 80% 가격으로 판매할 수 있습니다.");
-            Console.WriteLine($"보유 골드: {player.Gold} G");
-            Console.WriteLine();
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(FormatUtility.AlignCenterWithPadding($"보유 골드: {player.Gold} G", Console.WindowWidth - 6));
+            Console.ResetColor();
             Console.WriteLine();
 
             //아이템
             if (player.Inventory.ItemList.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("너.. 팔게 하나도 없는데...?");
                 Console.WriteLine("좀... 불쌍할지도..?");
+                Console.ResetColor();
                 InputHelper.WaitResponse();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("옛다, 이거라도 받아라.");
+                Console.ResetColor();
+
                 player.Inventory.AddItem(1);
                 player.Inventory.AddItem(5);
                 InputHelper.WaitResponse();
@@ -55,6 +62,7 @@ namespace TextRPG_TeamSix.Scenes
             }
             else
             {
+                Console.WriteLine(new string('═', Console.WindowWidth));
                 //테이블 헤더
                 Console.ForegroundColor = ConsoleColor.White;
                 string header = "      ";
@@ -63,7 +71,7 @@ namespace TextRPG_TeamSix.Scenes
                 header += FormatUtility.AlignLeftWithPadding("금액" + " G", 8);
                 Console.WriteLine(header);
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(new string('-', Console.WindowWidth));
+                Console.WriteLine(new string('═', Console.WindowWidth));
                 Console.ResetColor();
 
                 input = TextDisplayer.SelectNavigation(player.Inventory.ItemList);

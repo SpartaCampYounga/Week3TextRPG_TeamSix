@@ -34,10 +34,10 @@ namespace TextRPG_TeamSix.Scenes
             //Console.WriteLine("╚══════════════════════════════════════╝");
 
             FormatUtility.DisplayHeader("상점에 오신 것을 환영합니다!");
-
-            Console.WriteLine($"보유 골드: {player.Gold} G");
-
-            Console.WriteLine();
+            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(FormatUtility.AlignCenterWithPadding($"보유 골드: {player.Gold} G", Console.WindowWidth - 6));
+            Console.ResetColor();
             Console.WriteLine();
 
             List<string> selections = new List<string>()

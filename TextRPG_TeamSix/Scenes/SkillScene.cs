@@ -42,7 +42,7 @@ namespace TextRPG_TeamSix.Scenes
             if (player.SkillList != null && player.SkillList.Count != 0)
             {
                 //테이블 헤더
-                string header = "";
+                string header = "  ";
                 //header += FormatU
                 //
                 //ity.AlignWithPadding("No.", 3) + " | ";
@@ -50,28 +50,37 @@ namespace TextRPG_TeamSix.Scenes
                 //
                 //
                 //ity.AlignWithPadding("소지여부", 8) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("설명", 30) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("소모MP", 7) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("스킬석", 7) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("스킬타입", 10) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("효과량", 7) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 30) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("소모MP", 7) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("스킬석", 7) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("스킬타입", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("효과량", 7) + " ┊ ";
 
                 Console.WriteLine(header);
-                Console.WriteLine(new string('-', Console.WindowWidth));
+                Console.WriteLine(new string('═', Console.WindowWidth));
 
                 for (int i = 0; i < player.SkillList.Count(); i++)
                 {
-                    Console.WriteLine(player.SkillList[i]);
+                    Console.WriteLine("  " + player.SkillList[i]);
                 }
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("보유 중인 스킬이 없습니다.");
+                Console.ResetColor();
+
+                InputHelper.WaitResponse();
+
+                player.AcquireSkillStone(100);
+                Console.WriteLine("스킬석 100개를 깜짝 선물 받았다!");
+                Console.WriteLine("스킬을 배우러 가보자!");
+
+                InputHelper.WaitResponse();
+
             }
-            Console.WriteLine(new string('-', Console.WindowWidth));
-            Console.WriteLine();
-            Console.WriteLine();
+            //Console.WriteLine(new string('═', Console.WindowWidth));
             List<string> selections = new List<string>()
             {
                 "새 스킬 배우기"

@@ -35,7 +35,7 @@ namespace TextRPG_TeamSix.Scenes
             //Console.WriteLine("스킬 - 번호를 선택하여 스킬을 배울 수 있습니다.");
             //Console.WriteLine(new string('=', Console.WindowWidth));
 
-            FormatUtility.DisplayHeader("스킬을 배울 수 있습니다");
+            FormatUtility.DisplayHeader("스킬을 선택해 배울 수 있습니다");
 
             player = PlayerManager.Instance.CurrentPlayer;
             availableToLearn = GameDataManager.Instance.AllSkills.Where(x => !player.SkillList.Contains(x)).ToList();
@@ -45,36 +45,28 @@ namespace TextRPG_TeamSix.Scenes
             if (availableToLearn.Count == 0)
             {
                 Console.WriteLine("하산해라.. 더는 배울게 없다..");
-                Console.WriteLine();
                 input = -2;
                 InputHelper.WaitResponse();
             }
             else
             {   //테이블 헤더
-                string header = "";
-                header += FormatUtility.AlignLeftWithPadding("No.", 3) + " | ";
+                string header = "  ";
+                //header += FormatUtility.AlignLeftWithPadding("No.", 3) + " | ";
                 //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("설명", 30) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("소모MP", 7) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("스킬석", 7) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("스킬타입", 10) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("효과량", 7) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 30) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("소모MP", 7) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("스킬석", 7) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("스킬타입", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("효과량", 7) + " ┊ ";
 
                 Console.WriteLine(header);
-                Console.WriteLine(new string('-', Console.WindowWidth));
-
+                Console.WriteLine(new string('═', Console.WindowWidth));
 
                 input = TextDisplayer.SelectNavigation(availableToLearn);
 
-                Console.WriteLine(new string('-', Console.WindowWidth));
-
-                player.AcquireSkillStone(100);
-                Console.WriteLine("스킬석 100개 깜짝 선물을 받았다!");
+                //Console.WriteLine(new string('-', Console.WindowWidth));
             }
-
-            Console.WriteLine();
-            Console.WriteLine();
 
             HandleInput();
         }

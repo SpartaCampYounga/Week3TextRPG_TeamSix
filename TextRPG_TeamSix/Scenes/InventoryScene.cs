@@ -50,10 +50,15 @@ namespace TextRPG_TeamSix.Scenes
             //아이템
             if (player.Inventory.ItemList.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("그지여? 암것도 없네...");
-                Console.WriteLine();
+                Console.ResetColor();
                 InputHelper.WaitResponse();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("옛다, 이거라도 받아라.");
+                Console.ResetColor();
+                Console.WriteLine();
+                Console.WriteLine();
                 player.Inventory.AddItem(1);
                 player.Inventory.AddItem(5);
                 InputHelper.WaitResponse();
@@ -64,13 +69,13 @@ namespace TextRPG_TeamSix.Scenes
                 //테이블 헤더
                 Console.ForegroundColor = ConsoleColor.White;
                 string header = "      ";
-                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " | ";
-                header += FormatUtility.AlignLeftWithPadding("설명", 50) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 50) + " ┊ ";
                 header += FormatUtility.AlignLeftWithPadding("금액" + " G", 8);
                 Console.WriteLine(header);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(new string('-', Console.WindowWidth));
-                Console.ResetColor();
+                //Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(new string('═', Console.WindowWidth));
+                //Console.ResetColor();
 
                 input = TextDisplayer.SelectNavigation(player.Inventory.ItemList);
             }
