@@ -28,18 +28,6 @@ namespace TextRPG_TeamSix.Controllers
             this.ClearedDungeonList = clearedDungeonList;
             this.AcceptedQuestList = acceptedQuestList;
             this.EquipmentList = equipmentList;
-
-            Console.WriteLine("equipmentList");
-            foreach (var item in equipmentList.Values)
-            {
-                Console.WriteLine(item);
-            }
-            Console.WriteLine("EquipmentList");
-            foreach (var item in EquipmentList.Values)
-            {
-                Console.WriteLine(item);
-            }
-            InputHelper.WaitResponse();
         }
     }
 }
