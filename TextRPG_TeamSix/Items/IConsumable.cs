@@ -10,6 +10,6 @@ namespace TextRPG_TeamSix.Items
     //소비템 인터페이스
     internal interface IConsumable
     {
-        void Consume(Character character);
+        void Consume<T>(Character character, List<T> list);
     }
 }

@@ -19,19 +19,22 @@ namespace TextRPG_TeamSix.Skills
         {
         }
 
-        public override void Cast(Character opponent)
+        public override bool Cast(Character opponent)
         {
             Player player = PlayerManager.Instance.CurrentPlayer;
             if(player.MP >= ConsumeMP)
             {
                 //스킬 구현
                 player.ConsumeMP(ConsumeMP);
-                player.Healed(Amount);
+                opponent.HealedHP(Amount);
+                Console.WriteLine($"{player.Name}의 체력이 {Amount}만큼 회복되었다!");
+                return true;
             }
             else 
             {
                 //스킬 구현 불가능.
                 Console.WriteLine("MP가 부족하여 스킬이 취소됩니다.");
+                return false;
             }
         }
 

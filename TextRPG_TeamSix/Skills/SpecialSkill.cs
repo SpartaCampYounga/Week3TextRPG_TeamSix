@@ -19,7 +19,7 @@ namespace TextRPG_TeamSix.Skills
 
         }
 
-        public override void Cast(Character opponent)
+        public override bool Cast(Character opponent)
         {
             Player player = PlayerManager.Instance.CurrentPlayer;
             if (player.MP >= ConsumeMP)
@@ -27,11 +27,13 @@ namespace TextRPG_TeamSix.Skills
                 //스킬 구현
                 player.ConsumeMP(ConsumeMP);
                 opponent.Damaged(Amount);
+                return true;
             }
             else
             {
                 //스킬 구현 불가능.
                 Console.WriteLine("MP가 부족하여 스킬이 취소됩니다.");
+                return false;
             }
         }
         public void CastToMany(List<Character> opponents)

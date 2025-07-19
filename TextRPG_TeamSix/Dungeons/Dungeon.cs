@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Xml.Linq;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
@@ -19,6 +20,29 @@ namespace TextRPG_TeamSix.Dungeons
         public uint RewardExp { get; private set; }
         public Gatcha RewardGatcha { get; private set; }
         public List<Enemy> Enemies { get; private set; }
+
+        private Dungeon() { }
+        public Dungeon CreateInstance()
+        {
+            return new Dungeon();
+        }
+        public void Clone(Dungeon target)
+        {
+            Id = target.Id;
+            Name = target.Name;
+            RequiredDefense = target.RequiredDefense;
+            RequiredDungeonId = target.RequiredDungeonId;
+            RewardGold = target.RewardGold;
+            RewardExp = target.RewardExp;
+            RewardGatcha = target.RewardGatcha;
+            Enemies = new List<Enemy>();
+            foreach (Enemy enemy in target.Enemies)
+            {
+                Enemy temp = enemy.CreateInstance();
+                temp.Clone(enemy);
+                Enemies.Add(temp);
+            }
+        }
 
         [JsonConstructor]
         public Dungeon (
@@ -67,5 +91,10 @@ namespace TextRPG_TeamSix.Dungeons
                 return false;
             }
         }
+
+            public void OrderEnemiesByIsAlive()
+            {
+                Enemies = Enemies.OrderByDescending(x => x.IsAlive).ToList();
+            }
     }
 }

@@ -36,6 +36,17 @@
 
             return new string(' ', padRight) + str + new string(' ', padRight);
         }
+        public static void DisplayHeader(string title)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("╔" + new string('═', Console.WindowWidth - 6) + "╗");
+            Console.WriteLine("║" + new string(' ', Console.WindowWidth - 6) + "║");
+            Console.WriteLine("║" + FormatUtility.AlignCenterWithPadding(title, Console.WindowWidth - 6) + "║");
+            Console.WriteLine("║" + new string(' ', Console.WindowWidth - 6) + "║");
+            Console.WriteLine("╚" + new string('═', Console.WindowWidth - 6) + "╝");
+            Console.ResetColor();
+        }
 
     }
 }

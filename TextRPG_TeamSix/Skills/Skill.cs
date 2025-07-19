@@ -44,9 +44,9 @@ namespace TextRPG_TeamSix.Skills
             display += FormatUtility.AlignLeftWithPadding(Amount.ToString(), 7) + " | ";
             return display;
         }
-        public abstract void Cast(Character opponent);
+        public abstract bool Cast(Character opponent);
 
-        public int Power { get; set; }
+        //public int Power { get; set; }
 
         public bool IsAvailableToLearn(Player player)
         {

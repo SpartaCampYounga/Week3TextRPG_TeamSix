@@ -16,9 +16,11 @@ namespace TextRPG_TeamSix.Characters
         public uint Attack { get; protected set; }
         public uint Defense { get; protected set; }
         public uint Luck { get; protected set; }
+        public uint MaxHP { get; protected set; } // 최대 체력
+        public uint MaxMP { get; protected set; } // 최대 마나
         public List<Skill> SkillList { get; protected set; } = new List<Skill>();
         public bool IsAlive { get; protected set; }
-
+        protected Character() { }
         public Character(string name)
         {
             Id = nextId++;
@@ -34,7 +36,9 @@ namespace TextRPG_TeamSix.Characters
             uint mP,
             uint attack,
             uint defense,
-            uint luck)
+            uint luck,
+            uint maxHp,
+            uint maxMp)
         {
             this.Id = id;
             this.Name = name;
@@ -44,6 +48,8 @@ namespace TextRPG_TeamSix.Characters
             this.Defense = defense;
             this.Luck = luck;
             this.IsAlive = true;
+            this.MaxHP = maxHp;
+            this.MaxMP = maxMp;
         }
         public void TakeDamage(uint damage)
         {
@@ -66,9 +72,13 @@ namespace TextRPG_TeamSix.Characters
         {
             this.MP -= MP;
         }
-        public void Healed(uint HP)
+        public void HealedHP(uint HP)
         {
             this.HP += HP;
+        }
+        public void RecoveredMP(uint MP)
+        {
+            this.MP += MP;
         }
         public void Damaged(uint damage)
         {
@@ -81,6 +91,17 @@ namespace TextRPG_TeamSix.Characters
             {
                 HP -= damage;
             }
+        }
+        public uint GetNormalAttackDamage()
+        {
+            if (Attack == 0)
+            { return 0; }
+            //10퍼 오차 //Percent
+            int min = (int)Math.Ceiling(Attack * 0.9f);
+            int max = (int)Math.Ceiling(Attack * 1.1f);
+
+            Random random = new Random();
+            return (uint)random.Next(min, max + 1);
         }
     }
 }

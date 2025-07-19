@@ -23,7 +23,6 @@ namespace TextRPG_TeamSix.Scenes
 
         int input;
 
-        private List<Item> availableItems;
         
         public override void DisplayScene() //출력 하는 시스템
         {

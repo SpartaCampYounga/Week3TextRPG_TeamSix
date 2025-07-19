@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
 using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TextRPG_TeamSix.Skills
 {
@@ -19,7 +20,7 @@ namespace TextRPG_TeamSix.Skills
 
         }
 
-        public override void Cast(Character opponent)
+        public override bool Cast(Character opponent)
         {
             Player player = PlayerManager.Instance.CurrentPlayer;
             if (player.MP >= ConsumeMP)
@@ -27,11 +28,14 @@ namespace TextRPG_TeamSix.Skills
                 //스킬 구현
                 player.ConsumeMP(ConsumeMP);
                 opponent.Damaged(Amount);
+                Console.WriteLine($"{opponent.Name}(이)가 {Amount} 데미지를 받았다!");
+                return true;
             }
             else
             {
                 //스킬 구현 불가능.
                 Console.WriteLine("MP가 부족하여 스킬이 취소됩니다.");
+                return false;
             }
         }
 

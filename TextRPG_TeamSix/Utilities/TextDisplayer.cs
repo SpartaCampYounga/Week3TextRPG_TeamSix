@@ -44,7 +44,9 @@ namespace TextRPG_TeamSix.Utilities
                 }
 
                 Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine("원하는 항목을 선택한 후 Enter를 눌러 선택하거나 Esc 혹은 Backspace를 눌러 이전 화면으로 이동합니다.");
+                Console.ResetColor();
 
                 key = Console.ReadKey(true).Key;
 

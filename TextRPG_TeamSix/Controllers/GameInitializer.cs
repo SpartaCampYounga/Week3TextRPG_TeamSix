@@ -60,25 +60,25 @@ namespace TextRPG_TeamSix.Controllers
             new Portion(3, "대형 회복물약", "많은 체력을 회복합니다", 300, ItemType.Consumable, 450, RestoreType.Health),
 
 
-            //new EquipItem(4, "녹슨검", "낡았습니다", 200, ItemType.Weapon, Ability.Attack, 5, EquipSlot.Weapon),
-            //new EquipItem(5, "나무검", "가볍고 약한 검입니다.", 80, ItemType.Weapon, Ability.Attack, 3, EquipSlot.Weapon),
-            //new EquipItem(6, "포레스트검", "Just Do it의 정수 우리도 노력하면 됩니다.", 1500, ItemType.Weapon, Ability.Attack, 15, EquipSlot.Weapon),
-            //new EquipItem(7, "철검", "무딘감 이 있지만 꽤 강한 검입니다.", 1000, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
-            //new EquipItem(8, "장인의 검", "날카롭게 제련된 강한 검입니다.", 2500, ItemType.Weapon, Ability.Attack, 25, EquipSlot.Weapon),
+            new EquipItem(4, "녹슨검", "낡았습니다", 200, ItemType.Weapon, Ability.Attack, 5, EquipSlot.Weapon),
+            new EquipItem(5, "나무검", "가볍고 약한 검입니다.", 80, ItemType.Weapon, Ability.Attack, 3, EquipSlot.Weapon),
+            new EquipItem(6, "포레스트검", "Just Do it의 정수 우리도 노력하면 됩니다.", 1500, ItemType.Weapon, Ability.Attack, 15, EquipSlot.Weapon),
+            new EquipItem(7, "철검", "무딘감 이 있지만 꽤 강한 검입니다.", 1000, ItemType.Weapon, Ability.Attack, 10, EquipSlot.Weapon),
+            new EquipItem(8, "장인의 검", "날카롭게 제련된 강한 검입니다.", 2500, ItemType.Weapon, Ability.Attack, 25, EquipSlot.Weapon),
 
 
-            //new EquipItem(101, "완성", "과거와 현재 미래가 합친 작품입니다.", 4000, ItemType.Weapon, Ability.Attack, 40, EquipSlot.Weapon, true),
-            //new EquipItem(102, "협업", "여러 명인들이 모여 만든 작품입니다.", 3500, ItemType.Armor, Ability.Defense, 35, EquipSlot.Armor, true),
-            //new Portion(103, "엘릭서", "마법의 힘이 담긴 물약입니다.", 500, ItemType.Consumable, 300, RestoreType.All, true),
-            //new EquipItem(104, "용의 검", "드래곤의 힘이 깃든 전설의 검입니다.", 9000, ItemType.Weapon, Ability.Attack, 90, EquipSlot.Weapon, true),
-            //new EquipItem(105, "화염검", "불의 속성이 담긴 강력한 무기입니다.", 7000, ItemType.Weapon, Ability.Attack, 70, EquipSlot.Weapon,true),
+            new EquipItem(101, "완성", "과거와 현재 미래가 합친 작품입니다.", 4000, ItemType.Weapon, Ability.Attack, 40, EquipSlot.Weapon, true),
+            new EquipItem(102, "협업", "여러 명인들이 모여 만든 작품입니다.", 3500, ItemType.Armor, Ability.Defense, 35, EquipSlot.Armor, true),
+            new Portion(103, "엘릭서", "마법의 힘이 담긴 물약입니다.", 500, ItemType.Consumable, 300, RestoreType.All, true),
+            new EquipItem(104, "용의 검", "드래곤의 힘이 깃든 전설의 검입니다.", 9000, ItemType.Weapon, Ability.Attack, 90, EquipSlot.Weapon, true),
+            new EquipItem(105, "화염검", "불의 속성이 담긴 강력한 무기입니다.", 7000, ItemType.Weapon, Ability.Attack, 70, EquipSlot.Weapon,true),
 
 
-            //new EquipItem(11, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 1, EquipSlot.Armor),
-            //new EquipItem(12, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 200, ItemType.Armor, Ability.Defense, 5, EquipSlot.Armor),
-            //new EquipItem(13, "강철갑옷", "단단한 금속 갑옷 입니다.", 500, ItemType.Armor, Ability.Defense, 8, EquipSlot.Armor),
-            //new EquipItem(14, "성기사의 갑옷", "신의 가호가 깃든 중갑입니다.", 2000, ItemType.Armor, Ability.Defense, 20, EquipSlot.Armor),
-            //new EquipItem(15, "어둠의 로브", "마력이 깃든 강철갑옷입니다.", 2500, ItemType.Armor, Ability.Defense, 25, EquipSlot.Armor),
+            new EquipItem(11, "천옷", "기본 복장입니다.", 50, ItemType.Armor, Ability.Defense, 1, EquipSlot.Armor),
+            new EquipItem(12, "가죽 갑옷", "튼튼한 가죽으로 만들었습니다.", 200, ItemType.Armor, Ability.Defense, 5, EquipSlot.Armor),
+            new EquipItem(13, "강철갑옷", "단단한 금속 갑옷 입니다.", 500, ItemType.Armor, Ability.Defense, 8, EquipSlot.Armor),
+            new EquipItem(14, "성기사의 갑옷", "신의 가호가 깃든 중갑입니다.", 2000, ItemType.Armor, Ability.Defense, 20, EquipSlot.Armor),
+            new EquipItem(15, "어둠의 로브", "마력이 깃든 강철갑옷입니다.", 2500, ItemType.Armor, Ability.Defense, 25, EquipSlot.Armor),
 
         };
 
@@ -95,7 +95,7 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Dungeon[] _dungeons =
         {
-            new Dungeon(1, "Easy", 10, 0, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
+            new Dungeon(1, "Easy", 5, 0, 1000, 100, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
             new Dungeon(2, "Normal", 20, 1, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
             new Dungeon(3, "Hard", 30, 2, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] }),
             new Dungeon(4, "Hell", 40, 3, 3000, 300, _gatchas[0], new List<Enemy>{_emenies[0], _emenies[0] })

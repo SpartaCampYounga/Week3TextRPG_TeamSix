@@ -23,8 +23,6 @@ namespace TextRPG_TeamSix.Characters
         public uint Gold { get; private set; } // 플레이어의 금액
         public uint Exp { get; private set; } // 플레이어의 경험치
         public uint Level { get; private set; }
-        public uint MaxHP { get; private set; } // 최대 체력
-        public uint MaxMP { get; private set; } // 최대 마나
 
 
         public Player(string name, JobType jobType) : base(name)
@@ -110,19 +108,13 @@ namespace TextRPG_TeamSix.Characters
             this.MaxMP = maxMp;
         }
 
-        public void DisplayPlayerStatus()
+        public string DisplayPlayerStatusInBattle()
         {
-            Console.WriteLine("DisplayPlayerStatus");
-        }
-
-        public void ConsumeMP(uint MP)
-        {
-            this.MP -= MP;
-        }
-
-        public void Healed(uint HP)
-        {
-            this.HP += HP;
+            string display = "";
+            display += FormatUtility.AlignLeftWithPadding($"{Name}의 현재 상태", 17) + "   ";
+            display += FormatUtility.AlignLeftWithPadding($"HP : {HP} / {MaxHP}   ", 10);
+            display += FormatUtility.AlignLeftWithPadding($"MP : {HP} / {MaxHP}   ", 10);
+            return display;
         }
 
         public void EarnGold(uint gold)
