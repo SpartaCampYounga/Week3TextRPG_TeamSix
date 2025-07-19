@@ -125,12 +125,33 @@ namespace TextRPG_TeamSix.Characters
         public void EarnExp(uint exp)
         {
             this.Exp += exp;
-            if (this.Exp >= 100)
+
+            while (true)
             {
-                this.Exp -= 100;
-                Console.WriteLine($"레벨이 증가하여 {this.Level++}이 {this.Level} 되었다!");
-                LevelUp();
+                uint requiredExp = Level == 1
+                    ? CalculateLevelUpExp(1)
+                    : CalculateLevelUpExp(Level) - CalculateLevelUpExp(Level - 1);
+
+                if (this.Exp >= requiredExp)
+                {
+                    this.Exp -= requiredExp;
+                    uint previousLevel = this.Level;
+                    this.Level++;
+                    Console.WriteLine($"레벨이 증가하여 {previousLevel}이 {this.Level} 되었다!");
+                    LevelUp();
+                }
+                else
+                {
+                    break;
+                }
             }
+        }
+
+        public uint CalculateLevelUpExp(uint level)
+        {
+            //재귀함수 //가이드 따라 산출한 경험치 공식
+            return (uint)((5 * level * level + 35 * level - 20) / 2);
+
         }
         public void LevelUp()
         {
