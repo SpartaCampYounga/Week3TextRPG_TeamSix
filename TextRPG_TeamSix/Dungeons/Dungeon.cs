@@ -74,7 +74,7 @@ namespace TextRPG_TeamSix.Dungeons
         {
             //진입 로직 //배틀매니저 로드 등
             //권장 방어력 미만시 막는거 없으면 구현부 없을수도 있음.
-            if(this.RequiredDefense > player.Defense)
+            if(this.RequiredDefense > player.GetTotalDefense())
             {
                 Console.WriteLine("방어력이 부족하여 입장할 수 없습니다.");
                 return false;

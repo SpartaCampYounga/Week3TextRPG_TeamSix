@@ -66,6 +66,8 @@ namespace TextRPG_TeamSix.Characters
             string name,
             uint hp,
             uint mp,
+            uint maxHp,
+            uint maxMp,
             uint attack,
             uint defense,
             uint luck,
@@ -76,9 +78,7 @@ namespace TextRPG_TeamSix.Characters
             Inventory inventory,
             uint gold,
             uint exp,
-            uint level,
-            uint maxHp,
-            uint maxMp
+            uint level
         ) : base(name)
         {
             Console.WriteLine("Player 역직렬화 생성자");

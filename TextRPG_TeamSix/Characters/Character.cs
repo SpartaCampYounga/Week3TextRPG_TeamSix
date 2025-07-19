@@ -80,7 +80,7 @@ namespace TextRPG_TeamSix.Characters
         {
             this.MP += MP;
         }
-        public void Damaged(uint damage)
+        public virtual void Damaged(uint damage)
         {
             if (HP <= damage)
             {

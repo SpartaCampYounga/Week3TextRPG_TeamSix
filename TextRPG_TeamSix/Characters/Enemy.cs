@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Characters
@@ -103,6 +105,21 @@ namespace TextRPG_TeamSix.Characters
             }
             
             return display;
+        }
+
+        public override void Damaged(uint damage)
+        {
+            base.Damaged(damage);
+            if (IsAlive == true && this is Enemy enemy)
+            {
+                foreach (Quest quest in PlayerManager.Instance.AcceptedQuestList)
+                {
+                    if (quest.QuestType == Enums.QuestType.Enemy && quest.GoalId == enemy.Id)
+                    {
+                        quest.CountGoal();
+                    }
+                }
+            }
         }
 
     }

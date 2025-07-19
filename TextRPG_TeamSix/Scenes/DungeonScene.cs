@@ -29,42 +29,25 @@ namespace TextRPG_TeamSix.Scenes
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("DungeonScene Loaded");
 
-            Console.WriteLine(new string('=', Console.WindowWidth));
-            Console.WriteLine("던전 - 원하는 던전에 진입할 수 있습니다.");
-            Console.WriteLine(new string('=', Console.WindowWidth));
-
+            FormatUtility.DisplayHeader("던전 - 원하는 던전에 진입할 수 있습니다.");
 
             //테이블 헤더
             string header = "";
-            header += FormatUtility.AlignLeftWithPadding("No.", 3) + " | ";
-            //header += FormatUtility.AlignWithPadding("소지여부", 8) + " | ";
+            header += FormatUtility.AlignLeftWithPadding("  ", 2) + " | ";
             header += FormatUtility.AlignLeftWithPadding("던전이름", 15) + " | ";
             header += FormatUtility.AlignLeftWithPadding("권장 방어력", 11) + " | ";
 
             Console.WriteLine(header);
-            Console.WriteLine(new string('-', Console.WindowWidth));
+            Console.WriteLine();
+            Console.WriteLine();
+            //Console.WriteLine(new string('-', Console.WindowWidth));
 
 
             input = TextDisplayer.SelectNavigation(dungeons);
 
-
-            //던전 리스트 출력
-            //for (int i = 0; i < dungeons.Count(); i++)
-            //{
-            //    string display = FormatUtility.AlignWithPadding((i + 1).ToString(), 3) + " | ";
-            //    display += dungeons[i];
-            //    Console.WriteLine(display);
-            //}
-
-            Console.WriteLine(new string('-', Console.WindowWidth));
+            //Console.WriteLine(new string('-', Console.WindowWidth));
             Console.WriteLine();
             Console.WriteLine();
-
-
-            //Console.WriteLine("입장하고 싶은 스킬의 숫자를 입력하세요.");
-            //Console.WriteLine("0. 나가기");
-            //Console.Write(">>");
-            //input = InputHelper.GetIntegerRange(0, dungeons.Count() + 1);
 
             HandleInput();
         }

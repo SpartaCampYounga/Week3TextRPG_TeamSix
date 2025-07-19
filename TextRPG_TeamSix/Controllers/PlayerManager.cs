@@ -60,8 +60,10 @@ namespace TextRPG_TeamSix.Controllers
                     temp.Clone(quest);
                     this.AcceptedQuestList.Add(temp);
                 }
+                Console.WriteLine($"In SaveManager EquipList null" + SaveManager.Instance.SaveData.EquipmentList.Values == null);
                 foreach(EquipItem equipItem in SaveManager.Instance.SaveData.EquipmentList.Values)
                 {
+                    Console.WriteLine($"In SaveManager EquipItem null " + equipItem);
                     EquipItem temp = (EquipItem)equipItem.CreateInstance();
                     temp.Clone(equipItem);
                     this.EquipmentList.Add(temp.EquipSlot, temp);
