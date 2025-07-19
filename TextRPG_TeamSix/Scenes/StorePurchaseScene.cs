@@ -146,7 +146,7 @@ namespace TextRPG_TeamSix.Scenes
                     }
                     else
                     {
-                        Console.WriteLine("보유한 금액이 부족해서 배우지 못했다...");
+                        Console.WriteLine("보유한 금액이 부족해서 구매하지 못했다...");
                         InputHelper.WaitResponse();
                     }
 
