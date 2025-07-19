@@ -25,17 +25,18 @@ namespace TextRPG_TeamSix.Scenes
             //Console.SetWindowSize(200, 50);
             //Console.WriteLine(Console.LargestWindowHeight.ToString() + Console.LargestWindowWidth.ToString());
             //Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
-            Console.Clear();
+            //Console.Clear();
 
             Player player = PlayerManager.Instance.CurrentPlayer;
 
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("SkillScene Loaded");
+            //Console.OutputEncoding = Encoding.UTF8;
+            //Console.WriteLine("SkillScene Loaded");
 
-            Console.WriteLine(new string('=', Console.WindowWidth));
-            Console.WriteLine("스킬 - 보유 중인 스킬을 볼 수 있습니다.");
-            Console.WriteLine(new string('=', Console.WindowWidth));
+            //Console.WriteLine(new string('=', Console.WindowWidth));
+            //Console.WriteLine("스킬 - 보유 중인 스킬을 볼 수 있습니다.");
+            //Console.WriteLine(new string('=', Console.WindowWidth));
 
+            FormatUtility.DisplayHeader("스킬 - 보유 중인 스킬을 볼 수 있습니다");
 
             //플레이어가 보유중인 스킬만 띄우기
             if (player.SkillList != null && player.SkillList.Count != 0)

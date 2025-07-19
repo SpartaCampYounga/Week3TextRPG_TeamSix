@@ -31,13 +31,14 @@ namespace TextRPG_TeamSix.Scenes
                 .Where(q => !acceptedQuests.Any(aq => aq.Id == q.Id))
                 .ToList();
 
-            Console.Clear();
-            Console.WriteLine("QuestAcceptScene");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(new string('=', 120));
-            Console.WriteLine("퀘스트를 수락할 수 있습니다.");
-            Console.WriteLine(new string('=', 120));
+            //Console.Clear();
+            //Console.WriteLine("QuestAcceptScene");
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine(new string('=', 120));
+            //Console.WriteLine("퀘스트를 수락할 수 있습니다.");
+            //Console.WriteLine(new string('=', 120));
 
+            FormatUtility.DisplayHeader("퀘스트를 수락할 수 있습니다 ");
 
             ////플레이어 미보유 중인 퀘스트만 띄우기
             if (availableQuests.Count == 0)

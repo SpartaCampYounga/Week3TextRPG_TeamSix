@@ -27,20 +27,21 @@ namespace TextRPG_TeamSix.Scenes
         public override void DisplayScene()
         {
             {
-                Console.Clear();
+                //Console.Clear();
 
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("╔══════════════════상태창 보기════════════════════╗");
-                Console.WriteLine("                        O                          ");
-                Console.WriteLine("╚══════════════════    /|[*]   ═══════════════════╝");
-                Console.WriteLine("______________________ / | ________________________");
+                //Console.ForegroundColor = ConsoleColor.Green;
+                //Console.WriteLine("╔══════════════════상태창 보기════════════════════╗");
+                //Console.WriteLine("                        O                          ");
+                //Console.WriteLine("╚══════════════════    /|[*]   ═══════════════════╝");
+                //Console.WriteLine("______________________ / | ________________________");
 
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(" 캐릭터 정보");
-                Console.ResetColor();
+                //Console.ForegroundColor = ConsoleColor.Cyan;
+                //Console.WriteLine(" 캐릭터 정보");
+                //Console.ResetColor();
 
-                Console.WriteLine("----------------------------------------");
+                //Console.WriteLine("----------------------------------------");
 
+                FormatUtility.DisplayHeader("캐릭터 상태창 보기");
 
                 PrintStat(" 이름", $"{player.Name} ({player.JobType})", ConsoleColor.Green);
                 PrintStat(" 공격력", $"{player.GetTotalAttack()} (+ {player.GetEquipBonusAttack()})", ConsoleColor.Red);

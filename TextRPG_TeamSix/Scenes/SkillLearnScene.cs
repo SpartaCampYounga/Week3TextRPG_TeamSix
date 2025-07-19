@@ -25,15 +25,18 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene()
         {
-            Console.Clear();
+            //Console.Clear();
 
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("SkillLearnScene Loaded");
+            //Console.OutputEncoding = Encoding.UTF8;
+            //Console.WriteLine("SkillLearnScene Loaded");
 
-            //Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(new string('=', Console.WindowWidth));
-            Console.WriteLine("스킬 - 번호를 선택하여 스킬을 배울 수 있습니다.");
-            Console.WriteLine(new string('=', Console.WindowWidth));
+            ////Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine(new string('=', Console.WindowWidth));
+            //Console.WriteLine("스킬 - 번호를 선택하여 스킬을 배울 수 있습니다.");
+            //Console.WriteLine(new string('=', Console.WindowWidth));
+
+            FormatUtility.DisplayHeader("스킬을 배울 수 있습니다");
+
             player = PlayerManager.Instance.CurrentPlayer;
             availableToLearn = GameDataManager.Instance.AllSkills.Where(x => !player.SkillList.Contains(x)).ToList();
 

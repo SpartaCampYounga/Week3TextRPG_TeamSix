@@ -25,9 +25,9 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene()
         {
-            Console.Clear();
-            Console.OutputEncoding = Encoding.UTF8; 
-            Console.WriteLine("InventoryScene");
+            //Console.Clear();
+            //Console.OutputEncoding = Encoding.UTF8; 
+            //Console.WriteLine("InventoryScene");
 
             //player.Inventory.PurchaseItem(1);   //Debug용
             //Console.WriteLine($"인벤토리 방문 서비스로 {player.Name}이 아이템을 획득했다!");    //Debug용
@@ -38,12 +38,14 @@ namespace TextRPG_TeamSix.Scenes
             //    Console.WriteLine(item.Name+"을 강매당했다!");
             //}
          
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("╔══════════════════  인벤토리  ════════════════════╗");
-            Console.WriteLine("              ╱┈▬▬ι═══════-    ╱ ❚  ╱             ");
-            Console.WriteLine("╚═══      [*]═▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇╱ [_■__]╱       ════╝");
-            Console.WriteLine(); 
-            Console.WriteLine("---------------------------------------------------");
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("╔══════════════════  인벤토리  ════════════════════╗");
+            //Console.WriteLine("              ╱┈▬▬ι═══════-    ╱ ❚  ╱             ");
+            //Console.WriteLine("╚═══      [*]═▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇╱ [_■__]╱       ════╝");
+            //Console.WriteLine(); 
+            //Console.WriteLine("---------------------------------------------------");
+
+            FormatUtility.DisplayHeader("인벤토리");
 
             //아이템
             if (player.Inventory.ItemList.Count == 0)

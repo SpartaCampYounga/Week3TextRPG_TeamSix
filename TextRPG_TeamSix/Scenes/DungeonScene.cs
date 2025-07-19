@@ -24,10 +24,10 @@ namespace TextRPG_TeamSix.Scenes
         //List<uint> clearedDungeonList = PlayerManager.Instance.ClearedDungeonList;
         public override void DisplayScene()
         {
-            Console.Clear();
+            //Console.Clear();
 
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("DungeonScene Loaded");
+            //Console.OutputEncoding = Encoding.UTF8;
+            //Console.WriteLine("DungeonScene Loaded");
 
             FormatUtility.DisplayHeader("던전 - 원하는 던전에 진입할 수 있습니다.");
 

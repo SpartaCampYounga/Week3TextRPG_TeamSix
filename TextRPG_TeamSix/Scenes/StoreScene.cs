@@ -27,11 +27,14 @@ namespace TextRPG_TeamSix.Scenes
         public override void DisplayScene() //출력 하는 시스템
         {
 
-            Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("╔══════════════════════════════════════╗");
-            Console.WriteLine("║               상   점                ║");
-            Console.WriteLine("╚══════════════════════════════════════╝");
+            //Console.Clear();
+            ////Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("╔══════════════════════════════════════╗");
+            //Console.WriteLine("║               상   점                ║");
+            //Console.WriteLine("╚══════════════════════════════════════╝");
+
+            FormatUtility.DisplayHeader("상점에 오신 것을 환영합니다!");
+
             Console.WriteLine($"보유 골드: {player.Gold} G");
 
             Console.WriteLine();

@@ -25,12 +25,15 @@ namespace TextRPG_TeamSix.Scenes
         {
             acceptedQuests = PlayerManager.Instance.AcceptedQuestList;
 
-            Console.Clear();
-            Console.WriteLine("QuestRewardScene");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(new string('=', 120));
-            Console.WriteLine("완료한 퀘스트 보상을 받을 수 있습니다.");
-            Console.WriteLine(new string('=', 120));
+            //Console.Clear();
+            //Console.WriteLine("QuestRewardScene");
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine(new string('=', 120));
+            //Console.WriteLine("완료한 퀘스트 보상을 받을 수 있습니다.");
+            //Console.WriteLine(new string('=', 120));
+
+            FormatUtility.DisplayHeader("퀘스트 완료 보상을 받을 수 있습니다 ");
+
             // 헤더
             string header = "";
             header += FormatUtility.AlignLeftWithPadding("유형", 10) + " | ";

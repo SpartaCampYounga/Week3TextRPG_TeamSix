@@ -44,11 +44,13 @@ namespace TextRPG_TeamSix.Scenes
 
             availableItems = currentStore.ItemList.Where(x => player.Inventory.ItemList.All(i => i.Id != x.Id)).ToList();
 
-            Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("╔══════════════════════════════════════╗");
-            Console.WriteLine("║               상   점                ║");
-            Console.WriteLine("╚══════════════════════════════════════╝");
+            //Console.Clear();
+            ////Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("╔══════════════════════════════════════╗");
+            //Console.WriteLine("║               상   점                ║");
+            //Console.WriteLine("╚══════════════════════════════════════╝");
+
+            FormatUtility.DisplayHeader("상점에서 물건을 구매할 수 있습니다");
             Console.WriteLine($"보유 골드: {player.Gold} G");
 
             //아이템

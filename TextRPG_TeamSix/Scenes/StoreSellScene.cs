@@ -29,12 +29,14 @@ namespace TextRPG_TeamSix.Scenes
             player = PlayerManager.Instance.CurrentPlayer;
 
 
-            Console.Clear();
-            //Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("╔══════════════════════════════════════╗");
-            Console.WriteLine("║               상   점                ║");
-            Console.WriteLine("╚══════════════════════════════════════╝");
-            Console.WriteLine("상점 판매 - 물건을 80%의 가격으로 판매할 수 있습니다.");
+            //Console.Clear();
+            ////Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine("╔══════════════════════════════════════╗");
+            //Console.WriteLine("║               상   점                ║");
+            //Console.WriteLine("╚══════════════════════════════════════╝");
+            //Console.WriteLine("상점 판매 - 물건을 80%의 가격으로 판매할 수 있습니다.");
+
+            FormatUtility.DisplayHeader("상점에 물건의 80% 가격으로 판매할 수 있습니다.");
             Console.WriteLine($"보유 골드: {player.Gold} G");
             Console.WriteLine();
             Console.WriteLine();

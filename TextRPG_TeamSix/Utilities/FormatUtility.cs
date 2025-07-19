@@ -1,4 +1,6 @@
-﻿namespace TextRPG_TeamSix.Utilities
+﻿using System.Text;
+
+namespace TextRPG_TeamSix.Utilities
 {
     public static class FormatUtility
     {
@@ -39,6 +41,8 @@
         public static void DisplayHeader(string title)
         {
             Console.Clear();
+            Console.WriteLine();
+            Console.OutputEncoding = Encoding.UTF8;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("╔" + new string('═', Console.WindowWidth - 6) + "╗");
             Console.WriteLine("║" + new string(' ', Console.WindowWidth - 6) + "║");
@@ -46,6 +50,8 @@
             Console.WriteLine("║" + new string(' ', Console.WindowWidth - 6) + "║");
             Console.WriteLine("╚" + new string('═', Console.WindowWidth - 6) + "╝");
             Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
     }

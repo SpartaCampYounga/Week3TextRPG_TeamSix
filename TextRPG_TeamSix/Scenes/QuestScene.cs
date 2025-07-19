@@ -23,12 +23,14 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene()
         {
-            Console.Clear();
-            Console.WriteLine("QuestScene");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(new string('=', 120));
-            Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
-            Console.WriteLine(new string('=', 120));
+            //Console.Clear();
+            //Console.WriteLine("QuestScene");
+            //Console.ForegroundColor = ConsoleColor.Green;
+            //Console.WriteLine(new string('=', 120));
+            //Console.WriteLine("모험가 사무소에 온것을 환영합니다.");
+            //Console.WriteLine(new string('=', 120));
+            FormatUtility.DisplayHeader("모험가 사무소에 오신 것을 환영합니다");
+
             // 헤더
             string header = "";
             header += FormatUtility.AlignLeftWithPadding("유형", 10) + " | ";

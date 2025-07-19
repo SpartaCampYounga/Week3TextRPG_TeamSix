@@ -21,13 +21,17 @@ namespace TextRPG_TeamSix.Scenes
 
         public override void DisplayScene() //출력 하는 시스템
         {
-            Console.Clear();
-            Console.WriteLine("PlayerSetupScene");
+            //Console.Clear();
+            //Console.WriteLine("PlayerSetupScene");
+
+
+            FormatUtility.DisplayHeader("캐릭터를 생성하거나 불러올 수 있습니다");
 
             //Console.WriteLine("[1] 불러오기     [2] 새로만들기");
             //Console.Write("번호를 입력하세요 :");
 
             //input = InputHelper.GetIntegerRange(1, 3);
+
             List<string> selection = new List<string>()
             {
                 "불러오기",
