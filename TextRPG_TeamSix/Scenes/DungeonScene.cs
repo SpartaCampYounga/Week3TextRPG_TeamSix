@@ -80,6 +80,7 @@ namespace TextRPG_TeamSix.Scenes
                     Dungeon selectedDungeon = dungeons[input];
                     if (selectedDungeon.TryEnterDungeon(player))
                     {
+                        PlayerManager.Instance.CurrentDungeon.Clone(selectedDungeon);
                         SceneManager.Instance.SetScene(SceneType.Battle);
                     }
                     else

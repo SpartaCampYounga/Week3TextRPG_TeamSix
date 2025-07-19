@@ -23,11 +23,10 @@ namespace TextRPG_TeamSix.Scenes
         private string title = " 던전 전투가 진행중입니다...";
         public override void DisplayScene()
         {
-            currentDungeon = GameDataManager.Instance.AllDungeons[0].CreateInstance();
-            //dungeon.Clone(PlayerManager.Instance.currentDungeon); //개발하는 동안만...
-            //if (dungeon == null)
+            currentDungeon = PlayerManager.Instance.CurrentDungeon;
+            if (currentDungeon == null)
             { currentDungeon.Clone(GameDataManager.Instance.AllDungeons[0]); }
-            //else { Console.WriteLine("던전이 없음.."); }
+            else { Console.WriteLine("던전이 없음.."); }
             title = currentDungeon.Name + " 던전 전투가 진행중입니다...";
 
             Console.OutputEncoding = Encoding.UTF8;

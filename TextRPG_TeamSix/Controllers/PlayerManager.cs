@@ -22,13 +22,14 @@ namespace TextRPG_TeamSix.Controllers
         public List<uint> ClearedDungeonList { get; private set;}
         public List<Quest> AcceptedQuestList { get; private set; }
         public Dictionary<EquipSlot, EquipItem> EquipmentList { get; private set; }
-        public Dungeon currentDungeon { get; set; } //전투 중에만 활성화되고 SaveData에 저장되지 않으므로 public set
+        public Dungeon CurrentDungeon { get; set; } //전투 중에만 활성화되고 SaveData에 저장되지 않으므로 public set
         private PlayerManager()
         {
             CurrentPlayer = new Player("PlayerManager", JobType.Warrior);
             ClearedDungeonList = new List<uint>();
             EquipmentList = new Dictionary<EquipSlot, EquipItem>();
             AcceptedQuestList = new List<Quest>();
+            CurrentDungeon = new Dungeon(0, "", 0, 0, 0, 0, null, null);
         }
         private static PlayerManager instance;
         public static PlayerManager Instance
