@@ -28,7 +28,7 @@ namespace TextRPG_TeamSix.Scenes
         {
             // availableQuests는 acceptedQuests를 제외한 리스트로 만듦
             availableQuests = GameDataManager.Instance.AllQuests
-                .Where(q => !acceptedQuests.Contains(q))
+                .Where(q => !acceptedQuests.Any(aq => aq.Id == q.Id))
                 .ToList();
 
             Console.Clear();
@@ -75,18 +75,28 @@ namespace TextRPG_TeamSix.Scenes
                     SceneManager.Instance.SetScene(SceneType.Quest);    //0번 누르면 해당 타입의 씬 출력
                     break;
                 default:
+                    
                     Quest selectedQuest = availableQuests[input].CreateInstance();
 
-                    selectedQuest.Clone(availableQuests[input]);
+                    if (PlayerManager.Instance.AcceptedQuestList.FirstOrDefault(x => x.Id == selectedQuest.Id) != null)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine("이미 진행중인 퀘스트 입니다.");
+                        Console.ResetColor();
+                        InputHelper.WaitResponse();
+                    }
+                    else
+                    {
+                        selectedQuest.Clone(availableQuests[input]);
 
-                    acceptedQuests.Add(selectedQuest);  //테스트용 임시 처리
+                        PlayerManager.Instance.AcceptedQuestList.Add(selectedQuest);  //테스트용 임시 처리
 
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine($"'{selectedQuest.Description}' 퀘스트를 수락하였습니다!");
-                    Console.ResetColor();
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                        Console.WriteLine($"'{selectedQuest.Description}' 퀘스트를 수락하였습니다!");
+                        Console.ResetColor();
 
-                    InputHelper.WaitResponse();
-
+                        InputHelper.WaitResponse();
+                    }
                     SceneManager.Instance.SetScene(SceneType.QuestAccept);
                     break;
             }
