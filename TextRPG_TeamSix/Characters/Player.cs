@@ -26,8 +26,6 @@ namespace TextRPG_TeamSix.Characters
         public uint MaxHP { get; private set; } // 최대 체력
         public uint MaxMP { get; private set; } // 최대 마나
 
-        public uint BaseAttack { get; private set; } // 기본 공격력
-        public uint BaseDefense { get; private set; } // 기본 방어력
 
         public Player(string name, JobType jobType) : base(name)
         {
@@ -39,10 +37,8 @@ namespace TextRPG_TeamSix.Characters
                     MaxMP = 300;
                     HP = MaxHP;
                     MP = MaxMP;
-                    BaseAttack = 10;
-                    BaseDefense = 5;
-                    Attack = BaseAttack;
-                    Defense = BaseDefense;
+                    Attack = 10;
+                    Defense = 5;
                     NumOfStones = 0;
                     Gold = 1000;
                     Exp = 0;
@@ -55,10 +51,8 @@ namespace TextRPG_TeamSix.Characters
                     MaxMP = 100;
                     HP = MaxHP;
                     MP = MaxMP;
-                    BaseAttack = 10;
-                    BaseDefense = 10;
-                    Attack = BaseAttack;
-                    Defense = BaseDefense;
+                    Attack = 10;
+                    Defense = 5;
                     NumOfStones = 0;
                     Gold = 1000;
                     Exp = 0;
