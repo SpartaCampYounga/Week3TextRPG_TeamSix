@@ -71,14 +71,17 @@ namespace TextRPG_TeamSix.Characters
         public void ConsumeMP(uint MP)
         {
             this.MP -= MP;
+            if(this.MP < 0) this.MP = 0;
         }
         public void HealedHP(uint HP)
         {
             this.HP += HP;
+            if (this.HP > this.MaxHP) { this.HP = this.MaxHP; }
         }
         public void RecoveredMP(uint MP)
         {
             this.MP += MP;
+            if (this.MP > this.MaxMP) { this.MP = this.MaxMP; }
         }
         public virtual void Damaged(uint damage)
         {

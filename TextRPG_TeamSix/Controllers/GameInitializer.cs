@@ -55,8 +55,8 @@ namespace TextRPG_TeamSix.Controllers
 
         private static Item[] _items =
         {
-            new Portion(1, "소형 회복물약", "작은 체력을 회복합니다", 50, ItemType.Consumable, 30, RestoreType.Health),
-            new Portion(2, "중형 회복물약", "중간 정도의 체력을 회복합니다", 100, ItemType.Consumable, 100, RestoreType.Health),
+            new Portion(1, "소형 회복물약", "작은 체력을 회복합니다", 50, ItemType.Consumable, 100, RestoreType.Health),
+            new Portion(2, "중형 회복물약", "중간 정도의 체력을 회복합니다", 100, ItemType.Consumable, 220, RestoreType.Health),
             new Portion(3, "대형 회복물약", "많은 체력을 회복합니다", 300, ItemType.Consumable, 450, RestoreType.Health),
 
 

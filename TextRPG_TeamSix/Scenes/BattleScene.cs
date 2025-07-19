@@ -46,6 +46,7 @@ namespace TextRPG_TeamSix.Scenes
             };
             //모두 죽여서 탈출
 
+            SceneManager.Instance.SetScene(SceneType.Main);
         }
 
         public override void HandleInput()

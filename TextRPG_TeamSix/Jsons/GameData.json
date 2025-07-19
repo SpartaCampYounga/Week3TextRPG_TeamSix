@@ -128,7 +128,7 @@
         "Id": 1,
         "Name": "소형 회복물약",
         "Description": "작은 체력을 회복합니다",
-        "Price": 50,
+        "Price": 100,
         "Type": "Consumable",
         "IsSpecialItem": false
       },
@@ -139,7 +139,7 @@
         "Id": 2,
         "Name": "중형 회복물약",
         "Description": "중간 정도의 체력을 회복합니다",
-        "Price": 100,
+        "Price": 220,
         "Type": "Consumable",
         "IsSpecialItem": false
       },

@@ -70,7 +70,10 @@ namespace TextRPG_TeamSix.Quests
             display += FormatUtility.AlignLeftWithPadding(RewardGold.ToString(), 10) + " | ";
             display += FormatUtility.AlignLeftWithPadding(RewardExp.ToString(), 10) + " | ";
             display += FormatUtility.AlignLeftWithPadding(goalName, 10) + " | ";
-            display += FormatUtility.AlignLeftWithPadding(Count.ToString() + "/" + GoalCount.ToString(), 10);
+            if ( Count >= GoalCount )
+                display += FormatUtility.AlignLeftWithPadding("완료", 10);
+            else
+                display += FormatUtility.AlignLeftWithPadding(Count.ToString() + "/" + GoalCount.ToString(), 10);
             return display;
         }
         public void AcceptThisQuest()

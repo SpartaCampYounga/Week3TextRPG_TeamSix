@@ -42,7 +42,7 @@
     "Name": "",
     "HP": 262,
     "MP": 100,
-    "Attack": 10,
+    "Attack": 100,
     "Defense": 5,
     "Luck": 0,
     "MaxHP": 300,
