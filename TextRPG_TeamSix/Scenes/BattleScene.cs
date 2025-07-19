@@ -20,6 +20,7 @@ namespace TextRPG_TeamSix.Scenes
         private bool isPlayerTurn = true;
         private Dungeon currentDungeon; 
         private Player currentPlayer = PlayerManager.Instance.CurrentPlayer;
+        List<Enemy> aliveEnemies;
         private string title = " 던전 전투가 진행중입니다...";
         public override void DisplayScene()
         {
@@ -43,6 +44,8 @@ namespace TextRPG_TeamSix.Scenes
                     EnemyTurn();
                 }
             };
+            //모두 죽여서 탈출
+
         }
 
         public override void HandleInput()
@@ -63,23 +66,23 @@ namespace TextRPG_TeamSix.Scenes
 
             if (selectingEnemies == true)
             {
-
-                input = TextDisplayer.SelectNavigation(aliveEnemies);
                 foreach (Enemy enemy in currentDungeon.Enemies.Where(x => x.IsAlive == false))
                 {
-                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 2);
+                    //Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - currentDungeon.Enemies.Count() - 2);
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine(" " + enemy);
+                    Console.WriteLine("  " + enemy);
                     Console.ResetColor();
-                    Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 2);
+                    //Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop + 2);
                 }
+                input = TextDisplayer.SelectNavigation(aliveEnemies);
+
             }
             else
             {
                 foreach (Enemy enemy in currentDungeon.Enemies)
                 {
                     Console.ForegroundColor = enemy.IsAlive == false ? ConsoleColor.DarkGray : ConsoleColor.White;
-                    Console.WriteLine(" " + enemy);
+                    Console.WriteLine("  " + enemy);
                     Console.ResetColor();
                 }
                 input = -0;
@@ -110,7 +113,6 @@ namespace TextRPG_TeamSix.Scenes
 
             Console.WriteLine();
             input = TextDisplayer.SelectNavigation(selection);
-            List<Enemy> aliveEnemies;
             int enemySelection;
             switch (input)
             {
@@ -122,7 +124,7 @@ namespace TextRPG_TeamSix.Scenes
 
                     Enemy targetEnemy = aliveEnemies[enemySelection];
                     uint damage = currentPlayer.GetNormalAttackDamage();
-                    targetEnemy.TakeDamage(damage);
+                    targetEnemy.Damaged(damage);
 
                     Console.WriteLine($"{targetEnemy.Name}(이)가 {damage} 데미지를 받았다!");
                     InputHelper.WaitResponse();
@@ -207,6 +209,7 @@ namespace TextRPG_TeamSix.Scenes
                     break;
 
             }
+            aliveEnemies = currentDungeon.Enemies.Where(x => x.IsAlive == true).ToList();
             isPlayerTurn = false;
         }
 
@@ -220,10 +223,17 @@ namespace TextRPG_TeamSix.Scenes
             Console.WriteLine();
             Console.WriteLine();
 
-            foreach (Enemy enemy in currentDungeon.Enemies)
+            foreach (Enemy enemy in aliveEnemies)
             {
                 uint damage = enemy.GetNormalAttackDamage();
-                currentPlayer.TakeDamage(damage);
+                currentPlayer.Damaged(damage);
+                if(currentPlayer.HP <= 0)
+                {
+                    Console.WriteLine("죽었다....");
+                    InputHelper.WaitResponse();
+
+                    SceneManager.Instance.SetScene(SceneType.Main);
+                }
 
                 Console.WriteLine($"{enemy.Name}으로부터 {damage} 데미지를 받았다!");
                 InputHelper.WaitResponse();

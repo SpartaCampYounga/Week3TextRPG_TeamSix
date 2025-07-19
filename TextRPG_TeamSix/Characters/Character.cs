@@ -51,21 +51,21 @@ namespace TextRPG_TeamSix.Characters
             this.MaxHP = maxHp;
             this.MaxMP = maxMp;
         }
-        public void TakeDamage(uint damage)
-        {
-            HP = Math.Max(0, HP > damage ? HP - damage : 0);
-            IsAlive = HP > 0;
-            if (IsAlive == false && this is Enemy enemy)
-            {
-                foreach (Quest quest in PlayerManager.Instance.AcceptedQuestList)
-                {
-                    if (quest.QuestType == Enums.QuestType.Enemy && quest.GoalId == enemy.Id)
-                    {
-                        quest.CountGoal();
-                    }
-                }
-            }
-        }
+        //public void TakeDamage(uint damage)
+        //{
+        //    HP = Math.Max(0, HP > damage ? HP - damage : 0);
+        //    IsAlive = HP > 0;
+        //    if (IsAlive == false && this is Enemy enemy)
+        //    {
+        //        foreach (Quest quest in PlayerManager.Instance.AcceptedQuestList)
+        //        {
+        //            if (quest.QuestType == Enums.QuestType.Enemy && quest.GoalId == enemy.Id)
+        //            {
+        //                quest.CountGoal();
+        //            }
+        //        }
+        //    }
+        //}
 
         //스킬 구현 
         public void ConsumeMP(uint MP)
@@ -92,16 +92,6 @@ namespace TextRPG_TeamSix.Characters
                 HP -= damage;
             }
         }
-        public uint GetNormalAttackDamage()
-        {
-            if (Attack == 0)
-            { return 0; }
-            //10퍼 오차 //Percent
-            int min = (int)Math.Ceiling(Attack * 0.9f);
-            int max = (int)Math.Ceiling(Attack * 1.1f);
-
-            Random random = new Random();
-            return (uint)random.Next(min, max + 1);
-        }
+        public abstract uint GetNormalAttackDamage();
     }
 }

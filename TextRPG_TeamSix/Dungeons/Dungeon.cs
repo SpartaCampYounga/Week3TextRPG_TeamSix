@@ -94,7 +94,7 @@ namespace TextRPG_TeamSix.Dungeons
 
             public void OrderEnemiesByIsAlive()
             {
-                Enemies = Enemies.OrderByDescending(x => x.IsAlive).ToList();
+                Enemies = Enemies.OrderBy(x => x.IsAlive).ToList();
             }
     }
 }

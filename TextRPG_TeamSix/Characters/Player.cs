@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Reflection.Emit;
@@ -113,7 +114,7 @@ namespace TextRPG_TeamSix.Characters
             string display = "";
             display += FormatUtility.AlignLeftWithPadding($"{Name}의 현재 상태", 17) + "   ";
             display += FormatUtility.AlignLeftWithPadding($"HP : {HP} / {MaxHP}   ", 10);
-            display += FormatUtility.AlignLeftWithPadding($"MP : {HP} / {MaxHP}   ", 10);
+            display += FormatUtility.AlignLeftWithPadding($"MP : {MP} / {MaxMP}   ", 10);
             return display;
         }
 
@@ -277,6 +278,19 @@ namespace TextRPG_TeamSix.Characters
         public void Rename(string newName)
         {
             Name = newName;
+        }
+
+        public override uint GetNormalAttackDamage()
+        {
+
+            if (GetTotalAttack() == 0)
+            { return 0; }
+            //10퍼 오차 //Percent
+            int min = (int)Math.Ceiling(GetTotalAttack() * 0.9f);
+            int max = (int)Math.Ceiling(GetTotalAttack() * 1.1f);
+
+            Random random = new Random();
+            return (uint)random.Next(min, max + 1);
         }
 
         public void Clone(Player player)

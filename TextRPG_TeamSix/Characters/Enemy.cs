@@ -106,11 +106,21 @@ namespace TextRPG_TeamSix.Characters
             
             return display;
         }
+        public override uint GetNormalAttackDamage()
+        {
+            if (Attack == 0)
+            { return 0; }
+            //10퍼 오차 //Percent
+            int min = (int)Math.Ceiling(Attack * 0.9f);
+            int max = (int)Math.Ceiling(Attack * 1.1f);
 
+            Random random = new Random();
+            return (uint)random.Next(min, max + 1);
+        }
         public override void Damaged(uint damage)
         {
             base.Damaged(damage);
-            if (IsAlive == true && this is Enemy enemy)
+            if (IsAlive == false && this is Enemy enemy)
             {
                 foreach (Quest quest in PlayerManager.Instance.AcceptedQuestList)
                 {
