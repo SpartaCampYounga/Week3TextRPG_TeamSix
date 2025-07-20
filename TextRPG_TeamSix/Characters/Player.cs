@@ -155,8 +155,8 @@ namespace TextRPG_TeamSix.Characters
         }
         public void LevelUp()
         {
-            this.Attack += 10;
-            this.Defense += 10;
+            this.Attack += 2;
+            this.Defense += 1;
             this.Luck++;
             this.MaxHP += 10;
             this.MaxMP += 10;
@@ -301,18 +301,18 @@ namespace TextRPG_TeamSix.Characters
             Name = newName;
         }
 
-        public override uint GetNormalAttackDamage()
-        {
+        //public override uint GetNormalAttackDamage()
+        //{
 
-            if (GetTotalAttack() == 0)
-            { return 0; }
-            //10퍼 오차 //Percent
-            int min = (int)Math.Ceiling(GetTotalAttack() * 0.9f);
-            int max = (int)Math.Ceiling(GetTotalAttack() * 1.1f);
+        //    if (GetTotalAttack() == 0)
+        //    { return 0; }
+        //    //10퍼 오차 //Percent
+        //    int min = (int)Math.Ceiling(GetTotalAttack() * 0.9f);
+        //    int max = (int)Math.Ceiling(GetTotalAttack() * 1.1f);
 
-            Random random = new Random();
-            return (uint)random.Next(min, max + 1);
-        }
+        //    Random random = new Random();
+        //    return (uint)random.Next(min, max + 1);
+        //}
 
         public void Clone(Player player)
         {

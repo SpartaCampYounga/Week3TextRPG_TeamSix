@@ -124,7 +124,7 @@ namespace TextRPG_TeamSix.Scenes
                     enemySelection = DisplayBattleInformation(true, aliveEnemies);
 
                     Enemy targetEnemy = aliveEnemies[enemySelection];
-                    uint damage = currentPlayer.GetNormalAttackDamage();
+                    uint damage = currentPlayer.GetNormalAttackDamage(targetEnemy);
                     targetEnemy.Damaged(damage);
 
                     Console.WriteLine($"{targetEnemy.Name}(이)가 {damage} 데미지를 받았다!");
@@ -226,7 +226,7 @@ namespace TextRPG_TeamSix.Scenes
 
             foreach (Enemy enemy in aliveEnemies)
             {
-                uint damage = enemy.GetNormalAttackDamage();
+                uint damage = enemy.GetNormalAttackDamage(currentPlayer);
                 currentPlayer.Damaged(damage);
                 if(currentPlayer.HP <= 0)
                 {

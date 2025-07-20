@@ -95,6 +95,21 @@ namespace TextRPG_TeamSix.Characters
                 HP -= damage;
             }
         }
-        public abstract uint GetNormalAttackDamage();
+        public uint GetNormalAttackDamage(Character opponent)
+        {
+            if (Attack == 0)
+            {
+                return 0;
+            }
+
+            int min = (int)Math.Ceiling(Attack * 0.9f);
+            int max = (int)Math.Ceiling(Attack * 1.1f);
+
+            Random random = new Random();
+            int rawDamage = random.Next(min, max + 1);
+
+            double reducedDamage = rawDamage * (100.0 / (100 + opponent.Defense));
+           return (uint)Math.Ceiling(reducedDamage);
+        }
     }
 }

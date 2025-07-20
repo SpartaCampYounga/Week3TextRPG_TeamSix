@@ -17,30 +17,30 @@ namespace TextRPG_TeamSix.Characters
     internal class Enemy : Character
     {
         public EnemyType EnemyType { get; set; }
-        public Enemy(uint id, string name, EnemyType enemyType) : base(name)
-        {
-            EnemyType = enemyType;
-            Id = id;
-            switch (EnemyType)
-            {
-                case EnemyType.Type1:
-                    HP = 100;
-                    MP = 300;
-                    MaxHP = HP;
-                    MaxMP = MP;
-                    Attack = 10;
-                    Defense = 10;
-                    break;
-                case EnemyType.Type2:
-                    HP = 300;
-                    MP = 100;
-                    MaxHP = HP;
-                    MaxMP = MP;
-                    Attack = 10;
-                    Defense = 10;
-                    break;
-            }
-        }
+        //public Enemy(uint id, string name, EnemyType enemyType) : base(name)
+        //{
+        //    EnemyType = enemyType;
+        //    Id = id;
+        //    switch (EnemyType)
+        //    {
+        //        case EnemyType.Type1:
+        //            HP = 100;
+        //            MP = 300;
+        //            MaxHP = HP;
+        //            MaxMP = MP;
+        //            Attack = 10;
+        //            Defense = 10;
+        //            break;
+        //        case EnemyType.Type2:
+        //            HP = 300;
+        //            MP = 100;
+        //            MaxHP = HP;
+        //            MaxMP = MP;
+        //            Attack = 10;
+        //            Defense = 10;
+        //            break;
+        //    }
+        //}
         protected Enemy() { }
         public Enemy CreateInstance()
         {
@@ -106,22 +106,28 @@ namespace TextRPG_TeamSix.Characters
             
             return display;
         }
-        public override uint GetNormalAttackDamage()
-        {
-            if (Attack == 0)
-            { return 0; }
-            //10퍼 오차 //Percent
-            int min = (int)Math.Ceiling(Attack * 0.9f);
-            int max = (int)Math.Ceiling(Attack * 1.1f);
+        //public override uint GetNormalAttackDamage()
+        //{
+        //    if (Attack == 0)
+        //    { return 0; }
+        //    //10퍼 오차 //Percent
+        //    int min = (int)Math.Ceiling(Attack * 0.9f);
+        //    int max = (int)Math.Ceiling(Attack * 1.1f);
 
-            Random random = new Random();
-            return (uint)random.Next(min, max + 1);
-        }
+        //    Random random = new Random();
+        //    return (uint)random.Next(min, max + 1);
+        //}
         public override void Damaged(uint damage)
         {
             base.Damaged(damage);
             if (IsAlive == false && this is Enemy enemy)
             {
+                //죽었을 때 플레이어에게 경험치 보상
+                uint playerLuck = PlayerManager.Instance.CurrentPlayer.Luck;
+                uint expReward = GetExpReward(playerLuck);
+                PlayerManager.Instance.CurrentPlayer.EarnExp(expReward);
+
+                //퀘스트 카운트
                 foreach (Quest quest in PlayerManager.Instance.AcceptedQuestList)
                 {
                     if (quest.QuestType == Enums.QuestType.Enemy && quest.GoalId == enemy.Id)
@@ -132,5 +138,15 @@ namespace TextRPG_TeamSix.Characters
             }
         }
 
+        public uint GetExpReward(uint playerLuck)
+        {
+            double baseExp = HP + Attack * 2 + Defense * 2;
+
+            //플레이어 행운치 보정
+            double luckBonusRatio = Math.Min(playerLuck, 100) * 0.0015; // 최대 15% 보정
+
+            double totalExp = baseExp * (1 + luckBonusRatio);
+            return (uint)Math.Ceiling(totalExp);
+        }
     }
 }

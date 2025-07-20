@@ -8,7 +8,12 @@ namespace TextRPG_TeamSix.Enums
 {
     internal enum EnemyType
     {
-        Type1,
-        Type2
+        Slime,
+        Goblin,
+        Werewolf,
+        Ogre,
+        Skeleton,
+        Succubus,
+        Dragon
     }
 }
