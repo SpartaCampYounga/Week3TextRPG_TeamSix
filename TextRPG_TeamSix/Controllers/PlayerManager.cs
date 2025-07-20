@@ -11,6 +11,7 @@ using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Scenes;
+using TextRPG_TeamSix.Stores;
 using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Controllers
@@ -23,7 +24,9 @@ namespace TextRPG_TeamSix.Controllers
         public List<uint> ClearedDungeonList { get; private set;}
         public List<Quest> AcceptedQuestList { get; private set; }
         public Dictionary<EquipSlot, EquipItem> EquipmentList { get; private set; }
-        public Dungeon CurrentDungeon { get; set; } //전투 중에만 활성화되고 SaveData에 저장되지 않으므로 public set
+
+        public Dungeon CurrentDungeon { get; set; } //전투 중에만 사용되고 SaveData에 저장되지 않으므로 public set
+        public Store CurrentStore { get; set; } //상점 진입 시에만 사용되고 SaveData에 저장되지 않으므로 public set
         private PlayerManager()
         {
             CurrentPlayer = new Player("PlayerManager", JobType.Warrior);

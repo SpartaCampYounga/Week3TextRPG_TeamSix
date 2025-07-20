@@ -22,11 +22,8 @@ namespace TextRPG_TeamSix.Scenes
         Player player = PlayerManager.Instance.CurrentPlayer;
 
         int input;
-
-        
         public override void DisplayScene() //출력 하는 시스템
         {
-
             //Console.Clear();
             ////Console.ForegroundColor = ConsoleColor.Green;
             //Console.WriteLine("╔══════════════════════════════════════╗");

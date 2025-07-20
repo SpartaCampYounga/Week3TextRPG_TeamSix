@@ -49,8 +49,14 @@ namespace TextRPG_TeamSix.Scenes
             //Console.WriteLine("╔══════════════════════════════════════╗");
             //Console.WriteLine("║               상   점                ║");
             //Console.WriteLine("╚══════════════════════════════════════╝");
-
-            FormatUtility.DisplayHeader("상점에서 물건을 구매할 수 있습니다");
+            if(!isSpecial)
+            {
+                FormatUtility.DisplayHeader("상점에서 물건을 구매할 수 있습니다");
+            }
+            else
+            {
+                FormatUtility.DisplayHeader("특별한 물건을 구매할 수 있습니다", ConsoleColor.DarkMagenta);
+            }
             Console.SetCursorPosition(0, Console.CursorTop - 1);
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(FormatUtility.AlignCenterWithPadding($"보유 골드: {player.Gold} G", Console.WindowWidth - 6));
@@ -142,7 +148,14 @@ namespace TextRPG_TeamSix.Scenes
             {
                 case -1:
                 case -2:
-                    SceneManager.Instance.SetScene(SceneType.Store);
+                    if(!isSpecial)
+                    {
+                        SceneManager.Instance.SetScene(SceneType.Store);
+                    }
+                    else
+                    {
+                        SceneManager.Instance.SetScene(SceneType.Main);
+                    }
                     break;
                 default:
                     //구매 로직

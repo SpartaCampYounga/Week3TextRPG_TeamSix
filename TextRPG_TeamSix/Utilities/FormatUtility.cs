@@ -53,6 +53,21 @@ namespace TextRPG_TeamSix.Utilities
             Console.WriteLine();
             Console.WriteLine();
         }
+        public static void DisplayHeader(string title, ConsoleColor consoleColor)
+        {
+            Console.Clear();
+            Console.WriteLine();
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.ForegroundColor = consoleColor;
+            Console.WriteLine("  ╔" + new string('═', Console.WindowWidth - 6) + "╗");
+            Console.WriteLine("  ║" + new string(' ', Console.WindowWidth - 6) + "║");
+            Console.WriteLine("  ║" + FormatUtility.AlignCenterWithPadding(title, Console.WindowWidth - 6) + "║");
+            Console.WriteLine("  ║" + new string(' ', Console.WindowWidth - 6) + "║");
+            Console.WriteLine("  ╚" + new string('═', Console.WindowWidth - 6) + "╝");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine();
+        }
 
     }
 }

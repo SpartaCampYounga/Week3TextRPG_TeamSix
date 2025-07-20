@@ -48,6 +48,9 @@ namespace TextRPG_TeamSix.Scenes
             //모두 죽여서 탈출 보상 받아야함.
             GetDungeonClearReward();
 
+            //스페셜 상점
+
+
             SceneManager.Instance.SetScene(SceneType.Main);
         }
 
