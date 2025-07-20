@@ -67,18 +67,18 @@ namespace TextRPG_TeamSix.Controllers
                 }
                 //Console.WriteLine($"PlayerManager AcceptedQuestList Count: {this.AcceptedQuestList.Count}");
                 //InputHelper.WaitResponse();
-                Console.WriteLine($"In SaveManager EquipList null" + SaveManager.Instance.SaveData.EquipmentList.Values == null);
+                //Console.WriteLine($"In SaveManager EquipList null" + SaveManager.Instance.SaveData.EquipmentList.Values == null);
                 foreach(EquipItem equipItem in SaveManager.Instance.SaveData.EquipmentList.Values)
                 {
-                    Console.WriteLine($"In SaveManager EquipItem null " + equipItem);
+                    //Console.WriteLine($"In SaveManager EquipItem null " + equipItem);
                     EquipItem temp = (EquipItem)equipItem.CreateInstance();
                     temp.Clone(equipItem);
                     this.EquipmentList.Add(temp.EquipSlot, temp);
                 }
                 //Dictionary<EquipSlot, EquipItem> EquipmentList
                 Console.WriteLine("플레이어 데이터를 불러왔습니다.");
-                Console.WriteLine($"불러온 플레이어 이름: {SaveManager.Instance.SaveData.PlayerSave.Name}");
-                Console.WriteLine($"CurrentPlayer 이름: {CurrentPlayer.Name}");
+                //Console.WriteLine($"불러온 플레이어 이름: {SaveManager.Instance.SaveData.PlayerSave.Name}");
+                //Console.WriteLine($"CurrentPlayer 이름: {CurrentPlayer.Name}");
                 return true;
             }
             else

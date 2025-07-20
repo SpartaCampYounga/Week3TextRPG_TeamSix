@@ -82,7 +82,7 @@ namespace TextRPG_TeamSix.Characters
             uint level
         ) : base(name)
         {
-            Console.WriteLine("Player 역직렬화 생성자");
+            //Console.WriteLine("Player 역직렬화 생성자");
             this.Id = id;
             this.Name = name;
             this.HP = hp;
@@ -336,11 +336,11 @@ namespace TextRPG_TeamSix.Characters
         public void Clone(Player player)
         {
             this.Id = player.Id;
-            Console.WriteLine(Name);
-            Console.WriteLine(player.Name);
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
             this.Name = player.Name;
-            Console.WriteLine(Name);
-            Console.WriteLine(player.Name);
+            //Console.WriteLine(Name);
+            //Console.WriteLine(player.Name);
             this.HP = player.HP;
             this.MP = player.MP;
             this.MaxHP = player.MaxHP;

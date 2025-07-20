@@ -187,6 +187,18 @@ namespace TextRPG_TeamSix.Scenes
 
                 Console.WriteLine("현재 사용할 수 있는 스킬들이다..");
                 Console.WriteLine();
+                //테이블 헤더
+                string header = "  ";
+                Console.WriteLine(new string('═', Console.WindowWidth));
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 30) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("소모MP", 7) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("스킬석", 7) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("스킬타입", 10) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("효과량", 7) + " ┊ ";
+                Console.WriteLine(header);
+                Console.WriteLine(new string('═', Console.WindowWidth));
+
                 int skillSelection = TextDisplayer.SelectNavigation(currentSkills);
                 if (skillSelection == -1)
                 {
@@ -213,6 +225,8 @@ namespace TextRPG_TeamSix.Scenes
                     }
                     else
                     {
+                        FormatUtility.DisplayHeader(title);
+
                         enemySelection = DisplayBattleInformation(true, aliveEnemies);
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine($"{aliveEnemies[enemySelection].Name}에게 스킬을 사용했다.");
@@ -237,7 +251,16 @@ namespace TextRPG_TeamSix.Scenes
             else
             {
                 Console.WriteLine("현재 사용할 수 있는 아이템들이다.. ");
-                Console.WriteLine();
+                //테이블 헤더
+                string header = "      ";
+                Console.WriteLine(new string('═', Console.WindowWidth));
+                header += FormatUtility.AlignLeftWithPadding("이름", 15) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("설명", 50) + " | ";
+                header += FormatUtility.AlignLeftWithPadding("효과", 20) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("금액" + " G", 8);
+                Console.WriteLine(header);
+                Console.WriteLine(new string('═', Console.WindowWidth));
+
                 int itemSelection = TextDisplayer.SelectNavigation(consumables);
                 if (itemSelection == -1)
                 {   //선택안하고 뒤로 돌아오면 다른 선택지..

@@ -85,6 +85,16 @@ namespace TextRPG_TeamSix.Characters
         }
         public virtual void Damaged(uint damage)
         {
+            Random random = new Random();
+
+            if (random.Next(1,101) <= 15)    //15퍼 확률로 치명타 발동
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("치명타!!!");
+                Console.ResetColor();
+                damage = (uint)(damage * 1.6f);
+                Console.WriteLine($"데미지가 160%로 증가되어 {damage}가 되었습니다.");
+            }
             if (HP <= damage)
             {
                 HP = 0;
@@ -97,15 +107,21 @@ namespace TextRPG_TeamSix.Characters
         }
         public uint GetNormalAttackDamage(Character opponent)
         {
+            Random random = new Random();
+
             if (Attack == 0)
             {
                 return 0;
             }
 
+            if(random.Next(1,101) <= 10)
+            {
+                Console.WriteLine($"{opponent.Name}(은)는 회피했다!");
+                return 0;  // (회피)
+            }
             int min = (int)Math.Ceiling(Attack * 0.9f);
             int max = (int)Math.Ceiling(Attack * 1.1f);
 
-            Random random = new Random();
             int rawDamage = random.Next(min, max + 1);
 
             double reducedDamage = rawDamage * (100.0 / (100 + opponent.Defense));

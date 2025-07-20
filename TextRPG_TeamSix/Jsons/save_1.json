@@ -2,7 +2,7 @@
   "$type": "TextRPG_TeamSix.Controllers.SaveData, TextRPG_TeamSix",
   "PlayerSave": {
     "$type": "TextRPG_TeamSix.Characters.Player, TextRPG_TeamSix",
-    "JobType": "Warrior",
+    "JobType": "Magician",
     "Inventory": {
       "$type": "TextRPG_TeamSix.Characters.Inventory, TextRPG_TeamSix",
       "ItemList": {
@@ -14,15 +14,15 @@
     "Gold": 1000,
     "Exp": 0,
     "Level": 1,
-    "Id": 3,
+    "Id": 1,
     "Name": "1",
-    "HP": 300,
-    "MP": 100,
+    "HP": 100,
+    "MP": 300,
     "Attack": 10,
     "Defense": 5,
     "Luck": 0,
-    "MaxHP": 300,
-    "MaxMP": 100,
+    "MaxHP": 100,
+    "MaxMP": 300,
     "SkillList": {
       "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
       "$values": []

@@ -40,7 +40,7 @@ namespace TextRPG_TeamSix.Items
                     display += FormatUtility.AlignLeftWithPadding("마나 회복 +" + RestoreAmount, 20) + " ┊ ";
                     break;
                 case RestoreType.All:
-                    display += FormatUtility.AlignLeftWithPadding("체력과 마나 회복 +" + RestoreAmount, 20) + " ┊ ";
+                    display += FormatUtility.AlignLeftWithPadding("체력&마나 회복 +" + RestoreAmount, 20) + " ┊ ";
                     break;
             }
             display += FormatUtility.AlignLeftWithPadding(Price.ToString() + " G", 8);
