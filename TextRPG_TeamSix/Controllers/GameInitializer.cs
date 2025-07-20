@@ -41,7 +41,8 @@ namespace TextRPG_TeamSix.Controllers
             new SpecialStoreScene(),
             new SpecialStoreEnterScene(),
             new StoreScene(),
-            new StoreSellScene()
+            new StoreSellScene(),
+            new RestScene()
         };
 
         private static Skill[] _skills =

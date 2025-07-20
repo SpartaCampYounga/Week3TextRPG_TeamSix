@@ -120,6 +120,21 @@ namespace TextRPG_TeamSix.Characters
         {
             this.Gold += gold;
         }
+        public bool SpendGold(uint gold)
+        {
+            if (this.Gold < gold)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("골드가 부족합니다.");
+                Console.ResetColor();
+                InputHelper.WaitResponse();
+                return false;
+            }
+            {
+                this.Gold -= gold;
+                return true;
+            }
+        }
         public void EarnExp(uint exp)
         {
             this.Exp += exp;

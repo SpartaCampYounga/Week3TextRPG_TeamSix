@@ -1,0 +1,146 @@
+{
+  "$type": "TextRPG_TeamSix.Controllers.SaveData, TextRPG_TeamSix",
+  "PlayerSave": {
+    "$type": "TextRPG_TeamSix.Characters.Player, TextRPG_TeamSix",
+    "JobType": "Magician",
+    "Inventory": {
+      "$type": "TextRPG_TeamSix.Characters.Inventory, TextRPG_TeamSix",
+      "ItemList": {
+        "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+        "$values": [
+          {
+            "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+            "RestoreType": "Health",
+            "RestoreAmount": 60,
+            "Id": 1,
+            "Name": "소형 회복물약",
+            "Description": "작은 체력을 회복합니다",
+            "Price": 50,
+            "Type": "Consumable",
+            "IsSpecialItem": false
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+            "Ability": "Attack",
+            "Enhancement": 4,
+            "EquipSlot": "Weapon",
+            "Id": 5,
+            "Name": "나무검",
+            "Description": "가볍고 약한 검입니다.",
+            "Price": 80,
+            "Type": "Weapon",
+            "IsSpecialItem": false
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+            "Ability": "Defense",
+            "Enhancement": 8,
+            "EquipSlot": "Armor",
+            "Id": 13,
+            "Name": "강철갑옷",
+            "Description": "단단한 금속 갑옷 입니다.",
+            "Price": 500,
+            "Type": "Armor",
+            "IsSpecialItem": false
+          }
+        ]
+      }
+    },
+    "NumOfStones": 88,
+    "Gold": 1000,
+    "Exp": 7,
+    "Level": 4,
+    "Id": 1,
+    "Name": "new",
+    "HP": 130,
+    "MP": 330,
+    "Attack": 16,
+    "Defense": 8,
+    "Luck": 3,
+    "MaxHP": 130,
+    "MaxMP": 330,
+    "SkillList": {
+      "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Skills.Skill, TextRPG_TeamSix]], System.Private.CoreLib",
+      "$values": [
+        {
+          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+          "Id": 1,
+          "Name": "후려치기",
+          "Description": "강하게 후려칩니다.",
+          "ConsumeMP": 5,
+          "RequiredStones": 1,
+          "SkillType": "Attack",
+          "Amount": 10
+        },
+        {
+          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+          "Id": 2,
+          "Name": "스매시",
+          "Description": "강하게 내려칩니다.",
+          "ConsumeMP": 10,
+          "RequiredStones": 3,
+          "SkillType": "Attack",
+          "Amount": 20
+        },
+        {
+          "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+          "Id": 3,
+          "Name": "파이어볼",
+          "Description": "불을 소환합니다.",
+          "ConsumeMP": 20,
+          "RequiredStones": 3,
+          "SkillType": "Attack",
+          "Amount": 30
+        },
+        {
+          "$type": "TextRPG_TeamSix.Skills.HealSkill, TextRPG_TeamSix",
+          "Id": 4,
+          "Name": "치료하기",
+          "Description": "HP를 회복합니다.",
+          "ConsumeMP": 30,
+          "RequiredStones": 5,
+          "SkillType": "Heal",
+          "Amount": 30
+        }
+      ]
+    },
+    "IsAlive": true
+  },
+  "ClearedDungeonList": {
+    "$type": "System.Collections.Generic.List`1[[System.UInt32, System.Private.CoreLib]], System.Private.CoreLib",
+    "$values": [
+      1
+    ]
+  },
+  "AcceptedQuestList": {
+    "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix]], System.Private.CoreLib",
+    "$values": []
+  },
+  "EquipmentList": {
+    "$type": "System.Collections.Generic.Dictionary`2[[TextRPG_TeamSix.Enums.EquipSlot, TextRPG_TeamSix],[TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix]], System.Private.CoreLib",
+    "Weapon": {
+      "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+      "Ability": "Attack",
+      "Enhancement": 4,
+      "EquipSlot": "Weapon",
+      "Id": 5,
+      "Name": "나무검",
+      "Description": "가볍고 약한 검입니다.",
+      "Price": 80,
+      "Type": "Weapon",
+      "IsSpecialItem": false
+    },
+    "Armor": {
+      "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+      "Ability": "Defense",
+      "Enhancement": 8,
+      "EquipSlot": "Armor",
+      "Id": 13,
+      "Name": "강철갑옷",
+      "Description": "단단한 금속 갑옷 입니다.",
+      "Price": 500,
+      "Type": "Armor",
+      "IsSpecialItem": false
+    }
+  }
+}

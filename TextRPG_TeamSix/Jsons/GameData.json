@@ -70,6 +70,10 @@
       {
         "$type": "TextRPG_TeamSix.Scenes.StoreSellScene, TextRPG_TeamSix",
         "SceneType": "StoreSell"
+      },
+      {
+        "$type": "TextRPG_TeamSix.Scenes.RestScene, TextRPG_TeamSix",
+        "SceneType": "Rest"
       }
     ]
   },

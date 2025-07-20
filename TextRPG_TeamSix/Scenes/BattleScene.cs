@@ -37,7 +37,9 @@ namespace TextRPG_TeamSix.Scenes
             {
                 if (isPlayerTurn)
                 {
-                    PlayerTurn();
+                    PlayerTurn(); 
+                    if (SceneManager.Instance.CurrentScene.SceneType != SceneType.Battle)
+                        return;
                 }
                 else
                 {
@@ -52,6 +54,7 @@ namespace TextRPG_TeamSix.Scenes
 
 
             SceneManager.Instance.SetScene(SceneType.Main);
+            return;
         }
 
         public override void HandleInput()
@@ -138,7 +141,7 @@ namespace TextRPG_TeamSix.Scenes
                     Console.WriteLine("이건 그냥 후퇴가 아니다. 이보 전진을 위한 일보 후퇴일 뿐이다..");
                     InputHelper.WaitResponse();
                     SceneManager.Instance.SetScene(SceneType.Dungeon);
-                    break;
+                    return;
 
             }
             aliveEnemies = currentDungeon.Enemies.Where(x => x.IsAlive == true).ToList();
@@ -273,6 +276,7 @@ namespace TextRPG_TeamSix.Scenes
                     InputHelper.WaitResponse();
 
                     SceneManager.Instance.SetScene(SceneType.Main);
+                    return;
                 }
 
                 InputHelper.WaitResponse();
@@ -302,6 +306,7 @@ namespace TextRPG_TeamSix.Scenes
             //던전 보상
             currentPlayer.EarnGold(currentDungeon.RewardGold);
             currentPlayer.EarnExp(currentDungeon.RewardExp);
+
             if (currentDungeon.RewardGatcha != null)
             {   //현재 소지중인 아이템과 중복하여 획득할 수 있는 상황... =>  처리함.
 

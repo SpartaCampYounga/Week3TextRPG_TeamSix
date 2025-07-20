@@ -24,9 +24,10 @@ namespace TextRPG_TeamSix.Controllers
         public List<uint> ClearedDungeonList { get; private set;}
         public List<Quest> AcceptedQuestList { get; private set; }
         public Dictionary<EquipSlot, EquipItem> EquipmentList { get; private set; }
-
-        public Dungeon CurrentDungeon { get; set; } //전투 중에만 사용되고 SaveData에 저장되지 않으므로 public set
-        public Store CurrentStore { get; set; } //상점 진입 시에만 사용되고 SaveData에 저장되지 않으므로 public set
+        //전투 중에만 사용되고 SaveData에 저장되지 않으므로 public set
+        public Dungeon CurrentDungeon { get; set; }
+        //상점 진입 시에만 사용되고 SaveData에 저장되지 않으므로 public set
+        public Store CurrentStore { get; set; } 
         private PlayerManager()
         {
             CurrentPlayer = new Player("PlayerManager", JobType.Warrior);

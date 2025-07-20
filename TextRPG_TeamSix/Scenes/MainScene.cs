@@ -88,7 +88,7 @@ namespace TextRPG_TeamSix.Scenes
                     SceneManager.Instance.SetScene(SceneType.Dungeon);
                     break;
                 case 4:
-                    //SceneManager.Instance.SetScene(SceneType.Dungeon); //휴식
+                    SceneManager.Instance.SetScene(SceneType.Rest); //휴식
                     break;
                 case 5:
                     SaveManager.Instance.SaveGame();
