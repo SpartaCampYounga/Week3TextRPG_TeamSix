@@ -87,8 +87,6 @@ namespace TextRPG_TeamSix.Characters
             this.Name = name;
             this.HP = hp;
             this.MP = mp;
-            this.MaxHP = hp;
-            this.MaxMP = mp;
             this.Attack = attack;
             this.Defense = defense;
             this.Luck = luck;
@@ -137,7 +135,10 @@ namespace TextRPG_TeamSix.Characters
                     this.Exp -= requiredExp;
                     uint previousLevel = this.Level;
                     this.Level++;
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.WriteLine($"레벨이 증가하여 {previousLevel}이 {this.Level} 되었다!");
+                    Console.ResetColor();
                     LevelUp();
                 }
                 else
@@ -168,7 +169,10 @@ namespace TextRPG_TeamSix.Characters
             Console.WriteLine($"행운이 증가하여 {this.Level} 되었다!");
             Console.WriteLine($"최대체력이 증가하여 {this.Level} 되었다!");
             Console.WriteLine($"최대마나가 증가하여 {this.Level} 되었다!");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("레벨업 보너스로 체력과 마나가 완전히 회복되었다!");
+            Console.ResetColor();
         }
         public uint GetTotalAttack()
         {
@@ -337,6 +341,9 @@ namespace TextRPG_TeamSix.Characters
             JobType = player.JobType;
             Inventory.Clone(player.Inventory);
             NumOfStones = player.NumOfStones;
+            this.Gold = player.Gold;
+            this.Exp = player.Exp;
+            this.Level = player.Level;
         }
     }
 }

@@ -122,6 +122,8 @@ namespace TextRPG_TeamSix.Characters
             base.Damaged(damage);
             if (IsAlive == false && this is Enemy enemy)
             {
+                Console.WriteLine();
+                Console.WriteLine($"{Name}이(가) 쓰러졌습니다!");
                 //죽었을 때 플레이어에게 경험치 보상
                 uint playerLuck = PlayerManager.Instance.CurrentPlayer.Luck;
                 uint expReward = GetExpReward(playerLuck);

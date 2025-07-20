@@ -53,12 +53,24 @@
             "Price": 100,
             "Type": "Consumable",
             "IsSpecialItem": false
+          },
+          {
+            "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+            "Ability": "Attack",
+            "Enhancement": 10,
+            "EquipSlot": "Weapon",
+            "Id": 7,
+            "Name": "철검",
+            "Description": "무딘감 이 있지만 꽤 강한 검입니다.",
+            "Price": 1000,
+            "Type": "Weapon",
+            "IsSpecialItem": false
           }
         ]
       }
     },
     "NumOfStones": 88,
-    "Gold": 268,
+    "Gold": 0,
     "Exp": 0,
     "Level": 1,
     "Id": 3,
@@ -123,19 +135,80 @@
   },
   "AcceptedQuestList": {
     "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix]], System.Private.CoreLib",
-    "$values": []
+    "$values": [
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 1,
+        "QuestType": "Enemy",
+        "Description": "고블린 3마리를 처치하세요.",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 3,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 2,
+        "QuestType": "Enemy",
+        "Description": "슬라임 5마리를 처치하세요.",
+        "RewardGold": 200,
+        "RewardExp": 20,
+        "GoalId": 2,
+        "GoalCount": 5,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 3,
+        "QuestType": "Dungeon",
+        "Description": "Easy 던전을 클리어하세요",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 4,
+        "QuestType": "Dungeon",
+        "Description": "Normal 던전을 클리어하세요",
+        "RewardGold": 300,
+        "RewardExp": 30,
+        "GoalId": 2,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Quests.Quest, TextRPG_TeamSix",
+        "Id": 5,
+        "QuestType": "Enemy",
+        "Description": "고블린 1마리를 처치하세요.",
+        "RewardGold": 100,
+        "RewardExp": 10,
+        "GoalId": 1,
+        "GoalCount": 1,
+        "Count": 0,
+        "IsFinished": false
+      }
+    ]
   },
   "EquipmentList": {
     "$type": "System.Collections.Generic.Dictionary`2[[TextRPG_TeamSix.Enums.EquipSlot, TextRPG_TeamSix],[TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix]], System.Private.CoreLib",
     "Weapon": {
       "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
       "Ability": "Attack",
-      "Enhancement": 5,
+      "Enhancement": 10,
       "EquipSlot": "Weapon",
-      "Id": 4,
-      "Name": "녹슨검",
-      "Description": "낡았습니다",
-      "Price": 200,
+      "Id": 7,
+      "Name": "철검",
+      "Description": "무딘감 이 있지만 꽤 강한 검입니다.",
+      "Price": 1000,
       "Type": "Weapon",
       "IsSpecialItem": false
     },

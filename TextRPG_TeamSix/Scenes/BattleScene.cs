@@ -44,7 +44,9 @@ namespace TextRPG_TeamSix.Scenes
                     EnemyTurn();
                 }
             };
-            //모두 죽여서 탈출
+
+            //모두 죽여서 탈출 보상 받아야함.
+            GetDungeonClearReward();
 
             SceneManager.Instance.SetScene(SceneType.Main);
         }
@@ -53,7 +55,7 @@ namespace TextRPG_TeamSix.Scenes
         {
             throw new NotImplementedException();
         }
-        public int DisplayBattleInformation(bool selectingEnemies, List<Enemy> aliveEnemies)  //아.. 이거 맘에 안듬...ㅠ 나중에 시간 나면 수정.
+        public int DisplayBattleInformation(bool selectingEnemies, List<Enemy> aliveEnemies)  //아.. 이거 맘에 안듬...ㅠ 나중에 시간 나면 수정하겟슴다.
         {
             int input;
             Console.WriteLine();
@@ -99,7 +101,9 @@ namespace TextRPG_TeamSix.Scenes
             DisplayBattleInformation(false, currentDungeon.Enemies);
             Console.WriteLine();
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("당신의 차례입니다. ");
+            Console.ResetColor();
             Console.WriteLine();
             Console.WriteLine();
 
@@ -118,89 +122,13 @@ namespace TextRPG_TeamSix.Scenes
             switch (input)
             {
                 case 0: //일반 공격
-                    aliveEnemies = currentDungeon.Enemies.Where(x => x.IsAlive == true).ToList();
-                    currentDungeon.OrderEnemiesByIsAlive();   //죽은 애들 아래로 내리기..
-                    FormatUtility.DisplayHeader(title);
-                    enemySelection = DisplayBattleInformation(true, aliveEnemies);
-
-                    Enemy targetEnemy = aliveEnemies[enemySelection];
-                    uint damage = currentPlayer.GetNormalAttackDamage(targetEnemy);
-                    targetEnemy.Damaged(damage);
-
-                    Console.WriteLine($"{targetEnemy.Name}(이)가 {damage} 데미지를 받았다!");
-                    InputHelper.WaitResponse();
+                    NormalAttackByPlayer();
                     break;
                 case 1: //스킬사용
-                    List<Skill> currentSkills = currentPlayer.SkillList;
-                    if(currentSkills.Count == 0)
-                    {
-                        Console.WriteLine("현재 사용할 수 있는 스킬이 없다..");
-                        InputHelper.WaitResponse();
-                        PlayerTurn();
-                    }
-                    else
-                    {
-                        
-                        Console.WriteLine("현재 사용할 수 있는 스킬들이다..");
-                        Console.WriteLine();
-                        int skillSelection = TextDisplayer.SelectNavigation(currentSkills);
-                        if (skillSelection == -1)
-                        {
-                            //선택안하고 뒤로 돌아오면 다른 선택지..
-                            PlayerTurn();
-                        }
-                        else
-                        {
-                            //몬스터 선택
-                            aliveEnemies = currentDungeon.Enemies.Where(x => x.IsAlive == true).ToList();
-                            currentDungeon.OrderEnemiesByIsAlive();   //죽은 애들 아래로 내리기..
-                            FormatUtility.DisplayHeader(title);
-
-                            enemySelection = DisplayBattleInformation(false, aliveEnemies);
-
-                            Skill selectedSkill = currentSkills[skillSelection];
-
-                            if (selectedSkill is HealSkill healSkill)
-                            {
-                                healSkill.Cast(currentPlayer);
-                                Console.WriteLine();
-                                Console.WriteLine();
-                                Console.WriteLine(healSkill.Name + "을 사용했다.");
-                            }
-                            else
-                            {
-                                enemySelection = DisplayBattleInformation(true, aliveEnemies);
-                                selectedSkill.Cast(aliveEnemies[enemySelection]);
-                                Console.WriteLine($"{aliveEnemies[enemySelection].Name}에게 스킬을 사용했다.");
-                            }
-
-                            InputHelper.WaitResponse();
-                        }
-
-                    }
-                        break;
+                    SkillAttackByPlayer();
+                    break;
                 case 2: //아이템 사용
-                    List<IConsumable> consumables = currentPlayer.Inventory.ItemList.OfType<IConsumable>().ToList(); ;
-                    if (consumables.Count == 0)
-                    {
-                        Console.WriteLine("현재 사용할 수 있는 아이템이 없다.. ");
-                        InputHelper.WaitResponse();
-                        PlayerTurn();
-                    }
-                    else
-                    {
-                        Console.WriteLine("현재 사용할 수 있는 아이템들이다.. ");
-                        Console.WriteLine();
-                        int itemSelection = TextDisplayer.SelectNavigation(consumables);
-                        if (itemSelection == -1)
-                        {   //선택안하고 뒤로 돌아오면 다른 선택지..
-                            PlayerTurn();
-                        }
-                        else
-                        {
-                            consumables[itemSelection].Consume(currentPlayer, currentPlayer.Inventory.ItemList);
-                        }
-                    }
+                    ConsumeItemByPlayer();
                     break;
                 case 3: //도망가기
                 case -1:
@@ -214,21 +142,129 @@ namespace TextRPG_TeamSix.Scenes
             isPlayerTurn = false;
         }
 
+        public void NormalAttackByPlayer()
+        {
+            aliveEnemies = currentDungeon.Enemies.Where(x => x.IsAlive == true).ToList();
+            currentDungeon.OrderEnemiesByIsAlive();   //죽은 애들 아래로 내리기..
+            FormatUtility.DisplayHeader(title);
+            int enemySelection = DisplayBattleInformation(true, aliveEnemies);
+
+            if(enemySelection == -1)
+            {
+                //선택안하고 뒤로 돌아오면 다른 선택지..
+                PlayerTurn();
+                return;
+            }
+
+            Enemy targetEnemy = aliveEnemies[enemySelection];
+            uint damage = currentPlayer.GetNormalAttackDamage(targetEnemy);
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine($"{targetEnemy.Name}(이)가 {damage} 데미지를 받았다!");
+            Console.ResetColor();
+            targetEnemy.Damaged(damage);
+
+            InputHelper.WaitResponse();
+        }
+
+        public void SkillAttackByPlayer()
+        {
+            List<Skill> currentSkills = currentPlayer.SkillList;
+            if (currentSkills.Count == 0)
+            {
+                Console.WriteLine("현재 사용할 수 있는 스킬이 없다..");
+                InputHelper.WaitResponse();
+                PlayerTurn();
+            }
+            else
+            {
+
+                Console.WriteLine("현재 사용할 수 있는 스킬들이다..");
+                Console.WriteLine();
+                int skillSelection = TextDisplayer.SelectNavigation(currentSkills);
+                if (skillSelection == -1)
+                {
+                    //선택안하고 뒤로 돌아오면 다른 선택지..
+                    PlayerTurn();
+                }
+                else
+                {
+                    //몬스터 선택
+                    aliveEnemies = currentDungeon.Enemies.Where(x => x.IsAlive == true).ToList();
+                    currentDungeon.OrderEnemiesByIsAlive();   //죽은 애들 아래로 내리기..
+                    FormatUtility.DisplayHeader(title);
+
+                    int enemySelection = DisplayBattleInformation(false, aliveEnemies);
+
+                    Skill selectedSkill = currentSkills[skillSelection];
+
+                    if (selectedSkill is HealSkill healSkill)
+                    {
+                        healSkill.Cast(currentPlayer);
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine(healSkill.Name + "을 사용했다.");
+                    }
+                    else
+                    {
+                        enemySelection = DisplayBattleInformation(true, aliveEnemies);
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine($"{aliveEnemies[enemySelection].Name}에게 스킬을 사용했다.");
+                        Console.ResetColor();
+                        selectedSkill.Cast(aliveEnemies[enemySelection]);
+                    }
+
+                    InputHelper.WaitResponse();
+                }
+
+            }
+        }
+        public void ConsumeItemByPlayer()
+        {
+            List<IConsumable> consumables = currentPlayer.Inventory.ItemList.OfType<IConsumable>().ToList(); ;
+            if (consumables.Count == 0)
+            {
+                Console.WriteLine("현재 사용할 수 있는 아이템이 없다.. ");
+                InputHelper.WaitResponse();
+                PlayerTurn();
+            }
+            else
+            {
+                Console.WriteLine("현재 사용할 수 있는 아이템들이다.. ");
+                Console.WriteLine();
+                int itemSelection = TextDisplayer.SelectNavigation(consumables);
+                if (itemSelection == -1)
+                {   //선택안하고 뒤로 돌아오면 다른 선택지..
+                    PlayerTurn();
+                }
+                else
+                {
+                    consumables[itemSelection].Consume(currentPlayer, currentPlayer.Inventory.ItemList);
+                }
+            }
+        }
         public void EnemyTurn()
         {
             FormatUtility.DisplayHeader(title);
             DisplayBattleInformation(false, currentDungeon.Enemies);
             Console.WriteLine();
             Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("적의 차례입니다. ");
-            Console.WriteLine();
-            Console.WriteLine();
+            Console.ResetColor();
+            InputHelper.WaitResponse();
 
             foreach (Enemy enemy in aliveEnemies)
             {
                 uint damage = enemy.GetNormalAttackDamage(currentPlayer);
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{enemy.Name}으로부터 {damage} 데미지를 받았다!");
+                Console.ResetColor();
+
                 currentPlayer.Damaged(damage);
-                if(currentPlayer.HP <= 0)
+
+                if (currentPlayer.HP <= 0)
                 {
                     Console.WriteLine("죽었다....");
                     InputHelper.WaitResponse();
@@ -236,12 +272,49 @@ namespace TextRPG_TeamSix.Scenes
                     SceneManager.Instance.SetScene(SceneType.Main);
                 }
 
-                Console.WriteLine($"{enemy.Name}으로부터 {damage} 데미지를 받았다!");
                 InputHelper.WaitResponse();
                 Console.WriteLine();
             }
 
             isPlayerTurn =true;
+        }
+        public void GetDungeonClearReward()
+        {
+            Console.Clear();
+            FormatUtility.DisplayHeader(title);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\n던전을 클리어했습니다!");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"보상으로 {currentDungeon.RewardGold} 골드와 {currentDungeon.RewardExp} 경험치를 획득했습니다.");
+            Console.ResetColor();
+
+            currentPlayer.EarnGold(currentDungeon.RewardGold);
+            currentPlayer.EarnExp(currentDungeon.RewardExp);
+            if (currentDungeon.RewardGatcha != null)
+            {   //현재 소지중인 아이템과 중복하여 획득할 수 있는 상황... =>  처리함.
+
+                Item rewardItem = currentDungeon.RewardGatcha.GetItem();
+                if (rewardItem != null)
+                {
+                    if (currentPlayer.Inventory.ItemList.FirstOrDefault(x => x.Id == rewardItem.Id) == null)
+                    {
+                        currentPlayer.Inventory.AddItem(rewardItem.Id);
+                        Console.WriteLine($"보상으로 {rewardItem.Name}을 획득했습니다.");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"보상으로 {rewardItem.Name}을 획득할 수 없습니다.)");
+                        Console.WriteLine("이미 소지중인 아이템입니다.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("보상으로 아이템을 획득하지 못했습니다.");
+                    Console.WriteLine("꽝을 뽑았습니다.");
+                }
+            }
+            Console.ResetColor();
+            InputHelper.WaitResponse();
         }
     }
 }

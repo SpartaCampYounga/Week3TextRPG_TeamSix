@@ -63,7 +63,6 @@ namespace TextRPG_TeamSix.Game
 
                 Console.WriteLine($"SaveData를 불러왔습니다.");
 
-
                 PlayerManager.Instance.CurrentPlayer.Clone(SaveData.PlayerSave);
                 //PlayerManager.Instance.InitializePlayerFromSaveData(SaveData.PlayerSave.Name);
 

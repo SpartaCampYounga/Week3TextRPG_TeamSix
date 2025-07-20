@@ -22,12 +22,12 @@
           {
             "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
             "Ability": "Attack",
-            "Enhancement": 3,
+            "Enhancement": 10,
             "EquipSlot": "Weapon",
-            "Id": 5,
-            "Name": "나무검",
-            "Description": "가볍고 약한 검입니다.",
-            "Price": 80,
+            "Id": 7,
+            "Name": "철검",
+            "Description": "무딘감 이 있지만 꽤 강한 검입니다.",
+            "Price": 1000,
             "Type": "Weapon",
             "IsSpecialItem": false
           }
@@ -35,7 +35,7 @@
       }
     },
     "NumOfStones": 388,
-    "Gold": 1000,
+    "Gold": 68,
     "Exp": 0,
     "Level": 1,
     "Id": 3,
@@ -132,12 +132,12 @@
     "Weapon": {
       "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
       "Ability": "Attack",
-      "Enhancement": 3,
+      "Enhancement": 10,
       "EquipSlot": "Weapon",
-      "Id": 5,
-      "Name": "나무검",
-      "Description": "가볍고 약한 검입니다.",
-      "Price": 80,
+      "Id": 7,
+      "Name": "철검",
+      "Description": "무딘감 이 있지만 꽤 강한 검입니다.",
+      "Price": 1000,
       "Type": "Weapon",
       "IsSpecialItem": false
     }

@@ -11,6 +11,7 @@ using TextRPG_TeamSix.Game;
 using TextRPG_TeamSix.Items;
 using TextRPG_TeamSix.Quests;
 using TextRPG_TeamSix.Scenes;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Controllers
 {
@@ -60,6 +61,8 @@ namespace TextRPG_TeamSix.Controllers
                     temp.Clone(quest);
                     this.AcceptedQuestList.Add(temp);
                 }
+                //Console.WriteLine($"PlayerManager AcceptedQuestList Count: {this.AcceptedQuestList.Count}");
+                //InputHelper.WaitResponse();
                 Console.WriteLine($"In SaveManager EquipList null" + SaveManager.Instance.SaveData.EquipmentList.Values == null);
                 foreach(EquipItem equipItem in SaveManager.Instance.SaveData.EquipmentList.Values)
                 {
