@@ -79,22 +79,22 @@
       {
         "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
         "Id": 1,
-        "Name": "스매시",
-        "Description": "강하게 내려칩니다.",
-        "ConsumeMP": 10,
-        "RequiredStones": 3,
-        "SkillType": "Attack",
-        "Amount": 20
-      },
-      {
-        "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
-        "Id": 2,
         "Name": "후려치기",
         "Description": "강하게 후려칩니다.",
         "ConsumeMP": 5,
         "RequiredStones": 1,
         "SkillType": "Attack",
         "Amount": 10
+      },
+      {
+        "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
+        "Id": 2,
+        "Name": "스매시",
+        "Description": "강하게 내려칩니다.",
+        "ConsumeMP": 10,
+        "RequiredStones": 3,
+        "SkillType": "Attack",
+        "Amount": 20
       },
       {
         "$type": "TextRPG_TeamSix.Skills.AttackSkill, TextRPG_TeamSix",
@@ -124,7 +124,7 @@
       {
         "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
         "RestoreType": "Health",
-        "RestoreAmount": 100,
+        "RestoreAmount": 60,
         "Id": 1,
         "Name": "소형 회복물약",
         "Description": "작은 체력을 회복합니다",
@@ -135,7 +135,7 @@
       {
         "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
         "RestoreType": "Health",
-        "RestoreAmount": 220,
+        "RestoreAmount": 180,
         "Id": 2,
         "Name": "중형 회복물약",
         "Description": "중간 정도의 체력을 회복합니다",
@@ -146,7 +146,7 @@
       {
         "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
         "RestoreType": "Health",
-        "RestoreAmount": 450,
+        "RestoreAmount": 350,
         "Id": 3,
         "Name": "대형 회복물약",
         "Description": "많은 체력을 회복합니다",
@@ -155,21 +155,20 @@
         "IsSpecialItem": false
       },
       {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 5,
-        "EquipSlot": "Weapon",
-        "Id": 4,
-        "Name": "녹슨검",
-        "Description": "낡았습니다",
-        "Price": 200,
-        "Type": "Weapon",
-        "IsSpecialItem": false
+        "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+        "RestoreType": "All",
+        "RestoreAmount": 600,
+        "Id": 103,
+        "Name": "엘릭서",
+        "Description": "마법의 힘이 담긴 물약입니다.",
+        "Price": 500,
+        "Type": "Consumable",
+        "IsSpecialItem": true
       },
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Attack",
-        "Enhancement": 3,
+        "Enhancement": 4,
         "EquipSlot": "Weapon",
         "Id": 5,
         "Name": "나무검",
@@ -181,7 +180,31 @@
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Attack",
-        "Enhancement": 15,
+        "Enhancement": 6,
+        "EquipSlot": "Weapon",
+        "Id": 4,
+        "Name": "녹슨검",
+        "Description": "낡았습니다",
+        "Price": 200,
+        "Type": "Weapon",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Attack",
+        "Enhancement": 12,
+        "EquipSlot": "Weapon",
+        "Id": 7,
+        "Name": "철검",
+        "Description": "무딘감이 있지만 꽤 강한 검입니다.",
+        "Price": 1000,
+        "Type": "Weapon",
+        "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Attack",
+        "Enhancement": 18,
         "EquipSlot": "Weapon",
         "Id": 6,
         "Name": "포레스트검",
@@ -193,19 +216,7 @@
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Attack",
-        "Enhancement": 10,
-        "EquipSlot": "Weapon",
-        "Id": 7,
-        "Name": "철검",
-        "Description": "무딘감 이 있지만 꽤 강한 검입니다.",
-        "Price": 1000,
-        "Type": "Weapon",
-        "IsSpecialItem": false
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 25,
+        "Enhancement": 30,
         "EquipSlot": "Weapon",
         "Id": 8,
         "Name": "장인의 검",
@@ -217,7 +228,7 @@
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Attack",
-        "Enhancement": 40,
+        "Enhancement": 45,
         "EquipSlot": "Weapon",
         "Id": 101,
         "Name": "완성",
@@ -228,43 +239,8 @@
       },
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Defense",
-        "Enhancement": 35,
-        "EquipSlot": "Armor",
-        "Id": 102,
-        "Name": "협업",
-        "Description": "여러 명인들이 모여 만든 작품입니다.",
-        "Price": 3500,
-        "Type": "Armor",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
-        "RestoreType": "All",
-        "RestoreAmount": 300,
-        "Id": 103,
-        "Name": "엘릭서",
-        "Description": "마법의 힘이 담긴 물약입니다.",
-        "Price": 500,
-        "Type": "Consumable",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Attack",
-        "Enhancement": 90,
-        "EquipSlot": "Weapon",
-        "Id": 104,
-        "Name": "용의 검",
-        "Description": "드래곤의 힘이 깃든 전설의 검입니다.",
-        "Price": 9000,
-        "Type": "Weapon",
-        "IsSpecialItem": true
-      },
-      {
-        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
-        "Ability": "Attack",
-        "Enhancement": 70,
+        "Enhancement": 75,
         "EquipSlot": "Weapon",
         "Id": 105,
         "Name": "화염검",
@@ -275,8 +251,20 @@
       },
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Attack",
+        "Enhancement": 100,
+        "EquipSlot": "Weapon",
+        "Id": 104,
+        "Name": "용의 검",
+        "Description": "드래곤의 힘이 깃든 전설의 검입니다.",
+        "Price": 9000,
+        "Type": "Weapon",
+        "IsSpecialItem": true
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Defense",
-        "Enhancement": 1,
+        "Enhancement": 2,
         "EquipSlot": "Armor",
         "Id": 11,
         "Name": "천옷",
@@ -312,7 +300,7 @@
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Defense",
-        "Enhancement": 20,
+        "Enhancement": 18,
         "EquipSlot": "Armor",
         "Id": 14,
         "Name": "성기사의 갑옷",
@@ -324,7 +312,7 @@
       {
         "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
         "Ability": "Defense",
-        "Enhancement": 25,
+        "Enhancement": 20,
         "EquipSlot": "Armor",
         "Id": 15,
         "Name": "어둠의 로브",
@@ -332,6 +320,18 @@
         "Price": 2500,
         "Type": "Armor",
         "IsSpecialItem": false
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+        "Ability": "Defense",
+        "Enhancement": 35,
+        "EquipSlot": "Armor",
+        "Id": 102,
+        "Name": "협업",
+        "Description": "여러 명인들이 모여 만든 작품입니다.",
+        "Price": 3500,
+        "Type": "Armor",
+        "IsSpecialItem": true
       }
     ]
   },
@@ -347,7 +347,7 @@
             {
               "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
               "RestoreType": "Health",
-              "RestoreAmount": 100,
+              "RestoreAmount": 60,
               "Id": 1,
               "Name": "소형 회복물약",
               "Description": "작은 체력을 회복합니다",
@@ -358,12 +358,55 @@
             {
               "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
               "RestoreType": "Health",
-              "RestoreAmount": 220,
+              "RestoreAmount": 180,
               "Id": 2,
               "Name": "중형 회복물약",
               "Description": "중간 정도의 체력을 회복합니다",
               "Price": 100,
               "Type": "Consumable",
+              "IsSpecialItem": false
+            }
+          ]
+        }
+      },
+      {
+        "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
+        "Name": "고급",
+        "ItemList": {
+          "$type": "System.Collections.Generic.List`1[[TextRPG_TeamSix.Items.Item, TextRPG_TeamSix]], System.Private.CoreLib",
+          "$values": [
+            {
+              "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+              "RestoreType": "Health",
+              "RestoreAmount": 350,
+              "Id": 3,
+              "Name": "대형 회복물약",
+              "Description": "많은 체력을 회복합니다",
+              "Price": 300,
+              "Type": "Consumable",
+              "IsSpecialItem": false
+            },
+            {
+              "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
+              "RestoreType": "All",
+              "RestoreAmount": 600,
+              "Id": 103,
+              "Name": "엘릭서",
+              "Description": "마법의 힘이 담긴 물약입니다.",
+              "Price": 500,
+              "Type": "Consumable",
+              "IsSpecialItem": true
+            },
+            {
+              "$type": "TextRPG_TeamSix.Items.EquipItem, TextRPG_TeamSix",
+              "Ability": "Attack",
+              "Enhancement": 4,
+              "EquipSlot": "Weapon",
+              "Id": 5,
+              "Name": "나무검",
+              "Description": "가볍고 약한 검입니다.",
+              "Price": 80,
+              "Type": "Weapon",
               "IsSpecialItem": false
             }
           ]
@@ -512,7 +555,7 @@
         "RequiredDefense": 5,
         "RequiredDungeonId": 0,
         "RewardGold": 500,
-        "RewardExp": 100,
+        "RewardExp": 20,
         "RewardGatcha": {
           "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
           "Name": "일반",
@@ -522,7 +565,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 100,
+                "RestoreAmount": 60,
                 "Id": 1,
                 "Name": "소형 회복물약",
                 "Description": "작은 체력을 회복합니다",
@@ -533,7 +576,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 220,
+                "RestoreAmount": 180,
                 "Id": 2,
                 "Name": "중형 회복물약",
                 "Description": "중간 정도의 체력을 회복합니다",
@@ -611,7 +654,7 @@
         "RequiredDefense": 15,
         "RequiredDungeonId": 1,
         "RewardGold": 1500,
-        "RewardExp": 300,
+        "RewardExp": 40,
         "RewardGatcha": {
           "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
           "Name": "일반",
@@ -621,7 +664,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 100,
+                "RestoreAmount": 60,
                 "Id": 1,
                 "Name": "소형 회복물약",
                 "Description": "작은 체력을 회복합니다",
@@ -632,7 +675,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 220,
+                "RestoreAmount": 180,
                 "Id": 2,
                 "Name": "중형 회복물약",
                 "Description": "중간 정도의 체력을 회복합니다",
@@ -710,7 +753,7 @@
         "RequiredDefense": 30,
         "RequiredDungeonId": 2,
         "RewardGold": 3000,
-        "RewardExp": 700,
+        "RewardExp": 80,
         "RewardGatcha": {
           "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
           "Name": "일반",
@@ -720,7 +763,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 100,
+                "RestoreAmount": 60,
                 "Id": 1,
                 "Name": "소형 회복물약",
                 "Description": "작은 체력을 회복합니다",
@@ -731,7 +774,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 220,
+                "RestoreAmount": 180,
                 "Id": 2,
                 "Name": "중형 회복물약",
                 "Description": "중간 정도의 체력을 회복합니다",
@@ -809,7 +852,7 @@
         "RequiredDefense": 50,
         "RequiredDungeonId": 3,
         "RewardGold": 5000,
-        "RewardExp": 1500,
+        "RewardExp": 160,
         "RewardGatcha": {
           "$type": "TextRPG_TeamSix.Items.Gatcha, TextRPG_TeamSix",
           "Name": "일반",
@@ -819,7 +862,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 100,
+                "RestoreAmount": 60,
                 "Id": 1,
                 "Name": "소형 회복물약",
                 "Description": "작은 체력을 회복합니다",
@@ -830,7 +873,7 @@
               {
                 "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
                 "RestoreType": "Health",
-                "RestoreAmount": 220,
+                "RestoreAmount": 180,
                 "Id": 2,
                 "Name": "중형 회복물약",
                 "Description": "중간 정도의 체력을 회복합니다",
@@ -962,7 +1005,7 @@
             {
               "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
               "RestoreType": "Health",
-              "RestoreAmount": 100,
+              "RestoreAmount": 60,
               "Id": 1,
               "Name": "소형 회복물약",
               "Description": "작은 체력을 회복합니다",
@@ -973,7 +1016,7 @@
             {
               "$type": "TextRPG_TeamSix.Items.Portion, TextRPG_TeamSix",
               "RestoreType": "Health",
-              "RestoreAmount": 220,
+              "RestoreAmount": 180,
               "Id": 2,
               "Name": "중형 회복물약",
               "Description": "중간 정도의 체력을 회복합니다",

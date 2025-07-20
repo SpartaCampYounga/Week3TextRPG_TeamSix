@@ -285,12 +285,21 @@ namespace TextRPG_TeamSix.Scenes
         {
             Console.Clear();
             FormatUtility.DisplayHeader(title);
+            PlayerManager.Instance.ClearedDungeonList.Add(currentDungeon.Id);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n던전을 클리어했습니다!");
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($"보상으로 {currentDungeon.RewardGold} 골드와 {currentDungeon.RewardExp} 경험치를 획득했습니다.");
             Console.ResetColor();
 
+            //이 보상들은 던전 클래스에서 ClearedDungeon 메소드로 처리하면 좋을 것 같음. (일단 시간 부족)
+
+            //퀘스트 카운트
+            PlayerManager.Instance.AcceptedQuestList
+                .Where(x => x.QuestType == QuestType.Dungeon && x.GoalId == currentDungeon.Id)
+                .ToList()
+                .ForEach(x => x.CountGoal());
+            //던전 보상
             currentPlayer.EarnGold(currentDungeon.RewardGold);
             currentPlayer.EarnExp(currentDungeon.RewardExp);
             if (currentDungeon.RewardGatcha != null)
@@ -299,14 +308,19 @@ namespace TextRPG_TeamSix.Scenes
                 Item rewardItem = currentDungeon.RewardGatcha.GetItem();
                 if (rewardItem != null)
                 {
+                    Console.WriteLine();
                     if (currentPlayer.Inventory.ItemList.FirstOrDefault(x => x.Id == rewardItem.Id) == null)
                     {
                         currentPlayer.Inventory.AddItem(rewardItem.Id);
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine($"보상으로 {rewardItem.Name}을 획득했습니다.");
+                        Console.ResetColor();
                     }
                     else
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.WriteLine($"보상으로 {rewardItem.Name}을 획득할 수 없습니다.)");
+                        Console.ResetColor();
                         Console.WriteLine("이미 소지중인 아이템입니다.");
                     }
                 }

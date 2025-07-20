@@ -75,11 +75,12 @@ namespace TextRPG_TeamSix.Scenes
             else
             {
                 Console.WriteLine(new string('═', Console.WindowWidth));
-                //테이블 헤더
+                //테이블 헤더 //헤더도 유형별로 GetHeader()로 분리할 수 있을듯
                 //Console.ForegroundColor = ConsoleColor.White;
                 string header = "      ";
                 header += FormatUtility.AlignLeftWithPadding("이름", 15) + " ┊ ";
                 header += FormatUtility.AlignLeftWithPadding("설명", 50) + " ┊ ";
+                header += FormatUtility.AlignLeftWithPadding("효과", 20) + " ┊ ";
                 header += FormatUtility.AlignLeftWithPadding("금액" + " G", 8);
                 Console.WriteLine(header);
                 //Console.ForegroundColor = ConsoleColor.Green;

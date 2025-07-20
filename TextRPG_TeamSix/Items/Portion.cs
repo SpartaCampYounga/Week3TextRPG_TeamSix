@@ -5,7 +5,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using TextRPG_TeamSix.Characters;
+using TextRPG_TeamSix.Controllers;
 using TextRPG_TeamSix.Enums;
+using TextRPG_TeamSix.Utilities;
 
 namespace TextRPG_TeamSix.Items
 {
@@ -24,7 +26,26 @@ namespace TextRPG_TeamSix.Items
             RestoreType = restoreType;
 
         }
-
+        public override string ToString()
+        {
+            string display = "    ";
+            display += FormatUtility.AlignLeftWithPadding(Name, 15) + " ┊ ";
+            display += FormatUtility.AlignLeftWithPadding(Description, 50) + " ┊ ";
+            switch (RestoreType)
+            {
+                case RestoreType.Health:
+                    display += FormatUtility.AlignLeftWithPadding("체력 회복 +" + RestoreAmount, 20) + " ┊ ";
+                    break;
+                case RestoreType.Mana:
+                    display += FormatUtility.AlignLeftWithPadding("마나 회복 +" + RestoreAmount, 20) + " ┊ ";
+                    break;
+                case RestoreType.All:
+                    display += FormatUtility.AlignLeftWithPadding("체력과 마나 회복 +" + RestoreAmount, 20) + " ┊ ";
+                    break;
+            }
+            display += FormatUtility.AlignLeftWithPadding(Price.ToString() + " G", 8);
+            return display;
+        }
         // IConsumable 인터페이스의 Consume 메서드 구현
         public void Consume<T>(Character character, List<T> list) // Consume 메서드는 Character 객체를 받아 해당 캐릭터의 상태를 회복합니다. 또한 해당 리스트에서 아이템을 삭제합니다.
         {

@@ -25,6 +25,7 @@ namespace TextRPG_TeamSix.Items
             Enhancement = enhancement;
             EquipSlot = equipSlot;
         }
+
         public override string ToString()
         {
             string display = "";
@@ -39,6 +40,15 @@ namespace TextRPG_TeamSix.Items
             }
             display += FormatUtility.AlignLeftWithPadding(Name, 15) + " ┊ ";
             display += FormatUtility.AlignLeftWithPadding(Description, 50) + " ┊ ";
+            switch (Ability)
+            {
+                case Ability.Attack:
+                    display += FormatUtility.AlignLeftWithPadding("공격력 +" + Enhancement, 20) + " ┊ ";
+                    break;
+                case Ability.Defense:
+                    display += FormatUtility.AlignLeftWithPadding("방어력 +" + Enhancement, 20) + " ┊ ";
+                    break;
+            }
             display += FormatUtility.AlignLeftWithPadding(Price.ToString() + " G", 8);
             return display;
         }

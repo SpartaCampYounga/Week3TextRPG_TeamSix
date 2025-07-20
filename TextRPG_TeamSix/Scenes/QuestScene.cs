@@ -54,7 +54,7 @@ namespace TextRPG_TeamSix.Scenes
 
                 foreach (Quest quest in acceptedQuests)
                 {
-                    Console.WriteLine(quest);
+                    Console.WriteLine("  " + quest);
                 }
                 Console.WriteLine();
             }

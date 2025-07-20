@@ -164,11 +164,11 @@ namespace TextRPG_TeamSix.Characters
             this.HP = this.MaxHP;
             this.MP = this.MaxMP;
 
-            Console.WriteLine($"공격력이 증가하여 {this.Level} 되었다!");
-            Console.WriteLine($"방어력이 증가하여 {this.Level} 되었다!");
-            Console.WriteLine($"행운이 증가하여 {this.Level} 되었다!");
-            Console.WriteLine($"최대체력이 증가하여 {this.Level} 되었다!");
-            Console.WriteLine($"최대마나가 증가하여 {this.Level} 되었다!");
+            Console.WriteLine($"공격력이 증가하여 {this.Attack} 되었다!");
+            Console.WriteLine($"방어력이 증가하여 {this.Defense} 되었다!");
+            Console.WriteLine($"행운이 증가하여 {this.Luck} 되었다!");
+            Console.WriteLine($"최대체력이 증가하여 {this.MaxHP} 되었다!");
+            Console.WriteLine($"최대마나가 증가하여 {this.MaxMP} 되었다!");
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("레벨업 보너스로 체력과 마나가 완전히 회복되었다!");

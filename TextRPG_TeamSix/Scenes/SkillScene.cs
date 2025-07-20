@@ -64,6 +64,8 @@ namespace TextRPG_TeamSix.Scenes
                 {
                     Console.WriteLine("  " + player.SkillList[i]);
                 }
+                Console.WriteLine();
+                Console.WriteLine();
             }
             else
             {
