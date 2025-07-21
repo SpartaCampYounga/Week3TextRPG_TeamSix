@@ -15,13 +15,10 @@ namespace TextRPG_TeamSix
         {
             GameInitializer.InitializeFromJson();
 
-
-           //SceneManager.Instance.SetScene(SceneType.Battle);
-            //SceneManager.Instance.SetScene(SceneType.Battle);
-
-
-
-            SceneManager.Instance.SetScene(SceneType.Title);
+            while (true)
+            {
+                SceneManager.Instance.SetScene(SceneType.Title);
+            }
         }
     }
 }
