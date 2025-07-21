@@ -65,8 +65,8 @@ namespace TextRPG_TeamSix.Controllers
                 }
                 //Dictionary<EquipSlot, EquipItem> EquipmentList
                 Console.WriteLine("플레이어 데이터를 불러왔습니다.");
-                Console.WriteLine($"불러온 플레이어 이름: {SaveManager.Instance.SaveData.PlayerSave.Name}");
-                Console.WriteLine($"CurrentPlayer 이름: {CurrentPlayer.Name}");
+                //Console.WriteLine($"불러온 플레이어 이름: {SaveManager.Instance.SaveData.PlayerSave.Name}");
+                //Console.WriteLine($"CurrentPlayer 이름: {CurrentPlayer.Name}");
                 return true;
             }
             else
