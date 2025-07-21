@@ -24,7 +24,7 @@ namespace TextRPG_TeamSix.Scenes
             string stars = new string('*', 120);
             string lineBar = new string('=', 120);
 
-            Console.WriteLine("TitleScene");
+            //Console.WriteLine("TitleScene");
 
             Console.ForegroundColor = ConsoleColor.Green;
 

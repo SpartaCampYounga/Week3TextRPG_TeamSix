@@ -71,9 +71,7 @@ namespace TextRPG_TeamSix.Scenes
                 header += FormatUtility.AlignLeftWithPadding("효과", 20) + " ┊ ";
                 header += FormatUtility.AlignLeftWithPadding("금액" + " G", 8);
                 Console.WriteLine(header);
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(new string('═', Console.WindowWidth));
-                Console.ResetColor();
 
                 input = TextDisplayer.SelectNavigation(player.Inventory.ItemList);
             }

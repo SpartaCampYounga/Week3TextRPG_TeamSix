@@ -25,7 +25,7 @@ namespace TextRPG_TeamSix.Scenes
 
             // 상태보기,상점,던전,퀘스트 순으로 정렬(추후)
             Console.Clear();
-            Console.WriteLine("MainScene");
+            //Console.WriteLine("MainScene");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(new string('=', 120));
 
