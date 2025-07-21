@@ -182,7 +182,7 @@
         "Description": "고블린 1마리를 처치하세요.",
         "RewardGold": 100,
         "RewardExp": 10,
-        "GoalId": 1,
+        "GoalId": 2,
         "GoalCount": 1,
         "Count": 0,
         "IsFinished": false

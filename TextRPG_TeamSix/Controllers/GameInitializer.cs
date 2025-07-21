@@ -120,7 +120,7 @@ namespace TextRPG_TeamSix.Controllers
             new Quest(2, QuestType.Enemy, "슬라임 5마리를 처치하세요.", 200, 20, _emenies[1].Id,5, 0, false),
             new Quest(3, QuestType.Dungeon, "Easy 던전을 클리어하세요", 100, 10, _dungeons[0].Id,1, 0, false),
             new Quest(4, QuestType.Dungeon, "Normal 던전을 클리어하세요", 300, 30, _dungeons[1].Id,1, 0, false),
-            new Quest(5, QuestType.Enemy, "고블린 1마리를 처치하세요.", 100, 10, _emenies[0].Id,1, 0, false)
+            new Quest(5, QuestType.Enemy, "고블린 1마리를 처치하세요.", 100, 10, _emenies[1].Id,1, 0, false)
         };
 
         private static Store[] _stores =
